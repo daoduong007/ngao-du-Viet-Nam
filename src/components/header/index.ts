@@ -7,4 +7,6 @@ export * from "./Directional";
 export * from "./Styles";
 export * from "./Slogan";
 export * from "./Backgroundimage";
-export * from "./Tabsearch"
+export * from "./Tabsearch";
+export * from "./SearchSelect";
+export * from "./SearchInput"

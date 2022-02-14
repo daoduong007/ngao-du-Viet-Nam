@@ -4,12 +4,12 @@ import { StyledText, StyledDirectional } from '@components';
 export const Directional = () => {
   return (
     <StyledDirectional>
-      <StyledText>Home</StyledText>
-      <StyledText>About</StyledText>
-      <StyledText>Tours</StyledText>
-      <StyledText>Hotels</StyledText>
-      <StyledText>Contact</StyledText>
-      <StyledText>Login</StyledText>
+      <StyledText className='directionalItem'>Home</StyledText>
+      <StyledText className='directionalItem'>About</StyledText>
+      <StyledText className='directionalItem'>Tours</StyledText>
+      <StyledText className='directionalItem'>Hotels</StyledText>
+      <StyledText className='directionalItem'>Contact</StyledText>
+      <StyledText className='directionalItem'> Login</StyledText>
     </StyledDirectional>
   );
 };

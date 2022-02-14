@@ -8,6 +8,8 @@ import {
   StyledSearchTourItem,
   StyledSearchTitle,
   StyledSearchAction,
+  SearchInput,
+  SearchSelect,
   IconLocation,
   IconSearch,
   IconFlag,
@@ -27,7 +29,7 @@ export const Tabsearch = () => {
       defaultActiveKey='1'
       //onChange={callback}
     >
-      <TabPane tab='Tab 1' key='1'>
+      <TabPane tab='Tours' key='1'>
         <StyledSearchTitle>
           <StyledText
             fontSize={'24px'}
@@ -40,56 +42,80 @@ export const Tabsearch = () => {
         </StyledSearchTitle>
         <StyledSearchTourItems>
           <StyledSearchTourItem>
-            <IconLocation />
-            <StyledText
-              fontSize={'14px'}
-              fontWeight={'normal'}
-              color={'#1C1C1E'}
-            >
-              Quatlam Beach, Giaothuy, Namdinh
-            </StyledText>
+            <div className='icon-search'>
+              <IconLocation />
+            </div>
+            <SearchInput
+              placeholder={'Quatlam Beach, Giaothuy, Namdinh'}
+            />
           </StyledSearchTourItem>
           <StyledSearchTourItem>
-            <IconDepatureTime />
-            <StyledText
-              fontSize={'14px'}
-              fontWeight={'normal'}
-              color={'#1C1C1E'}
-            >
-              Departure time
-            </StyledText>
+            <div className='icon-search'>
+              <IconDepatureTime />
+            </div>
+
+            <SearchInput placeholder={'Departure time'} />
           </StyledSearchTourItem>
           <StyledSearchTourItem>
-            <IconFlag />
-            <StyledText
-              fontSize={'14px'}
-              fontWeight={'normal'}
-              color={'#1C1C1E'}
-            >
-              Type of tour
-            </StyledText>
+            <div className='icon-search'>
+              <IconFlag />
+            </div>
+            <SearchSelect defaultValue={'Type of tour'} />
           </StyledSearchTourItem>
           <StyledSearchTourItem>
-            <IconGuest />
-            <StyledText
-              fontSize={'14px'}
-              fontWeight={'normal'}
-              color={'#1C1C1E'}
-            >
-              Number of guests
-            </StyledText>
+            <div className='icon-search'>
+              <IconGuest />
+            </div>
+
+            <SearchSelect defaultValue={'Number of guests'} />
           </StyledSearchTourItem>
         </StyledSearchTourItems>
         <StyledSearchAction>
-          <IconSearch />
-          <StyledText>Search</StyledText>
+          <button type='submit' className='submitSearch'>
+            <div className='icon-search'>
+              <IconSearch />
+            </div>
+            <StyledText>Search</StyledText>
+          </button>
         </StyledSearchAction>
       </TabPane>
-      <TabPane tab='Tab 2' key='2'>
+      <TabPane tab='Hotels' key='2'>
         <h4>Hotels</h4>
       </TabPane>
     </StyledTab>
   );
 };
 
-const StyledTab = styled(Tabs)``;
+const StyledTab = styled(Tabs)`
+  .ant-tabs-tab {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 160%;
+    /* or 22px */
+
+    text-align: center;
+  }
+  .ant-tabs-nav-list {
+    width: 100%;
+  }
+  .ant-tabs-tab.ant-tabs-tab-active {
+    background-color: #ff7b42;
+    text-shadow: 0 0 0.25px currentcolor;
+  }
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #ffffff;
+    text-shadow: 0 0 0.25px currentcolor;
+  }
+  .ant-tabs-tab:hover {
+    color: #ffffff;
+  }
+
+  .tabSearch {
+  }
+`;

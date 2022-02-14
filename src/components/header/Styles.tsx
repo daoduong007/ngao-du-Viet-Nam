@@ -3,11 +3,13 @@ import styled from 'styled-components';
 export const StyledContainer = styled.div`
   width: 100%;
   height: 100%;
+  z-index: -20;
 `;
 export const StyledBackgroundImage = styled.img`
   width: 100%;
-  height: 45rem;
+  height: 766px;
   position: relative;
+  z-index: -10;
 `;
 
 export const StyledAppbar = styled.div``;
@@ -26,9 +28,9 @@ export const StyledDirectional = styled.div`
 export const StyledSearch = styled.div`
   position: absolute;
   width: 445px;
-  height: 522px;
+  height: 568px;
   left: 830px;
-  top: 244px;
+  top: 198px;
 
   background: linear-gradient(
     0deg,
@@ -86,29 +88,69 @@ export const StyledSearchTourItem = styled.div`
   align-items: center;
 
   background-color: #ffffff;
-  svg {
-    margin: 0 23px 23px 26px;
+  .icon-search {
+    margin: 0 23px 0 26px;
   }
 `;
 
 export const StyledSearchAction = styled.div`
-  background-color: #ff7b42;
-
   width: 381px;
   height: 64px;
   margin: 9px 33px 34px 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+  button {
+    background-color: #ff7b42;
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    p {
+      margin: 0;
+    }
+  }
 `;
 
 export const StyledFeature = styled.div`
   position: absolute;
+  background-color: #ffffff;
   width: 830px;
   height: 99px;
   left: 0px;
+  top: 667px;
+  z-index: 1000;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+
+  .FeatureHeader {
+    margin: 26px 0 0 65px;
+    display: flex;
+    flex-direction: row;
+
+    svg {
+      margin-right: 8px;
+      margin-top: 4px;
+    }
+  }
+  .FeatureBody {
+    width: 70%;
+    margin-left: 65px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .FeatureBodyItem {
+      display: flex;
+      .FeatureBodyItemText {
+        margin: 6px 0 0 4px;
+      }
+    }
+  }
 `;
 
 export const StyledSlogan = styled.div`
@@ -145,6 +187,11 @@ export const StyledText = styled.p<{
     props.lineHeight ? props.lineHeight : '160%'};
 
   color: ${(props) => (props.color ? props.color : '#fff2cf')};
+
+  &:hover {
+    color: #ff7b42;
+    cursor: pointer;
+  }
 `;
 
 export const StyledLogo = styled.div<{
