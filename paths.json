@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@components": ["src/components"],
+      "@containers": ["src/containers"],
+      "@ultils": ["src/ultils"],
+      "@assets": ["src/assets"]
+    }
+  }
+}
