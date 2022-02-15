@@ -1,2 +1,5 @@
 export * from "./header";
-export * from "./icons"
+export * from "./body";
+export * from "./footer";
+export * from "./icons";
+

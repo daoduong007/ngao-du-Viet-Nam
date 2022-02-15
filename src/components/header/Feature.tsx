@@ -1,13 +1,6 @@
 import React from 'react';
-import { StyledFeature, StyledText } from '@components';
-import { IconDot } from '@components';
 
-interface TextBigger {
-  color: '#1C1C1E';
-  fontWeight: 'bold';
-  fontSize: '24px';
-  lineHeight: '160%';
-}
+import { StyledFeature, StyledText, IconDot } from '@components';
 
 export const Feature = () => {
   return (

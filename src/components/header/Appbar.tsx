@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { StyledAppbar } from '@components';
-import { Directional } from '@components';
-import { Logo } from '@components';
+import { StyledAppbar, Logo, Directional } from '@components';
 
 export const Appbar = () => {
   return (

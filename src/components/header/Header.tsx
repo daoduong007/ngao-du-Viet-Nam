@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyledContainer } from '@components';
-import { BackGroundImage } from '@components';
-import { Appbar } from '@components';
-import { Search } from '@components';
-import { Feature } from '@components';
-import { Slogan } from '@components';
+import {
+  StyledContainer,
+  BackGroundImage,
+  Appbar,
+  Search,
+  Feature,
+  Slogan,
+} from '@components';
 
 export const Header = () => {
   return (

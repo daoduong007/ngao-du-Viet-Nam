@@ -123,7 +123,7 @@ export const StyledFeature = styled.div`
   height: 99px;
   left: 0px;
   top: 667px;
-  z-index: 1000;
+  z-index: 100;
   display: flex;
   flex-direction: column;
 
