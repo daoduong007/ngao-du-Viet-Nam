@@ -115,7 +115,7 @@ const StyledTab = styled(Tabs)`
   .ant-tabs-tab:hover {
     color: #ffffff;
   }
-
-  .tabSearch {
+  .ant-tabs-ink-bar {
+    background-color: #ffffff;
   }
 `;

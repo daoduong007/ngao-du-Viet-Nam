@@ -71,3 +71,104 @@ export const StyledBodyIntroduceContent = styled.div`
     color: #3D3E3F;
     }
 `
+
+export const StyledBodyTourContainer = styled.div`
+  width: 100%;
+  padding: 0 165px 0 165px;
+  margin-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  .attractive-tour-title {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 100%;
+    /* or 40px */
+    /* tieu de */
+
+    color: #1C1C1E;
+    text-align: left;
+  }
+  .attractive-tour-list-item {
+    position: relative;   
+    display :flex;
+    flex-direction: row;
+  }
+  .list-item-load-more {
+    position: relative;
+    top: 125px;
+  }
+`
+
+export const StyledBodyTourListItem = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+`
+
+export const StyledBodyTourItem = styled.div`
+  &:not(:first-child) {
+     margin-left: 30px;
+  }
+  &:last-child {
+    margin-right: 34px;
+  }
+  width: 350px;
+
+  p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 160%;
+    /* or 22px */
+    /* subcolor 1 */
+    color: #636567;
+  }
+  .item-title { 
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    /* tieu de */
+    color: #1C1C1E;
+  }
+  .item-location {
+    display: flex;
+    flex-direction: row;
+    margin: 19px 0 11px 5px;
+    svg {
+      margin-right: 14px;
+    }
+  }
+  .item-title {
+    p {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 23px;
+      /* tieu de */
+
+      color: #1C1C1E; 
+
+      text-align: left;
+    }
+
+  }
+  .item-infomation {
+    display: flex;
+    flex-direction: row;
+    .item-infomation-time {
+      display: flex;
+      flex-direction: row;
+      svg {
+        margin-right: 14px;
+      }
+    }
+    .item-infomation-price {
+      margin-left: 95px;
+    }
+
+  }
+`
+
