@@ -23,6 +23,7 @@ export const IconSearch = (props: IProps) => {
     </svg>
   );
 };
+
 export const IconDot = (props: IProps) => {
   // props
   const { width, height } = props;
@@ -163,6 +164,7 @@ export const IconInstagram = (props: IProps) => {
     </svg>
   );
 };
+
 export const IconTwitter = (props: IProps) => {
   const { width, height } = props;
   return (
@@ -257,6 +259,28 @@ export const IconDoubleQuotes = (props: IProps) => {
         d='M12.875 12.9375C12.875 9.79638 10.3286 7.25 7.1875 7.25L1.5 1.5625V12.9375C1.5 16.0786 4.04638 18.625 7.1875 18.625C10.3286 18.625 12.875 16.0786 12.875 12.9375Z'
         stroke='#FF7B42'
         strokeWidth='2'
+        strokeLinejoin='round'
+      />
+    </svg>
+  );
+};
+
+export const IconArrow = (props: IProps) => {
+  // props
+  const { width, height } = props;
+  return (
+    <svg
+      width={width || '18'}
+      height={height || '14'}
+      viewBox='0 0 18 14'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        d='M17 7L1 7M17 7L11 13M17 7L11 0.999999'
+        stroke='#636567'
+        strokeWidth='1.5'
+        strokeLinecap='round'
         strokeLinejoin='round'
       />
     </svg>

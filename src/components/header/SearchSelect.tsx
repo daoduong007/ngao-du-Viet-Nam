@@ -58,4 +58,9 @@ const StyledSearchSelect = styled.div`
 
     color: #636567;
   }
+  .ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+  .ant-select-single.ant-select-show-arrow
+    .ant-select-selection-placeholder {
+    padding-right: 0px;
+  }
 `;
