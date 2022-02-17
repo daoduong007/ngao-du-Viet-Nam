@@ -14,10 +14,10 @@ export const BodyIntroduce = () => {
     <StyledBodyIntroduceContainer>
       <div className='body-introduce-image'>
         <StyledBodyIntroduceImageBelow
-          src={require('@assets/BodyIntroduce1.png')}
+          src={require('../../assets/BodyIntroduce1.png')}
         />
         <StyledBodyIntroduceImageAbove
-          src={require('@assets/BodyIntroduce2.png')}
+          src={require('../../assets/BodyIntroduce2.png')}
         />
       </div>
       <div className='body-introduce-document'>

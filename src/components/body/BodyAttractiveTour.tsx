@@ -12,7 +12,6 @@ import {
 } from '@components';
 
 export const BodyAttractiveTour = () => {
-  console.log(BodyTourItemData1);
   return (
     <StyledBodyTourContainer>
       <div className='attractive-tour-title'>
@@ -22,12 +21,7 @@ export const BodyAttractiveTour = () => {
       </div>
       <div className='attractive-tour-list-item'>
         <StyledBodyTourListItem>
-          <Swiper
-            spaceBetween={0}
-            slidesPerView={3}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
-          >
+          <Swiper spaceBetween={0} slidesPerView={3}>
             {BodyTourItemData1.map((item, index) => (
               <SwiperSlide key={index}>
                 <BodyTourItem

@@ -118,4 +118,7 @@ const StyledTab = styled(Tabs)`
   .ant-tabs-ink-bar {
     background-color: #ffffff;
   }
+  .ant-tabs-ink-bar .ant-tabs-ink-bar-animated {
+    width: 0px !important;
+  }
 `;

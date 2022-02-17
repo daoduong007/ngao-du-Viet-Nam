@@ -4,6 +4,6 @@ import { StyledBackgroundImage } from '@components';
 
 export const BackGroundImage = () => {
   return (
-    <StyledBackgroundImage src={require('@assets/banner.jpg')} />
+    <StyledBackgroundImage src={require('../../assets/banner.jpg')} />
   );
 };

@@ -22,12 +22,7 @@ export const BodyExperienceCultural = () => {
       </div>
       <div className='attractive-tour-list-item'>
         <StyledBodyTourListItem>
-          <Swiper
-            spaceBetween={0}
-            slidesPerView={3}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
-          >
+          <Swiper spaceBetween={0} slidesPerView={3}>
             {BodyTourItemData2.map((item, index) => (
               <SwiperSlide key={index}>
                 <BodyTourItem
