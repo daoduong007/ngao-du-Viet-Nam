@@ -8,24 +8,24 @@ import 'swiper/css/navigation';
 import {
   StyledBodyTourContainer,
   StyledBodyTourListItem,
-  BodyTourItem,
+  BodyDiscoverItem,
   IconArrow,
-  BodyTourItemData2,
+  BodyTourItemData3,
   BodyButton,
 } from '@components';
 
-export const BodyExperienceCultural = () => {
+export const BodyDiscoverDestinations = () => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   return (
     <StyledBodyTourContainer>
       <div className='attractive-tour-title'>
         <p>
-          Experience the traditional <br /> cultural beauties of
-          Vietnam
+          Discover fascinating <br /> destinations
         </p>
         <BodyButton />
       </div>
+
       <div className='attractive-tour-list-item'>
         <StyledBodyTourListItem>
           <div
@@ -37,17 +37,15 @@ export const BodyExperienceCultural = () => {
           <Swiper
             modules={[Navigation]}
             spaceBetween={0}
-            slidesPerView={3}
+            slidesPerView={4}
             navigation={{ prevEl, nextEl }}
           >
-            {BodyTourItemData2.map((item, index) => (
+            {BodyTourItemData3.map((item, index) => (
               <SwiperSlide key={index}>
-                <BodyTourItem
+                <BodyDiscoverItem
                   imgUrl={item.imgUrl}
                   location={item.location}
-                  title={item.title}
-                  timeDepature={item.timeDepature}
-                  price={item.price}
+                  experiences={item.experiences}
                 />
               </SwiperSlide>
             ))}

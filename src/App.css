@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 @import '~antd/dist/antd.css';
 
 .App {
   text-align: center;
   font-size: 10px;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .App-link {
