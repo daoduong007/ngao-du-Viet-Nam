@@ -79,16 +79,24 @@ export const StyledBodyTourContainer = styled.div`
   display: flex;
   flex-direction: column;
   .attractive-tour-title {
-    font-family: DM Sans;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 40px;
-    line-height: 100%;
-    /* or 40px */
-    /* tieu de */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    p {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 100%;
+      /* or 40px */
+      /* tieu de */
 
-    color: #1C1C1E;
-    text-align: left;
+      color: #1C1C1E;
+      text-align: left;
+    }
+    .body-button {
+      padding-right: 15px;
+    }
+
   }
   .attractive-tour-list-item {
     position: relative;   
@@ -98,6 +106,14 @@ export const StyledBodyTourContainer = styled.div`
   .list-item-load-more {
     position: relative;
     top: 125px;
+    svg {
+      :hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .list-item-prev {
+    display: none;
   }
 `
 
@@ -169,6 +185,46 @@ export const StyledBodyTourItem = styled.div`
       margin-left: 95px;
     }
 
+  }
+`
+export const StyledBodyDiscoverItem = styled.div`
+  &:not(:first-child) {
+     margin-left: 30px;
+  }
+  &:last-child {
+    margin-right: 34px;
+  }
+  width: 255px;
+  display: flex;
+  flex-direction: column;
+  div {
+    text-align: left;
+  }
+  .item-location {
+    height: 32px;
+    margin-top: 12px;
+    margin-bottom: 0px;
+    p {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 160%;
+      /* identical to box height, or 32px */
+      /* tieu de */
+      color: #1C1C1E;
+    }
+  }
+  .item-infomation {
+    margin-top: 2px;
+    p {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 150%;
+      /* or 21px */
+      /* subcolor 1 */
+      color: #636567;
+    }
   }
 `
 

@@ -9,9 +9,10 @@ import {
 interface IItemProps {
   imgUrl: string;
   location: string;
-  title: string;
-  timeDepature: string;
-  price: string;
+  title?: string;
+  timeDepature?: string;
+  price?: string;
+  experiences?: string;
 }
 export const BodyTourItem = (props: IItemProps) => {
   const { imgUrl, location, title, timeDepature, price } = props;

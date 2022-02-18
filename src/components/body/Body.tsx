@@ -5,12 +5,14 @@ import {
   BodyIntroduce,
   BodyAttractiveTour,
   BodyExperienceCultural,
+  BodyDiscoverDestinations,
 } from '@components';
 
 export const Body = () => {
   return (
     <StyledBodyContainer>
       <BodyIntroduce />
+      <BodyDiscoverDestinations />
       <BodyAttractiveTour />
       <BodyExperienceCultural />
     </StyledBodyContainer>
