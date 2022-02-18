@@ -6,4 +6,5 @@ export * from './BodyTourItem';
 export * from './BodyExperienceCultural';
 export * from './BodyDiscoverDestinations';
 export * from './BodyDiscoverItem';
-export * from './BodyButton'
+export * from './BodyButton';
+export * from './BodySubscribeMail'

@@ -227,4 +227,59 @@ export const StyledBodyDiscoverItem = styled.div`
     }
   }
 `
-
+export const StyledBodySubscribeMail = styled.div`
+  margin-left: 165px;
+  margin-right: 165px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .body-subscribe-mail-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 100%;
+    /* or 40px */
+    /* tieu de */
+    color: #1C1C1E;
+    text-align: left;
+    span {
+      color: #FF7B42;
+    }
+  }
+  .body-input-mail {
+    display: flex;
+    flex-direction: row;
+    width: 392px;
+    height: 48px;
+    .ant-btn {
+      height: 48px;
+      padding: 13px 33px 13px 33px;
+      margin-left: 21px;
+    }
+    span {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 160%;
+      /* or 22px */
+      color: #FFFFFF;
+    }
+    .ant-btn-primary {
+      border-color: #1c1c1e;
+      background: #1c1c1e;
+    }
+    .ant-input-affix-wrapper {
+      border: 1px solid #636567;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+    .anticon > * {
+      color: #FF7B42;
+      font-size: 16px;
+    }
+    svg {
+      margin: 20px 15px 16px 20px;
+    }
+  }
+`
