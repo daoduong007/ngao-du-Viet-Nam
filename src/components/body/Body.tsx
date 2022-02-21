@@ -6,6 +6,7 @@ import {
   BodyAttractiveTour,
   BodyExperienceCultural,
   BodyDiscoverDestinations,
+  BodySubscribeMail,
 } from '@components';
 
 export const Body = () => {
@@ -15,6 +16,7 @@ export const Body = () => {
       <BodyDiscoverDestinations />
       <BodyAttractiveTour />
       <BodyExperienceCultural />
+      <BodySubscribeMail />
     </StyledBodyContainer>
   );
 };
