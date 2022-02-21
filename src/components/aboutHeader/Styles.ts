@@ -26,4 +26,3 @@ export const StyledHeaderAbout = styled.div`
   }
   }
 `
-export const StyledAboutHeaderAppbarBackground = styled.div``

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   StyledBodyAboutContainer,
-  BodyAboutIntroduce1,
+  BodyIntroduce,
   BodyAboutIntroduce2,
   BodyAboutIntroduce3,
   BodyAboutIntroduce4,
@@ -11,7 +11,7 @@ import {
 export const BodyAbout = () => {
   return (
     <StyledBodyAboutContainer>
-      <BodyAboutIntroduce1 />
+      <BodyIntroduce />
       <BodyAboutIntroduce2 />
       <BodyAboutIntroduce3 />
       <BodyAboutIntroduce4 />

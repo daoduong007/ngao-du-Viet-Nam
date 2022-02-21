@@ -4,7 +4,8 @@
     "paths": {
       "@components": ["src/components"],
       "@containers": ["src/containers"],
-      "@ultils": ["src/ultils"]
+      "@ultils": ["src/ultils"],
+      "@enums": ["src/enums"]
     }
   }
 }
