@@ -1,4 +1,4 @@
-export * from './Body';
+export * from './BodyHome';
 export * from './BodyIntroduce';
 export * from './Styles';
 export * from './BodyAttractiveTour';

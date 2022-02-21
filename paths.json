@@ -5,7 +5,7 @@
       "@components": ["src/components"],
       "@containers": ["src/containers"],
       "@ultils": ["src/ultils"],
-      "@assets": ["src/assets"]
+      "@enums": ["src/enums"]
     }
   }
 }
