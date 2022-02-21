@@ -1,4 +1,4 @@
-export * from "./Header";
+export * from "./HeaderHome";
 export * from "./Feature";
 export * from "./Logo";
 export * from "./Search";

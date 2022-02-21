@@ -7,6 +7,8 @@ import {
   StyledBodyIntroduceTitle,
   StyledBodyIntroduceContent,
   IconDoubleQuotes,
+  p1,
+  p2,
 } from '@components';
 
 export const BodyIntroduce = () => {
@@ -14,10 +16,10 @@ export const BodyIntroduce = () => {
     <StyledBodyIntroduceContainer>
       <div className='body-introduce-image'>
         <StyledBodyIntroduceImageBelow
-          src={require('../../assets/BodyIntroduce1.png')}
+          src={'/assets/BodyIntroduce1.png'}
         />
         <StyledBodyIntroduceImageAbove
-          src={require('../../assets/BodyIntroduce2.png')}
+          src={'/assets/BodyIntroduce2.png'}
         />
       </div>
       <div className='body-introduce-document'>
@@ -36,20 +38,9 @@ export const BodyIntroduce = () => {
             <IconDoubleQuotes />
           </div>
           <div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Purus viverra nuQlla eget sed odio. Vulputate risus
-              faucibus sem non, feugiat nec consequat, montes.
-              Elementum scelerisque phasellus donec lectus ullamcorper
-              faucibus. Malesuada et adipiscing molestie egestas leo
-              ut.
-            </p>
+            <p>{p1}</p>
             <br />
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Purus viverra nuQlla eget sed odio. Vulputate risus
-              faucibus sem non, feugiat nec consequat, montes.{' '}
-            </p>
+            <p>{p2}</p>
           </div>
         </StyledBodyIntroduceContent>
       </div>

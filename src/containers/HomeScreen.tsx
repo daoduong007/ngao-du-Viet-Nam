@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Header, Footer, Body } from '@components';
+import { HeaderHome, Footer, BodyHome } from '@components';
 
 export const HomeScreen = () => {
   return (
     <>
-      <Header />
-      <Body />
+      <HeaderHome />
+      <BodyHome />
       <Footer />
     </>
   );

@@ -2,13 +2,16 @@ import styled from 'styled-components';
 
 export const StyledBodyContainer = styled.div`
   width: 100%;
+  margin-top: 200px;
+  padding:0 165px 0 165px;
 `
 
 export const StyledBodyIntroduceContainer = styled.div`
-  margin-top: 200px;
-  padding:0 165px 0 165px;
+
   position: relative;
   width: 100%;
+  height: 623px;
+  margin-bottom: 150px;
   display: flex;
   flex-direction: row;
 
@@ -71,10 +74,15 @@ export const StyledBodyIntroduceContent = styled.div`
     color: #3D3E3F;
     }
 `
+export const StyledBodyAboutIntroduceContent = styled(StyledBodyIntroduceContent)`
+  flex-direction: column;
+  p {
+    padding-left: 0;
+  }
+`
 
 export const StyledBodyTourContainer = styled.div`
   width: 100%;
-  padding: 0 165px 0 165px;
   margin-bottom: 200px;
   display: flex;
   flex-direction: column;
@@ -228,8 +236,6 @@ export const StyledBodyDiscoverItem = styled.div`
   }
 `
 export const StyledBodySubscribeMail = styled.div`
-  margin-left: 165px;
-  margin-right: 165px;
   display:flex;
   flex-direction: row;
   justify-content: space-between;

@@ -12,10 +12,33 @@ export const StyledBackgroundImage = styled.img`
   z-index: -10;
 `;
 
-export const StyledAppbar = styled.div``;
+export const StyledAppbar = styled.div`
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+`;
+export const StyledHeaderAppbarBackground = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 110px;
+  background: rgba(67, 51, 53, 0.4);
+`;
+
+export const StyledLogo = styled.div<{
+  width?: string;
+  height?: string;
+  viewBox?: string;
+  fill?: string;
+  xmlns?: string;
+}>`
+  position: absolute;
+  top: 20px;
+  left: 165px;
+`;
 
 export const StyledDirectional = styled.div`
-  position: absolute;
+  position: fixed;
   top: 52px;
   right: 165px;
   display: flex;
@@ -192,16 +215,4 @@ export const StyledText = styled.p<{
     color: #ff7b42;
     cursor: pointer;
   }
-`;
-
-export const StyledLogo = styled.div<{
-  width?: string;
-  height?: string;
-  viewBox?: string;
-  fill?: string;
-  xmlns?: string;
-}>`
-  position: absolute;
-  top: 20px;
-  left: 165px;
 `;

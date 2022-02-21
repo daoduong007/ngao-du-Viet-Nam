@@ -9,7 +9,7 @@ import {
   BodySubscribeMail,
 } from '@components';
 
-export const Body = () => {
+export const BodyHome = () => {
   return (
     <StyledBodyContainer>
       <BodyIntroduce />

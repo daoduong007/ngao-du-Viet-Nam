@@ -8,7 +8,7 @@ import {
   Slogan,
 } from '@components';
 
-export const Header = () => {
+export const HeaderHome = () => {
   return (
     <StyledContainer>
       <BackGroundImage />
