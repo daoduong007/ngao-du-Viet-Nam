@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Popover } from 'antd';
 
 import {
   ListTourItems,
   BodyTourItem,
   StyledListTourBodyContainer,
   IconDot,
-  BodyButton,
+  ListTourFilter,
   IconPrevPage,
   IconNextPage,
 } from '@components';
@@ -24,7 +24,14 @@ export const ListTourBody = () => {
       <div className='listtour-body-tittle'>
         <p>Attractive tour and interesting experiences</p>
         <div className='listtour-body-filer'>
-          <BodyButton name={'Filter'} />
+          <Popover
+            placement='bottomLeft'
+            content={ListTourFilter}
+            trigger='click'
+            className='list-tour-popup'
+          >
+            <Button type='primary'>Filter</Button>
+          </Popover>
         </div>
       </div>
       <div className='listtour-body-content'>
