@@ -224,3 +224,17 @@ export const p1 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Puru
 export const p2 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus viverra nuQlla eget sed odio. Vulputate risus faucibus sem non, feugiat nec consequat, montes. '
 export const p3 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus viverra nuQlla eget sed odio. Vulputate risus faucibus sem non, feugiat nec consequat, montes. Elementum scelerisque phasellus donec lectus ullamcorper faucibus.'
 
+export const DataForTourFilter1 = [
+  '0 - 3 days',
+  '3 - 4 days',
+  '5 - 7 days',
+  'over 1 week'
+]
+
+export const DataForTourFilter2 = [
+  'City-Break',
+  'Wildlife',
+  'Cultural',
+  'Ecotourism',
+  'Sun and Beaches'
+]

@@ -53,6 +53,29 @@ export const StyledListTourBodyContainer = styled.div`
     }
   }
 
+  .listtour-body-filer {
+    button {
+      width: 75px;
+      height: 38px;
+
+      span {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 160%;
+        /* or 22px */
+        color: #FFFFFF;
+      }
+    }
+    .ant-btn-primary {
+      border-color: #1c1c1e;
+      background: #1c1c1e;
+     }
+     .ant-popover-arrow {
+       display :none;
+     }
+  }
+
   .listtour-body-content > div {
       margin-left: 0px;
       margin-right: 30px;
@@ -89,5 +112,111 @@ export const StyledListTourBodyContainer = styled.div`
         background-color: #1C1C1E;
       }
     }
+  }
+`
+
+export const StyledListTourBodyFilter = styled.div`
+  width:351px;
+  height: 785px;
+  padding : 24px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #CCCCCC;
+  box-shadow: 0px 4px 36px rgba(0, 0, 0, 0.2);
+
+  .list-tour-filter-title{
+    margin-bottom:0 0 20 0px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #2A2A2A;
+  }
+
+  .list-tour-divider {
+    border: 1px solid #E5E5E5;
+    width: 301px;
+    margin: 0px;
+  }
+
+  .list-tour-filter-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    > p {
+      margin: 0px;
+
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 23px;
+      text-transform: uppercase;
+
+      color: #03387D;
+    }
+  }
+
+  .list-tour-filter-budget {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    .ant-slider-track {
+      background-color: #FF7B42;
+    }
+    .ant-slider-handle {
+      border: solid 2px #FF7B42;
+    }
+  }
+
+  .list-tour-filter-duration , .list-tour-filter-typetour{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+
+    .ant-checkbox-wrapper {
+      margin-bottom: 20px;
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      /* identical to box height */
+      /* text tieu de */
+      color: #2A2A2A;
+    }
+  }
+
+
+  .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+      margin-left: 0px;
+    }
+
+  .list-tour-filter-submit {
+    .ant-btn {
+      width: 100%;
+      background-color: #FF7B42;
+      span {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 150%;
+        /* identical to box height, or 24px */
+        text-align: center;
+
+        color: #FFFFFF;
+      }
+    }
+    .ant-btn-primary {
+        border-color: #FF7B42;
+      }
   }
 `
