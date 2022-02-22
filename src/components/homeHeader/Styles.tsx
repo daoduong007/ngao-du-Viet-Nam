@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledContainer = styled.div`
+export const StyledHeaderContainer = styled.div`
   width: 100%;
   height: 100%;
   z-index: -20;
@@ -60,10 +60,13 @@ export const StyledSearch = styled.div`
     rgba(255, 255, 255, 0.704) 1.52%,
     rgba(255, 255, 255, 0.64) 100%
   );
-  backdrop-filter: blur(42px);
 
   display: flex;
   flex-direction: column;
+`;
+
+export const StyledSearchTabPane = styled.div`
+  height: 552px;
 `;
 
 export const StyledSearchType = styled.div`

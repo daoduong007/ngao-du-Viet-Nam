@@ -59,6 +59,9 @@ export const StyledBodyAboutIntroduceContainer4 = styled.div`
 
   .body-about-introduce {
     width: 540px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 `
 

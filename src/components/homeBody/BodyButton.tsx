@@ -2,10 +2,15 @@ import React from 'react';
 import { Button } from 'antd';
 import styled from 'styled-components';
 
-export const BodyButton = () => {
+interface IButtonName {
+  name: string;
+}
+
+export const BodyButton = (props: IButtonName) => {
+  const { name } = props;
   return (
     <StyledBodyButton className='body-button'>
-      <Button type='primary'>View all</Button>
+      <Button type='primary'>{name}</Button>
     </StyledBodyButton>
   );
 };

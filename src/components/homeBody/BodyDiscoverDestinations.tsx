@@ -23,7 +23,7 @@ export const BodyDiscoverDestinations = () => {
         <p>
           Discover fascinating <br /> destinations
         </p>
-        <BodyButton />
+        <BodyButton name={'View All'} />
       </div>
 
       <div className='attractive-tour-list-item'>
