@@ -26,7 +26,7 @@ export const IconSearch = (props: IProps) => {
 
 export const IconDot = (props: IProps) => {
   // props
-  const { width, height } = props;
+  const { width, height, color } = props;
   return (
     <svg
       width={width || '8'}
@@ -35,7 +35,7 @@ export const IconDot = (props: IProps) => {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >
-      <circle cx='4' cy='4' r='4' fill='#FF7B42' />
+      <circle cx='4' cy='4' r='4' fill={color || '#FF7B42'} />
     </svg>
   );
 };
@@ -267,7 +267,7 @@ export const IconDoubleQuotes = (props: IProps) => {
 
 export const IconArrow = (props: IProps) => {
   // props
-  const { width, height } = props;
+  const { width, height, color } = props;
   return (
     <svg
       width={width || '18'}
@@ -278,10 +278,48 @@ export const IconArrow = (props: IProps) => {
     >
       <path
         d='M17 7L1 7M17 7L11 13M17 7L11 0.999999'
-        stroke='#636567'
+        stroke={color || '#636567'}
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
+      />
+    </svg>
+  );
+};
+
+export const IconPrevPage = (props: IProps) => {
+  // props
+  const { width, height, color } = props;
+  return (
+    <svg
+      width={width || '15'}
+      height={height || '9'}
+      viewBox='0 0 15 9'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        d='M5.08093 7.89839L2.21337 5.0308L14.677 5.0308L14.677 4.07492L2.21343 4.07492L5.08093 1.20739L4.40503 0.531494L0.383666 4.55289L4.40503 8.57429L5.08093 7.89839Z'
+        fill={color || 'black'}
+      />
+    </svg>
+  );
+};
+
+export const IconNextPage = (props: IProps) => {
+  // props
+  const { width, height, color } = props;
+  return (
+    <svg
+      width={width || '16'}
+      height={height || '9'}
+      viewBox='0 0 16 9'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        d='M10.3428 1.20732L13.2104 4.07491L0.746766 4.07491L0.746766 5.03079L13.2103 5.03079L10.3428 7.89832L11.0187 8.57422L15.0401 4.55282L11.0187 0.531426L10.3428 1.20732Z'
+        fill={color || 'black'}
       />
     </svg>
   );

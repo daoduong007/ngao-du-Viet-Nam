@@ -24,7 +24,7 @@ export const BodyExperienceCultural = () => {
           Experience the traditional <br /> cultural beauties of
           Vietnam
         </p>
-        <BodyButton />
+        <BodyButton name={'View All'} />
       </div>
       <div className='attractive-tour-list-item'>
         <StyledBodyTourListItem>

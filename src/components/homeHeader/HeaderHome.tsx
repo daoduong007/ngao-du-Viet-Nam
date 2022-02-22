@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  StyledContainer,
+  StyledHeaderContainer,
   BackGroundImage,
   Appbar,
   Search,
@@ -10,12 +10,12 @@ import {
 
 export const HeaderHome = () => {
   return (
-    <StyledContainer>
+    <StyledHeaderContainer>
       <BackGroundImage />
       <Appbar />
       <Slogan />
       <Search />
       <Feature />
-    </StyledContainer>
+    </StyledHeaderContainer>
   );
 };

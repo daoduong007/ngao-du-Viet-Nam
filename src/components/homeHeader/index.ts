@@ -9,4 +9,5 @@ export * from "./Slogan";
 export * from "./Backgroundimage";
 export * from "./Tabsearch";
 export * from "./SearchSelect";
-export * from "./SearchInput"
+export * from "./SearchInput";
+export * from "./TabSearchTours"

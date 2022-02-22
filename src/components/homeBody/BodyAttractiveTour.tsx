@@ -23,7 +23,7 @@ export const BodyAttractiveTour = () => {
         <p>
           Attractive tour and <br /> interesting experiences
         </p>
-        <BodyButton />
+        <BodyButton name={'View All'} />
       </div>
       <div className='attractive-tour-list-item'>
         <StyledBodyTourListItem>
