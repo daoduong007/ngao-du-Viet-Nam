@@ -13,10 +13,22 @@ import {
   BodyTourItemData2,
   BodyButton,
 } from '@components';
+import { generatePath, useHistory } from 'react-router-dom';
+import { AppRoutes } from '@enums';
 
 export const BodyExperienceCultural = () => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
+
+  const history = useHistory();
+
+  const handleClick = (id: number) => {
+    history.push(
+      generatePath(AppRoutes.TOUR_DETAIL, {
+        id,
+      }),
+    );
+  };
   return (
     <StyledBodyTourContainer>
       <div className='attractive-tour-title'>
@@ -40,17 +52,19 @@ export const BodyExperienceCultural = () => {
             slidesPerView={3}
             navigation={{ prevEl, nextEl }}
           >
-            {/* {BodyTourItemData2.map((item, index) => (
-              <SwiperSlide key={index}>
+            {BodyTourItemData2.map((item) => (
+              <SwiperSlide key={item.id}>
                 <BodyTourItem
                   imgUrl={item.imgUrl}
                   location={item.location}
                   title={item.title}
                   timeDepature={item.timeDepature}
                   price={item.price}
+                  id={item.id}
+                  onClick={handleClick}
                 />
               </SwiperSlide>
-            ))} */}
+            ))}
           </Swiper>
         </StyledBodyTourListItem>
         <div

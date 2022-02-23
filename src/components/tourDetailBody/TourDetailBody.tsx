@@ -1,4 +1,5 @@
 import React from 'react';
+import { generatePath, useHistory } from 'react-router-dom';
 
 import {
   StyledTourDetailBodyContainer,
@@ -6,8 +7,18 @@ import {
   RelatedTours,
   BodyTourItem,
 } from '@components';
+import { AppRoutes } from '@enums';
 
 export const TourDetailBody = () => {
+  const history = useHistory();
+
+  const handleClick = (id: number) => {
+    history.push(
+      generatePath(AppRoutes.TOUR_DETAIL, {
+        id,
+      }),
+    );
+  };
   return (
     <StyledTourDetailBodyContainer>
       <hr className='tour-detail-divider' />
@@ -35,7 +46,7 @@ export const TourDetailBody = () => {
               title={tour.title}
               timeDepature={tour.timeDepature}
               price={tour.price}
-              onClick={() => console.log('nam')}
+              onClick={handleClick}
               id={tour.id}
             />
           ))}
