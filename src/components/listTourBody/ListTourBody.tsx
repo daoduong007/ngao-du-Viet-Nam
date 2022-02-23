@@ -1,10 +1,6 @@
 import React from 'react';
 import { Button, Popover } from 'antd';
-import {
-  generatePath,
-  useHistory,
-  useRouteMatch,
-} from 'react-router-dom';
+import { generatePath, useHistory } from 'react-router-dom';
 
 import {
   ListTourItems,
@@ -18,7 +14,6 @@ import {
 import { AppRoutes } from '@enums';
 
 export const ListTourBody = ({}) => {
-  const { url } = useRouteMatch();
   const history = useHistory();
 
   const handleClick = (id: number) => {
@@ -52,17 +47,11 @@ export const ListTourBody = ({}) => {
       </div>
       <div className='listtour-body-content'>
         {ListTourItems.map((tour) => (
-          <div key={tour.id}>
-            <BodyTourItem
-              imgUrl={tour.imgUrl}
-              location={tour.location}
-              title={tour.title}
-              timeDepature={tour.timeDepature}
-              price={tour.price}
-              id={tour.id}
-              onClick={handleClick}
-            />
-          </div>
+          <BodyTourItem
+            key={tour.id}
+            data={tour}
+            onClick={handleClick}
+          />
         ))}
       </div>
 

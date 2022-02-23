@@ -1,7 +1,7 @@
 export enum AppRoutes {
   HOME_SCREEN = '/',
-  HOME_SCREEN_ = '/Home',
-  ABOUT_SCREEN = '/About',
-  LIST_TOUR_SCREEN = '/Tours',
-  TOUR_DETAIL = `/TourDetail/:id`
+  HOME_SCREEN_ = '/home',
+  ABOUT_SCREEN = '/about',
+  LIST_TOUR_SCREEN = '/tours',
+  TOUR_DETAIL = `/tours/:id`
 }

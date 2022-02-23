@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 import {
   TourDetailHeader,
@@ -8,8 +8,8 @@ import {
 } from '@components';
 
 export const TourDetailScreen = ({}) => {
-  const { id }: any = useParams();
-  console.log(id);
+  // const { id }: any = useParams();
+  // console.log(id);
   return (
     <>
       <TourDetailHeader />
