@@ -76,12 +76,13 @@ export const StyledListTourBodyContainer = styled.div`
      }
   }
 
-  .listtour-body-content > div {
+  .listtour-body-content > div >div{
       margin-left: 0px;
       margin-right: 30px;
   }
 
   .listtour-body-content {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
   }

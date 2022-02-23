@@ -1,5 +1,10 @@
 import React from 'react';
 import { Button, Popover } from 'antd';
+import {
+  generatePath,
+  useHistory,
+  useRouteMatch,
+} from 'react-router-dom';
 
 import {
   ListTourItems,
@@ -10,8 +15,19 @@ import {
   IconPrevPage,
   IconNextPage,
 } from '@components';
+import { AppRoutes } from '@enums';
 
-export const ListTourBody = () => {
+export const ListTourBody = ({}) => {
+  const { url } = useRouteMatch();
+  const history = useHistory();
+
+  const handleClick = (id: number) => {
+    history.push(
+      generatePath(AppRoutes.TOUR_DETAIL, {
+        id,
+      }),
+    );
+  };
   return (
     <StyledListTourBodyContainer>
       <div className='listtour-body-screenname'>
@@ -35,17 +51,21 @@ export const ListTourBody = () => {
         </div>
       </div>
       <div className='listtour-body-content'>
-        {ListTourItems.map((item, index) => (
-          <BodyTourItem
-            key={index}
-            imgUrl={item.imgUrl}
-            location={item.location}
-            title={item.title}
-            timeDepature={item.timeDepature}
-            price={item.price}
-          />
+        {ListTourItems.map((tour) => (
+          <div key={tour.id}>
+            <BodyTourItem
+              imgUrl={tour.imgUrl}
+              location={tour.location}
+              title={tour.title}
+              timeDepature={tour.timeDepature}
+              price={tour.price}
+              id={tour.id}
+              onClick={handleClick}
+            />
+          </div>
         ))}
       </div>
+
       <div className='listtour-body-pagination'>
         <p>Showing 1 / 2</p>
         <div className='listtour-body-pagination-button'>

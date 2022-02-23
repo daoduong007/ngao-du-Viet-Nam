@@ -13,11 +13,21 @@ interface IItemProps {
   timeDepature?: string;
   price?: string;
   experiences?: string;
+  id: number;
+  onClick: (id: number) => void;
 }
 export const BodyTourItem = (props: IItemProps) => {
-  const { imgUrl, location, title, timeDepature, price } = props;
+  const {
+    imgUrl,
+    location,
+    title,
+    timeDepature,
+    price,
+    id,
+    onClick,
+  } = props;
   return (
-    <StyledBodyTourItem>
+    <StyledBodyTourItem onClick={() => onClick(id)}>
       <div className='item-image'>
         <img src={imgUrl} />
       </div>

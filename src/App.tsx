@@ -14,26 +14,21 @@ function App() {
   return (
     <div className='App'>
       <Switch>
-        <Route
-          path={AppRoutes.HOME_SCREEN}
-          component={HomeScreen}
-          exact
-        />
-        <Route
-          path={AppRoutes.ABOUT_SCREEN}
-          component={AboutScreen}
-          exact
-        />
-        <Route
-          path={AppRoutes.LIST_TOUR_SCREEN}
-          component={ListTourScreen}
-          exact
-        />
-        <Route
-          path={AppRoutes.TOUR_DETAIL_SCREEN}
-          component={TourDetailScreen}
-          exact
-        />
+        <Route path={AppRoutes.HOME_SCREEN_} exact>
+          <HomeScreen />
+        </Route>
+        <Route path={AppRoutes.HOME_SCREEN} exact>
+          <HomeScreen />
+        </Route>
+        <Route path={AppRoutes.ABOUT_SCREEN} exact>
+          <AboutScreen />
+        </Route>
+        <Route path={AppRoutes.LIST_TOUR_SCREEN} exact>
+          <ListTourScreen />
+        </Route>
+        <Route path={AppRoutes.TOUR_DETAIL}>
+          <TourDetailScreen />
+        </Route>
       </Switch>
     </div>
   );
