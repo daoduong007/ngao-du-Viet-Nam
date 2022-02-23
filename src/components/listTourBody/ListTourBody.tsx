@@ -1,6 +1,10 @@
 import React from 'react';
 import { Button, Popover } from 'antd';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import {
+  generatePath,
+  useHistory,
+  useRouteMatch,
+} from 'react-router-dom';
 
 import {
   ListTourItems,
@@ -11,13 +15,18 @@ import {
   IconPrevPage,
   IconNextPage,
 } from '@components';
+import { AppRoutes } from '@enums';
 
 export const ListTourBody = ({}) => {
   const { url } = useRouteMatch();
   const history = useHistory();
 
-  const handleClick = () => {
-    history.push(`/Tours/TourDetail`);
+  const handleClick = (id: number) => {
+    history.push(
+      generatePath(AppRoutes.TOUR_DETAIL, {
+        id,
+      }),
+    );
   };
   return (
     <StyledListTourBodyContainer>
@@ -43,13 +52,15 @@ export const ListTourBody = ({}) => {
       </div>
       <div className='listtour-body-content'>
         {ListTourItems.map((tour) => (
-          <div key={tour.id} onClick={handleClick}>
+          <div key={tour.id}>
             <BodyTourItem
               imgUrl={tour.imgUrl}
               location={tour.location}
               title={tour.title}
               timeDepature={tour.timeDepature}
               price={tour.price}
+              id={tour.id}
+              onClick={handleClick}
             />
           </div>
         ))}

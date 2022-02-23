@@ -35,6 +35,8 @@ export const TourDetailBody = () => {
               title={tour.title}
               timeDepature={tour.timeDepature}
               price={tour.price}
+              onClick={() => console.log('nam')}
+              id={tour.id}
             />
           ))}
         </div>

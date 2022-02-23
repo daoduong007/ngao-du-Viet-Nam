@@ -8,6 +8,8 @@ import {
 } from '@components';
 
 export const TourDetailScreen = ({}) => {
+  const { id }: any = useParams();
+  console.log(id);
   return (
     <>
       <TourDetailHeader />

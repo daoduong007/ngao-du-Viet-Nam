@@ -26,7 +26,7 @@ function App() {
         <Route path={AppRoutes.LIST_TOUR_SCREEN} exact>
           <ListTourScreen />
         </Route>
-        <Route path={'/Tours/:slug'}>
+        <Route path={AppRoutes.TOUR_DETAIL}>
           <TourDetailScreen />
         </Route>
       </Switch>

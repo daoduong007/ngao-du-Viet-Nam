@@ -39,7 +39,7 @@ export const BodyAttractiveTour = () => {
             slidesPerView={3}
             navigation={{ prevEl, nextEl }}
           >
-            {BodyTourItemData1.map((item, index) => (
+            {/* {BodyTourItemData1.map((item, index) => (
               <SwiperSlide key={index}>
                 <BodyTourItem
                   imgUrl={item.imgUrl}
@@ -49,7 +49,7 @@ export const BodyAttractiveTour = () => {
                   price={item.price}
                 />
               </SwiperSlide>
-            ))}
+            ))} */}
           </Swiper>
         </StyledBodyTourListItem>
         <div

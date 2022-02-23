@@ -40,7 +40,7 @@ export const BodyExperienceCultural = () => {
             slidesPerView={3}
             navigation={{ prevEl, nextEl }}
           >
-            {BodyTourItemData2.map((item, index) => (
+            {/* {BodyTourItemData2.map((item, index) => (
               <SwiperSlide key={index}>
                 <BodyTourItem
                   imgUrl={item.imgUrl}
@@ -50,7 +50,7 @@ export const BodyExperienceCultural = () => {
                   price={item.price}
                 />
               </SwiperSlide>
-            ))}
+            ))} */}
           </Swiper>
         </StyledBodyTourListItem>
         <div
