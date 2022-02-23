@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Popover } from 'antd';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import {
   ListTourItems,
@@ -11,7 +12,13 @@ import {
   IconNextPage,
 } from '@components';
 
-export const ListTourBody = () => {
+export const ListTourBody = ({}) => {
+  const { url } = useRouteMatch();
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/Tours/TourDetail`);
+  };
   return (
     <StyledListTourBodyContainer>
       <div className='listtour-body-screenname'>
@@ -35,17 +42,19 @@ export const ListTourBody = () => {
         </div>
       </div>
       <div className='listtour-body-content'>
-        {ListTourItems.map((item, index) => (
-          <BodyTourItem
-            key={index}
-            imgUrl={item.imgUrl}
-            location={item.location}
-            title={item.title}
-            timeDepature={item.timeDepature}
-            price={item.price}
-          />
+        {ListTourItems.map((tour) => (
+          <div key={tour.id} onClick={handleClick}>
+            <BodyTourItem
+              imgUrl={tour.imgUrl}
+              location={tour.location}
+              title={tour.title}
+              timeDepature={tour.timeDepature}
+              price={tour.price}
+            />
+          </div>
         ))}
       </div>
+
       <div className='listtour-body-pagination'>
         <p>Showing 1 / 2</p>
         <div className='listtour-body-pagination-button'>
