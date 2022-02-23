@@ -1,3 +1,4 @@
 export * from './HomeScreen';
 export * from './AboutScreen';
-export * from './ListTourScreen'
+export * from './ListTourScreen';
+export * from './TourDetailScreen'
