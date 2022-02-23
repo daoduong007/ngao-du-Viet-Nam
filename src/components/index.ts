@@ -6,5 +6,7 @@ export * from "./aboutBody";
 export * from "./listTourHeader";
 export * from "./listTourBody";
 export * from "./icons";
-export * from "./data"
+export * from "./data";
+export * from "./tourDetailBody";
+export * from "./tourDetailHeader"
 

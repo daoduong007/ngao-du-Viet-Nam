@@ -2,7 +2,12 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
-import { HomeScreen, AboutScreen, ListTourScreen } from '@containers';
+import {
+  HomeScreen,
+  AboutScreen,
+  ListTourScreen,
+  TourDetailScreen,
+} from '@containers';
 import { AppRoutes } from '@enums';
 
 function App() {
@@ -24,8 +29,12 @@ function App() {
           component={ListTourScreen}
           exact
         />
+        <Route
+          path={AppRoutes.TOUR_DETAIL_SCREEN}
+          component={TourDetailScreen}
+          exact
+        />
       </Switch>
-      {/* <HomeScreen /> */}
     </div>
   );
 }
