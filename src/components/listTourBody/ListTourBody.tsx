@@ -49,12 +49,7 @@ export const ListTourBody = ({}) => {
         {ListTourItems.map((tour) => (
           <BodyTourItem
             key={tour.id}
-            imgUrl={tour.imgUrl}
-            location={tour.location}
-            title={tour.title}
-            timeDepature={tour.timeDepature}
-            price={tour.price}
-            id={tour.id}
+            data={tour}
             onClick={handleClick}
           />
         ))}

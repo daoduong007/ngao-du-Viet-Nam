@@ -7,38 +7,24 @@ import {
 } from '@components';
 
 interface IItemProps {
-  imgUrl: string;
-  location: string;
-  title?: string;
-  timeDepature?: string;
-  price?: string;
-  experiences?: string;
-  id: number;
+  data: any;
   onClick: (id: number) => void;
 }
 export const BodyTourItem = (props: IItemProps) => {
-  const {
-    imgUrl,
-    location,
-    title,
-    timeDepature,
-    price,
-    id,
-    onClick,
-  } = props;
+  const { data, onClick } = props;
   return (
-    <StyledBodyTourItem onClick={() => onClick(id)}>
+    <StyledBodyTourItem onClick={() => onClick(data.id)}>
       <div className='item-image'>
-        <img src={imgUrl} />
+        <img src={data.imgUrl} />
       </div>
       <div className='item-location'>
         <div className='item-location-icon'>
           <IconLocation />
         </div>
-        <p>{location}</p>
+        <p>{data.location}</p>
       </div>
       <div className='item-title'>
-        <p>{title}</p>
+        <p>{data.title}</p>
       </div>
       <div className='item-infomation'>
         <div className='item-infomation-time'>
@@ -46,12 +32,12 @@ export const BodyTourItem = (props: IItemProps) => {
             <IconDepatureTime />
           </div>
           <div>
-            <p>{timeDepature}</p>
+            <p>{data.timeDepature}</p>
           </div>
         </div>
         <div className='item-infomation-price'>
           <p>
-            from <span>{price}</span>
+            from <span>{data.price}</span>
           </p>
         </div>
       </div>

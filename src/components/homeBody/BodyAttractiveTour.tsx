@@ -53,15 +53,7 @@ export const BodyAttractiveTour = () => {
           >
             {BodyTourItemData1.map((tour) => (
               <SwiperSlide key={tour.id}>
-                <BodyTourItem
-                  imgUrl={tour.imgUrl}
-                  location={tour.location}
-                  title={tour.title}
-                  timeDepature={tour.timeDepature}
-                  price={tour.price}
-                  id={tour.id}
-                  onClick={handleClick}
-                />
+                <BodyTourItem data={tour} onClick={handleClick} />
               </SwiperSlide>
             ))}
           </Swiper>

@@ -52,17 +52,9 @@ export const BodyExperienceCultural = () => {
             slidesPerView={3}
             navigation={{ prevEl, nextEl }}
           >
-            {BodyTourItemData2.map((item) => (
-              <SwiperSlide key={item.id}>
-                <BodyTourItem
-                  imgUrl={item.imgUrl}
-                  location={item.location}
-                  title={item.title}
-                  timeDepature={item.timeDepature}
-                  price={item.price}
-                  id={item.id}
-                  onClick={handleClick}
-                />
+            {BodyTourItemData2.map((tour) => (
+              <SwiperSlide key={tour.id}>
+                <BodyTourItem data={tour} onClick={handleClick} />
               </SwiperSlide>
             ))}
           </Swiper>

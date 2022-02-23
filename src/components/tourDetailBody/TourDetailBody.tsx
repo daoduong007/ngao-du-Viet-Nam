@@ -41,13 +41,8 @@ export const TourDetailBody = () => {
           {RelatedTours.map((tour) => (
             <BodyTourItem
               key={tour.id}
-              imgUrl={tour.imgUrl}
-              location={tour.location}
-              title={tour.title}
-              timeDepature={tour.timeDepature}
-              price={tour.price}
+              data={tour}
               onClick={handleClick}
-              id={tour.id}
             />
           ))}
         </div>
