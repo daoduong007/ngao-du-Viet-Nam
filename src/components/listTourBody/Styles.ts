@@ -76,7 +76,7 @@ export const StyledListTourBodyContainer = styled.div`
      }
   }
 
-  .listtour-body-content > div >div{
+  .listtour-body-content >div{
       margin-left: 0px;
       margin-right: 30px;
   }

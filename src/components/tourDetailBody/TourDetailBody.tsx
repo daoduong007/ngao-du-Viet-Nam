@@ -1,24 +1,28 @@
 import React from 'react';
-import { generatePath, useHistory } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 import {
   StyledTourDetailBodyContainer,
   IconDot,
   RelatedTours,
   BodyTourItem,
+  IconLocation,
+  IconStar,
+  SlideImageUrl,
 } from '@components';
-import { AppRoutes } from '@enums';
+import { ITourDetail } from '@interfaces';
 
-export const TourDetailBody = () => {
-  const history = useHistory();
+interface ITourDetailBody {
+  data: ITourDetail;
+  onClick: (id: number) => void;
+}
 
-  const handleClick = (id: number) => {
-    history.push(
-      generatePath(AppRoutes.TOUR_DETAIL, {
-        id,
-      }),
-    );
-  };
+export const TourDetailBody = (props: ITourDetailBody) => {
+  const { data, onClick } = props;
   return (
     <StyledTourDetailBodyContainer>
       <hr className='tour-detail-divider' />
@@ -33,6 +37,59 @@ export const TourDetailBody = () => {
         </div>
         <p>Detail tour</p>
       </div>
+
+      <div className='tour-detail-body-content'>
+        <div className='body-content-title'>
+          <p>{data.title}</p>
+        </div>
+        <div className='body-content-location'>
+          <IconLocation />
+          <p>{data.location}</p>
+        </div>
+        <div className='body-content-evaluate'>
+          <div className='evaluate-stars'>
+            <IconStar />
+            <p>4.5</p>
+          </div>
+          <div className='evaluate-reviews'>
+            <p>128 reviews</p>
+          </div>
+        </div>
+        <div className='body-content-image-and-booking-form'>
+          <div className='body-content-image'>
+            <div className='body-content-image-main'>
+              <img src={data.imgUrl} />
+            </div>
+            <div className='body-content-image-slide'>
+              <Swiper
+                modules={[Navigation]}
+                spaceBetween={29}
+                slidesPerView={4}
+              >
+                {SlideImageUrl.map((imgUrl, index) => (
+                  <SwiperSlide key={index}>
+                    <img src={imgUrl} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </div>
+          <div className='body-content-booking-form'></div>
+        </div>
+        <div className='body-content-selections'>
+          <div className='body-content-descriptions'>
+            <div className='descriptions-ovrerview'></div>
+            <div className='descriptions-included'></div>
+            <div className='descriptions-depature-end'></div>
+            <div className='descriptions-tour-itinerary'></div>
+            <div className='descriptions-maps'></div>
+            <div className='descriptions-panoramic-image-video'>
+              <div className='panoramic-image'></div>
+              <div className='panoramic-video'></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className='tour-detail-related-tour'>
         <div className='related-tour-title'>
           <p>Related tours</p>
@@ -42,7 +99,7 @@ export const TourDetailBody = () => {
             <BodyTourItem
               key={tour.id}
               data={tour}
-              onClick={handleClick}
+              onClick={() => onClick(tour.id)}
             />
           ))}
         </div>

@@ -5,12 +5,12 @@ import {
   IconLocation,
   IconDepatureTime,
 } from '@components';
-
-interface IItemProps {
-  data: any;
+import { ITourDetail } from '@interfaces';
+interface ITourProps {
+  data: ITourDetail;
   onClick: (id: number) => void;
 }
-export const BodyTourItem = (props: IItemProps) => {
+export const BodyTourItem = (props: ITourProps) => {
   const { data, onClick } = props;
   return (
     <StyledBodyTourItem onClick={() => onClick(data.id)}>

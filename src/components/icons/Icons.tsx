@@ -1,11 +1,7 @@
 import React from 'react';
+import { IIconProps } from '@interfaces';
 
-interface IProps {
-  width?: number;
-  height?: number;
-  color?: string;
-}
-export const IconSearch = (props: IProps) => {
+export const IconSearch = (props: IIconProps) => {
   // props
   const { width, height } = props;
   return (
@@ -24,7 +20,7 @@ export const IconSearch = (props: IProps) => {
   );
 };
 
-export const IconDot = (props: IProps) => {
+export const IconDot = (props: IIconProps) => {
   // props
   const { width, height, color } = props;
   return (
@@ -40,7 +36,7 @@ export const IconDot = (props: IProps) => {
   );
 };
 
-export const IconLocation = (props: IProps) => {
+export const IconLocation = (props: IIconProps) => {
   // props
   const { width, height, color } = props;
   return (
@@ -69,7 +65,7 @@ export const IconLocation = (props: IProps) => {
   );
 };
 
-export const IconDepatureTime = (props: IProps) => {
+export const IconDepatureTime = (props: IIconProps) => {
   const { width, height } = props;
   return (
     <svg
@@ -90,7 +86,7 @@ export const IconDepatureTime = (props: IProps) => {
   );
 };
 
-export const IconFlag = (props: IProps) => {
+export const IconFlag = (props: IIconProps) => {
   const { width, height } = props;
   return (
     <svg
@@ -108,7 +104,7 @@ export const IconFlag = (props: IProps) => {
   );
 };
 
-export const IconGuest = (props: IProps) => {
+export const IconGuest = (props: IIconProps) => {
   const { width, height } = props;
   return (
     <svg
@@ -129,7 +125,7 @@ export const IconGuest = (props: IProps) => {
   );
 };
 
-export const IconFacebook = (props: IProps) => {
+export const IconFacebook = (props: IIconProps) => {
   const { width, height } = props;
   return (
     <svg
@@ -147,7 +143,7 @@ export const IconFacebook = (props: IProps) => {
   );
 };
 
-export const IconInstagram = (props: IProps) => {
+export const IconInstagram = (props: IIconProps) => {
   const { width, height } = props;
   return (
     <svg
@@ -165,7 +161,7 @@ export const IconInstagram = (props: IProps) => {
   );
 };
 
-export const IconTwitter = (props: IProps) => {
+export const IconTwitter = (props: IIconProps) => {
   const { width, height } = props;
   return (
     <svg
@@ -183,7 +179,7 @@ export const IconTwitter = (props: IProps) => {
   );
 };
 
-export const IconMail = (props: IProps) => {
+export const IconMail = (props: IIconProps) => {
   const { width, height } = props;
   return (
     <svg
@@ -204,7 +200,7 @@ export const IconMail = (props: IProps) => {
   );
 };
 
-export const IconLogo = (props: IProps) => {
+export const IconLogo = (props: IIconProps) => {
   const { width, height, color } = props;
   return (
     <svg
@@ -238,7 +234,7 @@ export const IconLogo = (props: IProps) => {
   );
 };
 
-export const IconDoubleQuotes = (props: IProps) => {
+export const IconDoubleQuotes = (props: IIconProps) => {
   // props
   const { width, height } = props;
   return (
@@ -265,7 +261,7 @@ export const IconDoubleQuotes = (props: IProps) => {
   );
 };
 
-export const IconArrow = (props: IProps) => {
+export const IconArrow = (props: IIconProps) => {
   // props
   const { width, height, color } = props;
   return (
@@ -287,7 +283,7 @@ export const IconArrow = (props: IProps) => {
   );
 };
 
-export const IconPrevPage = (props: IProps) => {
+export const IconPrevPage = (props: IIconProps) => {
   // props
   const { width, height, color } = props;
   return (
@@ -306,7 +302,7 @@ export const IconPrevPage = (props: IProps) => {
   );
 };
 
-export const IconNextPage = (props: IProps) => {
+export const IconNextPage = (props: IIconProps) => {
   // props
   const { width, height, color } = props;
   return (
@@ -320,6 +316,24 @@ export const IconNextPage = (props: IProps) => {
       <path
         d='M10.3428 1.20732L13.2104 4.07491L0.746766 4.07491L0.746766 5.03079L13.2103 5.03079L10.3428 7.89832L11.0187 8.57422L15.0401 4.55282L11.0187 0.531426L10.3428 1.20732Z'
         fill={color || 'black'}
+      />
+    </svg>
+  );
+};
+
+export const IconStar = (props: IIconProps) => {
+  const { width, height, color } = props;
+  return (
+    <svg
+      width={width || '16'}
+      height={height || '15'}
+      viewBox='0 0 16 15'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        d='M8 0L10.3982 4.69921L15.6085 5.52786L11.8803 9.26079L12.7023 14.4721L8 12.08L3.29772 14.4721L4.11969 9.26079L0.391548 5.52786L5.60184 4.69921L8 0Z'
+        fill={color || 'white'}
       />
     </svg>
   );
