@@ -13,6 +13,7 @@ import {
   IconLocation,
   IconStar,
   SlideImageUrl,
+  TourDetailBookingForm,
 } from '@components';
 import { ITourDetail } from '@interfaces';
 
@@ -74,7 +75,10 @@ export const TourDetailBody = (props: ITourDetailBody) => {
               </Swiper>
             </div>
           </div>
-          <div className='body-content-booking-form'></div>
+          <TourDetailBookingForm
+            price={data.price}
+            duration={data.timeDepature}
+          />
         </div>
         <div className='body-content-selections'>
           <div className='body-content-descriptions'>
