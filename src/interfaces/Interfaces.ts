@@ -14,3 +14,9 @@ export interface ITourDetail {
   timeDepature: string,
   price: string,
 }
+
+export interface ITourBooking {
+  tourtype?: string;
+  duration: string;
+  price: string;
+}

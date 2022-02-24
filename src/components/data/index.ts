@@ -1,2 +1,2 @@
 export * from './BodyTourItem';
-export * from './SlideImage'
+export * from './SlideImage';

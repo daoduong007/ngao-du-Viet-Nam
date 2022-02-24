@@ -7,6 +7,7 @@ import {
   TourDetailBody,
   Footer,
   ListTourItems,
+  Loading,
 } from '@components';
 import { AppRoutes } from '@enums';
 import { ITourDetail } from '@interfaces';
@@ -34,13 +35,15 @@ export const TourDetailScreen = ({}) => {
 
   return (
     <>
-      <TourDetailHeader />
       {tour ? (
-        <TourDetailBody data={tour} onClick={handleClick} />
+        <>
+          <TourDetailHeader />
+          <TourDetailBody data={tour} onClick={handleClick} />
+          <Footer />
+        </>
       ) : (
-        <div>...loading</div>
+        <Loading />
       )}
-      <Footer />
     </>
   );
 };
