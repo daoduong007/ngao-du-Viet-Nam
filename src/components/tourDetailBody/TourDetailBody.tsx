@@ -14,12 +14,15 @@ import {
   IconStar,
   SlideImageUrl,
 } from '@components';
+import { ITourDetail } from '@interfaces';
 
-export const TourDetailBody = (
-  tour: any,
-  onClick: (id: number) => void,
-) => {
-  const { imgUrl, location, title } = tour.tour;
+interface ITourDetailBody {
+  data: ITourDetail;
+  onClick: (id: number) => void;
+}
+
+export const TourDetailBody = (props: ITourDetailBody) => {
+  const { data, onClick } = props;
   return (
     <StyledTourDetailBodyContainer>
       <hr className='tour-detail-divider' />
@@ -37,11 +40,11 @@ export const TourDetailBody = (
 
       <div className='tour-detail-body-content'>
         <div className='body-content-title'>
-          <p>{title}</p>
+          <p>{data.title}</p>
         </div>
         <div className='body-content-location'>
           <IconLocation />
-          <p>{location}</p>
+          <p>{data.location}</p>
         </div>
         <div className='body-content-evaluate'>
           <div className='evaluate-stars'>
@@ -55,7 +58,7 @@ export const TourDetailBody = (
         <div className='body-content-image-and-booking-form'>
           <div className='body-content-image'>
             <div className='body-content-image-main'>
-              <img src={imgUrl} />
+              <img src={data.imgUrl} />
             </div>
             <div className='body-content-image-slide'>
               <Swiper

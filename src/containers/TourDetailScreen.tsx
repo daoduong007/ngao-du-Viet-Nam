@@ -36,7 +36,7 @@ export const TourDetailScreen = ({}) => {
     <>
       <TourDetailHeader />
       {tour ? (
-        <TourDetailBody tour={tour} onClick={handleClick} />
+        <TourDetailBody data={tour} onClick={handleClick} />
       ) : (
         <div>...loading</div>
       )}
