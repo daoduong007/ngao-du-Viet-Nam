@@ -29,12 +29,6 @@ export const StyledTourDetailBodyContainer = styled.div`
     }
   }
 
-  >hr {
-    margin: 29px 0 55px 0;
-    border: 1px solid #E5E5E5;
-    width: 100%;
-  }
-
   .tour-detail-related-tour {
     margin: 111px 0 150px 0;
     display: flex;
@@ -172,7 +166,8 @@ export const StyledTourDetailBodyContainer = styled.div`
     text-align: left;
     margin-left: -25px;
     margin-top: 52px;
-    .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list, .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+
+    .ant-tabs {
       padding-left: 25px;
     }
     .ant-tabs-tab {
@@ -189,7 +184,7 @@ export const StyledTourDetailBodyContainer = styled.div`
       display: none;
     }
     .ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-bottom > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav::before, .ant-tabs-bottom > div > .ant-tabs-nav::before {
-      border-bottom:0.5px solid #888888;;
+      border-bottom: 0.5px solid #888888;
     }
     .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
       color: #FF7B42;
@@ -197,9 +192,11 @@ export const StyledTourDetailBodyContainer = styled.div`
 
     .additional-items {
       ul {
-        margin-bottom: 42px;
+        margin: 30px 0 42px -25px;
+
       }
       li {
+      font-family: DM sans;
       font-style: normal;
       font-weight: normal;
       font-size: 16px;
@@ -217,20 +214,21 @@ export const StyledTourDetailBodyContainer = styled.div`
       /* or 187% */
       color: #04316A;
       }
+    .ant-collapse-icon-position-right > .ant-collapse-item > .ant-collapse-header {
+      padding: 16px 20px;
+    }
     .ant-collapse-content > .ant-collapse-content-box {
       padding-left: 48px;
       padding-bottom: 24px;
     }
     .additional-faq {
-      padding-left: 25px;
       position: relative;
       .icon-quest-mark {
         position: absolute;
         left: -11px;
-        top: 15px;
+        top: 20px;
       }
     }
-
   }
 `
 

@@ -16,6 +16,7 @@ import {
   SlideImageUrl,
   TourDetailBookingForm,
   TourDetailAddionalInfo,
+  TourDetailDescription,
 } from '@components';
 import { ITourDetail } from '@interfaces';
 
@@ -86,17 +87,7 @@ export const TourDetailBody = (props: ITourDetailBody) => {
         <div className='body-content-selections'>
           <Tabs defaultActiveKey='1'>
             <TabPane tab='Description' key='1'>
-              <div className='body-content-descriptions'>
-                <div className='descriptions-ovrerview'></div>
-                <div className='descriptions-included'></div>
-                <div className='descriptions-depature-end'></div>
-                <div className='descriptions-tour-itinerary'></div>
-                <div className='descriptions-maps'></div>
-                <div className='descriptions-panoramic-image-video'>
-                  <div className='panoramic-image'></div>
-                  <div className='panoramic-video'></div>
-                </div>
-              </div>
+              <TourDetailDescription />
             </TabPane>
             <TabPane tab='Additional Info' key='2'>
               <TourDetailAddionalInfo />
