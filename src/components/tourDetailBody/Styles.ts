@@ -166,6 +166,72 @@ export const StyledTourDetailBodyContainer = styled.div`
     }
 
   }
+
+  .body-content-selections {
+    width: 631px;
+    text-align: left;
+    margin-left: -25px;
+    margin-top: 52px;
+    .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list, .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+      padding-left: 25px;
+    }
+    .ant-tabs-tab {
+      font-family: DM Sans;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 160%;
+      /* or 38px */
+      text-align: center;
+      color: #888888;
+    }
+    .ant-tabs-ink-bar {
+      display: none;
+    }
+    .ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-bottom > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav::before, .ant-tabs-bottom > div > .ant-tabs-nav::before {
+      border-bottom:0.5px solid #888888;;
+    }
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: #FF7B42;
+    }
+
+    .additional-items {
+      ul {
+        margin-bottom: 42px;
+      }
+      li {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 30px;
+    }
+    }
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+      margin-left: 23px;
+
+      font-family: DM Sans;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 30px;
+      /* or 187% */
+      color: #04316A;
+      }
+    .ant-collapse-content > .ant-collapse-content-box {
+      padding-left: 48px;
+      padding-bottom: 24px;
+    }
+    .additional-faq {
+      padding-left: 25px;
+      position: relative;
+      .icon-quest-mark {
+        position: absolute;
+        left: -11px;
+        top: 15px;
+      }
+    }
+
+  }
 `
 
 export const StyledTourDetailBookingForm = styled.div`
