@@ -57,7 +57,7 @@ const StyledTab = styled(Tabs)`
     color: #ffffff;
   }
   .ant-tabs-ink-bar {
-    background-color: #ffffff;
+    display: none;
   }
   .ant-tabs-ink-bar .ant-tabs-ink-bar-animated {
     width: 0px !important;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
+import { Tabs } from 'antd';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -14,6 +15,7 @@ import {
   IconStar,
   SlideImageUrl,
   TourDetailBookingForm,
+  TourDetailAddionalInfo,
 } from '@components';
 import { ITourDetail } from '@interfaces';
 
@@ -24,6 +26,7 @@ interface ITourDetailBody {
 
 export const TourDetailBody = (props: ITourDetailBody) => {
   const { data, onClick } = props;
+  const { TabPane } = Tabs;
   return (
     <StyledTourDetailBodyContainer>
       <hr className='tour-detail-divider' />
@@ -81,17 +84,27 @@ export const TourDetailBody = (props: ITourDetailBody) => {
           />
         </div>
         <div className='body-content-selections'>
-          <div className='body-content-descriptions'>
-            <div className='descriptions-ovrerview'></div>
-            <div className='descriptions-included'></div>
-            <div className='descriptions-depature-end'></div>
-            <div className='descriptions-tour-itinerary'></div>
-            <div className='descriptions-maps'></div>
-            <div className='descriptions-panoramic-image-video'>
-              <div className='panoramic-image'></div>
-              <div className='panoramic-video'></div>
-            </div>
-          </div>
+          <Tabs defaultActiveKey='1'>
+            <TabPane tab='Description' key='1'>
+              <div className='body-content-descriptions'>
+                <div className='descriptions-ovrerview'></div>
+                <div className='descriptions-included'></div>
+                <div className='descriptions-depature-end'></div>
+                <div className='descriptions-tour-itinerary'></div>
+                <div className='descriptions-maps'></div>
+                <div className='descriptions-panoramic-image-video'>
+                  <div className='panoramic-image'></div>
+                  <div className='panoramic-video'></div>
+                </div>
+              </div>
+            </TabPane>
+            <TabPane tab='Additional Info' key='2'>
+              <TourDetailAddionalInfo />
+            </TabPane>
+            <TabPane tab='Reviews' key='3'>
+              Content of Tab Pane 3
+            </TabPane>
+          </Tabs>
         </div>
       </div>
       <div className='tour-detail-related-tour'>
