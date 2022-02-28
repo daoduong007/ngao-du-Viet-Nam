@@ -85,3 +85,43 @@ export const DataTourDetailLocation = [
      admission: ''
    }
  ]
+
+ export const DataTourDetailReviews = [
+  {
+    avatar: '/assets/avatar1.png',
+    star: 4,
+    title: 'The best experience ever!',
+    time: 'Sep 2021',
+    content: 'It was excellent! The trip is long but the vans are comfortable and have wi-fi. The driver very friendly as well as Ahmed our guide to the dromedaries. The camp was beautiful, comfortable beds, clean bathroom and delicious food! '
+  },
+  {
+    avatar: '/assets/avatar1.png',
+    star: 2,
+    title: 'The perfect trip!',
+    time: 'Nov 2021',
+    content: 'The trip is long but the vans are comfortable and have wi-fi. The driver very friendly as well as Ahmed our guide to the dromedaries. The camp was beautiful, comfortable beds, clean bathroom and delicious food! '
+  }
+ ]
+
+ export const DataTourDetailReviewsNumberOfreview = [
+  {
+    star: 5,
+    numberOfReview : 42
+  },
+  {
+    star: 4,
+    numberOfReview : 21
+  },
+  {
+    star: 3,
+    numberOfReview : 36
+  },
+  {
+    star: 2,
+    numberOfReview : 0
+  },
+  {
+    star: 1,
+    numberOfReview : 0
+  }
+ ]

@@ -20,3 +20,13 @@ export interface ITourBooking {
   duration: string;
   price: string;
 }
+
+export interface ITourDetailReviewComment {
+  data: {
+    avatar: string;
+    star: number;
+    title: string;
+    time: string;
+    content: string;
+  }
+}
