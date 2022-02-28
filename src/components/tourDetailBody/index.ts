@@ -6,4 +6,4 @@ export * from './TourDetailDescription';
 export * from './TourDetailImage360';
 export * from './TourDetailVideo';
 export * from './TourDetailReview';
-export * from './TourDetailReviewComment'
+export * from './TourDetailReviewComment';

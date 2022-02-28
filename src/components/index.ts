@@ -9,5 +9,5 @@ export * from "./icons";
 export * from "./data";
 export * from "./tourDetailBody";
 export * from "./tourDetailHeader";
-export * from "./commons"
-
+export * from "./commons";
+export * from "./checkOut"
