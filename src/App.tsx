@@ -7,6 +7,7 @@ import {
   AboutScreen,
   ListTourScreen,
   TourDetailScreen,
+  CheckOutScreen,
 } from '@containers';
 import { AppRoutes } from '@enums';
 
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route path={AppRoutes.TOUR_DETAIL}>
           <TourDetailScreen />
+        </Route>
+        <Route path={AppRoutes.CHECK_OUT}>
+          <CheckOutScreen />
         </Route>
       </Switch>
     </div>

@@ -369,4 +369,5 @@ export const StyledTourDetailBookingForm = styled.div`
       color: #FFFFFF;
     }
   }
+
 `

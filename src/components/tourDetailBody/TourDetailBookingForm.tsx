@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Input } from 'antd';
+import { useHistory } from 'react-router-dom';
 
 import {
   StyledTourDetailBookingForm,
@@ -7,9 +8,15 @@ import {
   IconPeople,
 } from '@components';
 import { ITourBooking } from '@interfaces';
+import { AppRoutes } from '@enums';
 
 export const TourDetailBookingForm = (props: ITourBooking) => {
   const { duration, price } = props;
+  const history = useHistory();
+
+  const handleBooking = () => {
+    history.push(AppRoutes.CHECK_OUT);
+  };
 
   return (
     <StyledTourDetailBookingForm>
@@ -54,7 +61,9 @@ export const TourDetailBookingForm = (props: ITourBooking) => {
         </p>
       </div>
       <div className='booking-form-submit'>
-        <Button type='primary'>Book now</Button>
+        <Button type='primary' onClick={handleBooking}>
+          Book now
+        </Button>
       </div>
     </StyledTourDetailBookingForm>
   );
