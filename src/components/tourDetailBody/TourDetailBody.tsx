@@ -17,6 +17,7 @@ import {
   TourDetailBookingForm,
   TourDetailAddionalInfo,
   TourDetailDescription,
+  TourDetailReview,
 } from '@components';
 import { ITourDetail } from '@interfaces';
 
@@ -93,7 +94,7 @@ export const TourDetailBody = (props: ITourDetailBody) => {
               <TourDetailAddionalInfo />
             </TabPane>
             <TabPane tab='Reviews' key='3'>
-              Content of Tab Pane 3
+              <TourDetailReview />
             </TabPane>
           </Tabs>
         </div>
