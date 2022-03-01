@@ -123,6 +123,10 @@ padding: 0 165px;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
+.help {
+  margin-top: 5px;
+  color: red;
+} 
 p {
   text-align: left;
   margin: 0;
