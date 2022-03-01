@@ -1,6 +1,13 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import {
+  Formik,
+  Form,
+  Field,
+  withFormik,
+  FormikProps,
+  FormikErrors,
+  ErrorMessage,
+} from 'formik';
 
 import {
   CheckOutTotalForm,
@@ -8,24 +15,12 @@ import {
   DataCheckoutTravelerAddress,
   DataCheckoutTravelerMoreInfo,
   StyledCheckOutContainer,
+  FormikItem,
 } from '@components';
 import { ICheckOutFormValues } from '@interfaces';
+import { validationSchema } from '@utils';
 
 export const CheckOut = () => {
-  const validationSchema = Yup.object({
-    firstName: Yup.string().required(),
-    lastName: Yup.string().required(),
-    email: Yup.string().email().required(),
-    phoneNumber: Yup.string().required(),
-    address: Yup.string().required(),
-    city: Yup.string().required(),
-    province: Yup.string().required(),
-    zipCode: Yup.string().required(),
-    country: Yup.string().required(),
-    specialRequiment: Yup.string().required(),
-    paymentMethod: Yup.string().required(),
-  });
-
   const initialValues: ICheckOutFormValues = {
     firstName: '',
     lastName: '',
@@ -40,6 +35,9 @@ export const CheckOut = () => {
     paymentMethod: '',
   };
 
+  const handleSubmit = (values) => {
+    console.log(JSON.stringify(values, null, 2));
+  };
   const renderError = (message) => (
     <p className='help is-danger'>{message}</p>
   );
@@ -68,10 +66,8 @@ export const CheckOut = () => {
             <Formik
               validationSchema={validationSchema}
               initialValues={initialValues}
-              onSubmit={(values, actions) => {
-                console.log({ values, actions });
-                alert(JSON.stringify(values, null, 2));
-                actions.setSubmitting(false);
+              onSubmit={(values) => {
+                handleSubmit(values);
               }}
             >
               <Form>
@@ -81,14 +77,14 @@ export const CheckOut = () => {
                       key={index}
                       className='traveler-details-formik-item'
                     >
-                      <label htmlFor={item.id}>{item.title}</label>
-                      <Field
+                      <FormikItem
                         id={item.id}
-                        name={item.id}
-                        placeholder={item.title}
+                        name={item.name}
+                        placeholder={item.placeholder}
+                        title={item.title}
                       />
                       <ErrorMessage
-                        name={item.id}
+                        name={item.name}
                         render={renderError}
                       />
                     </div>
@@ -99,11 +95,11 @@ export const CheckOut = () => {
                   <p>Address</p>
                 </div>
                 <div className='traveler-details-formik-item traveler-details-formik-item-address'>
-                  <label htmlFor='address'>Your Address</label>
-                  <Field
+                  <FormikItem
                     id='address'
                     name='address'
                     placeholder='Your Address'
+                    title='Address'
                   />
                 </div>
                 <div className='traveler-details-formik-rally'>
@@ -112,24 +108,22 @@ export const CheckOut = () => {
                       key={index}
                       className='traveler-details-formik-item'
                     >
-                      <label htmlFor={item.id}>{item.title}</label>
-                      <Field
+                      <FormikItem
                         id={item.id}
-                        name={item.id}
-                        placeholder={item.title}
+                        name={item.name}
+                        placeholder={item.placeholder}
+                        title={item.title}
                       />
                     </div>
                   ))}
                 </div>
 
                 <div className='traveler-details-formik-item traveler-details-formik-item-special'>
-                  <label htmlFor='specialRequiment'>
-                    Special Requirement
-                  </label>
-                  <Field
+                  <FormikItem
                     id='specialRequiment'
                     name='specialRequiment'
                     placeholder='Special Requirement'
+                    title='Special Requirement'
                   />
                 </div>
                 <hr />

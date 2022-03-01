@@ -4,9 +4,9 @@
     "paths": {
       "@components": ["src/components"],
       "@containers": ["src/containers"],
-      "@ultils": ["src/ultils"],
       "@enums": ["src/enums"],
-      "@interfaces": ["src/interfaces"]
+      "@interfaces": ["src/interfaces"],
+      "@utils": ["src/utils"]
     }
   }
 }

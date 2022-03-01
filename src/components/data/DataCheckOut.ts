@@ -1,38 +1,54 @@
 export const DataCheckoutTravelerInfo = [
   {
-    title: 'First Name',
     id: 'firstName',
+    title: 'First Name',
+    name: 'firstName',
+    placeholder: 'First Name'
   },
   {
-    title: 'Last Name',
     id: 'lastName',
+    title: 'Last Name',
+    name: 'lastName',
+    placeholder: 'Last Name'
   },
   {
+    id:'email',
     title: 'Email',
-    id: 'email',
+    name: 'email',
+    placeholder: 'email@domain.com'
   },
   {
-    title: 'Phone Number',
     id: 'phoneNumber',
+    title: 'Phone Number',
+    name: 'phoneNumber',
+    placeholder: 'Phone Number'
   }
 ]
 
 export const DataCheckoutTravelerAddress = [
   {
+    id:  'city',
     title: 'City',
-    id: 'city',
+    name: 'city',
+    placeholder: 'City'
   },
   {
-    title: 'State/Province/Region',
     id: 'province',
+    title: 'State/Province/Region',
+    name: 'province',
+    placeholder: 'State/Province/Region'
   },
   {
-    title: 'Zip Code/ Postal Code',
     id: 'zipCode',
+    title: 'Zip Code/ Postal Code',
+    name: 'zipCode',
+    placeholder: 'Zip Code/ Postal Code'
   },
   {
-    title: 'Country ',
     id: 'country',
+    title: 'Country ',
+    name: 'country',
+    placeholder: 'Country'
   }
 ]
 
