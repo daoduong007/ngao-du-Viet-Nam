@@ -30,3 +30,17 @@ export interface ITourDetailReviewComment {
     content: string;
   }
 }
+
+export interface ICheckOutFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  address?: string;
+  city?: string;
+  province?: string;
+  zipCode?: string;
+  country?: string;
+  specialRequiment?: string;
+  paymentMethod?: string;
+}

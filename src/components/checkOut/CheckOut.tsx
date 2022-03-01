@@ -1,210 +1,195 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Input, Button } from 'antd';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 import {
-  IconLocation,
-  IconDepatureTime,
-  IconGuest,
+  CheckOutTotalForm,
+  DataCheckoutTravelerInfo,
+  DataCheckoutTravelerAddress,
+  DataCheckoutTravelerMoreInfo,
+  StyledCheckOutContainer,
 } from '@components';
+import { ICheckOutFormValues } from '@interfaces';
 
 export const CheckOut = () => {
+  const validationSchema = Yup.object({
+    firstName: Yup.string().required(),
+    lastName: Yup.string().required(),
+    email: Yup.string().email().required(),
+    phoneNumber: Yup.string().required(),
+    address: Yup.string().required(),
+    city: Yup.string().required(),
+    province: Yup.string().required(),
+    zipCode: Yup.string().required(),
+    country: Yup.string().required(),
+    specialRequiment: Yup.string().required(),
+    paymentMethod: Yup.string().required(),
+  });
+
+  const initialValues: ICheckOutFormValues = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    address: '',
+    city: '',
+    province: '',
+    zipCode: '',
+    country: '',
+    specialRequiment: '',
+    paymentMethod: '',
+  };
+
+  const renderError = (message) => (
+    <p className='help is-danger'>{message}</p>
+  );
   return (
     <StyledCheckOutContainer>
-      <div className='check-out-header'>
-        <p>Booking Submission</p>
-      </div>
-
       <div className='check-out-body'>
+        <div className='check-out-body-title'>
+          <p>Booking Submission</p>
+        </div>
         <div className='check-out-traveler-details'>
           <hr />
-          traveler detail
-        </div>
-        <div className='check-out-total-form'>
-          <div className='total-form-title'>
+          <div className='traveler-details-description'>
+            <p>Traveler detail</p>
             <p>
-              Discover interesting things in the romantic coastal city
-              of Vungtau
+              <span>
+                Information we need to confirm your tour or activity
+              </span>
             </p>
           </div>
-          <div className='total-form-location'>
-            <IconLocation />
-            <p>Vungtau city , Baria - Vungtau</p>
+        </div>
+        <div className='traveler-details-form'>
+          <div className='traveler-details-formik-lead-traveler'>
+            <p>Lead Traveler (Adult)</p>
           </div>
-          <div className='total-form-desciption'>
-            <div className='total-form-duration'>
-              <p>Duration</p>
-              <p>
-                <span>3 days - 2 nights</span>
-              </p>
-            </div>
-            <div className='total-form-tour-type'>
-              <p>Tour type:</p>
-              <p>
-                <span>Sun - Beach</span>
-              </p>
-            </div>
-          </div>
-          <div>
-            <Input
-              prefix={<IconGuest />}
-              placeholder='2 Adults - 1 Children'
-            />
-          </div>
-          <div>
-            <Input
-              prefix={<IconDepatureTime />}
-              placeholder='25/02/2021 - 28/02/2021'
-            />
-          </div>
-          <div className='total-form-group-promo'>
-            <div className='group-promo-code'>
-              <Input placeholder='Promo Code' />
-            </div>
-            <div>
-              <Button>Apply</Button>
-            </div>
-          </div>
-          <div className='total-form-total'>
-            <p>Total</p>
-            <p>$450.00</p>
+          <div className='traveler-details-formik'>
+            <Formik
+              validationSchema={validationSchema}
+              initialValues={initialValues}
+              onSubmit={(values, actions) => {
+                console.log({ values, actions });
+                alert(JSON.stringify(values, null, 2));
+                actions.setSubmitting(false);
+              }}
+            >
+              <Form>
+                <div className='traveler-details-formik-rally'>
+                  {DataCheckoutTravelerInfo.map((item, index) => (
+                    <div
+                      key={index}
+                      className='traveler-details-formik-item'
+                    >
+                      <label htmlFor={item.id}>{item.title}</label>
+                      <Field
+                        id={item.id}
+                        name={item.id}
+                        placeholder={item.title}
+                      />
+                      <ErrorMessage
+                        name={item.id}
+                        render={renderError}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className='traveler-details-formik-address'>
+                  <p>Address</p>
+                </div>
+                <div className='traveler-details-formik-item traveler-details-formik-item-address'>
+                  <label htmlFor='address'>Your Address</label>
+                  <Field
+                    id='address'
+                    name='address'
+                    placeholder='Your Address'
+                  />
+                </div>
+                <div className='traveler-details-formik-rally'>
+                  {DataCheckoutTravelerAddress.map((item, index) => (
+                    <div
+                      key={index}
+                      className='traveler-details-formik-item'
+                    >
+                      <label htmlFor={item.id}>{item.title}</label>
+                      <Field
+                        id={item.id}
+                        name={item.id}
+                        placeholder={item.title}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className='traveler-details-formik-item traveler-details-formik-item-special'>
+                  <label htmlFor='specialRequiment'>
+                    Special Requirement
+                  </label>
+                  <Field
+                    id='specialRequiment'
+                    name='specialRequiment'
+                    placeholder='Special Requirement'
+                  />
+                </div>
+                <hr />
+                <div>
+                  <p>Payment Menthod</p>
+                  <p>
+                    <span>
+                      Pay securely—we use SSL encryption to keep your
+                      data safe
+                    </span>
+                  </p>
+                </div>
+                <div
+                  role='group'
+                  aria-labelledby='checkbox-group'
+                  className='traveler-details-formik-payment'
+                >
+                  <div className='traveler-details-formik-payment-item'>
+                    <label>
+                      <Field
+                        type='checkbox'
+                        name='paymentMethod'
+                        value='Credit Card'
+                      />
+                      Credit Card
+                    </label>
+                    <img src='/assets/creditCard.png' />
+                  </div>
+                  <div className='traveler-details-formik-payment-item'>
+                    <label>
+                      <Field
+                        type='checkbox'
+                        name='paymentMethod'
+                        value='Paypal'
+                      />
+                      Paypal
+                    </label>
+                    <img src='/assets/paypal.png' />
+                  </div>
+                </div>
+                <div className='traveler-details-formik-payment-info'>
+                  <ul>
+                    {DataCheckoutTravelerMoreInfo.map(
+                      (item, index) => (
+                        <li key={index}>{item}</li>
+                      ),
+                    )}
+                  </ul>
+                </div>
+                <div className='traveler-details-formik-submit'>
+                  <button type='submit'>
+                    <span>Complete Booking</span>
+                  </button>
+                </div>
+              </Form>
+            </Formik>
           </div>
         </div>
       </div>
+      <CheckOutTotalForm />
     </StyledCheckOutContainer>
   );
 };
-
-const StyledCheckOutContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 0 165px;
-  display: flex;
-  flex-direction: column;
-  overflow: visible;
-
-  hr {
-    margin: 0;
-    border: 0px;
-    opacity: 0.7;
-    border-bottom: 1px solid #e5e5e5;
-  }
-  .check-out-body {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .check-out-traveler-details {
-    width: 635px;
-  }
-  .check-out-total-form {
-    width: 380px;
-    padding: 39px 25px 0 30px;
-    display: flex;
-    flex-direction: column;
-    background: #f4f4f4;
-    p {
-      margin: 0;
-      text-align: left;
-      font-style: normal;
-      font-weight: normal;
-    }
-
-    .total-form-title {
-      p {
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 100%;
-        /* or 18px */
-        /* tieu de */
-        color: #1c1c1e;
-      }
-      margin-bottom: 13px;
-    }
-    .total-form-location {
-      display: flex;
-      flex-direction: row;
-      margin-bottom: 13px;
-      svg {
-        margin-right: 14px;
-      }
-      p {
-        font-size: 14px;
-        line-height: 160%;
-        /* or 22px */
-        /* subcolor 1 */
-        color: #636567;
-      }
-    }
-    .total-form-desciption {
-      display: flex;
-      flex-direction: row;
-
-      .total-form-duration {
-        margin-right: 64px;
-      }
-      p {
-        font-size: 14px;
-        line-height: 24px;
-        /* identical to box height, or 171% */
-        /* subcolor 1 */
-        color: #636567;
-        > span {
-          font-weight: 600;
-          font-size: 14px;
-          line-height: 24px;
-          /* identical to box height, or 171% */
-          /* tieu de */
-          color: #1c1c1e;
-        }
-      }
-    }
-    .ant-input-affix-wrapper {
-      height: 64px;
-      margin-top: 20px;
-      svg {
-        margin-right: 17.5px;
-        margin-left: 26px;
-      }
-    }
-    .total-form-group-promo {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      margin-top: 12px;
-      .ant-input {
-        height: 56px;
-      }
-      .ant-btn {
-        height: 56px;
-        width: 111px;
-        border: 1px solid #ff7b42;
-        span {
-          font-weight: 600;
-          font-family: Poppins;
-          font-size: 16px;
-          line-height: 24px;
-          /* identical to box height, or 150% */
-          text-align: center;
-          color: #ff7b42;
-        }
-      }
-    }
-    .total-form-total {
-      height: 99px;
-      margin: 33px -25px 0 -30px;
-      background-color: #1c1c1e;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      p {
-        margin: 0 25px 0 30px;
-        font-size: 20px;
-        line-height: 160%;
-        /* identical to box height, or 32px */
-        color: #ffffff;
-      }
-    }
-  }
-`;
