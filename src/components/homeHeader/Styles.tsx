@@ -97,7 +97,7 @@ export const StyledSearchTourItem = styled.div`
   align-items: center;
 
   background-color: #ffffff;
-  .icon-search {
+  .tab-search-icon {
     margin: 0 23px 0 26px;
   }
 `;

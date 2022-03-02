@@ -1,33 +1,27 @@
 import React from 'react';
+import { Button } from 'antd';
 
 import {
-  StyledText,
   StyledSearchTourItems,
   StyledSearchTourItem,
   StyledSearchTitle,
-  StyledSearchAction,
   SearchInput,
   SearchSelect,
   IconLocation,
   IconSearch,
-  IconFlag,
   IconDepatureTime,
   IconGuest,
-  StyledSearchTabPane,
 } from '@components';
 
-export const TabSearchTours = () => {
+export const HeaderSearch = () => {
+  // function callback(key) {
+  //   console.log(key);
+  // }
+
   return (
-    <StyledSearchTabPane>
+    <>
       <StyledSearchTitle>
-        <StyledText
-          fontSize={'24px'}
-          fontWeight={'normal'}
-          color={'#1C1C1E'}
-          lineHeight={'120%'}
-        >
-          Discover beautiful Vietnam
-        </StyledText>
+        <p>Find hotels for your next trip</p>
       </StyledSearchTitle>
       <StyledSearchTourItems>
         <StyledSearchTourItem>
@@ -47,26 +41,17 @@ export const TabSearchTours = () => {
         </StyledSearchTourItem>
         <StyledSearchTourItem>
           <div className='tab-search-icon'>
-            <IconFlag />
-          </div>
-          <SearchSelect defaultValue={'Type of tour'} />
-        </StyledSearchTourItem>
-        <StyledSearchTourItem>
-          <div className='tab-search-icon'>
             <IconGuest />
           </div>
 
           <SearchSelect defaultValue={'Number of guests'} />
         </StyledSearchTourItem>
+        <StyledSearchTourItem>
+          <Button icon={<IconSearch />} type='primary'>
+            Search
+          </Button>
+        </StyledSearchTourItem>
       </StyledSearchTourItems>
-      <StyledSearchAction>
-        <button type='submit' className='submitSearch'>
-          <div className='tab-search-icon'>
-            <IconSearch />
-          </div>
-          <StyledText>Search</StyledText>
-        </button>
-      </StyledSearchAction>
-    </StyledSearchTabPane>
+    </>
   );
 };

@@ -5,4 +5,5 @@ export enum AppRoutes {
   LIST_TOUR_SCREEN = '/tours',
   TOUR_DETAIL = `/tours/:id`,
   CHECK_OUT = '/checkout',
+  LIST_HOTEL_SCREEN = '/hotelS',
 }
