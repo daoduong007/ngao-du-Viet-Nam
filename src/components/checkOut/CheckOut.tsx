@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Formik,
-  Form,
-  Field,
-  withFormik,
-  FormikProps,
-  FormikErrors,
-  ErrorMessage,
-} from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import {
   CheckOutTotalForm,

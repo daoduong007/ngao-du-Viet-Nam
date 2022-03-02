@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { StyledText, StyledDirectional } from '@components';
-
 const directionalItems = [
   'Home',
   'About',
@@ -11,16 +9,14 @@ const directionalItems = [
   'Contact',
   'Login',
 ];
-export const Directional = () => {
+export const AppBarDirectional = () => {
   return (
-    <StyledDirectional>
+    <div className='app-bar-directional'>
       {directionalItems.map((item, index) => (
         <Link key={index} to={`/${item}`}>
-          <StyledText className='directionalItem' color={'#FFFFFF'}>
-            {item}
-          </StyledText>
+          <p className='directionalItem'>{item}</p>
         </Link>
       ))}
-    </StyledDirectional>
+    </div>
   );
 };
