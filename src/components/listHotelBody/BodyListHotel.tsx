@@ -4,7 +4,7 @@ import { Button, Popover, Select, Pagination } from 'antd';
 import {
   StyleBodyListHotelContainer,
   IconDot,
-  ListTourFilter,
+  ListHotelFilter,
   ListHotel,
   HotelItem,
 } from '@components';
@@ -38,7 +38,7 @@ export const BodyListHotel = () => {
           <div className='list-hotel-body-filer'>
             <Popover
               placement='bottomLeft'
-              content={ListTourFilter}
+              content={ListHotelFilter}
               trigger='click'
               className='list-hotel-popup'
             >
