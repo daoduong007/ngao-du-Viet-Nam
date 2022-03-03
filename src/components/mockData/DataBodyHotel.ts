@@ -150,3 +150,8 @@ export const ListHotel = [
     price: '$140.00'
   }
 ]
+
+export const DataListHotelFilter1 = [5 , 4, 3, 2, 1]
+export const DataListHotelFilter2 = [
+  'Wonderful : 9.5+', 'Very Good : 9+', 'Good : 8+', 'Pleasant : 7+'
+]

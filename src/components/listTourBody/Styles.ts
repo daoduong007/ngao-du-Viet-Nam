@@ -118,13 +118,14 @@ export const StyledListTourBodyContainer = styled.div`
 
 export const StyledListTourBodyFilter = styled.div`
   width:351px;
-  height: 785px;
   padding : 24px;
   display: flex;
   flex-direction: column;
   border: 1px solid #CCCCCC;
   box-shadow: 0px 4px 36px rgba(0, 0, 0, 0.2);
-
+  .ant-rate-star-zero{
+    display: none;
+  }
   .list-tour-filter-title{
     margin-bottom:0 0 20 0px;
     font-family: Poppins;
@@ -218,6 +219,7 @@ export const StyledListTourBodyFilter = styled.div`
     }
     .ant-btn-primary {
         border-color: #FF7B42;
+        height: 48px;
       }
   }
 `
