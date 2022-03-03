@@ -6,9 +6,10 @@ export * from "./aboutBody";
 export * from "./listTourHeader";
 export * from "./listTourBody";
 export * from "./icons";
-export * from "./data";
+export * from "./mockData";
 export * from "./tourDetailBody";
 export * from "./tourDetailHeader";
 export * from "./commons";
 export * from "./checkOut";
-export * from "./listHotelHeader"
+export * from "./listHotelHeader";
+export * from "./listHotelBody"

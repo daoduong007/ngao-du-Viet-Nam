@@ -44,3 +44,16 @@ export interface ICheckOutFormValues {
   specialRequiment?: string;
   paymentMethod?: string;
 }
+
+export interface IHotelDetail {
+  data : {
+    id: number;
+    imgUrl: string;
+    star: number;
+    location:  string;
+    name:  string;
+    rating: number;
+    review:number;
+    price: string;
+  }
+}
