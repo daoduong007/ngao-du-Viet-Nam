@@ -29,6 +29,10 @@ export const BodyExperienceCultural = () => {
       }),
     );
   };
+
+  const handleClickViewAll = () => {
+    history.push(generatePath(AppRoutes.LIST_TOUR_SCREEN));
+  };
   return (
     <StyledBodyTourContainer>
       <div className='attractive-tour-title'>
@@ -36,7 +40,13 @@ export const BodyExperienceCultural = () => {
           Experience the traditional <br /> cultural beauties of
           Vietnam
         </p>
-        <BodyButton name={'View All'} />
+        <div
+          onClick={() => {
+            handleClickViewAll();
+          }}
+        >
+          <BodyButton name={'View All'} />
+        </div>
       </div>
       <div className='attractive-tour-list-item'>
         <StyledBodyTourListItem>

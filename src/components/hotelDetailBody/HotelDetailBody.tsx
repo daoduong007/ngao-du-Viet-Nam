@@ -56,7 +56,7 @@ export const HotelDetailBody = (props: IHotelDetailBody) => {
             <p>{data.review} reviews</p>
             <Rate
               disabled
-              defaultValue={data.star}
+              value={data.star}
               className='body-content-star'
             />
           </div>
@@ -93,7 +93,7 @@ export const HotelDetailBody = (props: IHotelDetailBody) => {
           </div>
         </div>
         <div className='hotel-detail-body-total-form'>
-          <h1>Total form</h1>
+          <h1></h1>
         </div>
       </div>
 

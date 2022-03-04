@@ -6,6 +6,34 @@ export const StyledHotelDetailBodyContainer = styled.div`
   display: flex;
   flex-direction: column;
 
+  .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-bottom > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-bottom > div > .ant-tabs-nav .ant-tabs-ink-bar{
+    height: 0;
+  }
+  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list, .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .ant-tabs-tab {
+    width: 100%;
+    margin: 0;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 160%;
+    /* or 38px */
+
+    text-align: center;
+
+    color: #888888;
+  }
+
+  .ant-tabs-tab-btn {
+    margin: 0 auto;
+  }
+
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #FF7B42;
+  }
+
   .hotel-detail-body-content-and-total-form{
   display: flex;
   flex-direction: row;

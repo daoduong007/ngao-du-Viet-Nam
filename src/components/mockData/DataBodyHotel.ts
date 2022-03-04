@@ -199,3 +199,43 @@ export const DataHotelDetailOverview = [
 'Couples in particular like the location  they rated it 9.1 for a two-person trip.',
 'We speak your language!'
 ]
+
+export const DataDescriptionHotelAmenities = [
+  'Air conditioning',
+  'Private Bathroom',
+  'Flat-screen TV',
+  'Free WiFi',
+  'Free toiletries',
+  'Shower',
+  'Safe',
+  'Toilet',
+  'Towels',
+  'Tile/Marble floor',
+  'Desk',
+  'Refrigerator',
+]
+
+export const DataDescriptionHotelAmenities2 = [
+  'Telephone',
+  'Ironing facilities',
+  'Satellite channels',
+  'Tea/Coffee make',
+  'Hairdryer',
+  'Electric kettle',
+  'Wake-up service',
+  'Wardrobe or closet',
+]
+
+export const DataDesciptionHotelRules = [
+  'Smoking is not allowed',
+  'Security deposit will not be collected at this hotel',
+  'Check-out time is 12:00 AM',
+  'Pets are not allowed',
+  'Credit cards are not accepted at this hotel',
+  'No additional tax has to be paid at the hotel',
+  'On-site parking is available',
+  'Check-in time is 2:00 PM',
+  'Unmarried couples are allowed',
+  'Couples are welcome',
+  'Guests can check in using any Domestic or International ID proof with photograph',
+]
