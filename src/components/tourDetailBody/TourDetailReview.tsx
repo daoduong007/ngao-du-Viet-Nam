@@ -66,11 +66,14 @@ export const TourDetailReview = () => {
       </div>
       <hr />
       <div className='tour-detail-review-comments'>
-        {DataTourDetailReviews.map((item, index) => (
-          <TourDetailReviewComment key={index} data={item} />
-        ))}
+        <>
+          {DataTourDetailReviews.map((item, index) => (
+            <TourDetailReviewComment key={index} data={item} />
+          ))}
+          <hr />
+        </>
       </div>
-      <hr />
+
       <div className='tour-detail-review-pagination'>
         <Pagination
           defaultCurrent={1}
@@ -86,6 +89,7 @@ export const TourDetailReview = () => {
 const StyledTourDetailReview = styled.div`
   hr {
     border: 0px;
+    width: 100%;
     border-bottom: 0.5px solid #888888;
     margin: 0px;
   }
@@ -188,6 +192,15 @@ const StyledTourDetailReview = styled.div`
     margin-bottom: 39px;
     display: flex;
     flex-direction: column;
+    hr {
+      &:last-child {
+        display: none;
+      }
+      border: 0px;
+      width: 100%;
+      border-bottom: 0.5px solid #888888;
+      margin: 0px;
+    }
     p {
       font-family: Poppins;
       font-style: normal;
@@ -243,6 +256,7 @@ const StyledTourDetailReview = styled.div`
 
     .ant-pagination-item-active {
       background-color: #1c1c1e;
+      opacity: 1;
       padding: 0;
       padding-top: 8.5px;
       a {

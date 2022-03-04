@@ -15,6 +15,7 @@ import {
   ListHotelRecommend,
   HotelItem,
   HotelDetailBodyDescription,
+  HotelDetailBodyReview,
 } from '@components';
 
 interface IHotelDetailBody {
@@ -87,7 +88,7 @@ export const HotelDetailBody = (props: IHotelDetailBody) => {
                 </h2>
               </TabPane>
               <TabPane tab='Review' key='3'>
-                <h2>tab3</h2>
+                <HotelDetailBodyReview data={data} />
               </TabPane>
             </Tabs>
           </div>

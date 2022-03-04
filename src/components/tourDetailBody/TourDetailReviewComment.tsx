@@ -1,13 +1,12 @@
 import React from 'react';
 import { Rate } from 'antd';
 
-import {} from '@components';
 import { ITourDetailReviewComment } from '@interfaces';
 
 export const TourDetailReviewComment = (
   props: ITourDetailReviewComment,
 ) => {
-  const { avatar, star, title, time, content } = props.data;
+  const { avatar, rating, star, title, time, content } = props.data;
   return (
     <>
       <div className='review-comment-header'>
@@ -16,8 +15,13 @@ export const TourDetailReviewComment = (
         </div>
         <div>
           <div className='review-comment-rating'>
-            <Rate disabled defaultValue={star} />
+            {star ? (
+              <Rate disabled defaultValue={star} />
+            ) : (
+              <p>Rating {rating} . Wonderful</p>
+            )}
           </div>
+
           <div className='review-comment-title'>
             <p>
               <span>{title}</span>
