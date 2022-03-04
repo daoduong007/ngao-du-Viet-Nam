@@ -24,7 +24,8 @@ export interface ITourBooking {
 export interface ITourDetailReviewComment {
   data: {
     avatar: string;
-    star: number;
+    star?: number;
+    rating?: number;
     title: string;
     time: string;
     content: string;

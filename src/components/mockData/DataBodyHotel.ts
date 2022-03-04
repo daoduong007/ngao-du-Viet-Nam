@@ -239,3 +239,27 @@ export const DataDesciptionHotelRules = [
   'Couples are welcome',
   'Guests can check in using any Domestic or International ID proof with photograph',
 ]
+
+export const DataHotelDetailReviews = [
+  {
+    avatar: '/assets/avatar1.png',
+    rating: 9,
+    title: 'The best experience ever!',
+    time: 'Sep 2021',
+    content: 'It was excellent! The trip is long but the vans are comfortable and have wi-fi. The driver very friendly as well as Ahmed our guide to the dromedaries. The camp was beautiful, comfortable beds, clean bathroom and delicious food! '
+  },
+  {
+    avatar: '/assets/avatar1.png',
+    rating: 8.5,
+    title: 'The perfect trip!',
+    time: 'Nov 2021',
+    content: 'The trip is long but the vans are comfortable and have wi-fi. The driver very friendly as well as Ahmed our guide to the dromedaries. The camp was beautiful, comfortable beds, clean bathroom and delicious food! '
+  },
+  {
+    avatar: '/assets/avatar1.png',
+    rating: 9.5,
+    title: 'The perfect trip!',
+    time: 'Nov 2021',
+    content: 'The trip is long but the vans are comfortable and have wi-fi. The driver very friendly as well as Ahmed our guide to the dromedaries. The camp was beautiful, comfortable beds, clean bathroom and delicious food! '
+  },
+ ]
