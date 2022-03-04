@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Popover, Select, Pagination } from 'antd';
+import { generatePath, useHistory } from 'react-router-dom';
 
 import {
   StyleBodyListHotelContainer,
@@ -8,9 +9,19 @@ import {
   ListHotel,
   HotelItem,
 } from '@components';
+import { AppRoutes } from '@enums';
 
 export const BodyListHotel = () => {
   const { Option } = Select;
+  const history = useHistory();
+
+  const handleClick = (id: number) => {
+    history.push(
+      generatePath(AppRoutes.HOTEL_DETAIL, {
+        id,
+      }),
+    );
+  };
   return (
     <StyleBodyListHotelContainer>
       <div className='list-hotel-body-screenname'>
@@ -50,7 +61,7 @@ export const BodyListHotel = () => {
       <div className='list-hotel-body-content'>
         {ListHotel.map((item, index) => (
           <div key={index}>
-            <HotelItem data={item} />
+            <HotelItem data={item} onClick={handleClick} />
           </div>
         ))}
       </div>
