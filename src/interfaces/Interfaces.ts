@@ -46,14 +46,13 @@ export interface ICheckOutFormValues {
 }
 
 export interface IHotelDetail {
-  data : {
-    id: number;
-    imgUrl: string;
-    star: number;
-    location:  string;
-    name:  string;
-    rating: number;
-    review:number;
-    price: string;
-  }
+
+  id: number;
+  imgUrl: string;
+  star: number;
+  location:  string;
+  name:  string;
+  rating: number;
+  review:number;
+  price: string;
 }

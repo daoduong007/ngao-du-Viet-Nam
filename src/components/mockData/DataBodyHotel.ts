@@ -152,6 +152,90 @@ export const ListHotel = [
 ]
 
 export const DataListHotelFilter1 = [5 , 4, 3, 2, 1]
+
 export const DataListHotelFilter2 = [
   'Wonderful : 9.5+', 'Very Good : 9+', 'Good : 8+', 'Pleasant : 7+'
+]
+
+export const ListHotelRecommend = [
+  {
+    id: 4,
+    imgUrl: '/assets/tour4.png',
+    star: 4,
+    location: 'Phu Nhuan, Ho Chi Minh',
+    name: 'Yours Truly DC',
+    rating: 8,
+    review: 125,
+    price: '$130.00'
+  },
+  {
+    id: 5,
+    imgUrl: '/assets/tour5.png',
+    star: 4,
+    location: 'Phu Nhuan, Ho Chi Minh',
+    name: 'TownePlace Suites Gaithersburg by Marriott',
+    rating: 7.5,
+    review: 100,
+    price: '$150.00'
+  },
+  {
+    id: 6,
+    imgUrl: '/assets/tour6.png',
+    star: 5,
+    location: 'Phu Nhuan, Ho Chi Minh',
+    name: 'Willard InterContinental Washington',
+    rating: 8,
+    review: 90,
+    price: '$170.00'
+  },
+]
+
+export const DataHotelDetailOverview = [
+  'Opposite Durban’s famous beachfront, Blue Waters Hotel is within walking distance of the Suncoast Casino and the iconic Moses Mabhida Stadium. Both uShaka Marine World and Greyville Racecourse are within 2.5 mi from the property.',
+'The spacious rooms and suites feature LCD TVs along with coffee-and-tea-making facilities. Each is equipped with air conditioning and a work desk. There is also plenty of luggage storage space. Most rooms come with furnished balconies and offer a view of the Indian Ocean.',
+'Guests at Blue Waters can enjoy afternoon tea and cake in the Florida Lounge overlooking the ocean. The Versailles Restaurant provides buffet and á la carte service for lunch and dinner.',
+'Leisure facilities at the Hotel Blue Waters include an indoor swimming pool, sauna and a squash court. There is also an outdoor rooftop swimming pool and guests can enjoy drinks with sunset views at the rooftop bar.',
+'The Durban North Beach area is a good location for walking, running and cycling. Hotel Blue Waters is 5 minutes’ drive from the Durban ICC and 10 minutes’ drive from Durban’s city center. Durban Station is 1.2 mi away, while King Shaka International Airport is 19 mi from the property.',
+'Couples in particular like the location  they rated it 9.1 for a two-person trip.',
+'We speak your language!'
+]
+
+export const DataDescriptionHotelAmenities = [
+  'Air conditioning',
+  'Private Bathroom',
+  'Flat-screen TV',
+  'Free WiFi',
+  'Free toiletries',
+  'Shower',
+  'Safe',
+  'Toilet',
+  'Towels',
+  'Tile/Marble floor',
+  'Desk',
+  'Refrigerator',
+]
+
+export const DataDescriptionHotelAmenities2 = [
+  'Telephone',
+  'Ironing facilities',
+  'Satellite channels',
+  'Tea/Coffee make',
+  'Hairdryer',
+  'Electric kettle',
+  'Wake-up service',
+  'Wardrobe or closet',
+]
+
+export const DataDesciptionHotelRules = [
+  'Smoking is not allowed',
+  'Security deposit will not be collected at this hotel',
+  'Check-out time is 12:00 AM',
+  'Pets are not allowed',
+  'Credit cards are not accepted at this hotel',
+  'No additional tax has to be paid at the hotel',
+  'On-site parking is available',
+  'Check-in time is 2:00 PM',
+  'Unmarried couples are allowed',
+  'Couples are welcome',
+  'Guests can check in using any Domestic or International ID proof with photograph',
 ]

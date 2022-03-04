@@ -29,13 +29,22 @@ export const BodyAttractiveTour = () => {
       }),
     );
   };
+  const handleClickViewALl = () => {
+    history.push(generatePath(AppRoutes.LIST_TOUR_SCREEN));
+  };
   return (
     <StyledBodyTourContainer>
       <div className='attractive-tour-title'>
         <p>
           Attractive tour and <br /> interesting experiences
         </p>
-        <BodyButton name={'View All'} />
+        <div
+          onClick={() => {
+            handleClickViewALl();
+          }}
+        >
+          <BodyButton name={'View All'} />
+        </div>
       </div>
       <div className='attractive-tour-list-item'>
         <StyledBodyTourListItem>

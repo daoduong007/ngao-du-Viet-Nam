@@ -1,10 +1,14 @@
 import React from 'react';
 import { IconLogo } from '@components';
 
-export const AppBarLogo = () => {
+interface IAppbar {
+  color?: string;
+}
+
+export const AppBarLogo = (props: IAppbar) => {
   return (
     <div className='app-bar-logo'>
-      <IconLogo />
+      <IconLogo color={props.color} />
     </div>
   );
 };

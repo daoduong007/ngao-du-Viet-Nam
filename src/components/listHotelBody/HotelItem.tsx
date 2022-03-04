@@ -5,40 +5,43 @@ import { Rate } from 'antd';
 import { IHotelDetail } from '@interfaces';
 import { IconMark, IconLocation } from '@components';
 
-export const HotelItem = (props: IHotelDetail) => {
-  const { imgUrl, star, location, name, rating, review, price } =
-    props.data;
+interface IHotelProps {
+  data: IHotelDetail;
+  onClick: (id: number) => void;
+}
+export const HotelItem = (props: IHotelProps) => {
+  const { data, onClick } = props;
   return (
-    <StyledHotelItem>
+    <StyledHotelItem onClick={() => onClick(data.id)}>
       <div className='item-image'>
         <div className='item-icon-mark'>
           <IconMark />
         </div>
-        <img src={imgUrl} />
+        <img src={data.imgUrl} />
         <div className='item-star'>
-          <Rate disabled defaultValue={star} />
+          <Rate disabled defaultValue={data.star} />
         </div>
       </div>
       <div className='item-location'>
         <IconLocation />
-        <p>{location}</p>
+        <p>{data.location}</p>
       </div>
       <div className='item-name'>
-        <p>{name}</p>
+        <p>{data.name}</p>
       </div>
       <div className='item-rating-review-price'>
         <div className='item-rating-and-review'>
           <div className='item-rating'>
-            <p>Rating :{rating}</p>
+            <p>Rating :{data.rating}</p>
           </div>
           <div className='item-review'>
-            {review} <span>reviews</span>
+            {data.review} <span>reviews</span>
           </div>
         </div>
 
         <div className='item-price'>
           <p>
-            from <span>{price}</span> /night
+            from <span>{data.price}</span> /night
           </p>
         </div>
       </div>

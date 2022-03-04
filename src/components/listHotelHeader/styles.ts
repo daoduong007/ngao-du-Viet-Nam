@@ -5,6 +5,8 @@ export const StyledHotelsHeaderContainer = styled.div`
   height: 666px;
   position: relative;
   background-image: url('/assets/BannerHotels.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

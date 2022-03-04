@@ -12,4 +12,6 @@ export * from "./tourDetailHeader";
 export * from "./commons";
 export * from "./checkOut";
 export * from "./listHotelHeader";
-export * from "./listHotelBody"
+export * from "./listHotelBody";
+export * from "./hotelDetailHeader";
+export * from "./hotelDetailBody"
