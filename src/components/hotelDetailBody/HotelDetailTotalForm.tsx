@@ -156,7 +156,15 @@ export const HotelDetailTotalForm = () => {
         <div className='total-form-body-total-money'>
           <p>Total</p>
           <p>
-            <span>$450.00</span>
+            <span>
+              $
+              {(
+                standardRoom * 120 +
+                familySuite * 240 +
+                breackfast * 50 +
+                extraBed * 100
+              ).toFixed(2)}
+            </span>
           </p>
         </div>
         <div className='total-form-body-submit'>
