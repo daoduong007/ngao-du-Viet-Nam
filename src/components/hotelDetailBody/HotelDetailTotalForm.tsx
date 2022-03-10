@@ -6,43 +6,21 @@ import { IconDepatureTime, IconGuest } from '@components';
 
 export const HotelDetailTotalForm = () => {
   const { RangePicker } = DatePicker;
-  const [standardRoom, setStandardRoom] = useState(1);
+  const [standardRoom, setStandardRoom] = useState(0);
   const [familySuite, setFamilySuite] = useState(0);
-  const [breackfast, setBreackfast] = useState(1);
+  const [breackfast, setBreackfast] = useState(0);
   const [extraBed, setExtraBed] = useState(0);
 
-  const handleStandardRoomIncrease = () => {
-    setStandardRoom((prev) => prev + 1);
+  const handleIncrease = (setCount: any) => {
+    setCount((prev) => prev + 1);
   };
-  const handleStandardRoomDecrease = () => {
-    if (standardRoom >= 1) {
-      setStandardRoom((prev) => prev - 1);
+
+  const handleDecrease = (count: number, setCount: any) => {
+    if (count >= 1) {
+      setCount((prev) => prev - 1);
     }
   };
-  const handlefamilySuiteIncrease = () => {
-    setFamilySuite((prev) => prev + 1);
-  };
-  const handlefamilySuiteDecrease = () => {
-    if (familySuite >= 1) {
-      setFamilySuite((prev) => prev - 1);
-    }
-  };
-  const handleBreackfastIncrease = () => {
-    setBreackfast((prev) => prev + 1);
-  };
-  const handleBreackfastDecrease = () => {
-    if (breackfast >= 1) {
-      setBreackfast((prev) => prev - 1);
-    }
-  };
-  const handleExtraBedIncrease = () => {
-    setExtraBed((prev) => prev + 1);
-  };
-  const handleExtraBedDecrease = () => {
-    if (extraBed >= 1) {
-      setExtraBed((prev) => prev - 1);
-    }
-  };
+
   return (
     <StyledHotelDetailTotalForm>
       <div className='hotel-detail-total-form-header'>
@@ -78,15 +56,22 @@ export const HotelDetailTotalForm = () => {
             </div>
 
             <div className='number-of-room'>
-              <StyledMinusPlus onClick={handleStandardRoomDecrease}>
+              <StyledMinusPlus
+                onClick={() =>
+                  handleDecrease(standardRoom, setStandardRoom)
+                }
+              >
                 -
               </StyledMinusPlus>
               <p>{standardRoom}</p>
-              <StyledMinusPlus onClick={handleStandardRoomIncrease}>
+              <StyledMinusPlus
+                onClick={() => handleIncrease(setStandardRoom)}
+              >
                 +
               </StyledMinusPlus>
             </div>
-            <p>$240.00</p>
+
+            <p>${(standardRoom * 120).toFixed(2)}</p>
           </div>
           <div className='total-form-body-pick-room-item'>
             <div className='type-of-room'>
@@ -94,16 +79,22 @@ export const HotelDetailTotalForm = () => {
             </div>
 
             <div className='number-of-room'>
-              <StyledMinusPlus onClick={handlefamilySuiteDecrease}>
+              <StyledMinusPlus
+                onClick={() =>
+                  handleDecrease(familySuite, setFamilySuite)
+                }
+              >
                 -
               </StyledMinusPlus>
               <p>{familySuite}</p>
-              <StyledMinusPlus onClick={handlefamilySuiteIncrease}>
+              <StyledMinusPlus
+                onClick={() => handleIncrease(setFamilySuite)}
+              >
                 +
               </StyledMinusPlus>
             </div>
 
-            <p>$240.00</p>
+            <p>${(familySuite * 240).toFixed(2)}</p>
           </div>
         </div>
         <hr />
@@ -120,16 +111,22 @@ export const HotelDetailTotalForm = () => {
               <p>Breakfast</p>
             </div>
             <div className='number-of-room'>
-              <StyledMinusPlus onClick={handleBreackfastDecrease}>
+              <StyledMinusPlus
+                onClick={() =>
+                  handleDecrease(breackfast, setBreackfast)
+                }
+              >
                 -
               </StyledMinusPlus>
               <p>{breackfast}</p>
-              <StyledMinusPlus onClick={handleBreackfastIncrease}>
+              <StyledMinusPlus
+                onClick={() => handleIncrease(setBreackfast)}
+              >
                 +
               </StyledMinusPlus>
             </div>
 
-            <p>$240.00</p>
+            <p>${(breackfast * 50).toFixed(2)}</p>
           </div>
           <div className='total-form-body-pick-room-item'>
             <div className='type-of-room'>
@@ -139,16 +136,20 @@ export const HotelDetailTotalForm = () => {
               <p>Extra Bed</p>
             </div>
             <div className='number-of-room'>
-              <StyledMinusPlus onClick={handleExtraBedDecrease}>
+              <StyledMinusPlus
+                onClick={() => handleDecrease(extraBed, setExtraBed)}
+              >
                 -
               </StyledMinusPlus>
               <p>{extraBed}</p>
-              <StyledMinusPlus onClick={handleExtraBedIncrease}>
+              <StyledMinusPlus
+                onClick={() => handleIncrease(setExtraBed)}
+              >
                 +
               </StyledMinusPlus>
             </div>
 
-            <p>$240.00</p>
+            <p>${(extraBed * 100).toFixed(2)}</p>
           </div>
         </div>
         <hr />
