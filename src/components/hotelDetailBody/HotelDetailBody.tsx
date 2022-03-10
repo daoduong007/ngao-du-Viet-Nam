@@ -16,6 +16,7 @@ import {
   HotelItem,
   HotelDetailBodyDescription,
   HotelDetailBodyReview,
+  HotelDetailTotalForm,
 } from '@components';
 
 interface IHotelDetailBody {
@@ -94,7 +95,7 @@ export const HotelDetailBody = (props: IHotelDetailBody) => {
           </div>
         </div>
         <div className='hotel-detail-body-total-form'>
-          <h1></h1>
+          <HotelDetailTotalForm />
         </div>
       </div>
 

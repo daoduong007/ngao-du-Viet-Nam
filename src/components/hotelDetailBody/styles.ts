@@ -42,6 +42,7 @@ export const StyledHotelDetailBodyContainer = styled.div`
 
   .hotel-detail-body-total-form {
     width: 380px; 
+    margin-top: 300px;
   } 
   .hotel-detail-body-content {
     text-align: left;
