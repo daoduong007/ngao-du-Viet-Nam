@@ -10,6 +10,9 @@ export const HotelDetailTotalForm = () => {
   const [familySuite, setFamilySuite] = useState(0);
   const [breackfast, setBreackfast] = useState(0);
   const [extraBed, setExtraBed] = useState(0);
+  const [isBreackFastChecked, setIsBreackFastChecked] =
+    useState(false);
+  const [isExtraBedChecked, setIsExtraBedChecked] = useState(false);
 
   const handleIncrease = (setCount: any) => {
     setCount((prev) => prev + 1);
@@ -21,6 +24,9 @@ export const HotelDetailTotalForm = () => {
     }
   };
 
+  const handleCheck = (setChecked: any) => {
+    setChecked((prev) => !prev);
+  };
   return (
     <StyledHotelDetailTotalForm>
       <div className='hotel-detail-total-form-header'>
@@ -105,7 +111,9 @@ export const HotelDetailTotalForm = () => {
           <div className='total-form-body-pick-room-item'>
             <div className='type-of-room'>
               <div className='type-of-room-checkbox'>
-                <Checkbox />
+                <Checkbox
+                  onChange={() => handleCheck(setIsBreackFastChecked)}
+                />
               </div>
 
               <p>Breakfast</p>
@@ -131,7 +139,9 @@ export const HotelDetailTotalForm = () => {
           <div className='total-form-body-pick-room-item'>
             <div className='type-of-room'>
               <div className='type-of-room-checkbox'>
-                <Checkbox />
+                <Checkbox
+                  onChange={() => handleCheck(setIsExtraBedChecked)}
+                />
               </div>
               <p>Extra Bed</p>
             </div>
@@ -158,12 +168,26 @@ export const HotelDetailTotalForm = () => {
           <p>
             <span>
               $
-              {(
-                standardRoom * 120 +
-                familySuite * 240 +
-                breackfast * 50 +
-                extraBed * 100
-              ).toFixed(2)}
+              {isBreackFastChecked && isExtraBedChecked
+                ? (
+                    standardRoom * 120 +
+                    familySuite * 240 +
+                    breackfast * 50 +
+                    extraBed * 100
+                  ).toFixed(2)
+                : isBreackFastChecked
+                ? (
+                    standardRoom * 120 +
+                    familySuite * 240 +
+                    breackfast * 50
+                  ).toFixed(2)
+                : isExtraBedChecked
+                ? (
+                    standardRoom * 120 +
+                    familySuite * 240 +
+                    extraBed * 100
+                  ).toFixed(2)
+                : (standardRoom * 120 + familySuite * 240).toFixed(2)}
             </span>
           </p>
         </div>
