@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Button, DatePicker, Input, Checkbox } from 'antd';
 
@@ -13,6 +13,7 @@ export const HotelDetailTotalForm = () => {
   const [isBreackFastChecked, setIsBreackFastChecked] =
     useState(false);
   const [isExtraBedChecked, setIsExtraBedChecked] = useState(false);
+  const [totalMoney, setTotalMoney] = useState(0);
 
   const handleIncrease = (setCount: any) => {
     setCount((prev) => prev + 1);
@@ -27,6 +28,35 @@ export const HotelDetailTotalForm = () => {
   const handleCheck = (setChecked: any) => {
     setChecked((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (isBreackFastChecked && isExtraBedChecked) {
+      setTotalMoney(
+        standardRoom * 120 +
+          familySuite * 240 +
+          breackfast * 50 +
+          extraBed * 100,
+      );
+    } else if (isBreackFastChecked) {
+      setTotalMoney(
+        standardRoom * 120 + familySuite * 240 + breackfast * 50,
+      );
+    } else if (isExtraBedChecked) {
+      setTotalMoney(
+        standardRoom * 120 + familySuite * 240 + extraBed * 100,
+      );
+    } else {
+      setTotalMoney(standardRoom * 120 + familySuite * 240);
+    }
+  }, [
+    isBreackFastChecked,
+    isExtraBedChecked,
+    breackfast,
+    extraBed,
+    standardRoom,
+    familySuite,
+  ]);
+
   return (
     <StyledHotelDetailTotalForm>
       <div className='hotel-detail-total-form-header'>
@@ -166,29 +196,7 @@ export const HotelDetailTotalForm = () => {
         <div className='total-form-body-total-money'>
           <p>Total</p>
           <p>
-            <span>
-              $
-              {isBreackFastChecked && isExtraBedChecked
-                ? (
-                    standardRoom * 120 +
-                    familySuite * 240 +
-                    breackfast * 50 +
-                    extraBed * 100
-                  ).toFixed(2)
-                : isBreackFastChecked
-                ? (
-                    standardRoom * 120 +
-                    familySuite * 240 +
-                    breackfast * 50
-                  ).toFixed(2)
-                : isExtraBedChecked
-                ? (
-                    standardRoom * 120 +
-                    familySuite * 240 +
-                    extraBed * 100
-                  ).toFixed(2)
-                : (standardRoom * 120 + familySuite * 240).toFixed(2)}
-            </span>
+            <span>$ {totalMoney.toFixed(2)}</span>
           </p>
         </div>
         <div className='total-form-body-submit'>
