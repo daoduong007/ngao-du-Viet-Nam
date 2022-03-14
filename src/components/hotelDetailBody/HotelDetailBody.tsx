@@ -17,6 +17,7 @@ import {
   HotelDetailBodyDescription,
   HotelDetailBodyReview,
   HotelDetailTotalForm,
+  HotelDetailBodySelectRoom,
 } from '@components';
 
 interface IHotelDetailBody {
@@ -81,7 +82,7 @@ export const HotelDetailBody = (props: IHotelDetailBody) => {
           <div className='hotel-detail-body-tabs-content'>
             <Tabs defaultActiveKey='2'>
               <TabPane tab='Select room' key='1'>
-                <h2>tab1</h2>
+                <HotelDetailBodySelectRoom />
               </TabPane>
               <TabPane tab='Description' key='2'>
                 <h2>
