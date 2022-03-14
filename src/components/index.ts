@@ -14,4 +14,5 @@ export * from "./checkOut";
 export * from "./listHotelHeader";
 export * from "./listHotelBody";
 export * from "./hotelDetailHeader";
-export * from "./hotelDetailBody"
+export * from "./hotelDetailBody";
+export * from "./hotelCheckOut"
