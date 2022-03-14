@@ -8,7 +8,7 @@ import {
   IconGuest,
 } from '@components';
 
-export const CheckOutTotalForm = () => {
+export const TourCheckOutTotalForm = () => {
   return (
     <StyledCheckOutTalFormContainer>
       <div className='check-out-total-form'>
