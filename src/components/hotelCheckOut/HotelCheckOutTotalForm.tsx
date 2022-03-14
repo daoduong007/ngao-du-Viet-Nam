@@ -73,6 +73,7 @@ export const HotelCheckOutTotalForm = () => {
 };
 
 const StyledTotalForm = styled.div`
+  margin-top: 158px;
   width: 380px;
   height: 610px;
   background: #f4f4f4;
