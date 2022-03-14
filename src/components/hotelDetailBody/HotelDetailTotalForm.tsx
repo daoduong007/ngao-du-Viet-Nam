@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Button, DatePicker, Input, Checkbox } from 'antd';
+import { generatePath, useHistory } from 'react-router-dom';
 
 import { IconDepatureTime, IconGuest } from '@components';
+import { AppRoutes } from '@enums';
 
 export const HotelDetailTotalForm = () => {
   const { RangePicker } = DatePicker;
@@ -27,6 +29,12 @@ export const HotelDetailTotalForm = () => {
 
   const handleCheck = (setChecked: any) => {
     setChecked((prev) => !prev);
+  };
+
+  const history = useHistory();
+
+  const handleBooking = () => {
+    history.push(generatePath(AppRoutes.HOTEL_CHECKOUT));
   };
 
   useEffect(() => {
@@ -200,7 +208,7 @@ export const HotelDetailTotalForm = () => {
           </p>
         </div>
         <div className='total-form-body-submit'>
-          <Button>Book now</Button>
+          <Button onClick={handleBooking}>Book now</Button>
         </div>
       </div>
     </StyledHotelDetailTotalForm>

@@ -7,4 +7,5 @@ export enum AppRoutes {
   CHECK_OUT = '/checkout',
   LIST_HOTEL_SCREEN = '/hotelS',
   HOTEL_DETAIL = `/hotel/:id`,
+  HOTEL_CHECKOUT = '/hotel_checkout'
 }

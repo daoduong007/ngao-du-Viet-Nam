@@ -4,4 +4,5 @@ export * from './ListTourScreen';
 export * from './TourDetailScreen';
 export * from './CheckOutScreen';
 export * from './ListHotelScreen';
-export * from './HotelDetailScreen'
+export * from './HotelDetailScreen';
+export * from './HotelCheckOutScreen'
