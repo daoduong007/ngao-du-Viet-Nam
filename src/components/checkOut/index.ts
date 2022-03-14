@@ -1,4 +1,4 @@
 export * from './CheckOut';
-export * from './CheckOutTotalForm';
+export * from './TourCheckOutTotalForm';
 export * from './FormikItem';
 export * from './styles'

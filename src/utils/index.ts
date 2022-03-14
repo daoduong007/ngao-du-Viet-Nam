@@ -1,14 +1,10 @@
 import * as Yup from 'yup';
-export   const validationSchema = Yup.object({
-  firstName: Yup.string().required('this is a required field'),
-  lastName: Yup.string().required(),
-  email: Yup.string().email('email is not valid').required('this is a required field'),
-  phoneNumber: Yup.string().required('this is a required field'),
-  address: Yup.string().required(),
-  city: Yup.string().required(),
-  province: Yup.string().required(),
-  zipCode: Yup.string().required(),
-  country: Yup.string().required(),
-  specialRequiment: Yup.string().required(),
-  paymentMethod: Yup.string().required(),
+
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
+export   const validationSchema = Yup.object().shape({
+  firstName: Yup.string().required('Fist Name is a required field'),
+  lastName: Yup.string().required('Last Name is a required field'),
+  email: Yup.string().email('email is not valid').required('Email is a required field'),
+  phoneNumber: Yup.string().matches(phoneRegExp,'Phone Number is not valid').required('Phone number is a required field'),
 });

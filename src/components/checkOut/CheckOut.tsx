@@ -2,17 +2,21 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import {
-  CheckOutTotalForm,
+  TourCheckOutTotalForm,
   DataCheckoutTravelerInfo,
   DataCheckoutTravelerAddress,
   DataCheckoutTravelerMoreInfo,
   StyledCheckOutContainer,
   FormikItem,
+  HotelCheckOutTotalForm,
 } from '@components';
 import { ICheckOutFormValues } from '@interfaces';
 import { validationSchema } from '@utils';
-
-export const CheckOut = () => {
+interface INameScreen {
+  screen: string;
+}
+export const CheckOut = (props: INameScreen) => {
+  const { screen } = props;
   const initialValues: ICheckOutFormValues = {
     firstName: '',
     lastName: '',
@@ -28,7 +32,7 @@ export const CheckOut = () => {
   };
 
   const handleSubmit = (values) => {
-    console.log(JSON.stringify(values, null, 2));
+    alert(JSON.stringify(values, null, 2));
   };
   const renderError = (message) => (
     <p className='help is-danger'>{message}</p>
@@ -58,8 +62,9 @@ export const CheckOut = () => {
             <Formik
               validationSchema={validationSchema}
               initialValues={initialValues}
-              onSubmit={(values) => {
+              onSubmit={(values, { resetForm }) => {
                 handleSubmit(values);
+                resetForm();
               }}
             >
               <Form>
@@ -75,6 +80,7 @@ export const CheckOut = () => {
                         placeholder={item.placeholder}
                         title={item.title}
                       />
+
                       <ErrorMessage
                         name={item.name}
                         render={renderError}
@@ -136,7 +142,7 @@ export const CheckOut = () => {
                   <div className='traveler-details-formik-payment-item'>
                     <label>
                       <Field
-                        type='checkbox'
+                        type='radio'
                         name='paymentMethod'
                         value='Credit Card'
                       />
@@ -147,7 +153,7 @@ export const CheckOut = () => {
                   <div className='traveler-details-formik-payment-item'>
                     <label>
                       <Field
-                        type='checkbox'
+                        type='radio'
                         name='paymentMethod'
                         value='Paypal'
                       />
@@ -175,7 +181,11 @@ export const CheckOut = () => {
           </div>
         </div>
       </div>
-      <CheckOutTotalForm />
+      {screen === 'tour' ? (
+        <TourCheckOutTotalForm />
+      ) : (
+        <HotelCheckOutTotalForm />
+      )}
     </StyledCheckOutContainer>
   );
 };

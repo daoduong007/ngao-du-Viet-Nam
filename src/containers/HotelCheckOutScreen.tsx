@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { HotelCheckOut } from '@components';
+import { CheckOut } from '@components';
 
 export const HotelCheckOutScreen = () => {
   return (
     <>
-      <HotelCheckOut />
+      <CheckOut screen='hotel' />
     </>
   );
 };

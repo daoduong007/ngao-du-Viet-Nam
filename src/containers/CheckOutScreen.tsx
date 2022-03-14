@@ -5,7 +5,7 @@ import { CheckOut } from '@components';
 export const CheckOutScreen = () => {
   return (
     <>
-      <CheckOut />
+      <CheckOut screen='tour' />
     </>
   );
 };
