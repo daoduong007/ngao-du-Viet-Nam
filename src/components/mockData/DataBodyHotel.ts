@@ -263,3 +263,76 @@ export const DataHotelDetailReviews = [
     content: 'The trip is long but the vans are comfortable and have wi-fi. The driver very friendly as well as Ahmed our guide to the dromedaries. The camp was beautiful, comfortable beds, clean bathroom and delicious food! '
   },
  ]
+
+export const  DataHotelSelectRoom = [
+   {
+    id: 1,
+    imgUrl: '/assets/room1.png',
+    name: 'Family Suite',
+    acreage: '90 m2',
+    bed: '2 Queen Bed',
+    guest: 4,
+    price: 240,
+    outOfRoom: false,
+   },
+   {
+     id:2,
+    imgUrl: '/assets/room2.png',
+    name: 'Family Suite',
+    acreage: '90 m2',
+    bed: '2 Queen Bed',
+    guest: 4,
+    price: 240,
+    outOfRoom: false
+   },
+   {
+     id: 3,
+    imgUrl: '/assets/room3.png',
+    name: 'Standard room',
+    acreage: '70 m2',
+    bed: '2 Queen Bed',
+    guest: 4,
+    price: 120,
+    outOfRoom: false
+   },
+   {
+     id:4,
+    imgUrl: '/assets/room4.png',
+    name:'Standard room',
+    acreage: '70 m2',
+    bed: '2 Queen Bed',
+    guest: 4,
+    price: 90,
+    outOfRoom: true
+   },
+   {
+     id:5,
+    imgUrl: '/assets/room5.png',
+    name: 'Standard room',   
+    acreage: '70 m2',
+    bed: '2 Queen Bed',
+    guest: 4,
+    price: 90,
+    outOfRoom: false
+   },
+]
+
+export const DataHotelRoomFacilities = [
+'  Air conditioning',
+'Private Bathroom',
+'Flat-screen TV',
+'Free WiFi',
+'Free toiletries',
+'Shower',
+'Safe',
+'Toilet',
+'Towels',
+'Telephone',
+'Ironing facilities',
+'Satellite channels',
+'Tea/Coffee make',
+'Hairdryer',
+'Electric kettle',
+'Wake-up service',
+'Wardrobe or closet',
+]

@@ -57,3 +57,4 @@ export interface IHotelDetail {
   review:number;
   price: string;
 }
+
