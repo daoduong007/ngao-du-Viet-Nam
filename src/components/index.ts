@@ -18,4 +18,6 @@ export * from "./hotelDetailBody";
 export * from "./hotelCheckOut";
 export * from './privacyPolicyBody';
 export * from "./contactUsBody";
-export * from "./contactUsHeader"
+export * from "./contactUsHeader";
+export * from "./thanksBody";
+

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useHistory } from 'react-router-dom';
 
 import {
   TourCheckOutTotalForm,
@@ -12,11 +13,13 @@ import {
 } from '@components';
 import { ICheckOutFormValues } from '@interfaces';
 import { validationSchema } from '@utils';
+import { AppRoutes } from '@enums';
 interface INameScreen {
   screen: string;
 }
 export const CheckOut = (props: INameScreen) => {
   const { screen } = props;
+  const history = useHistory();
   const initialValues: ICheckOutFormValues = {
     firstName: '',
     lastName: '',
@@ -33,7 +36,9 @@ export const CheckOut = (props: INameScreen) => {
 
   const handleSubmit = (values) => {
     alert(JSON.stringify(values, null, 2));
+    history.push(AppRoutes.THANKS);
   };
+
   const renderError = (message) => (
     <p className='help is-danger'>{message}</p>
   );
