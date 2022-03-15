@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { StyledFooterDirectional } from '@components';
 
 const footerDirectionalItems = [
@@ -12,9 +14,9 @@ export const FooterDirectional = () => {
   return (
     <StyledFooterDirectional>
       {footerDirectionalItems.map((item, index) => (
-        <p className='directionalItem' key={index}>
-          {item}
-        </p>
+        <Link key={index} to={`/${item.toLowerCase()}`}>
+          <p className='directionalItem'>{item}</p>
+        </Link>
       ))}
     </StyledFooterDirectional>
   );

@@ -16,4 +16,6 @@ export * from "./listHotelBody";
 export * from "./hotelDetailHeader";
 export * from "./hotelDetailBody";
 export * from "./hotelCheckOut";
-export * from './privacyPolicyBody'
+export * from './privacyPolicyBody';
+export * from "./contactUsBody";
+export * from "./contactUsHeader"

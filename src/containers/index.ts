@@ -6,4 +6,5 @@ export * from './CheckOutScreen';
 export * from './ListHotelScreen';
 export * from './HotelDetailScreen';
 export * from './HotelCheckOutScreen';
-export * from './PrivacyPolicyScreen'
+export * from './PrivacyPolicyScreen';
+export * from './ContactUsScreen'
