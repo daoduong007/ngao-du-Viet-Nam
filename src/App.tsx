@@ -11,6 +11,7 @@ import {
   ListHotelScreen,
   HotelDetailScreen,
   HotelCheckOutScreen,
+  PrivacyPolicyScreen,
 } from '@containers';
 import { AppRoutes } from '@enums';
 
@@ -44,6 +45,9 @@ function App() {
         </Route>
         <Route path={AppRoutes.HOTEL_CHECKOUT}>
           <HotelCheckOutScreen />
+        </Route>
+        <Route path={AppRoutes.PRIVACY_POLICY}>
+          <PrivacyPolicyScreen />
         </Route>
       </Switch>
     </div>

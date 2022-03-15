@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Button, DatePicker, Input, Checkbox } from 'antd';
-import { generatePath, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { IconDepatureTime, IconGuest } from '@components';
 import { AppRoutes } from '@enums';
@@ -34,7 +34,7 @@ export const HotelDetailTotalForm = () => {
   const history = useHistory();
 
   const handleBooking = () => {
-    history.push(generatePath(AppRoutes.HOTEL_CHECKOUT));
+    history.push(AppRoutes.HOTEL_CHECKOUT);
   };
 
   useEffect(() => {

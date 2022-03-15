@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
+import { generatePath, useHistory } from 'react-router-dom';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -13,7 +14,7 @@ import {
   BodyTourItemData2,
   BodyButton,
 } from '@components';
-import { generatePath, useHistory } from 'react-router-dom';
+
 import { AppRoutes } from '@enums';
 
 export const BodyExperienceCultural = () => {
@@ -31,7 +32,7 @@ export const BodyExperienceCultural = () => {
   };
 
   const handleClickViewAll = () => {
-    history.push(generatePath(AppRoutes.LIST_TOUR_SCREEN));
+    history.push(AppRoutes.LIST_TOUR_SCREEN);
   };
   return (
     <StyledBodyTourContainer>

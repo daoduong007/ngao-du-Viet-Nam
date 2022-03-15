@@ -7,5 +7,6 @@ export enum AppRoutes {
   CHECK_OUT = '/checkout',
   LIST_HOTEL_SCREEN = '/hotelS',
   HOTEL_DETAIL = `/hotel/:id`,
-  HOTEL_CHECKOUT = '/hotel_checkout'
+  HOTEL_CHECKOUT = '/hotel_checkout',
+  PRIVACY_POLICY = '/privacy_policy',
 }
