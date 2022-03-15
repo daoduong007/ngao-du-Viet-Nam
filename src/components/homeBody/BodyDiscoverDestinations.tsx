@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
-import { generatePath, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -23,7 +23,7 @@ export const BodyDiscoverDestinations = () => {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push(generatePath(AppRoutes.LIST_TOUR_SCREEN));
+    history.push(AppRoutes.LIST_TOUR_SCREEN);
   };
   return (
     <StyledBodyTourContainer>
