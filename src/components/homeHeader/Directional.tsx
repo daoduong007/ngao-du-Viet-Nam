@@ -15,7 +15,7 @@ export const Directional = () => {
   return (
     <StyledDirectional>
       {directionalItems.map((item, index) => (
-        <Link key={index} to={`/${item}`}>
+        <Link key={index} to={`/${item.toLowerCase()}`}>
           <StyledText className='directionalItem' color={'#FFFFFF'}>
             {item}
           </StyledText>

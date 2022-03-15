@@ -8,3 +8,8 @@ export   const validationSchema = Yup.object().shape({
   email: Yup.string().email('email is not valid').required('Email is a required field'),
   phoneNumber: Yup.string().matches(phoneRegExp,'Phone Number is not valid').required('Phone number is a required field'),
 });
+
+export const validationSchemaContactUs = Yup.object().shape({
+  yourEmail: Yup.string().email('Email is not valid'),
+  yourPhone: Yup.string().matches(phoneRegExp,'Your phone is not valid'),
+})

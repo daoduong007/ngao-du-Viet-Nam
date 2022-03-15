@@ -13,7 +13,7 @@ export const AppBarDirectional = () => {
   return (
     <div className='app-bar-directional'>
       {directionalItems.map((item, index) => (
-        <Link key={index} to={`/${item}`}>
+        <Link key={index} to={`/${item.toLowerCase()}`}>
           <p className='directionalItem'>{item}</p>
         </Link>
       ))}
