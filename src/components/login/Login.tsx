@@ -9,8 +9,12 @@ import { AppRoutes } from '@enums';
 
 export const Login = () => {
   const history = useHistory();
+
   const handleSignUp = () => {
     history.push(AppRoutes.SIGN_UP);
+  };
+  const handleForgotPassword = () => {
+    history.push(AppRoutes.FORGOT_PASSWORD);
   };
   return (
     <StyledLogin>
@@ -29,7 +33,7 @@ export const Login = () => {
         />
       </div>
       <div className='forgot-password'>
-        <p>Forgot password?</p>
+        <p onClick={handleForgotPassword}>Forgot password?</p>
       </div>
 
       <div className='sign-in-button'>

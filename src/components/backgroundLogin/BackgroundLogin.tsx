@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Login, SignUp } from '@components';
+import { Login, SignUp, ForgotPassword } from '@components';
 
 interface IScreenName {
   screen: string;
@@ -17,9 +17,10 @@ export const BackgroundLogin = (props: IScreenName) => {
           <Login />
         ) : screen === 'sign_up' ? (
           <SignUp />
+        ) : screen == 'forgot_password' ? (
+          <ForgotPassword />
         ) : null}
       </div>
-
       <div className='banner-image'></div>
     </StyledBackgroundLogin>
   );
@@ -35,7 +36,7 @@ const StyledBackgroundLogin = styled.div`
     display: flex;
     align-items: center;
     width: 45%;
-    padding: 0 145px;
+    padding: 0 140px;
   }
 
   .banner-image {
