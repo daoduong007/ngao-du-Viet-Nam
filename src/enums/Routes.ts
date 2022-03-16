@@ -11,5 +11,6 @@ export enum AppRoutes {
   PRIVACY_POLICY = '/privacy_policy',
   CONTACT_US = '/contact',
   THANKS = '/thanks',
-  LOGIN = '/login'
+  LOGIN = '/login',
+  SIGN_UP = '/sign_up',
 }

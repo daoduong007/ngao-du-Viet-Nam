@@ -21,4 +21,5 @@ export * from "./contactUsBody";
 export * from "./contactUsHeader";
 export * from "./thanksBody";
 export * from "./backgroundLogin";
-export * from "./login"
+export * from "./login";
+export * from "./signUp"
