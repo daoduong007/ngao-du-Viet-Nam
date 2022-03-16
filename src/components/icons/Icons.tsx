@@ -725,3 +725,47 @@ export const IconEmail = (props: IIconProps) => {
     </svg>
   );
 };
+
+export const IconFacebookLogin = () => {
+  return (
+    <svg
+      width='24'
+      height='24'
+      viewBox='0 0 24 24'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        d='M24 12C24 5.37075 18.6248 0 12 0C5.37075 0 0 5.37075 0 12C0 17.988 4.38675 22.953 10.125 23.8522V15.4695H7.07775V12.0007H10.125V9.3555C10.125 6.34875 11.9138 4.68825 14.6558 4.68825C15.969 4.68825 17.3438 4.92225 17.3438 4.92225V7.875H15.828C14.34 7.875 13.875 8.80125 13.875 9.75V12H17.2028L16.668 15.4688H13.875V23.8515C19.6087 22.9522 24 17.9872 24 11.9992V12Z'
+        fill='white'
+      />
+    </svg>
+  );
+};
+
+export const IconEye = () => {
+  return (
+    <svg
+      width='24'
+      height='24'
+      viewBox='0 0 24 24'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        d='M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z'
+        stroke='#4F4F4F'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+      <path
+        d='M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z'
+        stroke='#4F4F4F'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+    </svg>
+  );
+};
