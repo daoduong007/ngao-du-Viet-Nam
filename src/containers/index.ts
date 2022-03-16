@@ -8,4 +8,5 @@ export * from './HotelDetailScreen';
 export * from './HotelCheckOutScreen';
 export * from './PrivacyPolicyScreen';
 export * from './ContactUsScreen';
-export * from './ThanksScreen'
+export * from './ThanksScreen';
+export * from './LoginScreen'

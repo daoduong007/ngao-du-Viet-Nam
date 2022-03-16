@@ -10,5 +10,6 @@ export enum AppRoutes {
   HOTEL_CHECKOUT = '/hotel_checkout',
   PRIVACY_POLICY = '/privacy_policy',
   CONTACT_US = '/contact',
-  THANKS = '/thanks'
+  THANKS = '/thanks',
+  LOGIN = '/login'
 }

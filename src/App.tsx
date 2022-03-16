@@ -14,6 +14,7 @@ import {
   PrivacyPolicyScreen,
   ContactUsScreen,
   ThanksScreen,
+  LoginScreen,
 } from '@containers';
 import { AppRoutes } from '@enums';
 
@@ -56,6 +57,9 @@ function App() {
         </Route>
         <Route path={AppRoutes.THANKS}>
           <ThanksScreen />
+        </Route>
+        <Route path={AppRoutes.LOGIN}>
+          <LoginScreen />
         </Route>
       </Switch>
     </div>
