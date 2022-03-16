@@ -9,4 +9,5 @@ export * from './HotelCheckOutScreen';
 export * from './PrivacyPolicyScreen';
 export * from './ContactUsScreen';
 export * from './ThanksScreen';
-export * from './LoginScreen'
+export * from './LoginScreen';
+export * from './SignUpScreen'

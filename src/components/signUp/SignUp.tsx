@@ -1,21 +1,25 @@
 import React from 'react';
-import { Input, Button } from 'antd';
-import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import styled from 'styled-components';
+import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { Button, Input } from 'antd';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { IconFacebookLogin } from '@components';
 import { AppRoutes } from '@enums';
 
-export const Login = () => {
+export const SignUp = () => {
   const history = useHistory();
-  const handleSignUp = () => {
-    history.push(AppRoutes.SIGN_UP);
+  const handleLogin = () => {
+    history.push(AppRoutes.LOGIN);
   };
   return (
-    <StyledLogin>
-      <h1>Sign in</h1>
+    <StyledSignUp>
+      <h1>Register</h1>
       <h2>Welcome to NgaoduVietnam</h2>
+      <div className='input name-input'>
+        <Input placeholder='First Name' />
+        <Input placeholder='Last Name' />
+      </div>
       <div className='input email-input'>
         <Input placeholder='Email Address' />
       </div>
@@ -28,12 +32,8 @@ export const Login = () => {
           }
         />
       </div>
-      <div className='forgot-password'>
-        <p>Forgot password?</p>
-      </div>
-
       <div className='sign-in-button'>
-        <Button>Sign in</Button>
+        <Button>Sign up</Button>
       </div>
       <div className='sign-in-facebook-button'>
         <Button icon={<IconFacebookLogin />}>
@@ -42,14 +42,12 @@ export const Login = () => {
       </div>
 
       <p className='sign-up'>
-        Don’t have an account?{' '}
-        <span onClick={handleSignUp}>Sign up</span>
+        Member already? <span onClick={handleLogin}>Log in</span>
       </p>
-    </StyledLogin>
+    </StyledSignUp>
   );
 };
-
-const StyledLogin = styled.div`
+const StyledSignUp = styled.div`
   width: 100%;
   text-align: left;
 
@@ -82,6 +80,14 @@ const StyledLogin = styled.div`
       height: 24px;
     }
   }
+  .name-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .ant-input {
+      width: 45%;
+    }
+  }
 
   .ant-input,
   .ant-input-affix-wrapper {
@@ -107,21 +113,6 @@ const StyledLogin = styled.div`
   .ant-input:focus,
   textarea:focus {
     box-shadow: none !important;
-  }
-
-  .forgot-password {
-    display: flex;
-    justify-content: right;
-
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 160%;
-
-    color: #636567;
-
-    p {
-      cursor: pointer;
-    }
   }
 
   .ant-btn {

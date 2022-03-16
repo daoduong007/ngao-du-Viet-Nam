@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Login } from '@components';
+import { Login, SignUp } from '@components';
 
 interface IScreenName {
   screen: string;
@@ -13,8 +13,13 @@ export const BackgroundLogin = (props: IScreenName) => {
   return (
     <StyledBackgroundLogin>
       <div className='content'>
-        {screen === 'login' ? <Login /> : null}
+        {screen === 'login' ? (
+          <Login />
+        ) : screen === 'sign_up' ? (
+          <SignUp />
+        ) : null}
       </div>
+
       <div className='banner-image'></div>
     </StyledBackgroundLogin>
   );
@@ -38,5 +43,21 @@ const StyledBackgroundLogin = styled.div`
     background-image: url('/assets/bannerLogin.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
+  }
+
+  @media (max-width: 1200px) {
+    .content {
+      width: 100%;
+      padding: 0 50px;
+    }
+  }
+  @media (max-width: 768px) {
+    .banner-image {
+      display: none;
+    }
+    .content {
+      width: 100vw;
+      padding: 0 10px;
+    }
   }
 `;
