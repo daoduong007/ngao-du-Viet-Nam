@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input, Button } from 'antd';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
@@ -7,7 +7,10 @@ import { useHistory } from 'react-router-dom';
 import { IconFacebookLogin } from '@components';
 import { AppRoutes } from '@enums';
 
-export const Login = () => {
+export const ChangePassword = () => {
+  const [password, setPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+
   const history = useHistory();
 
   const handleSignUp = () => {
@@ -16,17 +19,43 @@ export const Login = () => {
   const handleForgotPassword = () => {
     history.push(AppRoutes.FORGOT_PASSWORD);
   };
+  const handleChangePassword = () => {
+    if (password !== newPassword) {
+      setPassword('');
+      setNewPassword('');
+      alert('Password was successfully changed ');
+    } else {
+      alert('Old and new passwords cannot be the same ');
+    }
+  };
+  const handleInputPassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleInputNewPassword = (e) => {
+    setNewPassword(e.target.value);
+  };
   return (
     <StyledLogin>
-      <h1>Sign in</h1>
-      <h2>Welcome to NgaoduVietnam</h2>
-      <div className='input email-input'>
-        <Input placeholder='Email Address' />
-      </div>
-      <div className='input password-input'>
+      <h1>New Password</h1>
+      <h2>Create your new password</h2>
+
+      <div className='input'>
         <Input.Password
           placeholder='Password'
           type='password'
+          value={password}
+          onChange={handleInputPassword}
+          iconRender={(visible) =>
+            visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
+          }
+        />
+      </div>
+      <div className='input'>
+        <Input.Password
+          placeholder='Confirm password'
+          type='password'
+          value={newPassword}
+          onChange={handleInputNewPassword}
           iconRender={(visible) =>
             visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
           }
@@ -36,8 +65,10 @@ export const Login = () => {
         <p onClick={handleForgotPassword}>Forgot password?</p>
       </div>
 
-      <div className='sign-in-button'>
-        <Button>Sign in</Button>
+      <div className='change-password-button'>
+        <Button onClick={handleChangePassword}>
+          Change Password
+        </Button>
       </div>
       <div className='sign-in-facebook-button'>
         <Button icon={<IconFacebookLogin />}>
@@ -107,11 +138,6 @@ const StyledLogin = styled.div`
     box-shadow: none !important;
     border-bottom: 1px solid #c5c7c9 !important;
   }
-  //remove outline input ant design
-  .ant-input:focus,
-  textarea:focus {
-    box-shadow: none !important;
-  }
 
   .forgot-password {
     display: flex;
@@ -135,7 +161,7 @@ const StyledLogin = styled.div`
     border-radius: 2px;
   }
 
-  .sign-in-button {
+  .change-password-button {
     margin-bottom: 30px;
     .ant-btn {
       background: #ff7b42;

@@ -10,4 +10,6 @@ export * from './PrivacyPolicyScreen';
 export * from './ContactUsScreen';
 export * from './ThanksScreen';
 export * from './LoginScreen';
-export * from './SignUpScreen'
+export * from './SignUpScreen';
+export * from './ForgotPasswordScreen';
+export * from './ChangePasswordScreen'
