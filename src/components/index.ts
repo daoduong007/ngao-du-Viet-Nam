@@ -23,4 +23,5 @@ export * from "./thanksBody";
 export * from "./backgroundLogin";
 export * from "./login";
 export * from "./signUp";
-export * from "./forgotPassword"
+export * from "./forgotPassword";
+export * from "./changePassword"

@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Login, SignUp, ForgotPassword } from '@components';
+import {
+  Login,
+  SignUp,
+  ForgotPassword,
+  ChangePassword,
+} from '@components';
 
 interface IScreenName {
   screen: string;
@@ -19,6 +24,8 @@ export const BackgroundLogin = (props: IScreenName) => {
           <SignUp />
         ) : screen == 'forgot_password' ? (
           <ForgotPassword />
+        ) : screen == 'change_password' ? (
+          <ChangePassword />
         ) : null}
       </div>
       <div className='banner-image'></div>

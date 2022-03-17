@@ -17,6 +17,7 @@ import {
   LoginScreen,
   SignUpScreen,
   ForgotPasswordScreen,
+  ChangePasswordScreen,
 } from '@containers';
 import { AppRoutes } from '@enums';
 
@@ -68,6 +69,9 @@ function App() {
         </Route>
         <Route path={AppRoutes.FORGOT_PASSWORD}>
           <ForgotPasswordScreen />
+        </Route>
+        <Route path={AppRoutes.CHANGE_PASSWORD}>
+          <ChangePasswordScreen />
         </Route>
       </Switch>
     </div>
