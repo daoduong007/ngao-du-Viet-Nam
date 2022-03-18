@@ -71,6 +71,13 @@ height: 98px;
 display: flex;
 flex-direction: column;
 justify-content: center;
+
+p {
+    color: #FFFFFF;
+    font-Weight:normal;
+    font-size: 14px;
+}
+
 .footer-contact-location {
     display: flex;
     flex-direction: row;
@@ -86,13 +93,19 @@ justify-content: center;
 `
 
 export const StyledFooterLicense = styled.div`
-position: absolute;
-width:100%;
-height: 41px;
-top: 377px;
-background-color:#000000;
-height: 41px;
-display: flex;
-justify-content: center;
-align-items: center;
+  position: absolute;
+  width:100%;
+  height: 41px;
+  top: 377px;
+  background-color:#000000;
+  height: 41px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    font-Family:'Apercu Pro';
+    font-Weight:normal;
+    font-Size: 14px;
+    line-Height:24px;
+  }
 `

@@ -1,17 +1,10 @@
 import React from 'react';
-import { StyledFooterLicense, StyledText } from '@components';
+import { StyledFooterLicense } from '@components';
 
 export const FooterLicense = () => {
   return (
     <StyledFooterLicense>
-      <StyledText
-        fontFamily={'Apercu Pro'}
-        fontWeight={'normal'}
-        fontSize={'14px'}
-        lineHeight={'24px'}
-      >
-        Copyright © We.travel. All rights reserved
-      </StyledText>
+      <p>Copyright © We.travel. All rights reserved</p>
     </StyledFooterLicense>
   );
 };

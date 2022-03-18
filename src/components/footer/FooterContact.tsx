@@ -3,7 +3,6 @@ import {
   StyledFooterContact,
   IconLocation,
   IconMail,
-  StyledText,
 } from '@components';
 
 export const FooterContact = () => {
@@ -13,25 +12,15 @@ export const FooterContact = () => {
         <div className='icon-footer-contact'>
           <IconLocation color='white' />
         </div>
-        <StyledText
-          color={' #FFFFFF'}
-          fontWeight={'normal'}
-          fontSize={'14px'}
-        >
+        <pattern>
           Lilama 10 Tower, 56 To Huu, Trung Van, Nam Tu Liem, Ha Noi
-        </StyledText>
+        </pattern>
       </div>
       <div className='footer-contact-email'>
         <div className='icon-footer-contact'>
           <IconMail />
         </div>
-        <StyledText
-          color={' #FFFFFF'}
-          fontWeight={'normal'}
-          fontSize={'14px'}
-        >
-          hello@adamotravel.com
-        </StyledText>
+        <p>hello@adamotravel.com</p>
       </div>
     </StyledFooterContact>
   );

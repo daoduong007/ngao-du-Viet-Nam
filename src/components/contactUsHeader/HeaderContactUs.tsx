@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { AppBarDirectional, AppBarLogo } from '@components';
+import { Appbar, DrawerHeader } from '@components';
 
 export const HeaderContactUs = () => {
+  const [drawerVisible, setDrawerVisible] = useState(false);
+
+  const showDrawer = () => {
+    setDrawerVisible(true);
+  };
+  const onClose = () => {
+    setDrawerVisible(false);
+  };
   return (
     <StyledHeaderContactUs>
-      <div className='app-bar'>
-        <AppBarLogo />
-        <AppBarDirectional />
+      <div className='header-appbar'>
+        <Appbar onClick={showDrawer} />
       </div>
       <div className='content'>
         <h1>Contact Us</h1>
       </div>
+      <DrawerHeader onClose={onClose} drawerVisible={drawerVisible} />
     </StyledHeaderContactUs>
   );
 };
@@ -20,7 +28,7 @@ export const HeaderContactUs = () => {
 const StyledHeaderContactUs = styled.div`
   width: 100%;
   height: 568px;
-  padding: 0 165px;
+
   font-family: 'DM Sans';
   font-style: normal;
 
@@ -35,33 +43,30 @@ const StyledHeaderContactUs = styled.div`
 
     color: #ffffff;
   }
-  .app-bar {
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .app-bar-directional {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 
-    .directionalItem {
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 160%;
-      /* or 22px */
-
-      color: #ffffff;
-
-      &:hover {
-        color: #ff7b42;
-      }
-    }
-  }
   .content {
+    padding: 0 165px;
     margin-top: 175px;
     text-align: left;
+  }
+  @media (min-width: 3280px) {
+    .content {
+      margin-top: 125px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 100px;
+    }
+  }
+  @media (max-width: 600px) {
+    background-size: 100% 200px;
+    .content {
+      padding: 0 10px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 35px;
+    }
   }
 `;

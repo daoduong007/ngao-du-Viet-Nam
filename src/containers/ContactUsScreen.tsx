@@ -6,8 +6,8 @@ export const ContactUsScreen = () => {
   return (
     <>
       <HeaderContactUs />
-      <BodyContactUs />
-      <Footer />
+      {/* <BodyContactUs />
+      <Footer /> */}
     </>
   );
 };

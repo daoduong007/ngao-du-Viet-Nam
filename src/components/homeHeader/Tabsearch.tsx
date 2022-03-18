@@ -18,22 +18,41 @@ export const Tabsearch = () => {
       //onChange={callback}
     >
       <TabPane tab='Tours' key='1'>
-        <TabSearchTours />
+        <TabSearchTours tabName='tab_tour' />
       </TabPane>
       <TabPane tab='Hotels' key='2'>
-        <h4>Hotels</h4>
+        <div className='tab-pane-hotels'>
+          <h1>Hotels</h1>
+        </div>
       </TabPane>
     </StyledTab>
   );
 };
 
 const StyledTab = styled(Tabs)`
+  .tab-pane-hotels {
+    width: 445px;
+    height: 500.8px;
+    padding: 32px 34px;
+
+    text-align: left;
+    h1 {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 120%;
+      /* or 29px */
+
+      /* tieu de */
+
+      color: #1c1c1e;
+    }
+  }
   .ant-tabs-tab {
     width: 100%;
     display: flex;
     justify-content: center;
     margin: 0;
-    font-family: DM Sans;
+    font-family: 'DM Sans';
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
