@@ -1,204 +1,125 @@
 import styled from 'styled-components';
 
 export const StyledHeaderContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  z-index: -20;
-`;
-export const StyledBackgroundImage = styled.img`
-  width: 100%;
+  width: 100vw;
   height: 766px;
-  position: relative;
-  z-index: -10;
-`;
-
-export const StyledAppbar = styled.div``;
-
-export const StyledLogo = styled.div`
-  position: absolute;
-  top: 20px;
-  left: 165px;
-`;
-
-export const StyledDirectional = styled.div`
-  position: absolute;
-  top: 52px;
-  right: 165px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 25rem;
-  height: 2rem;
-`;
-
-export const StyledSearch = styled.div`
-  position: absolute;
-  width: 445px;
-  height: 568px;
-  left: 830px;
-  top: 198px;
-
-  background: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.704) 1.52%,
-    rgba(255, 255, 255, 0.64) 100%
-  );
 
   display: flex;
   flex-direction: column;
-`;
+  justify-content: space-between;
 
-export const StyledSearchTabPane = styled.div`
-  height: 552px;
-`;
+  background-image: url('/assets/banner.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 766px;
 
-export const StyledSearchType = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 0 0 0 0;
-`;
-
-export const StyledSearchTours = styled.div`
-  background: #ff7b42;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
-export const StyledSearchHotels = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
-export const StyledSearchTitle = styled.div`
-  width: 381px;
-  height: 34px;
-  margin: 34px 33px 19px 31px;
-  display: flex;
-  align-items: center;
-  /* h4 {
-    font-size:24px;
-    font-weight:normal;
-    color:#1C1C1E;
-    line-height:'120%;
-  } */
-`;
-
-export const StyledSearchTourItems = styled.div`
-  backdrop-filter: none;
-`;
-
-export const StyledSearchTourItem = styled.div`
-  width: 382px;
-  height: 64px;
-  margin: 0 33px 18px 30px;
-  display: flex;
-  align-items: center;
-
-  background-color: #ffffff;
-  .tab-search-icon {
-    margin: 0 23px 0 26px;
-  }
-`;
-
-export const StyledSearchAction = styled.div`
-  width: 381px;
-  height: 64px;
-  margin: 9px 33px 34px 30px;
-
-  &:hover {
-    cursor: pointer;
-  }
-  button {
-    background-color: #ff7b42;
+  .header-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-right: 165px;
 
     width: 100%;
-    height: 100%;
+  }
+  .header-slogan-and-feature {
+    width: 100%;
+
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 0;
-    p {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .header-search {
+    display: flex;
+    justify-content: left;
+
+    width: 445px;
+    height: 100%;
+    .ant-tabs {
+      width: 100%;
+    }
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.704) 1.52%,
+      rgba(255, 255, 255, 0.64) 100%
+    );
+
+    display: flex;
+    flex-direction: column;
+    .ant-tabs {
+      height: 100%;
+    }
+    .ant-tabs-top > .ant-tabs-nav,
+    .ant-tabs-bottom > .ant-tabs-nav,
+    .ant-tabs-top > div > .ant-tabs-nav,
+    .ant-tabs-bottom > div > .ant-tabs-nav {
       margin: 0;
     }
-  }
-`;
-
-export const StyledFeature = styled.div`
-  position: absolute;
-  background-color: #ffffff;
-  width: 830px;
-  height: 99px;
-  left: 0px;
-  top: 667px;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-
-  .FeatureHeader {
-    margin: 26px 0 0 65px;
-    display: flex;
-    flex-direction: row;
-
-    svg {
-      margin-right: 8px;
-      margin-top: 4px;
+    .ant-tabs-top > .ant-tabs-nav::before,
+    .ant-tabs-bottom > .ant-tabs-nav::before,
+    .ant-tabs-top > div > .ant-tabs-nav::before,
+    .ant-tabs-bottom > div > .ant-tabs-nav::before {
+      border: 0;
     }
   }
-  .FeatureBody {
-    width: 70%;
-    margin-left: 65px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    .FeatureBodyItem {
+  @media (max-width: 3280px) {
+    background-size: 100% 100%;
+    .header-content {
+      width: 90%;
+    }
+    .header-slogan-and-feature {
       display: flex;
-      .FeatureBodyItemText {
-        margin: 6px 0 0 4px;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+      .header-slogan {
+      }
+      .header-feature {
+        display: flex;
       }
     }
   }
-`;
+  @media (max-width: 1200px) {
+    background-size: 100% 100%;
 
-export const StyledSlogan = styled.div`
-  position: absolute;
-  top: 244px;
-  left: 165px;
-  width: 445px;
-  height: 233px;
-  display: flex;
-  flex-direction: column;
-`;
+    .header-content {
+      width: 100%;
+      padding-right: 20px;
+    }
+    .header-slogan-and-feature {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-export const StyledText = styled.p<{
-  fontSize?: string;
-  fontFamily?: string;
-  fontWeight?: string;
-  fontStyle?: string;
-  lineHeight?: string;
-  color?: string;
-  textAlign?: string;
-}>`
-  text-align: ${(props) =>
-    props.textAlign ? props.textAlign : 'left'};
+      .header-feature {
+      }
+    }
+    .header-search {
+      display: flex;
+    }
+  }
 
-  font-size: ${(props) => (props.fontSize ? props.fontSize : '15px')};
-  font-family: ${(props) =>
-    props.fontFamily ? props.fontFamily : 'DM Sans'};
-  font-style: ${(props) =>
-    props.fontStyle ? props.fontStyle : 'normal'};
-  font-weight: ${(props) =>
-    props.fontWeight ? props.fontWeight : 'bold'};
-
-  line-height: ${(props) =>
-    props.lineHeight ? props.lineHeight : '160%'};
-
-  color: ${(props) => (props.color ? props.color : '#fff2cf')};
-
-  &:hover {
-    color: #ff7b42;
-    cursor: pointer;
+  @media (max-width: 600px) {
+    background-size: 100% 200px;
+    .header-content {
+      margin-top: 115px;
+      width: 100%;
+      padding: 0;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+    .header-slogan-and-feature {
+      .header-feature {
+        display: flex;
+        align-items: center;
+      }
+    }
+    .header-search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ccc;
+      width: 90%;
+    }
   }
 `;

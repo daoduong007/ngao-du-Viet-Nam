@@ -3,41 +3,16 @@ import styled from 'styled-components'
 export const StyledHotelsHeaderContainer = styled.div`
   width: 100%;
   height: 666px;
-  position: relative;
+
   background-image: url('/assets/BannerHotels.png');
   background-repeat: no-repeat;
   background-size: 100% 666px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  .header-app-bar {
-    width: 100%;
-    padding: 0 165px;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    p {
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 160%;
-      /* or 22px */
-      color: #FFFFFF;
-      &:hover {
-        cursor: pointer;
-        color: #FF7B42;
-      }
-    }
-    .app-bar-directional {
-      width: 50%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
+
 
   .header-content {
     display: flex;
@@ -48,7 +23,7 @@ export const StyledHotelsHeaderContainer = styled.div`
       flex-direction: column;
       justify-content: space-between;
     }
-    .header-slogan-container {
+    .header-slogan {
       padding-left: 165px;
       p {
         text-align: left;
@@ -66,7 +41,7 @@ export const StyledHotelsHeaderContainer = styled.div`
         }
       }
     }
-    .header-feature-container {
+    .header-feature {
       width: 100%;
       height: 99px;
       background-color: #FFFFFF;
@@ -100,4 +75,40 @@ export const StyledHotelsHeaderContainer = styled.div`
         }
     }
   }
+  @media (max-width: 1200px){
+    .header-content {
+      width: 100%;
+      padding-right: 20px;
+    }
+    .header-feature {
+      display: none;
+    }
+  }
+  @media (max-width: 600px) {
+    height: 628px;
+    background-size: 100% 200px;
+    
+    .header-slogan-and-feature {
+      display: none;  
+    }
+    .header-content {
+      width: 100%;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .header-content >.header-search {
+      margin: 0; 
+      width: 90%;
+      background-color: #ccc;
+    }
+  }
+  @media (max-width:419px){
+    height: 657px;
+  }
+
 `

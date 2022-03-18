@@ -1,31 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   StyledHotelsHeaderContainer,
-  AppBarDirectional,
-  AppBarLogo,
-  HeaderSearch,
-  HeaderSlogan,
+  TabSearchTours,
+  Slogan,
+  Appbar,
+  DrawerHeader,
 } from '@components';
 
 export const HeaderListHotel = () => {
+  const [drawerVisible, setDrawerVisible] = useState(false);
+
+  const showDrawer = () => {
+    setDrawerVisible(true);
+  };
+  const onClose = () => {
+    setDrawerVisible(false);
+  };
   return (
     <StyledHotelsHeaderContainer>
-      <div className='header-app-bar'>
-        <AppBarLogo />
-        <AppBarDirectional />
-      </div>
+      <Appbar onClick={showDrawer} />
+
       <div className='header-content'>
         <div className='header-slogan-and-feature'>
-          <div className='header-slogan-container'>
-            <HeaderSlogan />
-          </div>
-          <div className='header-feature-container'></div>
+          <div className='header-slogan'></div>
+          <Slogan
+            title='Find deals on hotels, homes, and much more...'
+            content='From cozy country homes to funky city apartments'
+          />
+
+          <div className='header-feature'></div>
         </div>
         <div className='header-search'>
-          <HeaderSearch />
+          <TabSearchTours tabName='tab_hotel' />
         </div>
       </div>
+
+      <DrawerHeader onClose={onClose} drawerVisible={drawerVisible} />
     </StyledHotelsHeaderContainer>
   );
 };
