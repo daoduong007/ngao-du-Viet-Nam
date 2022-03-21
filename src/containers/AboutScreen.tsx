@@ -6,8 +6,8 @@ export const AboutScreen = () => {
   return (
     <div>
       <HeaderAbout />
-      {/* <BodyAbout />
-      <Footer /> */}
+      <BodyAbout />
+      {/* <Footer /> */}
     </div>
   );
 };

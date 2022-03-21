@@ -73,6 +73,7 @@ export const StyledHeaderAbout = styled.div`
 }
 
 @media (max-width: 1200px){
+  height: 300px;
   background-size: 100% 300px;;
   .header-app-bar {
     padding: 10px 30px ;
@@ -81,7 +82,7 @@ export const StyledHeaderAbout = styled.div`
     }
   }
   .about-header-title { 
-    height: 20%;
+    height: 60%;
     p {
       font-size: 50px;
     }
@@ -96,13 +97,14 @@ export const StyledHeaderAbout = styled.div`
     }
   }
   .about-header-title { 
-    height: 20%;
+    height: 50%;
     p {
       font-size: 40px;
     }
   }
 }
 @media (max-width: 600px){
+  height: 200px;
   background-size: 100% 200px;
   .header-app-bar {
     padding: 10px 30px ;
@@ -111,7 +113,7 @@ export const StyledHeaderAbout = styled.div`
     }
   }
   .about-header-title { 
-    height: 10%;
+    height: 20%;
     p {
       font-size: 30px;
     }

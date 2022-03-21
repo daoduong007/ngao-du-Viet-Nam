@@ -3,65 +3,30 @@ import styled from 'styled-components';
 export const StyledBodyAboutContainer = styled.div`
   width: 100%;
   margin-top: 171px;
-  padding:0 165px 0 165px;
+  padding:0 165px;
+
+  display: flex;
+  flex-direction: column;
   p {
     text-align: left;
   }
-
-`
-export const StyledBodyAboutIntroduceContainer2 = styled.div`
-  display: flex;
-  flex-direction: row;  
-  justify-content: space-between;
-
-  .body-about-introduce {
-    width: 512px;
-    span {
-      color: #FF7B42;
-    }
+  @media (min-width: 2560px) {
+    width: 1440px;
+    margin: 0 auto;
+    margin-top: 171px;
   }
-
-  .body-about-introduce-img {
-    width: 540px;
+  @media (max-width: 1200px) {
+    margin-top: 50px;
+    padding: 0 50px;
   }
-`
-
-export const StyledBodyAboutIntroduceContainer3 = styled.div`
-  margin-top: 150px;
-  display: flex;
-  flex-direction: column;  
-  .body-about-introduce-title {
-    width: 591px; 
-    p {
-      margin-top: 60px;
-      margin-bottom:48px;
-      align-items: center;
-    }
-  }
-  .body-about-introduce-content {
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 30px;
     display: flex;
-    
-    div {
-      width: 502px;
-      &:last-child { 
-        margin-left: 69px;
-      }
-    }
+    align-items: center;
+  }
+  @media (max-width: 600px) {
+    padding: 0 20px;
   }
 `
-
-export const StyledBodyAboutIntroduceContainer4 = styled.div`
-  margin-top: 122px;
-  margin-bottom: 150px;
-  display: flex;
-  flex-direction: row;  
-  justify-content: space-between;
-
-  .body-about-introduce {
-    width: 540px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-`
-
