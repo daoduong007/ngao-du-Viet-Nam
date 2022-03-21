@@ -7,15 +7,9 @@ import {
   Slogan,
   Tabsearch,
   DrawerHeader,
-  TabSearchTours,
 } from '@components';
 
-interface IScreenName {
-  screenName: string;
-}
-
-export const HeaderHome = (props: IScreenName) => {
-  const { screenName } = props;
+export const HeaderHome = () => {
   const [drawerVisible, setDrawerVisible] = useState(false);
 
   const showDrawer = () => {
@@ -35,6 +29,7 @@ export const HeaderHome = (props: IScreenName) => {
         <div className='header-slogan-and-feature'>
           <div className='header-slogan'>
             <Slogan
+              screenName='home'
               title='Search hundreds of tours and more'
               content='Attractive tour and interesting experiences'
             />
@@ -44,11 +39,7 @@ export const HeaderHome = (props: IScreenName) => {
           </div>
         </div>
         <div className='header-search'>
-          {screenName === 'home' ? (
-            <Tabsearch />
-          ) : screenName === 'list_tour' ? (
-            <TabSearchTours tabName='tab_tour' />
-          ) : null}
+          <Tabsearch />
         </div>
       </div>
       <DrawerHeader onClose={onClose} drawerVisible={drawerVisible} />

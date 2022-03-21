@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { HeaderHome, ListTourBody, Footer } from '@components';
+import { HeaderListHotel, ListTourBody, Footer } from '@components';
 
 export const ListTourScreen = () => {
   return (
     <>
-      <HeaderHome screenName='list_tour' />
+      <HeaderListHotel
+        screenName='list_tour'
+        urlBanner='/assets/bannerListtour.png'
+      />
       {/* <ListTourBody />
       <Footer /> */}
     </>

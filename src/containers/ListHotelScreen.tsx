@@ -5,7 +5,7 @@ import { HeaderListHotel, BodyListHotel, Footer } from '@components';
 export const ListHotelScreen = () => {
   return (
     <>
-      <HeaderListHotel />
+      <HeaderListHotel screenName='list_hotel' />
       {/* <BodyListHotel />
       <Footer /> */}
     </>

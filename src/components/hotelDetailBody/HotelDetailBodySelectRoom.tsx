@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button, Modal } from 'antd';
+import clsx from 'clsx';
 
 import {
   DataHotelSelectRoom,
@@ -10,7 +11,6 @@ import {
   IconImage,
   ModalSelectRoom,
 } from '@components';
-import clsx from 'clsx';
 
 export const HotelDetailBodySelectRoom = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);

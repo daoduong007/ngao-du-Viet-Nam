@@ -99,6 +99,7 @@ export const StyledHeaderContainer = styled.div`
   }
 
   @media (max-width: 600px) {
+    height: 900px;
     background-size: 100% 200px;
     .header-content {
       margin-top: 115px;

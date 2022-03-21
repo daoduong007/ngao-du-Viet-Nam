@@ -7,7 +7,7 @@ export const AboutScreen = () => {
     <div>
       <HeaderAbout />
       <BodyAbout />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

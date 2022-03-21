@@ -58,7 +58,28 @@ const StyledHeaderContactUs = styled.div`
       font-size: 100px;
     }
   }
+  @media (max-width: 1200px) {
+    height: 300px;
+    background-size: 100% 300px;
+    .content {
+      margin-top: 55px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 50px;
+    }
+  }
+  @media (max-width: 768px) {
+    .content {
+      margin-top: 45px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 40px;
+    }
+  }
   @media (max-width: 600px) {
+    height: 200px;
     background-size: 100% 200px;
     .content {
       padding: 0 10px;
@@ -66,7 +87,7 @@ const StyledHeaderContactUs = styled.div`
       text-align: center;
     }
     h1 {
-      font-size: 35px;
+      font-size: 30px;
     }
   }
 `;

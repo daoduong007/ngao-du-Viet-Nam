@@ -1,111 +1,111 @@
 import styled from 'styled-components'
 
 export const StyledFooterContainer = styled.div`
-position: relative;
+
 width: 100%;
 height: 418px;
+padding: 0 165px;
+
 display: flex;
 flex-direction: column;
+justify-content: space-between;
 background-color: #1C1C1E;
+
 .footer-content {
-    height: 366px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 50px 164px 102px 168px;
-}
-`
-
-export const StyledFooterSocial = styled.div`
-display: flex;
-flex-direction: column;
-.footer-social-list-icon {
-    display: flex;
-    flex-direction: row;
-}
-.footer-social-icon {
-margin: 30px 10px 0 5px;
-}
-`
-
-export const StyledFooterDirectional = styled.div`
-margin-top: 15px;
-
-p {
-font-family: DM Sans;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 160%;
-/* or 22px */
-
-color: #FFFFFF;
-
-&:hover {
-    cursor: pointer;
-}
-}
-`
-
-export const StyledFooterInformation = styled.div`
-p { 
-    font-family: DM Sans;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 372%;
-/* or 52px */
-
-
-color: #FFFFFF;
-
-&:hover {
-    cursor: pointer;
-}
-}
-`
-
-export const StyledFooterContact = styled.div`
-width: 255px;
-height: 98px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-
-p {
-    color: #FFFFFF;
-    font-Weight:normal;
-    font-size: 14px;
-}
-
-.footer-contact-location {
-    display: flex;
-    flex-direction: row;
-}
-
-.footer-contact-email {
-    display: flex;
-    flex-direction: row;
-}
-.icon-footer-contact {
-    margin-right: 20px;
-}
-`
-
-export const StyledFooterLicense = styled.div`
-  position: absolute;
-  width:100%;
-  height: 41px;
-  top: 377px;
-  background-color:#000000;
-  height: 41px;
+  height: 366px;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer-social{
+  width: 11%;
+  padding-top: 50px;
+}
+
+.footer-diretional-infomation-contact {
+  width: 56%;
+  padding: 90px 0 60px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.footer-directional {
+}
+
+.footer-infomation {}
+
+.social-contact {}
+
+.footer-coppyright {
+  background: #000000;
+
+  height: 41px;
+  margin :0 -165px;
+  display: flex;
   align-items: center;
-  p {
-    font-Family:'Apercu Pro';
-    font-Weight:normal;
-    font-Size: 14px;
-    line-Height:24px;
+  justify-content: center;
+
+  p{
+  margin: 0;
+  font-family: 'Apercu Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+
+  color: #FFFFFF;
   }
+}
+
+@media (max-width: 3250px) {
+}
+@media (max-width: 1200px) {
+  padding: 0 50px;
+  .footer-diretional-infomation-contact {
+  width: 75%;
+  }
+  .footer-social{
+  width: 11%;
+  padding-top: 20px;
+  }
+
+  .footer-diretional-infomation-contact {
+    padding: 50px 0 40px 0;
+  }
+
+  .footer-coppyright {
+    margin :0 -50px;
+  }
+}
+@media (max-width: 768px) {
+  .footer-diretional-infomation-contact {
+    width: 60%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+}
+@media (max-width: 600px) {
+  padding: 0 20px;
+  height: 350px;
+  .footer-diretional-infomation-contact {
+    padding-top:60px;
+    padding-bottom: 0;
+    width: 60%;
+
+  }
+  .footer-social{
+  width: 22%;
+  padding-top: 20px;
+  }
+  .footer-coppyright {
+    margin :0 -20px;
+  }
+  .footer-content {
+    margin-bottom: 20px;
+  }
+}
 `

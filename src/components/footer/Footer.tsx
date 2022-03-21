@@ -7,7 +7,6 @@ import {
   FooterDirectional,
   FooterInformation,
   FooterContact,
-  FooterLicense,
 } from '@components';
 import { AppRoutes } from '@enums';
 
@@ -19,12 +18,25 @@ export const Footer = () => {
   return (
     <StyledFooterContainer>
       <div className='footer-content'>
-        <FooterSocial />
-        <FooterDirectional />
-        <FooterInformation onClick={handleClick} />
-        <FooterContact />
+        <div className='footer-social'>
+          <FooterSocial />
+        </div>
+
+        <div className='footer-diretional-infomation-contact'>
+          <div className='footer-directional'>
+            <FooterDirectional />
+          </div>
+          <div className='footer-infomation'>
+            <FooterInformation onClick={handleClick} />
+          </div>
+          <div className='social-contact'>
+            <FooterContact />
+          </div>
+        </div>
       </div>
-      <FooterLicense />
+      <div className='footer-coppyright'>
+        <p>Copyright © We.travel. All rights reserved</p>
+      </div>
     </StyledFooterContainer>
   );
 };

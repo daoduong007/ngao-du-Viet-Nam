@@ -63,7 +63,8 @@ const StyledBodyAboutIntroduceContainer4 = styled.div`
   }
 
   @media (max-width: 1200px) {
-    margin-top: 0 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
 
   @media (max-width: 768px) {

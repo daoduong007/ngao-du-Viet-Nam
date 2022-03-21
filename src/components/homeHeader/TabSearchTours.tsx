@@ -21,7 +21,6 @@ interface ITabSearchName {
 }
 export const TabSearchTours = (props: ITabSearchName) => {
   const { tabName } = props;
-  const { RangePicker } = DatePicker;
   const { Option } = Select;
 
   const handleChange = (value) => {
@@ -48,8 +47,8 @@ export const TabSearchTours = (props: ITabSearchName) => {
             <IconDepatureTime />
           </div>
 
-          <RangePicker
-            placeholder={['', '']}
+          <DatePicker
+            placeholder={'Departure time'}
             suffixIcon={null}
             bordered={false}
           />
@@ -179,6 +178,9 @@ const StyledSearchTabPane = styled.div`
 
     .ant-picker-range .ant-picker-active-bar {
       background-color: #ff7b42;
+    }
+    .ant-picker {
+      width: 78.5%;
     }
   }
   .select-type-tour,

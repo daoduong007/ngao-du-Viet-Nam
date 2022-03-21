@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
-import { MenuOutlined } from '@ant-design/icons';
 
-import {
-  StyledHeaderAbout,
-  AppBarDirectional,
-  AppBarLogo,
-  DrawerHeader,
-} from '@components';
+import { StyledHeaderAbout, DrawerHeader, Appbar } from '@components';
 
 export const HeaderAbout = () => {
   const [drawerVisible, setDrawerVisible] = useState(false);
@@ -19,13 +13,8 @@ export const HeaderAbout = () => {
   };
   return (
     <StyledHeaderAbout>
-      <div className='header-app-bar'>
-        <AppBarLogo />
-        <AppBarDirectional />
-        <div className='menu-app-bar'>
-          <MenuOutlined onClick={showDrawer} />
-        </div>
-      </div>
+      <Appbar onClick={showDrawer} />
+
       <div className='about-header-title'>
         <p>About us</p>
       </div>

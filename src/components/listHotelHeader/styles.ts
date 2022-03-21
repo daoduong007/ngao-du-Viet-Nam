@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
-export const StyledHotelsHeaderContainer = styled.div`
+export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
   width: 100%;
   height: 666px;
 
-  background-image: url('/assets/BannerHotels.png');
+  /* background-image: url('/assets/BannerHotels.png'); */
+  background-image: url(${props => (props.url ? props.url : '/assets/BannerHotels.png')});
   background-repeat: no-repeat;
   background-size: 100% 666px;
 

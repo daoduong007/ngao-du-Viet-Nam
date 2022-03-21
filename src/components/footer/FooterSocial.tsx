@@ -1,12 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
+
 import {
   IconLogo,
-  StyledFooterSocial,
   IconFacebook,
   IconInstagram,
   IconTwitter,
 } from '@components';
-
 export const FooterSocial = () => {
   return (
     <StyledFooterSocial>
@@ -27,3 +27,18 @@ export const FooterSocial = () => {
     </StyledFooterSocial>
   );
 };
+
+const StyledFooterSocial = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  .footer-social-list-icon {
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .footer-social-icon {
+  }
+`;

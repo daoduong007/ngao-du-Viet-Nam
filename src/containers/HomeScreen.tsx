@@ -5,9 +5,9 @@ import { HeaderHome, Footer, BodyHome } from '@components';
 export const HomeScreen = () => {
   return (
     <>
-      <HeaderHome screenName='home' />
-      {/* <BodyHome />
-      <Footer /> */}
+      <HeaderHome />
+      {/* <BodyHome /> */}
+      <Footer />
     </>
   );
 };

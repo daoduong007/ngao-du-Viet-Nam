@@ -4,23 +4,30 @@ import styled from 'styled-components';
 import {} from '@components';
 
 interface IHeaderSlogan {
+  screenName?: string;
   title: string;
   content: string;
 }
 
 export const Slogan = (props: IHeaderSlogan) => {
-  const { title, content } = props;
+  const { title, content, screenName } = props;
   return (
-    <StyledSlogan>
+    <StyledSlogan screenName={screenName}>
       <h2>{title}</h2>
       <h1>{content}</h1>
     </StyledSlogan>
   );
 };
-const StyledSlogan = styled.div`
+const StyledSlogan = styled.div<{ screenName?: string }>`
   padding: 0 165px;
-  padding-top: 50px;
-  padding-right: 100px;
+  padding-top: 20px;
+  padding-right: 114px;
+  padding-right: ${(props) =>
+    props.screenName === 'home'
+      ? '220px'
+      : props.screenName === 'list_tour'
+      ? '153px'
+      : '114px'};
 
   text-align: left;
   font-family: 'DM Sans';
