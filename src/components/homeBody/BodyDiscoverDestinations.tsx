@@ -4,7 +4,6 @@ import { Navigation } from 'swiper';
 import { useHistory } from 'react-router-dom';
 
 import 'swiper/css';
-import 'swiper/css/navigation';
 
 import {
   StyledBodyTourContainer,
@@ -19,18 +18,23 @@ import { AppRoutes } from '@enums';
 export const BodyDiscoverDestinations = () => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
-
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [isEndOfSlide, setIsEndOfSlide] = useState(false);
   const history = useHistory();
 
   const handleClick = () => {
     history.push(AppRoutes.LIST_TOUR_SCREEN);
   };
+
+  const handleSlideChange = (swiper) => {
+    setCurrentSlideIndex(swiper.activeIndex);
+    setIsEndOfSlide(swiper.isEnd);
+  };
+
   return (
     <StyledBodyTourContainer>
       <div className='attractive-tour-title'>
-        <p>
-          Discover fascinating <br /> destinations
-        </p>
+        <p>Discover fascinating destinations</p>
         <div onClick={() => handleClick()}>
           <BodyButton name={'View All'} />
         </div>
@@ -38,17 +42,48 @@ export const BodyDiscoverDestinations = () => {
 
       <div className='attractive-tour-list-item'>
         <StyledBodyTourListItem>
-          <div
-            className='list-item-prev'
-            ref={(node) => setPrevEl(node)}
-          >
-            <button>prev</button>
-          </div>
+          {currentSlideIndex == 0 ? null : (
+            <div
+              className='list-item-prev prev-discover'
+              ref={(node) => setPrevEl(node)}
+            >
+              <IconArrow />
+            </div>
+          )}
           <Swiper
             modules={[Navigation]}
-            spaceBetween={0}
-            slidesPerView={4}
             navigation={{ prevEl, nextEl }}
+            onSlideChange={(swiper) => handleSlideChange(swiper)}
+            breakpoints={{
+              0: {
+                slidesPerView: 1.24,
+                spaceBetween: 8,
+                centeredSlides: true,
+                centeredSlidesBounds: true,
+              },
+              600: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+                centeredSlides: true,
+                centeredSlidesBounds: true,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+                centeredSlides: false,
+                centeredSlidesBounds: false,
+              },
+              1200: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+                centeredSlides: false,
+                centeredSlidesBounds: false,
+              },
+              1440: {
+                spaceBetween: 30,
+                slidesPerView: 4,
+              },
+            }}
           >
             {BodyTourItemData3.map((item, index) => (
               <SwiperSlide key={index}>
@@ -56,17 +91,20 @@ export const BodyDiscoverDestinations = () => {
                   imgUrl={item.imgUrl}
                   location={item.location}
                   experiences={item.experiences}
+                  onClick={handleClick}
                 />
               </SwiperSlide>
             ))}
           </Swiper>
         </StyledBodyTourListItem>
-        <div
-          className='list-item-load-more'
-          ref={(node) => setNextEl(node)}
-        >
-          <IconArrow />
-        </div>
+        {isEndOfSlide === false ? (
+          <div
+            className='list-item-load-more load-more-discover'
+            ref={(node) => setNextEl(node)}
+          >
+            <IconArrow />
+          </div>
+        ) : null}
       </div>
     </StyledBodyTourContainer>
   );

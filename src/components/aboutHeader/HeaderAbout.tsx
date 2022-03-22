@@ -14,7 +14,6 @@ export const HeaderAbout = () => {
   return (
     <StyledHeaderAbout>
       <Appbar onClick={showDrawer} />
-
       <div className='about-header-title'>
         <p>About us</p>
       </div>

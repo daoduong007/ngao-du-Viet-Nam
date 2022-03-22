@@ -33,6 +33,9 @@ const StyledAppbar = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  font-family: 'DM Sans';
+  font-style: normal;
+
   .menu-app-bar {
     display: none;
   }
@@ -44,6 +47,11 @@ const StyledAppbar = styled.div`
     color: #ffffff;
     &:hover {
       cursor: pointer;
+      color: #ff7b42;
+    }
+  }
+  .active {
+    p {
       color: #ff7b42;
     }
   }

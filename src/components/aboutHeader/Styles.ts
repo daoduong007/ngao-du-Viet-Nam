@@ -6,7 +6,7 @@ export const StyledHeaderAbout = styled.div`
 
   background-image: url('/assets/bannerAbout.png');
   background-repeat: no-repeat;
-  background-size: 100% 100%; 
+  background-size: 100% 400px; 
 
   font-family: 'DM Sans';
   font-style: normal;

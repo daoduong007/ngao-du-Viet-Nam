@@ -46,6 +46,8 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
       width: 100%;
       height: 99px;
       background-color: #FFFFFF;
+      position: relative;
+      bottom: -1px;
     }
     .header-search {
       padding: 0;

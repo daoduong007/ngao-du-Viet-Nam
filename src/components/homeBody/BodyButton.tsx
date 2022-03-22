@@ -17,12 +17,11 @@ export const BodyButton = (props: IButtonName) => {
 
 const StyledBodyButton = styled.div`
   span {
-    font-family: DM Sans;
+    font-family: 'DM Sans';
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
     line-height: 160%;
-    /* or 22px */
 
     color: #ffffff;
   }

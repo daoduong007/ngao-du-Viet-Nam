@@ -17,8 +17,6 @@ export const StyledHeaderContainer = styled.div`
     flex-direction: row;
     width: 100%;
     padding-right: 165px;
-
-    width: 100%;
   }
   .header-slogan-and-feature {
     width: 100%;
@@ -61,7 +59,7 @@ export const StyledHeaderContainer = styled.div`
       border: 0;
     }
   }
-  @media (max-width: 3280px) {
+  @media (min-width: 3280px) {
     background-size: 100% 100%;
     .header-content {
       width: 90%;
@@ -98,8 +96,11 @@ export const StyledHeaderContainer = styled.div`
     }
   }
 
+  @media (max-width: 768px) {
+  }
+
   @media (max-width: 600px) {
-    height: 900px;
+    height: auto;
     background-size: 100% 200px;
     .header-content {
       margin-top: 115px;

@@ -6,7 +6,7 @@ export const HomeScreen = () => {
   return (
     <>
       <HeaderHome />
-      {/* <BodyHome /> */}
+      <BodyHome />
       <Footer />
     </>
   );

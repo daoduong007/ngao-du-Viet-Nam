@@ -1,16 +1,17 @@
 import React from 'react';
-
-import { StyledBodyDiscoverItem } from '@components';
+import styled from 'styled-components';
 
 interface IItemProps {
   imgUrl: string;
   location: string;
   experiences?: string;
+  onClick: () => void;
 }
+
 export const BodyDiscoverItem = (props: IItemProps) => {
-  const { imgUrl, location, experiences } = props;
+  const { imgUrl, location, experiences, onClick } = props;
   return (
-    <StyledBodyDiscoverItem>
+    <StyledBodyDiscoverItem onClick={onClick}>
       <div className='item-image'>
         <img src={imgUrl} />
       </div>
@@ -24,3 +25,58 @@ export const BodyDiscoverItem = (props: IItemProps) => {
     </StyledBodyDiscoverItem>
   );
 };
+const StyledBodyDiscoverItem = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
+
+  width: 255px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+
+  .item-image {
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+    }
+    &:hover {
+      img {
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  .item-location {
+    height: 32px;
+    margin-top: 12px;
+    margin-bottom: 0px;
+    p {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 160%;
+
+      color: #1c1c1e;
+    }
+  }
+
+  .item-infomation {
+    margin-top: 2px;
+    p {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 150%;
+
+      color: #636567;
+    }
+  }
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
+  @media (max-width: 600px) {
+    text-align: center;
+  }
+`;

@@ -21,17 +21,14 @@ export const HeaderHome = () => {
 
   return (
     <StyledHeaderContainer>
-      <div className='header-appbar'>
-        <Appbar onClick={showDrawer} />
-      </div>
-
+      <Appbar onClick={showDrawer} />
       <div className='header-content'>
         <div className='header-slogan-and-feature'>
           <div className='header-slogan'>
             <Slogan
               screenName='home'
-              title='Search hundreds of tours and more'
-              content='Attractive tour and interesting experiences'
+              title='Welcome to NgaoduVietnam'
+              content='Perfect place for your stories'
             />
           </div>
           <div className='header-feature'>

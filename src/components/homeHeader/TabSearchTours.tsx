@@ -82,7 +82,7 @@ export const TabSearchTours = (props: ITabSearchName) => {
               defaultValue='Number of guests'
               onChange={handleChange}
             >
-              {typesOfTours.map((item, index) => (
+              {[1, 2, 3, 4, 5].map((item, index) => (
                 <Option value={item} key={index}>
                   {item}
                 </Option>
@@ -142,6 +142,11 @@ const StyledSearchTabPane = styled.div`
 
         color: #ffffff;
       }
+    }
+    .ant-btn:hover,
+    .ant-btn:focus,
+    .ant-btn:active {
+      color: #ff7b42;
     }
   }
   .tab-search-list-item {
@@ -206,7 +211,13 @@ const StyledSearchTabPane = styled.div`
     }
   }
   @media (max-width: 768px) {
-    width: 100%;
+    width: 400px;
+    height: 485px;
+    .title {
+      h1 {
+        font-size: 20px;
+      }
+    }
   }
   @media (max-width: 600px) {
     width: 100%;

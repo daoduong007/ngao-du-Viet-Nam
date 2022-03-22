@@ -42,6 +42,9 @@ const StyledFeature = styled.div`
   display: flex;
   flex-direction: column;
 
+  position: relative;
+  bottom: -1px;
+
   .feature-title {
     display: flex;
     flex-direction: row;
@@ -89,10 +92,12 @@ const StyledFeature = styled.div`
       }
     }
   }
-  @media (min-width: 3280px) {
+  @media (min-width: 2350px) {
     width: 100%;
     padding-right: 55%;
     padding-top: 15px;
+    position: relative;
+    bottom: -2px;
     .feature-title {
       h2 {
         font-size: 30px;
@@ -110,6 +115,8 @@ const StyledFeature = styled.div`
   @media (max-width: 1200px) {
     padding: 0 10px;
     padding-top: 20px;
+    position: relative;
+    bottom: -2px;
   }
   @media (max-width: 600px) {
     padding: 0 10px;
