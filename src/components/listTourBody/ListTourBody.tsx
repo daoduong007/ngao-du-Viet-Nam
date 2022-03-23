@@ -1,20 +1,22 @@
-import React from 'react';
-import { Button, Popover } from 'antd';
+import React, { useState } from 'react';
+import { Button, Popover, Row, Col, Pagination } from 'antd';
 import { generatePath, useHistory } from 'react-router-dom';
 
 import {
   ListTourItems,
   BodyTourItem,
   StyledListTourBodyContainer,
-  IconDot,
   ListTourFilter,
   IconPrevPage,
   IconNextPage,
+  BreadcrumbLink,
+  ListTourItems2,
 } from '@components';
 import { AppRoutes } from '@enums';
 
 export const ListTourBody = ({}) => {
   const history = useHistory();
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const handleClick = (id: number) => {
     history.push(
@@ -23,15 +25,28 @@ export const ListTourBody = ({}) => {
       }),
     );
   };
+
+  const handleChangePage = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const pathUrl = ['Home'].concat(
+    window.location.pathname.split('/'),
+  );
+
+  const itemRender = (current, type, originalElement) => {
+    if (type === 'prev') {
+      return <Button icon={<IconPrevPage />}></Button>;
+    }
+    if (type === 'next') {
+      return <Button icon={<IconNextPage />}></Button>;
+    }
+    return originalElement;
+  };
   return (
     <StyledListTourBodyContainer>
-      <div className='listtour-body-screenname'>
-        <p>Home</p>
-        <div>
-          <IconDot width={4} height={4} color={'#C4C4C4'} />
-        </div>
-        <p>Tours</p>
-      </div>
+      <BreadcrumbLink pathUrl={pathUrl} />
+
       <div className='listtour-body-tittle'>
         <p>Attractive tour and interesting experiences</p>
         <div className='listtour-body-filer'>
@@ -45,32 +60,54 @@ export const ListTourBody = ({}) => {
           </Popover>
         </div>
       </div>
-      <div className='listtour-body-content'>
-        {ListTourItems.map((tour) => (
-          <BodyTourItem
-            key={tour.id}
-            data={tour}
-            onClick={handleClick}
-          />
-        ))}
-      </div>
-
+      <Row
+        className='listtour-body-content'
+        justify={'space-around'}
+        gutter={[
+          { xs: 0, sm: 20, md: 30, lg: 30 },
+          { xs: 20, sm: 25, md: 45 },
+        ]}
+      >
+        {currentPage === 1 ? (
+          <>
+            {ListTourItems.map((tour) => (
+              <Col
+                key={tour.id}
+                className='list-tour-item'
+                xs={{ span: 24 }}
+                sm={{ span: 12 }}
+                lg={{ span: 8 }}
+              >
+                <BodyTourItem data={tour} onClick={handleClick} />
+              </Col>
+            ))}
+          </>
+        ) : currentPage === 2 ? (
+          <>
+            {ListTourItems2.map((tour) => (
+              <Col
+                key={tour.id}
+                className='list-tour-item'
+                xs={{ span: 24 }}
+                sm={{ span: 12 }}
+                lg={{ span: 8 }}
+              >
+                <BodyTourItem data={tour} onClick={handleClick} />
+              </Col>
+            ))}
+          </>
+        ) : null}
+      </Row>
       <div className='listtour-body-pagination'>
-        <p>Showing 1 / 2</p>
-        <div className='listtour-body-pagination-button'>
-          <Button type='primary'>
-            <IconPrevPage />
-          </Button>
-          <Button type='primary' className='number-page'>
-            1
-          </Button>
-          <Button type='primary' className='number-page'>
-            2
-          </Button>
-          <Button type='primary' color={'#000000'}>
-            <IconNextPage />
-          </Button>
-        </div>
+        <Pagination
+          total={12}
+          current={currentPage}
+          itemRender={itemRender}
+          defaultCurrent={1}
+          onChange={(page) => {
+            handleChangePage(page);
+          }}
+        ></Pagination>
       </div>
     </StyledListTourBodyContainer>
   );

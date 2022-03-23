@@ -13,8 +13,12 @@ export const Slogan = (props: IHeaderSlogan) => {
   const { title, content, screenName } = props;
   return (
     <StyledSlogan screenName={screenName}>
-      <h2>{title}</h2>
-      <h1>{content}</h1>
+      <div>
+        <h2>{title}</h2>
+      </div>
+      <div className='slogan-content'>
+        <h1>{content}</h1>
+      </div>
     </StyledSlogan>
   );
 };
@@ -35,8 +39,7 @@ const StyledSlogan = styled.div<{ screenName?: string }>`
   h2 {
     font-weight: 700;
     font-size: 16px;
-    line-height: 160%;
-    /* identical to box height, or 26px */
+    line-height: 26px;
 
     color: #fff2cf;
   }
@@ -57,10 +60,9 @@ const StyledSlogan = styled.div<{ screenName?: string }>`
     }
   }
   @media (max-width: 1200px) {
-    padding: 0 20px;
+    padding: 0;
   }
   @media (max-width: 768px) {
-    padding: 0 20px;
     h2 {
       font-size: 12px;
     }
@@ -69,6 +71,18 @@ const StyledSlogan = styled.div<{ screenName?: string }>`
     }
   }
   @media (max-width: 600px) {
-    display: none;
+    flex-direction: column;
+    text-align: center;
+
+    h2 {
+      margin: 0;
+      font-size: 12px;
+    }
+    h1 {
+      font-size: 25px;
+    }
+    .slogan-content {
+      height: 52px;
+    }
   }
 `;

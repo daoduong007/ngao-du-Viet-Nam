@@ -5,7 +5,7 @@ export const StyledBodyContainer = styled.div`
   margin-top: 150px;
   padding:0 165px;
 
-  @media (min-width: 2350px) {
+  @media (min-width: 1441px) {
     width: 1440px;
     margin: 0 auto;
     margin-top: 150px;

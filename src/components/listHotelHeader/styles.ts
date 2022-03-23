@@ -58,8 +58,7 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
         font-weight: 600;
         font-size: 24px;
         line-height: 120%;
-        /* or 29px */
-        /* tieu de */
+
         color: #1C1C1E;
       }
       .ant-btn {
@@ -81,14 +80,18 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
   @media (max-width: 1200px){
     .header-content {
       width: 100%;
-      padding-right: 20px;
+      padding: 0 50px;
+      .header-search {
+      margin-right: 0px;
+    }
     }
     .header-feature {
       display: none;
     }
+
   }
   @media (max-width: 600px) {
-    height: 628px;
+    height: 650px;
     background-size: 100% 200px;
     
     .header-slogan-and-feature {
@@ -100,18 +103,19 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
     }
-
-
     .header-content >.header-search {
       margin: 0; 
+      margin-top: 55px;
       width: 90%;
       background-color: #ccc;
     }
   }
   @media (max-width:419px){
-    height: 657px;
+    .header-content >.header-search {
+      margin-top: 45px;
+    }
   }
 
 `

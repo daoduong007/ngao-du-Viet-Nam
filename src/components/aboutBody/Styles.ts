@@ -10,7 +10,7 @@ export const StyledBodyAboutContainer = styled.div`
   p {
     text-align: left;
   }
-  @media (min-width: 2560px) {
+  @media (min-width: 1441px) {
     width: 1440px;
     margin: 0 auto;
     margin-top: 171px;

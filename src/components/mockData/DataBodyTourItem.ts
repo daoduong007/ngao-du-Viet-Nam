@@ -252,6 +252,105 @@ export const ListTourItems = [
   },
 ]
 
+export const ListTourItems2 = [
+  {
+    id: 1,
+    imgUrl: '/assets/tour6.png',
+    location: 'Vung Tau, Ba Ria - Vung Tau',
+    title: 'Discover interesting things in the romantic coastal city of Vungtau',
+    timeDepature: '3 days - 2 night',
+    price: '$146.00'
+  },
+  {
+    id: 2,
+    imgUrl: '/assets/tour2.png',
+    location: 'Fansipan, Lai Chau',
+    title: 'Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina',
+    timeDepature: '3 days - 2 night',
+    price: '$234.00'
+  },
+  {
+    id: 3,
+    imgUrl:'/assets/tour1.png',
+    location: 'Phu Quoc, Kien Giang',
+    title: 'Experience sea tourism on Phuquoc golden pearl',
+    timeDepature: '3 days - 2 night',
+    price: '$334.00'
+  },
+  {
+    id:4,
+    imgUrl: '/assets/tour5.png',
+    location: 'Ha Noi Capital',
+    title: '“ Com lang Vong “ - Traditional culinary features of the old Hanoi people',
+    timeDepature: '6 hours',
+    price: '$234.00'
+  },
+  {
+    id: 5,
+    imgUrl: '/assets/tour2.png',
+    location: 'Hue City',
+    title: '“ Bun bo Hue “ - culinary specialties in the ancient capital of Hue',
+    timeDepature: '6 hours',
+    price: '$234.00'
+  },
+  {
+    id: 6,
+    imgUrl:'/assets/tour4.png',
+    location: 'Bac Ninh',
+    title: 'Heritage of Quan Ho Bac Ninh - Singing passionate hearts',
+    timeDepature: '2 hours',
+    price: '$234.00'
+  },
+  {
+    id:7,
+    imgUrl: '/assets/tour1.png',
+    location: 'Vung Tau, Ba Ria - Vung Tau',
+    title: 'Discover interesting things in the romantic coastal city of Vungtau',
+    timeDepature: '3 days - 2 night',
+    price: '$146.00'
+  },
+  {
+    id: 8,
+    imgUrl: '/assets/tour2.png',
+    location: 'Lai Chau',
+    title: 'Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina',
+    timeDepature: '3 days - 2 night',
+    price: '$234.00'
+  },
+  {
+    id: 9,
+    imgUrl:'/assets/tour5.png',
+    location: 'Phu Quoc, Kien Giang',
+    title: 'Experience sea tourism on Phuquoc golden pearl',
+    timeDepature: '3 days - 2 night',
+    price: '$334.00'
+  },
+  {
+    id: 10,
+    imgUrl: '/assets/tour1.png',
+    location: 'Ha Noi Capital',
+    title: '“ Com lang Vong “ - Traditional culinary features of the old Hanoi people',
+    timeDepature: '6 hours',
+    price: '$234.00'
+  },
+  {
+    id: 11,
+    imgUrl: '/assets/tour2.png',
+    location: 'Hue City',
+    title: '“ Bun bo Hue “ - culinary specialties in the ancient capital of Hue',
+    timeDepature: '6 hours',
+    price: '$234.00'
+  },
+  {
+    id: 12,
+    imgUrl: '/assets/tour4.png',
+    location: 'Bac Ninh',
+    title: 'Heritage of Quan Ho Bac Ninh - Singing passionate hearts',
+    timeDepature: '2 hours',
+    price: '$234.00'
+  },
+]
+
 export const RelatedTours = [
   {
     id: 1,

@@ -9,8 +9,8 @@ export const ListTourScreen = () => {
         screenName='list_tour'
         urlBanner='/assets/bannerListtour.png'
       />
-      {/* <ListTourBody />
-      <Footer /> */}
+      <ListTourBody />
+      <Footer />
     </>
   );
 };
