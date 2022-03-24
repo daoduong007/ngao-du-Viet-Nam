@@ -16,6 +16,7 @@ export const TourDetailReview = () => {
   const { TextArea } = Input;
   return (
     <StyledTourDetailReview>
+      <hr />
       <div className='tour-detail-review-evaluate'>
         <div className='review-evaluate-star'>
           <div>

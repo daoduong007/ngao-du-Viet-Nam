@@ -12,12 +12,14 @@ import {
   TourDetailVideo,
   IconTick,
   IconLocation,
+  IconDropDown,
 } from '@components';
 
 export const TourDetailDescription = () => {
   const { Panel } = Collapse;
   return (
     <StyledTourDetailDescription>
+      <hr />
       <div className='descriptions-ovrerview'>
         <div className='descriptions-title'>
           <p>Overview</p>
@@ -62,7 +64,6 @@ export const TourDetailDescription = () => {
           </p>
           <p>8:00 AM</p>
         </div>
-        <div></div>
       </div>
       <hr />
       <div className='descriptions-tour-itinerary'>
@@ -70,46 +71,55 @@ export const TourDetailDescription = () => {
           <p>Tour Itinerary</p>
         </div>
         <div>
-          <Collapse
-            defaultActiveKey={['1']}
-            expandIconPosition='right'
-          >
-            {DataTourItinerary.map((item) => (
-              <Panel header={item.day} key={item.id}>
-                <div
+          {DataTourItinerary.map((item) => (
+            <div
+              key={item.id}
+              className='descriptions-content-collapse'
+            >
+              <Collapse
+                expandIconPosition='right'
+                bordered={false}
+                ghost={false}
+              >
+                <Panel
+                  showArrow={false}
+                  extra={<IconDropDown />}
+                  header={item.day}
                   key={item.id}
-                  className='itinerary-collapse-item'
                 >
-                  {DataTourDetailLocation.map((item, index) => (
-                    <div key={index}>
-                      <div className='itinerary-collapse-item-title'>
-                        <IconLocation color={'#04316A'} />
-                        <p>
-                          <span>{item.title}</span>
-                        </p>
+                  <div className='itinerary-collapse-item'>
+                    {DataTourDetailLocation.map((item, index) => (
+                      <div key={index}>
+                        <div className='itinerary-collapse-item-title'>
+                          <IconLocation color={'#04316A'} />
+                          <p>
+                            <span>{item.title}</span>
+                          </p>
+                        </div>
+                        <p>{item.content}</p>
+                        <div className='itinerary-collapse-item-footer'>
+                          <p>
+                            <span>Duration :</span>
+                            {item.duration}
+                          </p>
+                          <p>{item.admission}</p>
+                        </div>
                       </div>
-                      <p>{item.content}</p>
-                      <div className='itinerary-collapse-item-footer'>
-                        <p>
-                          <span>Duration :</span>
-                          {item.duration}
-                        </p>
-                        <p>{item.admission}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Panel>
-            ))}
-          </Collapse>
+                    ))}
+                  </div>
+                </Panel>
+              </Collapse>
+            </div>
+          ))}
+          {/* </Collapse> */}
         </div>
       </div>
       <div className='descriptions-maps'>
         <div className='descriptions-title'>
           <p>Maps</p>
-          <div className='descriptions-map-image'>
-            <img src='/assets/ggmap.jpg' />
-          </div>
+        </div>
+        <div className='descriptions-map-image'>
+          <img src='/assets/ggmap.jpg' />
         </div>
       </div>
       <div className='descriptions-panoramic-image-video'>
@@ -128,14 +138,15 @@ export const TourDetailDescription = () => {
 };
 
 const StyledTourDetailDescription = styled.div`
-  /* padding-left: 25px; */
+  width: 100%;
   p {
     margin: 0px;
 
-    font-family: DM Sans;
+    font-family: 'DM Sans';
     font-style: normal;
     font-weight: normal;
   }
+
   hr {
     border: 0px;
     border-bottom: 0.5px solid #888888;
@@ -145,6 +156,7 @@ const StyledTourDetailDescription = styled.div`
   .descriptions-title {
     margin-bottom: 14px;
     margin-top: 29px;
+    height: 64px;
     p {
       font-weight: bold;
       font-size: 20px;
@@ -167,21 +179,22 @@ const StyledTourDetailDescription = styled.div`
 
   .descriptions-included {
     margin-bottom: 40px;
-  }
-  .descriptions-included-item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    .descriptions-included-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
-    p {
-      margin-left: 20px;
+      p {
+        margin-left: 20px;
 
-      font-size: 16px;
-      line-height: 30px;
-      /* or 187% */
-      color: #4f4f4f;
+        font-size: 16px;
+        line-height: 30px;
+        /* or 187% */
+        color: #4f4f4f;
+      }
     }
   }
+
   .descriptions-depature-end {
     margin-bottom: 19px;
   }
@@ -197,45 +210,105 @@ const StyledTourDetailDescription = styled.div`
       }
     }
   }
-  .itinerary-collapse-item {
-    p {
-      margin-left: 35px;
-      font-size: 16px;
-      line-height: 30px;
-      /* or 187% */
-      color: rgba(30, 30, 30, 0.8);
+  .descriptions-panoramic-image-video {
+    width: 100%;
+    .panoramic-image {
+      margin-bottom: 50px;
     }
-    .itinerary-collapse-item-title {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      svg {
-        margin-right: 17px;
-      }
-      span {
-        margin-left: -35px;
-        font-weight: bold;
-        color: #04316a;
-      }
-    }
-    .itinerary-collapse-item-footer {
-      margin-top: 26px;
-      span {
-        font-weight: bold;
-      }
+    .panoramic-video {
+      width: 100%;
     }
   }
-  .panoramic-image {
-    margin-bottom: 50px;
-  }
+
   .descriptions-maps {
     margin-bottom: 50px;
-
+    width: 100%;
     .descriptions-map-image {
       margin-top: 26px;
-      height: 398px;
       img {
         width: 100%;
+        height: auto;
+      }
+    }
+  }
+  .descriptions-tour-itinerary {
+    .descriptions-content-collapse {
+      margin-bottom: 19px;
+    }
+    .itinerary-collapse-item {
+      p {
+        font-size: 16px;
+        line-height: 30px;
+
+        color: rgba(30, 30, 30, 0.8);
+      }
+      .itinerary-collapse-item-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        span {
+          font-weight: bold;
+          color: #04316a;
+        }
+
+        svg {
+          margin-left: -31px;
+          margin-right: 13px;
+        }
+      }
+      .itinerary-collapse-item-footer {
+        margin-top: 26px;
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+    .ant-collapse-content > .ant-collapse-content-box {
+      padding: 16px 45px;
+    }
+    .ant-collapse-item-active .ant-collapse-extra svg {
+      transform: rotate(180deg);
+      transition-duration: 0.3s;
+    }
+    .ant-collapse {
+      border-radius: 8px;
+      background: #f4f4f4;
+    }
+    .ant-collapse-item {
+      border: 0px;
+    }
+    .ant-collapse-item > .ant-collapse-header {
+      padding: 12px 16px;
+      background: #fff;
+      border: 1px solid #c4c4c4;
+      border-radius: 8px;
+    }
+    .ant-collapse-item-active > .ant-collapse-header {
+      background: #f4f4f4;
+      border: 0;
+      border-radius: 8px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .descriptions-map-image {
+      margin-bottom: 0;
+    }
+  }
+  @media (max-width: 900px) {
+  }
+  @media (max-width: 768px) {
+  }
+  @media (max-width: 600px) {
+    * > p {
+      font-size: 14px !important;
+    }
+    .descriptions-title {
+      margin: 10px 0;
+      height: 40px;
+      p {
+        font-size: 18px !important;
       }
     }
   }

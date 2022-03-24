@@ -81,7 +81,7 @@ export const StyledHeaderContainer = styled.div`
 
     .header-content {
       width: 100%;
-      padding-right: 20px;
+      padding: 0 50px;
     }
     .header-slogan-and-feature {
       display: flex;
@@ -89,6 +89,7 @@ export const StyledHeaderContainer = styled.div`
       justify-content: space-between;
 
       .header-feature {
+        margin-left: -50px;
       }
     }
     .header-search {
@@ -97,30 +98,39 @@ export const StyledHeaderContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-  }
-
-  @media (max-width: 600px) {
     height: auto;
     background-size: 100% 200px;
     .header-content {
-      margin-top: 115px;
       width: 100%;
       padding: 0;
       display: flex;
-      flex-direction: column-reverse;
+      flex-direction: column;
       align-items: center;
     }
     .header-slogan-and-feature {
       .header-feature {
+        display: none;
+      }
+      .header-slogan {
         display: flex;
-        align-items: center;
+        justify-content: center;
+        h1,
+        h2 {
+          text-align: center;
+        }
       }
     }
     .header-search {
+      margin-top: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: #ccc;
+      width: 400px;
+    }
+  }
+  @media (max-width: 600px) {
+    .header-search {
       width: 90%;
     }
   }

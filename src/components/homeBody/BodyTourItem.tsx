@@ -53,6 +53,7 @@ const StyledBodyTourItem = styled.div`
   width: 350px;
   &:hover {
     cursor: pointer;
+    transform: translateY(-5px);
   }
   p {
     font-family: 'DM Sans';
@@ -73,9 +74,6 @@ const StyledBodyTourItem = styled.div`
     img {
       width: 100%;
       height: auto;
-    }
-    &:hover {
-      transform: translateY(-3px);
     }
   }
   .item-location {

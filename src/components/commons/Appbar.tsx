@@ -4,14 +4,15 @@ import { MenuOutlined } from '@ant-design/icons';
 
 interface IAppbar {
   onClick?: () => void;
+  colorText?: string;
 }
 
 import { AppBarDirectional, AppBarLogo } from '@components';
 
 export const Appbar = (props: IAppbar) => {
-  const { onClick } = props;
+  const { onClick, colorText } = props;
   return (
-    <StyledAppbar>
+    <StyledAppbar color={colorText}>
       <AppBarLogo />
       <AppBarDirectional />
       <div className='menu-app-bar'>
@@ -44,7 +45,8 @@ const StyledAppbar = styled.div`
     font-size: 14px;
     line-height: 160%;
     /* or 22px */
-    color: #ffffff;
+    /* color: #ffffff; */
+    color: ${(props) => props.color || '#FFFFFF'};
     &:hover {
       cursor: pointer;
       color: #ff7b42;

@@ -113,22 +113,9 @@ const StyledFeature = styled.div`
     }
   }
   @media (max-width: 1200px) {
-    padding: 0 10px;
+    padding: 0 10px 0 50px;
     padding-top: 20px;
     position: relative;
     bottom: -2px;
-  }
-  @media (max-width: 600px) {
-    padding: 0 10px;
-    padding-top: 20px;
-
-    .feature-content {
-      p {
-        font-size: 12px;
-        span {
-          font-size: 20px;
-        }
-      }
-    }
   }
 `;

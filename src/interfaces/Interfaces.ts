@@ -13,6 +13,8 @@ export interface ITourDetail {
   title: string,
   timeDepature: string,
   price: string,
+  star?: number,
+  review?: number
 }
 
 export interface ITourBooking {

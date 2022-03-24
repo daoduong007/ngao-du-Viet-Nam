@@ -7,6 +7,7 @@ export const TourDetailAddionalInfo = () => {
   const { Panel } = Collapse;
   return (
     <>
+      <hr />
       <div className='additional-items'>
         <ul>
           {DataAdditionalInfo.map((item, index) => (

@@ -9,6 +9,7 @@ interface IDrawer {
   onClose: () => void;
   title?: string;
 }
+
 export const DrawerHeader = (props: IDrawer) => {
   const { onClose, drawerVisible, title } = props;
   return (

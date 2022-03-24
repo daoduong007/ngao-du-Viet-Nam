@@ -769,3 +769,23 @@ export const IconEye = () => {
     </svg>
   );
 };
+
+export const IconDropDown = () => {
+  return (
+    <svg
+      width='19'
+      height='10'
+      viewBox='0 0 19 10'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        d='M1.33936 1L9.26793 9L17.1965 1'
+        stroke='black'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+    </svg>
+  );
+};

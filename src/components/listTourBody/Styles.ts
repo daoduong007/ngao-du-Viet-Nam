@@ -192,6 +192,7 @@ export const StyledListTourBodyContainer = styled.div`
     }
   }
   @media (max-width: 600px) {
+    margin-top: 90px;
     padding: 0 20px;
   }
 `

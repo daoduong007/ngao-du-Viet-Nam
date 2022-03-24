@@ -7,10 +7,14 @@ import { IconDot } from '@components';
 
 interface IBreadUrl {
   pathUrl: string[];
+  screenName?: 'tours' | 'hotels';
 }
+const handleClick = () => {
+  window.scrollTo(0, 0);
+};
 
 export const BreadcrumbLink = (props: IBreadUrl) => {
-  const { pathUrl } = props;
+  const { pathUrl, screenName } = props;
   return (
     <StyledBreadcrumb>
       <Breadcrumb
@@ -18,10 +22,12 @@ export const BreadcrumbLink = (props: IBreadUrl) => {
       >
         {pathUrl.map((item, index) => (
           <Breadcrumb.Item key={index}>
-            {item !== '' ? (
+            {item !== '' && item.search(/[1-9]/) === -1 ? (
               <Link to={`/${item}`}>
                 <p>{item.charAt(0).toUpperCase() + item.slice(1)}</p>
               </Link>
+            ) : item.search(/[1-9]/) !== -1 ? (
+              <p onClick={handleClick}>Detail {screenName}</p>
             ) : null}
           </Breadcrumb.Item>
         ))}
@@ -36,18 +42,16 @@ const StyledBreadcrumb = styled.div`
   font-family: 'DM Sans';
   font-style: normal;
   p {
+    margin: 0px;
     &:hover {
       cursor: pointer;
       color: #ff7b42;
     }
-    margin: 0px;
-
     font-weight: normal;
     font-size: 14px;
     line-height: 160%;
     /* or 22px */
-
-    text-align: center;
+    color: #3d3e3f;
   }
 
   .ant-breadcrumb,

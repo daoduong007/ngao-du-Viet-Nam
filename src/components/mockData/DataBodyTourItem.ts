@@ -160,7 +160,9 @@ export const ListTourItems = [
     location: 'Vung Tau, Ba Ria - Vung Tau',
     title: 'Discover interesting things in the romantic coastal city of Vungtau',
     timeDepature: '3 days - 2 night',
-    price: '$146.00'
+    price: '$146.00',
+    star: 4.5,
+    review: 100
   },
   {
     id: 2,
@@ -168,7 +170,9 @@ export const ListTourItems = [
     location: 'Fansipan, Lai Chau',
     title: 'Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina',
     timeDepature: '3 days - 2 night',
-    price: '$234.00'
+    price: '$234.00',
+    star: 4,
+    review: 200
   },
   {
     id: 3,
@@ -176,7 +180,9 @@ export const ListTourItems = [
     location: 'Phu Quoc, Kien Giang',
     title: 'Experience sea tourism on Phuquoc golden pearl',
     timeDepature: '3 days - 2 night',
-    price: '$334.00'
+    price: '$334.00',
+    star: 5,
+    review: 121
   },
   {
     id:4,
@@ -184,7 +190,9 @@ export const ListTourItems = [
     location: 'Ha Noi Capital',
     title: '“ Com lang Vong “ - Traditional culinary features of the old Hanoi people',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: '$234.00',
+    star: 4,
+    review: 100
   },
   {
     id: 5,
@@ -192,7 +200,9 @@ export const ListTourItems = [
     location: 'Hue City',
     title: '“ Bun bo Hue “ - culinary specialties in the ancient capital of Hue',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: '$234.00',
+    star: 4,
+    review: 60
   },
   {
     id: 6,
@@ -200,7 +210,9 @@ export const ListTourItems = [
     location: 'Bac Ninh',
     title: 'Heritage of Quan Ho Bac Ninh - Singing passionate hearts',
     timeDepature: '2 hours',
-    price: '$234.00'
+    price: '$234.00',
+    star: 5,
+    review: 240
   },
   {
     id:7,
@@ -208,7 +220,9 @@ export const ListTourItems = [
     location: 'Vung Tau, Ba Ria - Vung Tau',
     title: 'Discover interesting things in the romantic coastal city of Vungtau',
     timeDepature: '3 days - 2 night',
-    price: '$146.00'
+    price: '$146.00',
+    star: 4,
+    review: 100
   },
   {
     id: 8,
@@ -216,7 +230,10 @@ export const ListTourItems = [
     location: 'Lai Chau',
     title: 'Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina',
     timeDepature: '3 days - 2 night',
-    price: '$234.00'
+    price: '$234.00',
+    star: 4.6,
+    review: 150
+
   },
   {
     id: 9,
@@ -224,7 +241,9 @@ export const ListTourItems = [
     location: 'Phu Quoc, Kien Giang',
     title: 'Experience sea tourism on Phuquoc golden pearl',
     timeDepature: '3 days - 2 night',
-    price: '$334.00'
+    price: '$334.00',
+    star: 4.5,
+    review: 100
   },
   {
     id: 10,
@@ -232,7 +251,9 @@ export const ListTourItems = [
     location: 'Ha Noi Capital',
     title: '“ Com lang Vong “ - Traditional culinary features of the old Hanoi people',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: '$234.00',
+    star: 3.5,
+    review: 30
   },
   {
     id: 11,
@@ -240,7 +261,9 @@ export const ListTourItems = [
     location: 'Hue City',
     title: '“ Bun bo Hue “ - culinary specialties in the ancient capital of Hue',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: '$234.00',
+    star: 4.2,
+    review: 111
   },
   {
     id: 12,
@@ -248,7 +271,9 @@ export const ListTourItems = [
     location: 'Bac Ninh',
     title: 'Heritage of Quan Ho Bac Ninh - Singing passionate hearts',
     timeDepature: '2 hours',
-    price: '$234.00'
+    price: '$234.00',
+    star: 4.5,
+    review: 222
   },
 ]
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button, DatePicker, Input, Select } from 'antd';
 
@@ -23,9 +23,30 @@ export const TabSearchTours = (props: ITabSearchName) => {
   const { tabName } = props;
   const { Option } = Select;
 
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
+  const [location, setLocation] = useState<string>();
+  const [depatureTime, setDepatureTime] = useState<any>();
+  const [typeTour, setTypeTour] = useState<string>();
+  const [numberGuest, setNumberGuest] = useState<string>();
+
+  const handleChangeTypeTour = (value) => {
+    setTypeTour(value);
   };
+  const handleChangeNumberGuest = (value) => {
+    setNumberGuest(value);
+  };
+  const handleInputLocation = (e) => {
+    setLocation(e.target.value);
+  };
+  const handleChangeDeperatureTime = (value) => {
+    setDepatureTime(value);
+  };
+  const handleSearch = () => {
+    setTypeTour('');
+    setNumberGuest('');
+    setLocation('');
+    setDepatureTime('');
+  };
+
   return (
     <StyledSearchTabPane>
       <div className='title'>
@@ -40,7 +61,11 @@ export const TabSearchTours = (props: ITabSearchName) => {
           <div className='tab-search-icon'>
             <IconLocation />
           </div>
-          <Input placeholder={'Quatlam Beach, Giaothuy, Namdinh'} />
+          <Input
+            value={location}
+            onChange={(e) => handleInputLocation(e)}
+            placeholder={'Quatlam Beach, Giaothuy, Namdinh'}
+          />
         </div>
         <div className='tab-search-item'>
           <div className='tab-search-icon'>
@@ -48,6 +73,8 @@ export const TabSearchTours = (props: ITabSearchName) => {
           </div>
 
           <DatePicker
+            value={depatureTime}
+            onChange={(value) => handleChangeDeperatureTime(value)}
             placeholder={'Departure time'}
             suffixIcon={null}
             bordered={false}
@@ -60,8 +87,9 @@ export const TabSearchTours = (props: ITabSearchName) => {
             </div>
             <div className='select-type-tour'>
               <Select
+                value={typeTour}
                 defaultValue='Type of tour'
-                onChange={handleChange}
+                onChange={handleChangeTypeTour}
               >
                 {typesOfTours.map((item, index) => (
                   <Option value={item} key={index}>
@@ -79,8 +107,9 @@ export const TabSearchTours = (props: ITabSearchName) => {
           </div>
           <div className='select-number-guest'>
             <Select
+              value={numberGuest}
               defaultValue='Number of guests'
-              onChange={handleChange}
+              onChange={handleChangeNumberGuest}
             >
               {[1, 2, 3, 4, 5].map((item, index) => (
                 <Option value={item} key={index}>
@@ -92,7 +121,11 @@ export const TabSearchTours = (props: ITabSearchName) => {
         </div>
       </div>
       <div className='tab-search-action'>
-        <Button className='submitSearch' icon={<IconSearch />}>
+        <Button
+          className='submitSearch'
+          icon={<IconSearch />}
+          onClick={handleSearch}
+        >
           Search
         </Button>
       </div>
@@ -207,6 +240,13 @@ const StyledSearchTabPane = styled.div`
       border: 0;
     }
     .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+      box-shadow: none !important;
+    }
+    //remove box-shadow
+    .ant-select-focused .ant-select-selector,
+    .ant-select-selector:focus,
+    .ant-select-selector:active,
+    .ant-select-open .ant-select-selector {
       box-shadow: none !important;
     }
   }

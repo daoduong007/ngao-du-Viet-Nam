@@ -6,8 +6,8 @@ export const ListHotelScreen = () => {
   return (
     <>
       <HeaderListHotel screenName='list_hotel' />
-      {/* <BodyListHotel />
-      <Footer /> */}
+      <BodyListHotel />
+      <Footer />
     </>
   );
 };
