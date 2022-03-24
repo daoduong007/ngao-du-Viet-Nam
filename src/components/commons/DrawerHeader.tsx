@@ -20,7 +20,6 @@ export const DrawerHeader = (props: IDrawer) => {
         width='35%'
         onClose={onClose}
         visible={drawerVisible}
-        bodyStyle={{}}
       >
         <AppBarDirectional />
       </StyledDrawer>

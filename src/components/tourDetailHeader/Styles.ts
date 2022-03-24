@@ -30,4 +30,8 @@ export const StyledTourDetailHeaderContainer = styled.div`
       margin: 0;
     }
   }
+  .menu-app-bar >.menu-outline-color > svg {
+    color:  #1C1C1E;
+  }
+  
 `

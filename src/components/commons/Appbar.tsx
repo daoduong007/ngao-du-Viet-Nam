@@ -16,7 +16,10 @@ export const Appbar = (props: IAppbar) => {
       <AppBarLogo />
       <AppBarDirectional />
       <div className='menu-app-bar'>
-        <MenuOutlined onClick={onClick} />
+        <MenuOutlined
+          onClick={onClick}
+          className='menu-outline-color'
+        />
       </div>
     </StyledAppbar>
   );
