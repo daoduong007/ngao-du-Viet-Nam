@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Input } from 'antd';
+import { Button, DatePicker, Input } from 'antd';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -8,6 +8,7 @@ import { ITourBooking } from '@interfaces';
 import { AppRoutes } from '@enums';
 
 export const TourDetailBookingForm = (props: ITourBooking) => {
+  const { RangePicker } = DatePicker;
   const { duration, price } = props;
   const history = useHistory();
 
@@ -22,7 +23,7 @@ export const TourDetailBookingForm = (props: ITourBooking) => {
           from <span>{price}</span>
         </p>
       </div>
-      <hr className='booking-form-divider' />
+      <hr />
       <div className='booking-form-description'>
         <div className='booking-form-description-duration'>
           <p>Duration :</p>
@@ -39,15 +40,17 @@ export const TourDetailBookingForm = (props: ITourBooking) => {
       </div>
       <div className='booking-form-input'>
         <div className='booking-form-input-time'>
-          <Input
-            prefix={<IconDepatureTime />}
-            defaultValue={'24/02/2022 - 26/02/2022'}
+          <IconDepatureTime color={'#FF7B42'} />
+          <RangePicker
+            placeholder={['Start', 'End']}
+            suffixIcon={null}
+            bordered={false}
           />
         </div>
         <div className='booking-form-input-people'>
           <Input
             prefix={<IconPeople />}
-            defaultValue={'24/02/2022 - 26/02/2022'}
+            defaultValue={'2 Adults - 1 Children'}
           />
         </div>
       </div>
@@ -70,11 +73,19 @@ const StyledTourDetailBookingForm = styled.div`
   height: 500px;
   padding: 0 25px 0 30px;
   background-color: #f4f4f4;
+
   p {
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
   }
+
+  hr {
+    border: 0;
+    border-bottom: 1px solid #c5c7c9;
+    margin: 0 -25px 23px -30px;
+  }
+
   .booking-form-price {
     height: 86px;
     width: 100%;
@@ -102,12 +113,6 @@ const StyledTourDetailBookingForm = styled.div`
     }
   }
 
-  .booking-form-divider {
-    margin: 0px;
-    width: 100%;
-    border: 1px solid #c5c7c9;
-  }
-
   .booking-form-description {
     width: 255px;
     display: flex;
@@ -133,31 +138,42 @@ const StyledTourDetailBookingForm = styled.div`
     }
   }
 
-  .booking-form-input > div {
-    height: 64px;
-    margin-bottom: 18px;
-  }
   .booking-form-input {
+    .ant-input-affix-wrapper-focused {
+      box-shadow: none !important;
+    }
+
     .booking-form-input-time {
+      height: 64px;
+      margin-bottom: 20px;
       display: flex;
+      align-items: center;
+      background-color: #ffffff;
+      svg {
+        margin-left: 23px;
+      }
+      .ant-picker-range .ant-picker-active-bar {
+        display: none;
+      }
+      .anticon {
+        display: none;
+      }
     }
     .booking-form-input-people {
+      height: 64px;
+      margin-bottom: 18px;
       display: flex;
-    }
-    svg {
-      margin-right: 17.5px;
-      margin-left: 26px;
-    }
-    .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
-      border-color: #ff7b42;
+      svg {
+        margin: 0 8px 0 10px;
+      }
     }
     .ant-input-affix-wrapper {
-      border: 1px solid #ffffff;
+      border: 0;
     }
   }
 
   .booking-form-total {
-    margin-bottom: 37px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

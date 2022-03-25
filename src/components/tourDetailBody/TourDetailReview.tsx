@@ -102,19 +102,19 @@ export const TourDetailReview = (props: IReview) => {
         {currentReviewPage === 1 ? (
           <>
             {DataTourDetailReviews.map((item, index) => (
-              <>
-                <TourDetailReviewComment key={index} data={item} />
+              <div key={index}>
+                <TourDetailReviewComment data={item} />
                 <hr className='divider-review-comment' />
-              </>
+              </div>
             ))}
           </>
         ) : currentReviewPage === 2 ? (
           <>
             {DataTourDetailReviews2.map((item, index) => (
-              <>
-                <TourDetailReviewComment key={index} data={item} />
+              <div key={index}>
+                <TourDetailReviewComment data={item} />
                 <hr className='divider-review-comment' />
-              </>
+              </div>
             ))}
           </>
         ) : null}

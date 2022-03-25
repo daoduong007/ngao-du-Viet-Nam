@@ -36,6 +36,7 @@ export const TourDetailBody = (props: ITourDetailBody) => {
   const pathUrl = ['Home'].concat(
     window.location.pathname.split('/'),
   );
+
   return (
     <StyledTourDetailBodyContainer>
       <BreadcrumbLink pathUrl={pathUrl} screenName='tours' />
@@ -95,6 +96,7 @@ export const TourDetailBody = (props: ITourDetailBody) => {
                 onSwiper={(swiper) => {
                   setThumbsSwiper(swiper);
                 }}
+                onClick={(swiper) => console.log(swiper)}
                 spaceBetween={29}
                 slidesPerView={4}
                 freeMode={true}
