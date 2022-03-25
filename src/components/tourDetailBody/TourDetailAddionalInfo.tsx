@@ -58,6 +58,7 @@ const StyledTourDetailAdditional = styled.div`
     border-bottom: 0.5px solid #888888;
     margin: 0px;
   }
+
   .descriptions-tour-itinerary {
     .descriptions-content-collapse {
       margin-bottom: 19px;
@@ -105,6 +106,18 @@ const StyledTourDetailAdditional = styled.div`
       background: #f4f4f4;
       border: 0;
       border-radius: 8px;
+    }
+  }
+  @media (max-width: 600px) {
+    .additional-items {
+      ul > li {
+        font-size: 14px !important;
+      }
+    }
+    .itinerary-collapse-item {
+      p {
+        font-size: 14px !important;
+      }
     }
   }
 `;
