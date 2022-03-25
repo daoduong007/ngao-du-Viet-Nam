@@ -126,7 +126,10 @@ export const TourDetailBody = (props: ITourDetailBody) => {
               <TourDetailAddionalInfo />
             </TabPane>
             <TabPane tab='Reviews' key='3'>
-              <TourDetailReview />
+              <TourDetailReview
+                star={data.star}
+                review={data.review}
+              />
             </TabPane>
           </Tabs>
         </div>

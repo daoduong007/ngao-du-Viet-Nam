@@ -1,12 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Collapse } from 'antd';
 
-import { DataAdditionalInfo, IconQuestionMark } from '@components';
+import {
+  DataAdditionalInfo,
+  DataAdditionalFaq,
+  IconQuestionMark,
+  IconDropDown,
+} from '@components';
 
 export const TourDetailAddionalInfo = () => {
   const { Panel } = Collapse;
   return (
-    <>
+    <StyledTourDetailAdditional>
       <hr />
       <div className='additional-items'>
         <ul>
@@ -15,51 +21,90 @@ export const TourDetailAddionalInfo = () => {
           ))}
         </ul>
       </div>
-      <div className='additional-faq'>
-        <Collapse defaultActiveKey={['1']} expandIconPosition='right'>
-          <Panel
-            header='What is the maximum group size during 2 Days 1 Night To Zagora Desert From Marrakech?'
-            key='1'
-            extra={
-              <div className='icon-quest-mark'>
-                <IconQuestionMark />
-              </div>
-            }
-          >
-            <div>
-              <p>
-                This activity will have a maximum of 17 travelers.
-              </p>
-            </div>
-          </Panel>
-          <Panel
-            header='When and where does the tour start?'
-            key='2'
-            extra={
-              <div className='icon-quest-mark'>
-                <IconQuestionMark />
-              </div>
-            }
-          >
-            <div>
-              <p>Tour will start ...</p>
-            </div>
-          </Panel>
-          <Panel
-            header='Do you arrange airport transfers?'
-            key='3'
-            extra={
-              <div className='icon-quest-mark'>
-                <IconQuestionMark />
-              </div>
-            }
-          >
-            <div>
-              <p>We will prepare a car to take you to the airport</p>
-            </div>
-          </Panel>
-        </Collapse>
+      <div className='descriptions-tour-itinerary'>
+        {DataAdditionalFaq.map((item, index) => (
+          <div key={index} className='descriptions-content-collapse'>
+            <Collapse
+              expandIconPosition='left'
+              bordered={false}
+              ghost={true}
+              expandIcon={() => (
+                <div className='icon-question-mark'>
+                  <IconQuestionMark />
+                </div>
+              )}
+            >
+              <Panel
+                showArrow={true}
+                extra={<IconDropDown />}
+                header={item.questions}
+                key={index}
+              >
+                <div className='itinerary-collapse-item'>
+                  <p>{item.answer}</p>
+                </div>
+              </Panel>
+            </Collapse>
+          </div>
+        ))}
       </div>
-    </>
+    </StyledTourDetailAdditional>
   );
 };
+
+const StyledTourDetailAdditional = styled.div`
+  hr {
+    border: 0px;
+    border-bottom: 0.5px solid #888888;
+    margin: 0px;
+  }
+  .descriptions-tour-itinerary {
+    .descriptions-content-collapse {
+      margin-bottom: 19px;
+    }
+    .itinerary-collapse-item {
+      p {
+        font-size: 16px;
+        line-height: 30px;
+
+        color: rgba(30, 30, 30, 0.8);
+      }
+    }
+    .ant-collapse-content > .ant-collapse-content-box {
+      padding: 16px 45px;
+    }
+    .ant-collapse-item-active .ant-collapse-extra svg {
+      transform: rotate(180deg);
+      transition-duration: 0.3s;
+    }
+    .ant-collapse {
+      border-radius: 8px;
+      background: #f4f4f4;
+    }
+    .ant-collapse-item {
+      border: 0px;
+    }
+    .ant-collapse-item > .ant-collapse-header {
+      align-items: flex-start;
+
+      padding: 12px 16px;
+      background: #fff;
+      border: 1px solid #c4c4c4;
+      border-radius: 8px;
+
+      .icon-question-mark {
+        margin-top: 4px;
+      }
+      .ant-collapse-extra {
+        svg {
+          margin-left: 20px;
+        }
+      }
+    }
+    .ant-collapse-item-active > .ant-collapse-header {
+      background: #f4f4f4;
+      border: 0;
+      border-radius: 8px;
+    }
+  }
+`;

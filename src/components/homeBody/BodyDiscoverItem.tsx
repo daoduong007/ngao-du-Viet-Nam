@@ -28,6 +28,7 @@ export const BodyDiscoverItem = (props: IItemProps) => {
 const StyledBodyDiscoverItem = styled.div`
   &:hover {
     cursor: pointer;
+    transform: translateY(-5px);
   }
 
   width: 255px;
@@ -40,11 +41,6 @@ const StyledBodyDiscoverItem = styled.div`
     img {
       width: 100%;
       height: auto;
-    }
-    &:hover {
-      img {
-        transform: translateY(-3px);
-      }
     }
   }
 

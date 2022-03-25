@@ -79,7 +79,7 @@ export const TourDetailDescription = () => {
               <Collapse
                 expandIconPosition='right'
                 bordered={false}
-                ghost={false}
+                ghost={true}
               >
                 <Panel
                   showArrow={false}
@@ -111,7 +111,6 @@ export const TourDetailDescription = () => {
               </Collapse>
             </div>
           ))}
-          {/* </Collapse> */}
         </div>
       </div>
       <div className='descriptions-maps'>

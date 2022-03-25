@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button, Progress, Rate, Pagination, Input } from 'antd';
 
 import {
   DataTourDetailReviews,
+  DataTourDetailReviews2,
   DataTourDetailReviewsNumberOfreview,
   TourDetailReviewComment,
   IconPrevPage,
@@ -12,8 +13,28 @@ import {
   IconAvatar,
 } from '@components';
 
-export const TourDetailReview = () => {
+interface IReview {
+  star?: number;
+  review?: number;
+}
+export const TourDetailReview = (props: IReview) => {
+  const { star, review } = props;
   const { TextArea } = Input;
+  const [inputComment, setInnputComment] = useState<string>('');
+  const [currentReviewPage, setCurrentReviewPage] =
+    useState<number>(1);
+
+  const handleInputCommentChange = (e) => {
+    setInnputComment(e.target.value);
+  };
+
+  const handleCommentSubmit = () => {
+    setInnputComment('');
+  };
+
+  const handleChangeReviewPage = (page: number) => {
+    setCurrentReviewPage(page);
+  };
   return (
     <StyledTourDetailReview>
       <hr />
@@ -21,12 +42,12 @@ export const TourDetailReview = () => {
         <div className='review-evaluate-star'>
           <div>
             <p>
-              <span className='star'>4/5</span>
+              <span className='star'>{star}/5</span>
             </p>
           </div>
           <Rate defaultValue={4} />
           <p>
-            Based on <span className='review'>150 reviews</span>
+            Based on <span className='review'>{review} reviews</span>
           </p>
         </div>
 
@@ -56,23 +77,47 @@ export const TourDetailReview = () => {
             <IconAvatar />
           </div>
           <div className='comment-form-text-area'>
-            <TextArea rows={5} placeholder='type anything' />
+            <TextArea
+              rows={5}
+              placeholder='Type anything'
+              value={inputComment}
+              onChange={(e) => {
+                handleInputCommentChange(e);
+              }}
+            />
           </div>
         </div>
         <div className='comment-form-submit'>
-          <Button type='primary' className=''>
+          <Button
+            type='primary'
+            className=''
+            onClick={handleCommentSubmit}
+          >
             Commnent
           </Button>
         </div>
       </div>
       <hr />
       <div className='tour-detail-review-comments'>
-        <>
-          {DataTourDetailReviews.map((item, index) => (
-            <TourDetailReviewComment key={index} data={item} />
-          ))}
-          <hr />
-        </>
+        {currentReviewPage === 1 ? (
+          <>
+            {DataTourDetailReviews.map((item, index) => (
+              <>
+                <TourDetailReviewComment key={index} data={item} />
+                <hr className='divider-review-comment' />
+              </>
+            ))}
+          </>
+        ) : currentReviewPage === 2 ? (
+          <>
+            {DataTourDetailReviews2.map((item, index) => (
+              <>
+                <TourDetailReviewComment key={index} data={item} />
+                <hr className='divider-review-comment' />
+              </>
+            ))}
+          </>
+        ) : null}
       </div>
 
       <div className='tour-detail-review-pagination'>
@@ -81,6 +126,9 @@ export const TourDetailReview = () => {
           total={15}
           prevIcon={<IconPrevPage />}
           nextIcon={<IconNextPage />}
+          onChange={(page) => {
+            handleChangeReviewPage(page);
+          }}
         />
       </div>
     </StyledTourDetailReview>
@@ -110,7 +158,7 @@ const StyledTourDetailReview = styled.div`
     p {
       margin: 0;
 
-      font-family: Poppins;
+      font-family: 'Poppins';
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
@@ -178,13 +226,37 @@ const StyledTourDetailReview = styled.div`
       }
       .comment-form-text-area {
         width: 100%;
+        textarea.ant-input:focus,
+        textarea.ant-input:hover {
+          border: 1px solid #ff7b42;
+          box-shadow: none !important;
+        }
       }
     }
 
     .comment-form-submit {
+      height: 44px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: right;
       margin-top: 24px;
+
+      button {
+        width: 170px;
+        height: 100%;
+        background-color: #ff7b42;
+        border: 1px solid #ff7b42;
+
+        span {
+          font-family: 'DM Sans';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 24px;
+          text-align: center;
+
+          color: #ffffff;
+        }
+      }
     }
   }
 
@@ -199,16 +271,16 @@ const StyledTourDetailReview = styled.div`
       }
       border: 0px;
       width: 100%;
-      border-bottom: 0.5px solid #888888;
-      margin: 0px;
+      border-bottom: 1px solid #e5e5e5;
+      margin: 39px 0;
     }
     p {
-      font-family: Poppins;
+      font-family: 'Poppins';
       font-style: normal;
       font-weight: normal;
       font-size: 16px;
       line-height: 30px;
-      /* or 187% */
+
       color: #4f4f4f;
       > span {
         font-weight: 600;
@@ -231,6 +303,11 @@ const StyledTourDetailReview = styled.div`
       img {
         object-fit: contain;
       }
+    }
+
+    .review-comment-content {
+      height: 90px;
+      overflow: hidden;
     }
   }
   .tour-detail-review-pagination {
@@ -264,6 +341,45 @@ const StyledTourDetailReview = styled.div`
         color: #ffffff;
         &:hover {
           color: #ffffff;
+        }
+      }
+    }
+    .ant-pagination-next {
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .tour-detail-review-pagination {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  @media (max-width: 600px) {
+    .tour-detail-review-evaluate {
+      padding: 0;
+      width: 100%;
+      height: 340px;
+      flex-direction: column;
+      p {
+        font-size: 12px;
+      }
+      .review-evaluate-star {
+        p {
+          .star {
+            font-size: 30px;
+          }
+          .review {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .tour-detail-review-comments {
+      p {
+        font-size: 12px;
+        span {
+          font-size: 14px;
         }
       }
     }

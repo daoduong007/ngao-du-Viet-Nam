@@ -236,6 +236,7 @@ export const StyledTourDetailBodyContainer = styled.div`
         top: 20px;
       }
     }
+    
   }
 
 @media (min-width: 1441px) {

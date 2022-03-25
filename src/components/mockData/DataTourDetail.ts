@@ -107,6 +107,23 @@ export const DataTourDetailLocation = [
   }
  ]
 
+ export const DataTourDetailReviews2 = [
+  {
+    avatar: '/assets/avatar1.png',
+    star: 4,
+    title: 'Nice Trip',
+    time: 'Sep 2000',
+    content: 'Any Text File is a program to read text files. .TXT file should be in format starting with $$$ for chapters and in every line sentence'
+  },
+  {
+    avatar: '/assets/avatar1.png',
+    star: 5,
+    title: 'Beautiful place',
+    time: 'Jul 2010',
+    content: 'Ha Noi, Viet Nam is so beautiful'
+  }
+ ]
+
  export const DataTourDetailReviewsNumberOfreview = [
   {
     star: 5,
@@ -128,4 +145,19 @@ export const DataTourDetailLocation = [
     star: 1,
     numberOfReview : 0
   }
+ ]
+
+ export const DataAdditionalFaq = [
+  {
+     questions: 'What is the maximum group size during 2 Days 1 Night To Zagora Desert From Marrakech?',
+     answer: '  This activity will have a maximum of 17 travelers.'
+  },
+  {
+    questions: 'When and where does the tour start?',
+    answer: '  Tour will start ...'
+ },
+ {
+  questions: 'Do you arrange airport transfers?',
+  answer: ' We will prepare a car to take you to the airport'
+}
  ]

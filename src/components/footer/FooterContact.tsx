@@ -36,6 +36,7 @@ const StyledFooterContact = styled.div`
   p {
     cursor: pointer;
     margin: 0;
+    margin-top: -5px;
 
     font-family: 'DM Sans';
     font-style: normal;
