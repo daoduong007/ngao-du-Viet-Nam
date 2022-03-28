@@ -50,11 +50,16 @@ export const HotelItem = (props: IHotelProps) => {
 };
 
 const StyledHotelItem = styled.div`
-  margin-right: 30px;
-  margin-top: 36px;
   width: 350px;
+
   display: flex;
   flex-direction: column;
+  text-align: left;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+  }
   .item-image {
     position: relative;
     display: flex;
@@ -62,11 +67,11 @@ const StyledHotelItem = styled.div`
     .item-icon-mark {
       position: absolute;
       right: 18px;
-      top: 0;
+      top: -2px;
     }
     img {
-      width: 350px;
-      height: 249px;
+      width: 100%;
+      height: auto;
     }
     .item-star {
       position: relative;
@@ -84,8 +89,7 @@ const StyledHotelItem = styled.div`
       margin: 0;
       font-size: 14px;
       line-height: 160%;
-      /* or 22px */
-      /* subcolor 1 */
+
       color: #636567;
     }
   }
@@ -118,12 +122,9 @@ const StyledHotelItem = styled.div`
     p {
       font-size: 14px;
       line-height: 160%;
-      /* or 22px */
 
       display: flex;
       align-items: center;
-
-      /* subcolor 1 */
 
       color: #636567;
     }
@@ -131,6 +132,7 @@ const StyledHotelItem = styled.div`
   .item-rating {
     background-color: #ff7b42;
     width: 80px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -139,7 +141,6 @@ const StyledHotelItem = styled.div`
       font-weight: bold;
       font-size: 12px;
       line-height: 160%;
-      /* or 19px */
 
       display: flex;
       align-items: center;
@@ -150,27 +151,26 @@ const StyledHotelItem = styled.div`
   .item-price {
     display: flex;
     align-items: center;
+    text-align: right;
     p {
       margin: 0;
 
       font-size: 14px;
       line-height: 160%;
-      /* or 22px */
-
-      /* subcolor 1 */
 
       color: #636567;
       span {
         font-size: 20px;
         line-height: 160%;
-        /* identical to box height, or 32px */
 
         text-align: right;
-
-        /* tieu de */
 
         color: #1c1c1e;
       }
     }
+  }
+
+  @media (max-width: 1440px) {
+    width: 100%;
   }
 `;

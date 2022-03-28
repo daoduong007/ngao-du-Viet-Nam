@@ -13,11 +13,10 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
   flex-direction: column;
   justify-content: space-between;
 
-
-
   .header-content {
     display: flex;
     flex-direction: row;
+    padding: 0 165px;
 
     .header-slogan-and-feature {
       display: flex;
@@ -25,13 +24,12 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
       justify-content: space-between;
     }
     .header-slogan {
-      padding-left: 165px;
       p {
         text-align: left;
         font-weight: bold;
         font-size: 16px;
         line-height: 160%;
-        /* identical to box height, or 26px */
+
         color: #FFF2CF;
         span {
           font-weight: 500;
@@ -43,15 +41,15 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
       }
     }
     .header-feature {
-      width: 100%;
+      position: relative;
+      left: -165px;
+      bottom: -1px;
+      width: calc(100% + 165px) ;
       height: 99px;
       background-color: #FFFFFF;
-      position: relative;
-      bottom: -1px;
     }
     .header-search {
-      padding: 0;
-      margin-right: 165px;
+      padding: 0; 
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.592) 100%);
      
       p {
@@ -83,7 +81,7 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
       padding: 0 50px;
       .header-search {
       margin-right: 0px;
-    }
+      }
     }
     .header-feature {
       display: none;

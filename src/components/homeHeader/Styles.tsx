@@ -13,6 +13,7 @@ export const StyledHeaderContainer = styled.div`
   background-size: 100% 766px;
 
   .header-content {
+    padding: 0 165px;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -61,9 +62,6 @@ export const StyledHeaderContainer = styled.div`
   }
   @media (min-width: 3280px) {
     background-size: 100% 100%;
-    .header-content {
-      width: 90%;
-    }
     .header-slogan-and-feature {
       display: flex;
       height: 100%;

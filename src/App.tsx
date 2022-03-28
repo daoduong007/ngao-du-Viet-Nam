@@ -26,9 +26,6 @@ function App() {
   return (
     <div className='App'>
       <Switch>
-        <Route path={AppRoutes.HOME_SCREEN_} exact>
-          <HomeScreen />
-        </Route>
         <Route path={AppRoutes.HOME_SCREEN} exact>
           <HomeScreen />
         </Route>

@@ -89,7 +89,6 @@ const StyledBodyTourItem = styled.div`
       font-weight: 500;
       font-size: 18px;
       line-height: 23px;
-      /* tieu de */
 
       color: #1c1c1e;
 

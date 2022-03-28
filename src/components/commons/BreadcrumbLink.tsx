@@ -22,7 +22,11 @@ export const BreadcrumbLink = (props: IBreadUrl) => {
       >
         {pathUrl.map((item, index) => (
           <Breadcrumb.Item key={index}>
-            {item !== '' && item.search(/[1-9]/) === -1 ? (
+            {item === 'Home' ? (
+              <Link to={`/`}>
+                <p>{item}</p>
+              </Link>
+            ) : item !== '' && item.search(/[1-9]/) === -1 ? (
               <Link to={`/${item}`}>
                 <p>{item.charAt(0).toUpperCase() + item.slice(1)}</p>
               </Link>
@@ -50,7 +54,7 @@ const StyledBreadcrumb = styled.div`
     font-weight: normal;
     font-size: 14px;
     line-height: 160%;
-    /* or 22px */
+
     color: #3d3e3f;
   }
 

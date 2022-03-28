@@ -4,7 +4,7 @@ import {
   HotelDetailBody,
   HotelDetailHeader,
   Footer,
-  ListHotel,
+  DataListHotel,
   Loading,
 } from '@components';
 import { AppRoutes } from '@enums';
@@ -23,7 +23,7 @@ export const HotelDetailScreen = () => {
   //check hotel id exists
   useEffect(() => {
     if (!id) return;
-    const hotelSelected = ListHotel.find(
+    const hotelSelected = DataListHotel.find(
       (hotel) => hotel.id === Number(id),
     );
     setHotel(hotelSelected);

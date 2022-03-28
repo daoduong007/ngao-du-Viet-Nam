@@ -136,7 +136,8 @@ const StyledSearchTabPane = styled.div`
   font-family: 'DM Sans';
   font-style: normal;
   padding: 34px 32px;
-  width: 445px;
+  width: 452px;
+  height: calc(width * 97%);
 
   .title {
     width: 100%;
@@ -250,9 +251,14 @@ const StyledSearchTabPane = styled.div`
       box-shadow: none !important;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     width: 400px;
-    height: 485px;
+  }
+  @media (max-width: 900px) {
+    width: 380px;
+  }
+  @media (max-width: 768px) {
+    width: 350px;
     .title {
       h1 {
         font-size: 20px;

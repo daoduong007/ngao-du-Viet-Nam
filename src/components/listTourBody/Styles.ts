@@ -18,7 +18,6 @@ export const StyledListTourBodyContainer = styled.div`
       font-weight: normal;
       font-size: 14px;
       line-height: 160%;
-      /* or 22px */
 
       text-align: center;
     }
@@ -48,8 +47,7 @@ export const StyledListTourBodyContainer = styled.div`
       font-weight: 500;
       font-size: 40px;
       line-height: 100%;
-      /* or 40px */
-      /* tieu de */
+
       color: #1C1C1E;
     }
     div {
@@ -199,6 +197,7 @@ export const StyledListTourBodyContainer = styled.div`
 
 export const StyledListTourBodyFilter = styled.div`
   width:351px;
+  margin: -12px -16px;
   padding : 24px;
   display: flex;
   flex-direction: column;
@@ -214,7 +213,6 @@ export const StyledListTourBodyFilter = styled.div`
     font-weight: 600;
     font-size: 18px;
     line-height: 27px;
-    /* identical to box height */
 
     display: flex;
     align-items: center;
@@ -271,8 +269,7 @@ export const StyledListTourBodyFilter = styled.div`
       font-weight: 500;
       font-size: 16px;
       line-height: 24px;
-      /* identical to box height */
-      /* text tieu de */
+
       color: #2A2A2A;
     }
   }
@@ -292,7 +289,7 @@ export const StyledListTourBodyFilter = styled.div`
         font-weight: 600;
         font-size: 16px;
         line-height: 150%;
-        /* identical to box height, or 24px */
+
         text-align: center;
 
         color: #FFFFFF;

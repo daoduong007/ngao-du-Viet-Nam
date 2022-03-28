@@ -2,138 +2,214 @@ import styled from 'styled-components'
 
 export const StyleBodyListHotelContainer = styled.div`
   width: 100%;
-  padding-left: 165px;
+  margin-top: 21px;
+  padding: 0 165px;
   display: flex;
   flex-direction: column;
 
   p {
-    font-family: DM Sans;
+    font-family: 'DM Sans';
     font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
   }
-  .list-hotel-body-screenname {
-    display: flex;
-    flex-direction: row;
-    margin-top: 21px;
-    p {
-      margin: 0;
-      margin-right: 24px;
-      line-height: 160%;
-      text-align: center;
-      /* noi dung */
-      color: #3D3E3F;
-    }
-    svg {
-      margin-right: 24px;
-    }
-  }
+
   .list-hotel-body-tittle {
     margin-top: 60px;
-    padding-right: 150px;
+    margin-bottom: 37px;
+
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    p {
+    h2 {
+    font-family: 'DM Sans';
+    font-style: normal;
     margin: 0px;
     font-weight: 500;
     font-size: 40px;
     line-height: 100%;
-    /* identical to box height, or 40px */
-    /* tieu de */
+
     color: #1C1C1E;
     }
-    p.text-color {
-      width: 100%;
-      margin-right: 18px;
 
-      font-weight: bold;
-      font-size: 18px;
-      line-height: 160%;
-      /* identical to box height, or 29px */
-      color: #FF7B42;
-    }
-    span {
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 160%;
-    }
-
-    .list-hotel-body-sort {
-      display: flex;
-      flex-direction: row;
-    } 
-    .ant-select-arrow {
-      top: 13px;
-    }
-    .ant-select {
-      width: 100%;
-    }
-    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
-      border: 0;
-    }
     .list-hotel-sort-and-filter {
+      width: 30%;
       display: flex;
       flex-direction: row;
-    }
-    .list-hotel-body-filer {
-      margin-left: 91px;
-      .ant-btn-primary {
-        background-color: #1C1C1E;
-        border: 1px solid #1C1C1E;
+      justify-content: space-between;
+      align-items: center;
+      
+      .list-hotel-body-sort {
+        display: flex;
+        flex-direction: row;
+
+        p, span {
+          margin: 0;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 160%;
+        }
+        p {
+          color: #FF7B42;
+        }
+
+        .sort-select {
+          margin-left: 15px;
+
+          .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+            border: 0;
+          }
+          .ant-select-arrow {
+            color: #4F4F4F;
+            top: 15%;
+            padding-left: 17px;
+          }
+          .ant-select-open {
+
+          }
+        }
+      }
+
+      .list-hotel-body-filer {
+        .ant-btn-primary {
+          background-color: #1C1C1E;
+          border: 1px solid #1C1C1E;
+        }
       }
     }
   }
   .list-hotel-body-content {
-   
+    margin-top: 37px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    
-    text-align: left;
-
   }
 
   .list-hotel-body-pagination {
-    margin: 79px 150px 72px 0;
+    margin: 63px 30px 150px 0;
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
-    li {
-      margin-right: 24px;
-      width: 47px;
-      height: 47px;
-      background: #E8E9EA;
-      opacity: 0.7;
+    align-items: center;
+
+    ul {
+      display: flex;
+      align-items: center;
+
+      font-family: 'DM sans';
+      font-style: normal;
+      li,button {
+        width: 47.1px;
+        height: 47.1px;
+        margin: 0;
+        margin-left: 24px;
+        border: 0;
+
+        background: #E8E9EA;
+        opacity: 0.7;
+      }
       button {
-      background: #E8E9EA;
-      opacity: 0.7;
+        border: 0;
+        margin-left: 0px;
+        
       }
-      a {
-        margin-top: 12px;
+      .ant-btn-icon-only {
+        vertical-align: 0;
+      }
+      .ant-pagination-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a {
 
-        font-family: Apercu Pro;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 120%;
-        /* or 19px */
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 120%;
 
+          color: #4F4F52;
+        }
+      }
+      .ant-pagination-item-active{ 
+        background: #1C1C1E;
+        opacity: 1;
+        a {
 
-        /* text noi dung */
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 120%;
 
-        color: #4F4F52;
+          color: #FFFFFF;
+        }
       }
     }
-    .ant-pagination-item-active {
-      background-color:  #1C1C1E;
-      border-color: #1C1C1E;
-      a{
-        color: #FFFFFF;
-      }
-      
-    }
-    
+  }
 
+  @media (min-width: 1441px) {
+    width: 1440px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1200px) {
+    padding: 0 50px;
+
+    .list-hotel-body-tittle {
+      h2 {
+        font-size: 35px;
+      }
+      .list-hotel-sort-and-filter {
+      width: 33%;
+        .list-hotel-body-sort {
+        }
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .list-hotel-body-tittle {
+      margin: 30px 0 ;
+      h2 {
+        font-size: 30px;
+      }
+      .list-hotel-sort-and-filter {
+      width: 36%;
+        .list-hotel-body-sort {
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 30px;
+    .list-hotel-body-tittle {
+      margin: 20px 0 ;
+      h2 {
+        font-size: 25px;
+      }
+      .list-hotel-sort-and-filter {
+      width: 50%;
+        .list-hotel-body-sort {
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 0 20px;
+    .list-hotel-body-tittle {
+      margin: 10px 0 ;
+      flex-direction: column;
+      align-items: flex-start;
+      .list-hotel-sort-and-filter {
+        margin-top: 20px;
+        width: 100%;
+        .list-hotel-body-sort {
+        }
+      }
+    }
+    .list-hotel-body-pagination {
+      width: 100%;
+      margin: 30px 0;
+      justify-content : center;
+    }
   }
 `

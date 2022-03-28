@@ -1,11 +1,7 @@
 import React from 'react';
 import { Slider, Checkbox, Button, Rate } from 'antd';
 
-import {
-  StyledListTourBodyFilter,
-  DataListHotelFilter1,
-  DataListHotelFilter2,
-} from '@components';
+import { StyledListTourBodyFilter } from '@components';
 
 export const ListHotelFilter = () => {
   const formatter = (value) => {
@@ -29,7 +25,7 @@ export const ListHotelFilter = () => {
       <hr className='list-tour-divider' />
       <div className='list-tour-filter-duration'>
         <p className='list-tour-filter-title'>Duration</p>
-        {DataListHotelFilter1.map((item, index) => (
+        {[1, 2, 3, 4, 5].map((item, index) => (
           <Checkbox key={index}>
             <Rate disabled={true} defaultValue={item} />
           </Checkbox>
@@ -38,7 +34,7 @@ export const ListHotelFilter = () => {
       <hr className='list-tour-divider' />
       <div className='list-tour-filter-typetour'>
         <p className='list-tour-filter-title'>Type of Tours</p>
-        {DataListHotelFilter2.map((item, index) => (
+        {[5, 4, 3, 2, 1].map((item, index) => (
           <Checkbox key={index}>{item}</Checkbox>
         ))}
       </div>

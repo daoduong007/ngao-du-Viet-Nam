@@ -31,19 +31,20 @@ export const Feature = () => {
   );
 };
 const StyledFeature = styled.div`
+  position: relative;
+  left: -165px;
+  bottom: -1px;
   padding: 26px 125px 0 165px;
+  width: calc(100% + 165px);
+  height: 99px;
 
   font-family: 'DM Sans';
   font-style: normal;
 
   background-color: #ffffff;
-  width: 100%;
-  height: 99px;
+
   display: flex;
   flex-direction: column;
-
-  position: relative;
-  bottom: -1px;
 
   .feature-title {
     display: flex;
@@ -93,10 +94,8 @@ const StyledFeature = styled.div`
     }
   }
   @media (min-width: 2350px) {
-    width: 100%;
     padding-right: 55%;
     padding-top: 15px;
-    position: relative;
     bottom: -2px;
     .feature-title {
       h2 {
@@ -115,7 +114,6 @@ const StyledFeature = styled.div`
   @media (max-width: 1200px) {
     padding: 0 10px 0 50px;
     padding-top: 20px;
-    position: relative;
     bottom: -2px;
   }
 `;

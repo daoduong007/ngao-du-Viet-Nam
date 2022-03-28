@@ -23,9 +23,7 @@ export const Slogan = (props: IHeaderSlogan) => {
   );
 };
 const StyledSlogan = styled.div<{ screenName?: string }>`
-  padding: 0 165px;
   padding-top: 20px;
-  padding-right: 114px;
   padding-right: ${(props) =>
     props.screenName === 'home'
       ? '220px'
@@ -44,10 +42,11 @@ const StyledSlogan = styled.div<{ screenName?: string }>`
     color: #fff2cf;
   }
   h1 {
+    margin: 0;
+
     font-weight: 500;
     font-size: 60px;
     line-height: 100%;
-    /* or 60px */
 
     color: #ffffff;
   }
