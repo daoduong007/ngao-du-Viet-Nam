@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button, Modal } from 'antd';
-import clsx from 'clsx';
+import { Modal } from 'antd';
 
 import {
   DataHotelSelectRoom,
-  IconAcreage,
-  IconBed,
-  IconGuestBold,
-  IconImage,
   ModalSelectRoom,
+  DetailSelectRoomItem,
 } from '@components';
 
 export const HotelDetailBodySelectRoom = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [IdHotelSelected, setIdHotelSelected] = useState<any>();
-  const [isSelectedRoom, setIsSelectedRoom] = useState(false);
 
-  const handleSelectedRoom = () => {
-    setIsSelectedRoom((prev) => !prev);
-  };
   const handleShowModal = (id) => {
     setIsModalVisible(true);
 
@@ -31,83 +23,32 @@ export const HotelDetailBodySelectRoom = () => {
 
   return (
     <StyledHotelDetailBodySelectRoom>
+      <hr className='hr-divider' />
+      <p>Room</p>
+      {DataHotelSelectRoom.map((item, index) => (
+        <div key={index}>
+          <DetailSelectRoomItem
+            room={item}
+            onClick={handleShowModal}
+          />
+        </div>
+      ))}
+
       <Modal
+        centered={true}
         visible={isModalVisible}
         closable={false}
+        onCancel={handleClose}
         footer={null}
-        width={1170}
+        mask={true}
+        maskClosable={true}
+        width={'80%'}
       >
         <ModalSelectRoom
           idRoom={IdHotelSelected}
           onClick={handleClose}
         />
       </Modal>
-      <p>Room</p>
-      {DataHotelSelectRoom.map((room, index) => (
-        <div key={index} className='select-room-items'>
-          <div
-            className='select-room-image'
-            onClick={() => handleShowModal(room.id)}
-          >
-            <img src={room.imgUrl} />
-            <div className='select-room-image-icon'>
-              <IconImage />
-            </div>
-          </div>
-          <div className='select-room-content'>
-            <div className='select-room-name'>
-              <p>{room.name}</p>
-            </div>
-            <div className='select-room-info'>
-              <div className='select-room-info-item'>
-                <IconAcreage />
-                <p>{room.acreage}</p>
-              </div>
-              <div className='select-room-info-item'>
-                <IconBed />
-                <p>{room.bed}</p>
-              </div>
-              <div className='select-room-info-item'>
-                <IconGuestBold />
-                <p>{room.guest} Guest</p>
-              </div>
-            </div>
-            <div className='select-room-convenient'>
-              <p>
-                Air Conditioning • Airport Transport • Restaurant
-                <span> • 15 more</span>
-              </p>
-            </div>
-            <div className='select-room-button-and-price'>
-              <div className='select-room-button'>
-                {room.outOfRoom ? (
-                  <div className='button-out-of-room'>
-                    <Button>Out of Room</Button>
-                  </div>
-                ) : (
-                  <div className='button-select-room'>
-                    <Button
-                      onClick={handleSelectedRoom}
-                      className={clsx(
-                        isSelectedRoom === true && 'selected-room',
-                        isSelectedRoom === false &&
-                          'not-selected-room',
-                      )}
-                    >
-                      Select Room
-                    </Button>
-                  </div>
-                )}
-              </div>
-              <div className='select-room-price'>
-                <p>
-                  <span>${room.price}</span>/night
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
     </StyledHotelDetailBodySelectRoom>
   );
 };
@@ -117,8 +58,14 @@ const StyledHotelDetailBodySelectRoom = styled.div`
   display: flex;
   flex-direction: column;
 
+  .hr-divider {
+    margin: 0;
+    border: 0;
+    border-bottom: 0.5px solid #888888;
+  }
+
   p {
-    font-family: 'Poppins';
+    font-family: 'DM sans';
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -153,14 +100,10 @@ const StyledHotelDetailBodySelectRoom = styled.div`
 
     .select-room-name {
       p {
-        font-family: 'DM Sans';
-        font-style: normal;
         font-weight: 700;
         font-size: 18px;
         line-height: 150%;
         /* or 27px */
-
-        /* text tieu de */
 
         color: #2a2a2a;
       }
@@ -171,12 +114,9 @@ const StyledHotelDetailBodySelectRoom = styled.div`
       flex-direction: row;
       justify-content: space-between;
       p {
-        font-family: 'Poppins';
-        font-style: normal;
         font-weight: 500;
         font-size: 16px;
         line-height: 26px;
-        /* identical to box height, or 163% */
 
         display: flex;
         align-items: center;
@@ -194,14 +134,9 @@ const StyledHotelDetailBodySelectRoom = styled.div`
     }
     .select-room-convenient {
       p {
-        font-family: 'DM Sans';
-        font-style: normal;
         font-weight: 400;
         font-size: 14px;
         line-height: 21px;
-        /* identical to box height, or 149% */
-
-        /* sub color */
 
         color: #888888;
       }
@@ -211,12 +146,9 @@ const StyledHotelDetailBodySelectRoom = styled.div`
       flex-direction: row;
       justify-content: space-between;
       p {
-        font-family: 'Poppins';
-        font-style: normal;
         font-weight: 400;
         font-size: 12px;
         line-height: 17px;
-        /* or 145% */
 
         text-align: right;
 
@@ -226,7 +158,6 @@ const StyledHotelDetailBodySelectRoom = styled.div`
           font-weight: 600;
           font-size: 18px;
           line-height: 23px;
-          /* identical to box height, or 126% */
 
           text-align: right;
 
@@ -284,6 +215,45 @@ const StyledHotelDetailBodySelectRoom = styled.div`
         text-align: center;
 
         color: #ffffff;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .select-room-content {
+      .select-room-name {
+        p {
+          font-size: 14px;
+        }
+      }
+      .select-room-info {
+        p {
+          font-size: 14px;
+        }
+      }
+      .select-room-convenient {
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+    .select-room-items {
+      flex-direction: column;
+      align-items: center;
+      .select-room-image {
+        width: 60%;
+        margin-bottom: 20px;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  @media (max-width: 450px) {
+    .select-room-items {
+      .select-room-image {
+        width: 90%;
       }
     }
   }

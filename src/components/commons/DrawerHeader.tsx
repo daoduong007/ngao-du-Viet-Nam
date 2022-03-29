@@ -30,7 +30,6 @@ export const DrawerHeader = (props: IDrawer) => {
 const StyledDrawer = styled(Drawer)`
   @media (max-width: 600px) {
     .ant-drawer-content-wrapper {
-      height: 43%;
     }
 
     .ant-drawer-header {
@@ -43,8 +42,8 @@ const StyledDrawer = styled(Drawer)`
       background-color: #fbab7e;
       background-image: linear-gradient(
         180deg,
-        #fbab7e 0%,
-        #f7ce68 100%
+        #757f9a 0%,
+        #d7dde8 100%
       );
     }
     p {

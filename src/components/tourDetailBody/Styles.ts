@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledTourDetailBodyContainer = styled.div`
   width: 100%;
   margin-top: 55px;
-  padding: 0 165px 0 165px;
+  padding: 0 165px;
   display: flex;
   flex-direction: column;
 
@@ -294,14 +294,14 @@ export const StyledTourDetailBodyContainer = styled.div`
       }
     }
     .body-content-image-and-booking-form {
-      flex-direction: column-reverse;
+      flex-direction: column;
       align-items: center;
       .body-content-image {
         width: 90%;
+        margin-bottom: 30px;
       }
       .body-content-booking-form {
         width: 55%;
-        margin-bottom: 20px;
       }
     }
     .location-and-evaluate {
@@ -327,10 +327,11 @@ export const StyledTourDetailBodyContainer = styled.div`
     }
     .body-content-image-and-booking-form {
       margin: 30px 0;
-      flex-direction: column-reverse;
-      align-items: center;
       .body-content-image {
         width: 100%;
+        .swiper-button-next, .swiper-button-prev {
+          display: none;
+        }
         .body-content-image-slide { 
           display: none;
         }
@@ -342,7 +343,7 @@ export const StyledTourDetailBodyContainer = styled.div`
         }
       }
       .body-content-booking-form {
-        width: 100%;
+        width: 300px;
         margin-bottom: 20px;
       }
     }
@@ -366,6 +367,5 @@ export const StyledTourDetailBodyContainer = styled.div`
       margin-bottom: 10px;
     }
   } 
-
 }
 `

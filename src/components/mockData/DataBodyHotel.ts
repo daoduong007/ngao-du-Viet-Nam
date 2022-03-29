@@ -355,6 +355,30 @@ export const DataHotelDetailReviews = [
   },
  ]
 
+ export const DataHotelDetailReviews2 = [
+  {
+    avatar: '/assets/avatar1.png',
+    rating: 9,
+    title: 'The best hotel!',
+    time: 'Sep 2021',
+    content: 'The trip is long but the vans are comfortable and have wi-fi. The driver very friendly as well as Ahmed our guide to the dromedaries. The camp was beautiful, comfortable beds, clean bathroom and delicious food! '
+  },
+  {
+    avatar: '/assets/avatar1.png',
+    rating: 8.5,
+    title: 'Good hotel!',
+    time: 'Sep 2022',
+    content: 'The trip is long but the vans are comfortable and have wi-fi. The driver very friendly as well as Ahmed our guide to the dromedaries. The camp was beautiful, comfortable beds, clean bathroom and delicious food! '
+  },
+  {
+    avatar: '/assets/avatar1.png',
+    rating: 9.5,
+    title: 'The good',
+    time: 'Nov 1999',
+    content: 'It was excellent! The trip is long but the vans are comfortable and have wi-fi. The driver very friendly as well as Ahmed our guide to the dromedaries. The camp was beautiful, comfortable beds, clean bathroom ! '
+  },
+ ]
+
 export const  DataHotelSelectRoom = [
    {
     id: 1,
@@ -378,7 +402,7 @@ export const  DataHotelSelectRoom = [
    },
    {
      id: 3,
-    imgUrl: '/assets/room3.png',
+    imgUrl: '/assets/room2.png',
     name: 'Standard room',
     acreage: '70 m2',
     bed: '2 Queen Bed',

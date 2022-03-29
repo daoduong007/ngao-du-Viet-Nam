@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import {
   HotelDetailBody,
-  HotelDetailHeader,
+  DetailHeader,
   Footer,
   DataListHotel,
   Loading,
@@ -40,7 +40,7 @@ export const HotelDetailScreen = () => {
     <>
       {hotel ? (
         <>
-          <HotelDetailHeader />
+          <DetailHeader />
           <HotelDetailBody data={hotel} onClick={handleClick} />
           <Footer />
         </>

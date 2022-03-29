@@ -12,6 +12,7 @@ import {
 export const HotelDetailBodyDescription = () => {
   return (
     <StyledHotelBodyDescription>
+      <hr className='hr-divider' />
       <div className='hotel-description-overview'>
         <p className='hotel-description-title'>Overview</p>
         {DataHotelDetailOverview.map((item, index) => (
@@ -89,11 +90,10 @@ const StyledHotelBodyDescription = styled.div`
     margin: 0;
     border: 0;
     border-bottom: 0.5px solid #888888;
-    width: 100%;
   }
 
   p {
-    font-family: DM Sans;
+    font-family: ' DM Sans';
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -164,7 +164,6 @@ const StyledHotelBodyDescription = styled.div`
         color: #2a2a2a;
         span {
           font-size: 16px;
-          /* identical to box height, or 26px */
 
           color: #ff7b42;
         }
@@ -201,5 +200,28 @@ const StyledHotelBodyDescription = styled.div`
   }
   .hotel-description-maps {
     margin-top: 41px;
+  }
+
+  @media (max-width: 600px) {
+    p {
+      font-size: 14px;
+    }
+    .hotel-description-rules {
+      .hotel-description-rules-content {
+        > div {
+          width: 100%;
+        }
+        .hotel-description-rules-content-time {
+          margin: 0;
+          margin-bottom: 20px;
+          width: 95%;
+        }
+      }
+      .hotel-description-list-rules {
+        li {
+          font-size: 14px;
+        }
+      }
+    }
   }
 `;

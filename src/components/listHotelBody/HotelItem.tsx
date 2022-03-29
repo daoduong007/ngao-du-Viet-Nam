@@ -32,7 +32,7 @@ export const HotelItem = (props: IHotelProps) => {
       <div className='item-rating-review-price'>
         <div className='item-rating-and-review'>
           <div className='item-rating'>
-            <p>Rating :{data.rating}</p>
+            <p>Rating : {data.rating}</p>
           </div>
           <div className='item-review'>
             {data.review} <span>reviews</span>

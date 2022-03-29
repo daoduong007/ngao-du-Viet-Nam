@@ -60,3 +60,13 @@ export interface IHotelDetail {
   price: string;
 }
 
+export interface IDetailSelectRoom {
+  id: number,
+  imgUrl: string,
+  name: string,
+  acreage: string,
+  bed:string,
+  guest: number,
+  price: number,
+  outOfRoom: boolean,
+}

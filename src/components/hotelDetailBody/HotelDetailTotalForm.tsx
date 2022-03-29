@@ -86,7 +86,6 @@ export const HotelDetailTotalForm = () => {
           <div className='total-form-body-pick-people '>
             <Input
               size='large'
-              // placeholder='2 Adults - 1 Children'
               defaultValue='2 Adults - 1 Children'
               prefix={<IconGuest color={'#FF7B42'} />}
               bordered={false}
@@ -216,9 +215,8 @@ export const HotelDetailTotalForm = () => {
 };
 
 const StyledHotelDetailTotalForm = styled.div`
-  width: 380px;
+  width: 100%;
   height: 693px;
-
   background: #f4f4f4;
   hr {
     margin: 0;
@@ -233,7 +231,7 @@ const StyledHotelDetailTotalForm = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 160%;
-    /* noi dung */
+
     color: #3d3e3f;
 
     span {
@@ -256,9 +254,6 @@ const StyledHotelDetailTotalForm = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 160%;
-    /* or 22px */
-
-    /* tieu de */
 
     color: #1c1c1e;
 
@@ -329,9 +324,6 @@ const StyledHotelDetailTotalForm = styled.div`
       font-weight: 700;
       font-size: 16px;
       line-height: 42px;
-      /* identical to box height, or 262% */
-
-      /* text tieu de */
 
       color: #2a2a2a;
     }
@@ -347,9 +339,6 @@ const StyledHotelDetailTotalForm = styled.div`
       font-weight: 400;
       font-size: 20px;
       line-height: 160%;
-      /* identical to box height, or 32px */
-
-      /* tieu de */
 
       color: #1c1c1e;
 

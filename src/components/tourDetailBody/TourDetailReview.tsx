@@ -136,6 +136,9 @@ export const TourDetailReview = (props: IReview) => {
 };
 
 const StyledTourDetailReview = styled.div`
+  font-family: 'DM Sans';
+  font-style: normal;
+
   hr {
     border: 0px;
     width: 100%;
@@ -306,7 +309,7 @@ const StyledTourDetailReview = styled.div`
     }
 
     .review-comment-content {
-      height: 90px;
+      height: 100px !important;
       overflow: hidden;
     }
   }

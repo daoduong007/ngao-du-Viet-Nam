@@ -77,7 +77,6 @@ export const BodyListHotel = () => {
       </div>
       <Row
         className='list-hotel-body-content'
-        justify={'space-around'}
         gutter={[
           { xs: 0, sm: 20, md: 30, lg: 30 },
           { xs: 20, sm: 25, md: 45 },

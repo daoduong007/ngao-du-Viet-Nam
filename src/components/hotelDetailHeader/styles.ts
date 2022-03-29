@@ -7,12 +7,11 @@ export const StyledHotelHeaderContainer = styled.div`
   margin-bottom: 55px;
 
   .header-app-bar {
-    flex-direction: row;
-    justify-content: space-between;
     width: 100%;
     padding: 0 165px;
     margin-top: 20px;
     margin-bottom: 29px;
+    
     display: flex;
     flex-direction: row;
     justify-content: space-between;

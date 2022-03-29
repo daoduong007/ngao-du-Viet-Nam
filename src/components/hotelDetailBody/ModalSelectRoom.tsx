@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Button } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { FreeMode, Navigation, Thumbs } from 'swiper';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -35,6 +35,7 @@ interface IRoomDetail {
 export const ModalSelectRoom = (props: IData) => {
   const { idRoom, onClick } = props;
   const [hotelSelected, setHotelSelected] = useState<IRoomDetail>();
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   useEffect(() => {
     const selected = DataHotelSelectRoom.find(
@@ -61,21 +62,54 @@ export const ModalSelectRoom = (props: IData) => {
                 <Button onClick={onClick}>Select Room</Button>
               </div>
             </div>
-            <div className='modal-image'>
-              <img src={hotelSelected.imgUrl} />
-            </div>
-            <div className='modal-slide-image'>
-              <Swiper
-                modules={[Navigation]}
-                spaceBetween={24}
-                slidesPerView={4}
-              >
-                {SlideImageUrl.map((imgUrl, index) => (
-                  <SwiperSlide key={index}>
-                    <img src={imgUrl} />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+            <div className='body-content-image'>
+              <div className='body-content-image-main'>
+                <Swiper
+                  spaceBetween={10}
+                  navigation={true}
+                  thumbs={{ swiper: thumbsSwiper }}
+                  modules={[FreeMode, Navigation, Thumbs]}
+                  className='mySwiper2'
+                  breakpoints={{
+                    0: {
+                      slidesPerView: 1.24,
+                      spaceBetween: 8,
+                      centeredSlides: true,
+                      centeredSlidesBounds: true,
+                    },
+                    600: {
+                      slidesPerView: 1,
+                      centeredSlides: false,
+                      centeredSlidesBounds: false,
+                    },
+                  }}
+                >
+                  {SlideImageUrl.map((imgUrl, index) => (
+                    <SwiperSlide key={index}>
+                      <img src={imgUrl} />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+              <div className='body-content-image-slide'>
+                <Swiper
+                  onSwiper={(swiper) => {
+                    setThumbsSwiper(swiper);
+                  }}
+                  spaceBetween={29}
+                  slidesPerView={4}
+                  freeMode={true}
+                  watchSlidesProgress={true}
+                  modules={[FreeMode, Navigation, Thumbs]}
+                  className='mySwiper'
+                >
+                  {SlideImageUrl.map((imgUrl, index) => (
+                    <SwiperSlide key={index}>
+                      <img src={imgUrl} />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
             </div>
           </div>
           <div className='modal-info'>
@@ -112,12 +146,14 @@ export const ModalSelectRoom = (props: IData) => {
               <p className='modal-facilities-title'>
                 Room Facilities:
               </p>
-              {DataDescriptionHotelAmenities.map((item, index) => (
-                <div key={index} className='modal-facilities-item'>
-                  <IconTick />
-                  <p>{item}</p>
-                </div>
-              ))}
+              <div className='modal-facilities-list-items'>
+                {DataDescriptionHotelAmenities.map((item, index) => (
+                  <div key={index} className='modal-facilities-item'>
+                    <IconTick />
+                    <p>{item}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -128,10 +164,12 @@ export const ModalSelectRoom = (props: IData) => {
 
 const StyledModalSelectRoom = styled.div`
   .modal-container {
+    width: 100%;
     height: 761px;
+    padding: 0 15px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     font-family: 'DM Sans';
     font-style: normal;
@@ -140,12 +178,14 @@ const StyledModalSelectRoom = styled.div`
     }
 
     .modal-price-and-image {
-      width: 633px;
+      width: 60%;
     }
     .modal-info {
-      width: 422px;
+      width: 37%;
+      margin-top: 63px;
     }
   }
+
   .modal-title {
     font-weight: 700;
     font-size: 30px;
@@ -187,6 +227,7 @@ const StyledModalSelectRoom = styled.div`
       width: 159px;
       height: 44px;
       background: #ff7b42;
+      border: 1px solid #ff7b42;
       span {
         font-weight: 700;
         font-size: 16px;
@@ -200,23 +241,6 @@ const StyledModalSelectRoom = styled.div`
     }
   }
 
-  .modal-image {
-    margin-bottom: 24px;
-    img {
-      width: 100%;
-      height: 422px;
-    }
-  }
-  .modal-slide-image {
-    height: 93px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  .modal-info {
-    margin-top: 70px;
-  }
   .modal-basic-info {
     display: flex;
     flex-direction: row;
@@ -261,18 +285,71 @@ const StyledModalSelectRoom = styled.div`
       font-size: 18px;
       line-height: 28px;
     }
-    .modal-facilities-item {
+    .modal-facilities-list-items {
       display: flex;
       flex-direction: row;
-      align-items: center;
-      svg {
-        margin-right: 12px;
+      flex-wrap: wrap;
+
+      .modal-facilities-item {
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        svg {
+          margin-right: 12px;
+        }
+        p {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 30px;
+        }
       }
-      p {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 30px;
+    }
+  }
+  .body-content-image {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .body-content-image-slide {
+    width: 100%;
+    height: 98px;
+    margin-top: 30px;
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 97px;
+
+      &:hover {
+        cursor: pointer;
       }
+    }
+    .mySwiper .swiper-slide {
+      opacity: 0.3;
+    }
+    .mySwiper .swiper-slide-thumb-active {
+      opacity: 1;
+    }
+  }
+  .body-content-image-main {
+    width: 100%;
+    img {
+      width: 100%;
+      height: calc(width * 0.85);
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #ffffff;
+    }
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 17px;
+    }
+    .swiper-button-prev {
+      left: 36px;
+    }
+    .swiper-button-next {
+      right: 36px;
     }
   }
 `;

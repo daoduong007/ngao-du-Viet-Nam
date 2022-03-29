@@ -7,7 +7,6 @@ export * from "./listTourBody";
 export * from "./icons";
 export * from "./mockData";
 export * from "./tourDetailBody";
-export * from "./tourDetailHeader";
 export * from "./commons";
 export * from "./checkOut";
 export * from "./listHotelHeader";

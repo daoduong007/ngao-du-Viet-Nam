@@ -35,40 +35,40 @@ function App() {
         <Route path={AppRoutes.LIST_TOUR_SCREEN} exact>
           <ListTourScreen />
         </Route>
-        <Route path={AppRoutes.TOUR_DETAIL}>
+        <Route path={AppRoutes.TOUR_DETAIL} exact>
           <TourDetailScreen />
         </Route>
-        <Route path={AppRoutes.CHECK_OUT}>
+        <Route path={AppRoutes.CHECK_OUT} exact>
           <CheckOutScreen />
         </Route>
-        <Route path={AppRoutes.LIST_HOTEL_SCREEN}>
+        <Route path={AppRoutes.LIST_HOTEL_SCREEN} exact>
           <ListHotelScreen />
         </Route>
-        <Route path={AppRoutes.HOTEL_DETAIL}>
+        <Route path={AppRoutes.HOTEL_DETAIL} exact>
           <HotelDetailScreen />
         </Route>
-        <Route path={AppRoutes.HOTEL_CHECKOUT}>
+        <Route path={AppRoutes.HOTEL_CHECKOUT} exact>
           <HotelCheckOutScreen />
         </Route>
-        <Route path={AppRoutes.PRIVACY_POLICY}>
+        <Route path={AppRoutes.PRIVACY_POLICY} exact>
           <PrivacyPolicyScreen />
         </Route>
-        <Route path={AppRoutes.CONTACT_US}>
+        <Route path={AppRoutes.CONTACT_US} exact>
           <ContactUsScreen />
         </Route>
-        <Route path={AppRoutes.THANKS}>
+        <Route path={AppRoutes.THANKS} exact>
           <ThanksScreen />
         </Route>
-        <Route path={AppRoutes.LOGIN}>
+        <Route path={AppRoutes.LOGIN} exact>
           <LoginScreen />
         </Route>
-        <Route path={AppRoutes.SIGN_UP}>
+        <Route path={AppRoutes.SIGN_UP} exact>
           <SignUpScreen />
         </Route>
-        <Route path={AppRoutes.FORGOT_PASSWORD}>
+        <Route path={AppRoutes.FORGOT_PASSWORD} exact>
           <ForgotPasswordScreen />
         </Route>
-        <Route path={AppRoutes.CHANGE_PASSWORD}>
+        <Route path={AppRoutes.CHANGE_PASSWORD} exact>
           <ChangePasswordScreen />
         </Route>
       </Switch>

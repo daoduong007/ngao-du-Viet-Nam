@@ -79,7 +79,7 @@ const StyledAppbar = styled.div`
   }
 
   @media (max-width: 1200px) {
-    padding: 10px 30px;
+    padding: 10px 50px;
     .app-bar-directional {
       width: 40%;
     }
@@ -91,7 +91,7 @@ const StyledAppbar = styled.div`
     }
   }
   @media (max-width: 600px) {
-    padding: 10px 30px;
+    padding: 10px 20px;
     > .app-bar-directional {
       display: none;
     }

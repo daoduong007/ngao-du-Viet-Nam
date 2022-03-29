@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { IHotelDetail } from '@interfaces';
 import {
   TourDetailReviewComment,
   DataHotelDetailReviews,
+  DataHotelDetailReviews2,
   IconPrevPage,
   IconNextPage,
 } from '@components';
@@ -16,8 +17,15 @@ interface IHotelDetailReview {
 
 export const HotelDetailBodyReview = (props: IHotelDetailReview) => {
   const { data } = props;
+  const [currentReviewPage, setCurrentReviewPage] =
+    useState<number>(1);
+
+  const handleChangeReviewPage = (page: number) => {
+    setCurrentReviewPage(page);
+  };
   return (
     <StyledHotelDetailBodyReview>
+      <hr className='hr-divider' />
       <div className='hotel-detail-overview'>
         <div className='hotel-detail-rating'>
           <p>{data.rating}</p>
@@ -31,12 +39,25 @@ export const HotelDetailBodyReview = (props: IHotelDetailReview) => {
         </div>
       </div>
       <div className='hotel-detail-list-comment'>
-        {DataHotelDetailReviews.map((item, index) => (
+        {currentReviewPage === 1 ? (
           <>
-            <TourDetailReviewComment key={index} data={item} />
-            <hr />
+            {DataHotelDetailReviews.map((item, index) => (
+              <div key={index} className='hotel-detail-comment'>
+                <TourDetailReviewComment key={index} data={item} />
+                <hr />
+              </div>
+            ))}
           </>
-        ))}
+        ) : (
+          <>
+            {DataHotelDetailReviews2.map((item, index) => (
+              <div key={index} className='hotel-detail-comment'>
+                <TourDetailReviewComment key={index} data={item} />
+                <hr />
+              </div>
+            ))}
+          </>
+        )}
       </div>
       <div className='hotel-detail-review-pagination'>
         <Pagination
@@ -44,6 +65,9 @@ export const HotelDetailBodyReview = (props: IHotelDetailReview) => {
           total={15}
           prevIcon={<IconPrevPage />}
           nextIcon={<IconNextPage />}
+          onChange={(page) => {
+            handleChangeReviewPage(page);
+          }}
         />
       </div>
     </StyledHotelDetailBodyReview>
@@ -52,10 +76,13 @@ export const HotelDetailBodyReview = (props: IHotelDetailReview) => {
 
 const StyledHotelDetailBodyReview = styled.div`
   width: 100%;
+
+  .hr-divider {
+    margin: 0;
+    border: 0;
+    border-bottom: 0.5px solid #888888;
+  }
   hr {
-    &:last-child {
-      display: none;
-    }
     margin: 21px 0 30px 0;
     border: 0;
     border-bottom: 0.5px solid rgba(136, 136, 136, 0.5);
@@ -67,8 +94,6 @@ const StyledHotelDetailBodyReview = styled.div`
     flex-direction: row;
     margin-top: 33px;
     p {
-      font-family: DM Sans;
-      font-style: normal;
       font-weight: normal;
       font-size: 16px;
       line-height: 21px;
@@ -93,8 +118,6 @@ const StyledHotelDetailBodyReview = styled.div`
       p {
         margin: 0;
 
-        font-family: Poppins;
-        font-style: normal;
         font-weight: 600;
         font-size: 56px;
         line-height: 84px;
@@ -107,8 +130,6 @@ const StyledHotelDetailBodyReview = styled.div`
     }
     .hotel-detail-review-evaluate {
       margin: 0;
-      font-family: DM Sans;
-      font-style: normal;
       font-weight: 500;
       font-size: 36px;
       line-height: 160%;
@@ -118,8 +139,6 @@ const StyledHotelDetailBodyReview = styled.div`
     }
 
     button {
-      font-family: DM Sans;
-      font-style: normal;
       font-weight: bold;
       font-size: 16px;
       line-height: 24px;
@@ -148,10 +167,9 @@ const StyledHotelDetailBodyReview = styled.div`
     margin-bottom: 39px;
     display: flex;
     flex-direction: column;
+
     .review-comment-rating {
       p {
-        font-family: DM Sans;
-        font-style: normal;
         font-weight: bold;
         font-size: 18px;
         line-height: 23px;
@@ -160,8 +178,6 @@ const StyledHotelDetailBodyReview = styled.div`
       }
     }
     p {
-      font-family: Poppins;
-      font-style: normal;
       font-weight: normal;
       font-size: 16px;
       line-height: 30px;
@@ -223,6 +239,35 @@ const StyledHotelDetailBodyReview = styled.div`
         &:hover {
           color: #ffffff;
         }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hotel-detail-review-pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+
+      li:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  @media (max-width: 600px) {
+    .hotel-detail-review-pagination {
+      li {
+        padding-top: 0px;
+        width: 30px;
+        height: 30px;
+      }
+      .ant-pagination-item-active {
+        padding-top: 0px;
+      }
+    }
+    .hotel-detail-list-comment {
+      p {
+        font-size: 14px;
       }
     }
   }

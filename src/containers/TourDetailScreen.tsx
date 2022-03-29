@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { generatePath, useHistory } from 'react-router-dom';
 
 import {
-  TourDetailHeader,
+  DetailHeader,
   TourDetailBody,
   Footer,
   ListTourItems,
@@ -37,7 +37,7 @@ export const TourDetailScreen = ({}) => {
     <>
       {tour ? (
         <>
-          <TourDetailHeader />
+          <DetailHeader />
           <TourDetailBody data={tour} onClick={handleClick} />
           <Footer />
         </>

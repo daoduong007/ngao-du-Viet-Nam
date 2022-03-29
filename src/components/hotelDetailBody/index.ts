@@ -4,4 +4,5 @@ export * from './HotelDetailBodyDescription';
 export * from './HotelDetailBodyReview';
 export * from './HotelDetailTotalForm';
 export * from './HotelDetailBodySelectRoom';
-export * from './ModalSelectRoom'
+export * from './ModalSelectRoom';
+export * from './DetailSelectRoomItem'

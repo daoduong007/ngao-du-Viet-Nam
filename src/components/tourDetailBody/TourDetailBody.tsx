@@ -96,7 +96,6 @@ export const TourDetailBody = (props: ITourDetailBody) => {
                 onSwiper={(swiper) => {
                   setThumbsSwiper(swiper);
                 }}
-                onClick={(swiper) => console.log(swiper)}
                 spaceBetween={29}
                 slidesPerView={4}
                 freeMode={true}
@@ -143,7 +142,6 @@ export const TourDetailBody = (props: ITourDetailBody) => {
         <div className='related-tour-content'>
           <Row
             className='listtour-body-content'
-            justify={'space-around'}
             gutter={[
               { xs: 0, sm: 20, md: 30, lg: 30 },
               { xs: 20, sm: 25, md: 45 },

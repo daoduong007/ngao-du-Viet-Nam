@@ -42,6 +42,7 @@ export const BreadcrumbLink = (props: IBreadUrl) => {
 const StyledBreadcrumb = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 
   font-family: 'DM Sans';
   font-style: normal;
@@ -65,5 +66,14 @@ const StyledBreadcrumb = styled.div`
   }
   .ant-breadcrumb-separator {
     margin: 0 24px;
+  }
+
+  @media (max-width: 600px) {
+    p {
+      font-size: 12px;
+    }
+    .ant-breadcrumb-separator {
+      margin: 0 12px;
+    }
   }
 `;

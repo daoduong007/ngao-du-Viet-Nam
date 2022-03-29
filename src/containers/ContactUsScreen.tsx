@@ -6,7 +6,7 @@ export const ContactUsScreen = () => {
   return (
     <>
       <HeaderContactUs />
-      {/* <BodyContactUs /> */}
+      <BodyContactUs />
       <Footer />
     </>
   );

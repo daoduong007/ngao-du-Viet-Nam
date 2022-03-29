@@ -1,14 +1,12 @@
-import React from 'react';
-import { Rate, Tabs } from 'antd';
+import React, { useState } from 'react';
+import { Col, Rate, Row, Tabs } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { FreeMode, Navigation, Thumbs } from 'swiper';
 import { IHotelDetail } from '@interfaces';
 
 import 'swiper/css';
-import 'swiper/css/navigation';
 
 import {
-  IconDot,
   IconLocation,
   SlideImageUrl,
   StyledHotelDetailBodyContainer,
@@ -18,6 +16,7 @@ import {
   HotelDetailBodyReview,
   HotelDetailTotalForm,
   HotelDetailBodySelectRoom,
+  BreadcrumbLink,
 } from '@components';
 
 interface IHotelDetailBody {
@@ -27,76 +26,105 @@ interface IHotelDetailBody {
 export const HotelDetailBody = (props: IHotelDetailBody) => {
   const { TabPane } = Tabs;
   const { data, onClick } = props;
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+
+  const pathUrl = ['Home'].concat(
+    window.location.pathname.split('/'),
+  );
   return (
     <StyledHotelDetailBodyContainer>
-      <div className='hotel-detail-body-content-and-total-form'>
-        <div className='hotel-detail-body-content'>
-          <div className='hotel-detail-body-screenname'>
-            <p>Home</p>
-            <div>
-              <IconDot width={4} height={4} color={'#C4C4C4'} />
-            </div>
-            <p>Hotels</p>
-            <div>
-              <IconDot width={4} height={4} color={'#C4C4C4'} />
-            </div>
-            <p>Hotel Details</p>
+      <BreadcrumbLink pathUrl={pathUrl} screenName='tours' />
+      <div className='hotel-detail-body-content'>
+        <div className='body-content-name'>
+          <p>{data.name}</p>
+        </div>
+        <div className='body-content-location'>
+          <IconLocation />
+          <p>{data.location}</p>
+        </div>
+        <div className='body-content-rating-review-star'>
+          <div className='body-content-rating'>
+            <p>
+              <span>Rating {data.rating}</span>{' '}
+            </p>
           </div>
-          <div className='body-content-name'>
-            <p>{data.name}</p>
-          </div>
-          <div className='body-content-location'>
-            <IconLocation />
-            <p>{data.location}</p>
-          </div>
-          <div className='body-content-rating-review-star'>
-            <div className='body-content-rating'>
-              <p>
-                <span>Rating {data.rating}</span>{' '}
-              </p>
-            </div>
 
-            <p>{data.review} reviews</p>
-            <Rate
-              disabled
-              value={data.star}
-              className='body-content-star'
-            />
-          </div>
+          <p>{data.review} reviews</p>
+          <Rate
+            disabled
+            value={data.star}
+            className='body-content-star'
+          />
+        </div>
+        <div className='image-and-booking-form'>
           <div className='body-content-image'>
-            <img src={data.imgUrl} />
+            <div className='body-content-image-main'>
+              <Swiper
+                spaceBetween={10}
+                navigation={true}
+                thumbs={{ swiper: thumbsSwiper }}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className='mySwiper2'
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1.24,
+                    spaceBetween: 8,
+                    centeredSlides: true,
+                    centeredSlidesBounds: true,
+                  },
+                  600: {
+                    slidesPerView: 1,
+                    centeredSlides: false,
+                    centeredSlidesBounds: false,
+                  },
+                }}
+              >
+                {SlideImageUrl.map((imgUrl, index) => (
+                  <SwiperSlide key={index}>
+                    <img src={imgUrl} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <div className='body-content-image-slide'>
+              <Swiper
+                onSwiper={(swiper) => {
+                  setThumbsSwiper(swiper);
+                }}
+                spaceBetween={29}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className='mySwiper'
+              >
+                {SlideImageUrl.map((imgUrl, index) => (
+                  <SwiperSlide key={index}>
+                    <img src={imgUrl} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
-          <div className='body-content-image-slide'>
-            <Swiper
-              modules={[Navigation]}
-              spaceBetween={20}
-              slidesPerView={4}
-            >
-              {SlideImageUrl.map((imgUrl, index) => (
-                <SwiperSlide key={index}>
-                  <img src={imgUrl} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-          <div className='hotel-detail-body-tabs-content'>
-            <Tabs defaultActiveKey='2'>
-              <TabPane tab='Select room' key='1'>
-                <HotelDetailBodySelectRoom />
-              </TabPane>
-              <TabPane tab='Description' key='2'>
-                <h2>
-                  <HotelDetailBodyDescription />
-                </h2>
-              </TabPane>
-              <TabPane tab='Review' key='3'>
-                <HotelDetailBodyReview data={data} />
-              </TabPane>
-            </Tabs>
+          <div className='body-content-total-form'>
+            <HotelDetailTotalForm />
           </div>
         </div>
-        <div className='hotel-detail-body-total-form'>
-          <HotelDetailTotalForm />
+
+        <div className='body-content-selections'>
+          <Tabs defaultActiveKey='2'>
+            <TabPane tab='Select room' key='1'>
+              <HotelDetailBodySelectRoom />
+            </TabPane>
+            <TabPane tab='Descriptions' key='2'>
+              <h2>
+                <HotelDetailBodyDescription />
+              </h2>
+            </TabPane>
+            <TabPane tab='Review(52)' key='3'>
+              <HotelDetailBodyReview data={data} />
+            </TabPane>
+          </Tabs>
         </div>
       </div>
 
@@ -104,15 +132,29 @@ export const HotelDetailBody = (props: IHotelDetailBody) => {
         <div className='hotel-detail-recommend-title'>
           <p>Recommended for you</p>
         </div>
-        <div className='hotel-detail-recommend-content'>
-          {ListHotelRecommend.map((item, index) => (
-            <div key={index}>
-              <HotelItem
-                data={item}
-                onClick={() => onClick(item.id)}
-              />
-            </div>
-          ))}
+        <div className=''>
+          <Row
+            className=''
+            gutter={[
+              { xs: 0, sm: 20, md: 30, lg: 30 },
+              { xs: 20, sm: 25, md: 45 },
+            ]}
+          >
+            {ListHotelRecommend.map((tour) => (
+              <Col
+                key={tour.id}
+                className='list-tour-item'
+                xs={{ span: 24 }}
+                sm={{ span: 12 }}
+                lg={{ span: 8 }}
+              >
+                <HotelItem
+                  data={tour}
+                  onClick={() => onClick(tour.id)}
+                />
+              </Col>
+            ))}
+          </Row>
         </div>
       </div>
     </StyledHotelDetailBodyContainer>
