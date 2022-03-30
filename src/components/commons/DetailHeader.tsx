@@ -14,7 +14,11 @@ export const DetailHeader = () => {
   };
   return (
     <StyledTourDetailHeaderContainer>
-      <Appbar onClick={showDrawer} colorText='#1C1C1E' />
+      <Appbar
+        onClick={showDrawer}
+        colorText='#1C1C1E'
+        colorLogo='#1C1C1E;'
+      />
       <DrawerHeader onClose={onClose} drawerVisible={drawerVisible} />
       <hr />
     </StyledTourDetailHeaderContainer>

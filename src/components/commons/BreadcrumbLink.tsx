@@ -28,7 +28,11 @@ export const BreadcrumbLink = (props: IBreadUrl) => {
               </Link>
             ) : item !== '' && item.search(/[1-9]/) === -1 ? (
               <Link to={`/${item}`}>
-                <p>{item.charAt(0).toUpperCase() + item.slice(1)}</p>
+                <p>
+                  {(
+                    item.charAt(0).toUpperCase() + item.slice(1)
+                  ).replace('_', ' ')}
+                </p>
               </Link>
             ) : item.search(/[1-9]/) !== -1 ? (
               <p onClick={handleClick}>Detail {screenName}</p>

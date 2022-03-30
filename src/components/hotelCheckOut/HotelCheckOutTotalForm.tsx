@@ -74,13 +74,14 @@ export const HotelCheckOutTotalForm = () => {
 
 const StyledTotalForm = styled.div`
   margin-top: 158px;
+  padding: 39px 37px 0 30px;
   width: 380px;
   height: 610px;
   background: #f4f4f4;
 
   font-family: 'DM Sans';
   font-style: normal;
-  padding: 39px 37px 0 30px;
+
   text-align: left;
   p {
     margin: 0;
@@ -233,5 +234,16 @@ const StyledTotalForm = styled.div`
         /* identical to box height, or 32px */
       }
     }
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    width: 380px;
+  }
+  @media (max-width: 450px) {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 100%;
   }
 `;

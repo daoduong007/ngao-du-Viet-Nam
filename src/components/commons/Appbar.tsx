@@ -5,15 +5,16 @@ import { MenuOutlined } from '@ant-design/icons';
 interface IAppbar {
   onClick?: () => void;
   colorText?: string;
+  colorLogo?: string;
 }
 
 import { AppBarDirectional, AppBarLogo } from '@components';
 
 export const Appbar = (props: IAppbar) => {
-  const { onClick, colorText } = props;
+  const { onClick, colorText, colorLogo } = props;
   return (
     <StyledAppbar color={colorText}>
-      <AppBarLogo />
+      <AppBarLogo color={colorLogo} />
       <AppBarDirectional />
       <div className='menu-app-bar'>
         <MenuOutlined

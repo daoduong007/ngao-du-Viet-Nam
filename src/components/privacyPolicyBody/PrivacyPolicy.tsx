@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Button } from 'antd';
 
 import {
-  IconDot,
   IconDownload,
   DataprivacyPolicy1,
   DataprivacyPolicy2,
@@ -18,16 +17,16 @@ import {
   DataprivacyPolicy11,
   DataprivacyPolicy12,
   DataprivacyPolicy13,
+  BreadcrumbLink,
 } from '@components';
 
 export const PrivacyPolicyBody = () => {
+  const pathUrl = ['Home'].concat(
+    window.location.pathname.split('/'),
+  );
   return (
     <StyledPrivacyPolicyContainer>
-      <div className='pagination'>
-        <p>Home</p>
-        <IconDot color='#C4C4C4' />
-        <p>Privacy Policy</p>
-      </div>
+      <BreadcrumbLink pathUrl={pathUrl} />
       <p className='screen-name'>Privacy Policy</p>
       <p>Last Updated: Feb 03, 2020</p>
       <Button icon={<IconDownload />}>Download</Button>
@@ -169,6 +168,8 @@ export const PrivacyPolicyBody = () => {
 
 const StyledPrivacyPolicyContainer = styled.div`
   padding: 0 165px;
+  margin-top: 55px;
+  margin-bottom: 88px;
 
   text-align: left;
 
@@ -188,17 +189,7 @@ const StyledPrivacyPolicyContainer = styled.div`
 
     color: #000000;
   }
-  .pagination {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    p {
-      margin: 0;
-    }
-    svg {
-      margin: 0 24px;
-    }
-  }
+
   .ant-btn {
     background: #ff7b42;
     width: 259px;
@@ -246,5 +237,51 @@ const StyledPrivacyPolicyContainer = styled.div`
   }
   ul {
     margin-bottom: 30px;
+  }
+
+  @media (min-width: 1441px) {
+    width: 1440px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1200px) {
+    padding: 0 50px;
+  }
+
+  @media (max-width: 900px) {
+    padding: 30px;
+    margin-top: 40px;
+    margin-bottom: 66px;
+    font-size: 14px;
+    .screen-name {
+      font-size: 30px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+  }
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin-top: 20px;
+    margin-bottom: 33px;
+    font-size: 12px;
+    .screen-name {
+      font-size: 25px;
+    }
+
+    h1 {
+      margin: 25px 0 35px 0;
+      font-size: 20px;
+    }
+
+    h2 {
+      margin: 25px 0 12px 0;
+      font-size: 16px;
+    }
   }
 `;

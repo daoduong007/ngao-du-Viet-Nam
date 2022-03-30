@@ -253,7 +253,6 @@ hr {
     .check-out-title { 
       margin-top: 30px;
       padding: 0 20px;
-      
     }
     .check-out-body {
       flex-direction: column-reverse;
@@ -270,11 +269,12 @@ hr {
     .check-out-title { 
       margin-top: 20px;
       padding: 0 ;
-      p {
+      margin: 10px 0;
+      >p {
+        margin: 0;
         text-align: center;
-        margin-bottom: 20px;
 
-        font-size: 25px;
+        font-size: 30px;
       }
     }
   }

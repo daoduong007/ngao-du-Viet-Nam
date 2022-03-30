@@ -33,7 +33,7 @@ export const HotelDetailBody = (props: IHotelDetailBody) => {
   );
   return (
     <StyledHotelDetailBodyContainer>
-      <BreadcrumbLink pathUrl={pathUrl} screenName='tours' />
+      <BreadcrumbLink pathUrl={pathUrl} screenName='hotels' />
       <div className='hotel-detail-body-content'>
         <div className='body-content-name'>
           <p>{data.name}</p>

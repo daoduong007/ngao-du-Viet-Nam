@@ -207,7 +207,7 @@ export const IconLogo = (props: IIconProps) => {
       width={width || '89'}
       height={height || '87'}
       viewBox='0 0 89 87'
-      fill='none'
+      fill={color || 'none'}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
