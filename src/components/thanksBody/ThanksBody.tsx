@@ -34,14 +34,15 @@ const StyledThanks = styled.div`
   background-image: url('/assets/bannerTkanks.png');
 
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
 
   .content {
     width: 58%;
     height: 69%;
+    padding: 120px 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 
     font-family: 'DM Sans';
@@ -56,9 +57,8 @@ const StyledThanks = styled.div`
 
     h1 {
       font-weight: 700;
-      font-size: 64px;
+      font-size: 4rem;
       line-height: 100%;
-      /* identical to box height, or 64px */
 
       text-align: center;
 
@@ -66,7 +66,7 @@ const StyledThanks = styled.div`
     }
     h3 {
       font-weight: 400;
-      font-size: 18px;
+      font-size: 1.12rem;
       line-height: 23px;
       text-align: center;
 
@@ -79,10 +79,44 @@ const StyledThanks = styled.div`
       border: 1px solid #ff7b42;
       span {
         font-weight: 700;
-        font-size: 16px;
+        font-size: 1.14rem;
         line-height: 150%;
 
         color: #ffffff;
+      }
+    }
+  }
+
+  @media (min-width: 3250px) {
+    .content {
+      height: 1180px;
+      padding: 350px 0;
+    }
+  }
+  @media (max-width: 1200px) {
+    .content {
+      height: 327px;
+      padding: 55px 0;
+    }
+  }
+  @media (max-width: 900px) {
+    .content {
+      height: 290px;
+      padding: 50px 0;
+    }
+  }
+  @media (max-width: 600px) {
+    .content {
+      width: 90%;
+      height: 400px;
+      padding: 50px 0;
+
+      h1 {
+        font-size: 3rem;
+      }
+      h3,
+      .ant-btn span {
+        font-size: 1rem;
       }
     }
   }

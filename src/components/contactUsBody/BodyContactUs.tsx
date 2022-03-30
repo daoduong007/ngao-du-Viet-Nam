@@ -171,7 +171,7 @@ const StyledBodyContactUs = styled.div`
   }
 
   .form-message {
-    width: 498px;
+    width: 45%;
     > h1 {
       font-weight: 700;
       font-size: 32px;
@@ -271,9 +271,11 @@ const StyledBodyContactUs = styled.div`
 
   .our-office-container {
     background-image: url('/assets/BodyContactUs.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 
     height: 611px;
-    width: 543px;
+    width: 49%;
 
     display: flex;
     justify-content: left;
@@ -301,8 +303,8 @@ const StyledBodyContactUs = styled.div`
       }
     }
     .our-office {
-      width: 422px;
-      height: 324px;
+      width: 77%;
+      height: 53%;
       padding: 0 39px;
       background: #1c1c1e;
 
@@ -326,8 +328,78 @@ const StyledBodyContactUs = styled.div`
   .map {
     margin: 0 -165px;
     img {
-      width: 100%;
-      height: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  @media (min-width: 1441px) {
+    width: 1440px;
+    margin: 0 auto;
+  }
+  @media (max-width: 1200px) {
+    padding: 0 50px;
+    .map {
+      margin: 0 -50px;
+    }
+  }
+  @media (max-width: 900px) {
+    padding: 0 30px;
+    margin-top: 30px;
+    .map {
+      margin: 0 -30px;
+    }
+  }
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    .content {
+      margin-bottom: 50px;
+      flex-direction: column;
+      .form-message {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+      .our-office-container {
+        width: 100%;
+      }
+    }
+    .map {
+      margin: 0 -20px;
+      img {
+      }
+    }
+  }
+  @media (max-width: 600px) {
+    margin-top: 20px;
+    .form-message {
+      h1 {
+        font-size: 25px;
+        text-align: center;
+      }
+      h2 {
+        text-align: center;
+      }
+    }
+    .our-office-container .our-office {
+      padding: 0 10px;
+      height: 340px;
+    }
+    .our-office-container .our-office .our-office-title {
+      font-size: 25px;
+    }
+    .our-office-container p {
+      font-size: 12px;
+    }
+    .our-office-container .our-office span {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 450px) {
+    .our-office-container {
+      height: 450px;
+      .our-office {
+        height: 330px;
+      }
     }
   }
 `;
