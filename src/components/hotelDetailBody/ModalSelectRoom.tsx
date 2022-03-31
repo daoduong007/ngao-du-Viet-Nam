@@ -58,9 +58,7 @@ export const ModalSelectRoom = (props: IData) => {
                 </span>
                 /night
               </p>
-              <div>
-                <Button onClick={onClick}>Select Room</Button>
-              </div>
+              <Button onClick={onClick}>Select Room</Button>
             </div>
             <div className='body-content-image'>
               <div className='body-content-image-main'>
@@ -77,7 +75,7 @@ export const ModalSelectRoom = (props: IData) => {
                       centeredSlides: true,
                       centeredSlidesBounds: true,
                     },
-                    600: {
+                    768: {
                       slidesPerView: 1,
                       centeredSlides: false,
                       centeredSlidesBounds: false,
@@ -98,7 +96,7 @@ export const ModalSelectRoom = (props: IData) => {
                   }}
                   spaceBetween={29}
                   slidesPerView={4}
-                  freeMode={true}
+                  freeMode={false}
                   watchSlidesProgress={true}
                   modules={[FreeMode, Navigation, Thumbs]}
                   className='mySwiper'
@@ -240,7 +238,6 @@ const StyledModalSelectRoom = styled.div`
       }
     }
   }
-
   .modal-basic-info {
     display: flex;
     flex-direction: row;
@@ -271,11 +268,11 @@ const StyledModalSelectRoom = styled.div`
     margin: 20px 0;
   }
   .modal-info-inntroduce {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 4px;
     p {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 4px;
       margin-bottom: 25px;
     }
   }
@@ -329,6 +326,7 @@ const StyledModalSelectRoom = styled.div`
     }
     .mySwiper .swiper-slide-thumb-active {
       opacity: 1;
+      border: 3px solid #ff7b42;
     }
   }
   .body-content-image-main {
@@ -339,17 +337,110 @@ const StyledModalSelectRoom = styled.div`
     }
     .swiper-button-next,
     .swiper-button-prev {
-      color: #ffffff;
+      width: 37px;
+      height: 47px;
+      background: rgba(255, 255, 255, 0.8);
+      color: #000000;
+
+      &:hover {
+        transform: scale(1.1, 1.1);
+      }
     }
     .swiper-button-next:after,
     .swiper-button-prev:after {
       font-size: 17px;
+      font-weight: bold;
     }
     .swiper-button-prev {
-      left: 36px;
+      left: 0px;
     }
     .swiper-button-next {
-      right: 36px;
+      right: 0px;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .modal-container {
+      align-items: center;
+      flex-direction: column;
+
+      .modal-price-and-image {
+        width: 90%;
+      }
+      .modal-info {
+        margin-top: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 912px) {
+    .modal-container {
+      .modal-info {
+        margin-top: 20px;
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .modal-container {
+      .modal-price-and-image {
+        width: 100%;
+        .modal-title {
+          font-size: 20px;
+        }
+        .modal-price-button {
+          p,
+          .text-line-through {
+            font-size: 12px;
+            span {
+              font-size: 18px;
+            }
+          }
+          .ant-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            height: 30px;
+            span {
+              font-size: 14px;
+            }
+          }
+        }
+        .body-content-image .body-content-image-main {
+          .swiper-button-next,
+          .swiper-button-prev {
+            display: none;
+          }
+        }
+        .body-content-image .body-content-image-slide {
+          display: none;
+        }
+      }
+      .modal-info {
+        .modal-basic-info {
+          p {
+            font-size: 14px;
+          }
+        }
+        .modal-info-inntroduce {
+          p {
+            font-size: 14px;
+          }
+        }
+        .modal-facilities {
+          p {
+            font-size: 16px;
+          }
+          .modal-facilities-item {
+            p {
+              font-size: 14px;
+            }
+          }
+        }
+      }
     }
   }
 `;

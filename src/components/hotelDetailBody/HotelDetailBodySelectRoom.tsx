@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { Modal } from 'antd';
+import { Button } from 'antd';
 
 import {
   DataHotelSelectRoom,
@@ -11,6 +11,27 @@ import {
 export const HotelDetailBodySelectRoom = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [IdHotelSelected, setIdHotelSelected] = useState<any>();
+
+  const refMouse = useRef<any>();
+
+  useEffect(() => {
+    const checkIfClickOutside = (e) => {
+      if (
+        // If the pop up is open and the clicked target is not within the popup content,
+        isModalVisible &&
+        refMouse.current &&
+        !refMouse.current.contains(e.target)
+      ) {
+        setIsModalVisible(false);
+      }
+    };
+    document.addEventListener('mousedown', checkIfClickOutside);
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener('mousedown', checkIfClickOutside);
+    };
+  }, [isModalVisible]);
 
   const handleShowModal = (id) => {
     setIsModalVisible(true);
@@ -23,6 +44,16 @@ export const HotelDetailBodySelectRoom = () => {
 
   return (
     <StyledHotelDetailBodySelectRoom>
+      {isModalVisible ? (
+        <div className='pop-up-hotel'>
+          <div className='pop-up-content' ref={refMouse}>
+            <ModalSelectRoom
+              idRoom={IdHotelSelected}
+              onClick={handleClose}
+            />
+          </div>
+        </div>
+      ) : null}
       <hr className='hr-divider' />
       <p>Room</p>
       {DataHotelSelectRoom.map((item, index) => (
@@ -33,22 +64,6 @@ export const HotelDetailBodySelectRoom = () => {
           />
         </div>
       ))}
-
-      <Modal
-        centered={true}
-        visible={isModalVisible}
-        closable={false}
-        onCancel={handleClose}
-        footer={null}
-        mask={true}
-        maskClosable={true}
-        width={'80%'}
-      >
-        <ModalSelectRoom
-          idRoom={IdHotelSelected}
-          onClick={handleClose}
-        />
-      </Modal>
     </StyledHotelDetailBodySelectRoom>
   );
 };
@@ -73,6 +88,29 @@ const StyledHotelDetailBodySelectRoom = styled.div`
     /* or 32px */
 
     color: #000000;
+  }
+
+  .pop-up-hotel {
+    position: fixed;
+    z-index: 2000;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .pop-up-content {
+      height: 761px;
+      width: 1110px;
+      padding: 20px 50px;
+      background-color: #f4f4f4;
+      border-radius: 4px;
+    }
   }
 
   .select-room-items {
@@ -219,6 +257,41 @@ const StyledHotelDetailBodySelectRoom = styled.div`
     }
   }
 
+  @media (min-width: 1441px) {
+    .pop-up-hotel {
+      .pop-up-content {
+        height: 761px;
+      }
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .pop-up-hotel {
+      .pop-up-content {
+        overflow-y: auto;
+        width: 90vw;
+        height: 80vh;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .pop-up-hotel {
+      .pop-up-content {
+        width: 95vw;
+        height: 80vh;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .pop-up-hotel {
+      .pop-up-content {
+        padding: 0 10px;
+      }
+    }
+  }
+
   @media (max-width: 600px) {
     .select-room-content {
       .select-room-name {
@@ -250,6 +323,7 @@ const StyledHotelDetailBodySelectRoom = styled.div`
       }
     }
   }
+
   @media (max-width: 450px) {
     .select-room-items {
       .select-room-image {

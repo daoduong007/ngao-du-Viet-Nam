@@ -7,6 +7,84 @@ export const StyledHotelDetailBodyContainer = styled.div`
   display: flex;
   flex-direction: column;
 
+  .pop-up-image-slide {
+    position: fixed;
+    z-index: 2000;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-color: rgba(0,0,0,0.4  );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .pop-up-content {
+      height: 80vh;
+      width: 1110px;
+      padding: 20px 50px;
+      background-color: #F4F4F4;
+      border-radius: 4px;
+      .pop-up-button {
+        display: flex;
+        justify-content: right;
+        margin-right: -45px;
+        margin-top: -15px; 
+        .ant-btn {
+        background: #FFF;
+        color: #ff7b42;
+        border: 1px solid #ff7b42;
+        border-radius: 4px;
+        &:hover {
+          transform: scale(1.1, 1.1);
+        }
+      }
+      }
+
+
+      .pop-up-image {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .pop-up-image-main {
+          width: 47%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          img {
+            width: 100%;
+            height: auto;
+          }
+
+          > .body-content-rating-review-star {
+            margin-bottom: 20px;
+          }
+        }
+        .pop-up-image-list {
+         width: 50%;
+         height: 70vh;
+         overflow-Y: auto;
+         overflow-X: hidden;
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+
+         img {
+           cursor: pointer;
+           width: 150px;
+           height: auto;
+           &:hover {
+             transform: translateY(-3px);
+           }
+         }
+        }
+      }
+    }
+  }
+
   .body-content-name {
     margin: 53px 0 21px 0;
     p {
@@ -29,6 +107,32 @@ export const StyledHotelDetailBodyContainer = styled.div`
       display: flex;
       flex-direction: row;
       justify-content: space-between; 
+
+      .count-image {
+          position: absolute;
+          top: 0;
+          right:0;
+          z-index: 1000;
+          height: 100%;
+          width: 21.5%;
+
+          cursor: pointer;
+
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+
+          p {
+            margin: 1px 0 0 5px;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 160%;
+
+            color: #3D3E3F;
+          }
+
+        }
 
       .body-content-image {
         width: 57%;
@@ -59,7 +163,7 @@ export const StyledHotelDetailBodyContainer = styled.div`
           width: 100%;
           img {
             width: 100%;
-            height: calc(width*0.85)
+            height: auto;
           }
           .swiper-button-next, .swiper-button-prev {
             color: #FFFFFF;
@@ -183,13 +287,43 @@ export const StyledHotelDetailBodyContainer = styled.div`
       }
     }
   }
+
   @media (min-width: 1441px) {
     width: 1440px;
     margin: 0 auto;
     margin-top: 50px;
+
+    .pop-up-image-slide {
+      .pop-up-content {
+        width: 1110px;
+      }
+    }
   }
+
   @media (max-width: 1200px) {
     padding: 0 50px;
+
+    .pop-up-image-slide {
+      .pop-up-content {
+        padding: 20px 20px;
+        width: 90%;
+        .pop-up-button {
+          margin-right: -15px;  
+          .ant-btn {
+            transform: scale(0.7,0.7);
+          }
+        }
+        .pop-up-image {
+          .pop-up-image-main {
+            width: 55%;
+          }
+          .pop-up-image-list {
+            width: 40%;
+          }
+        }
+      }
+    }
+
     .hotel-detail-body-content {
       .image-and-booking-form {
         .body-content-image {
@@ -201,6 +335,26 @@ export const StyledHotelDetailBodyContainer = styled.div`
       }
     }
   }
+
+  @media (max-width: 992px) {
+    .pop-up-image-slide {
+      .pop-up-content {
+        .pop-up-image {
+          flex-direction: column;
+          align-items: center;
+          .pop-up-image-main {
+            width: 80%;
+            margin-bottom: 20px;
+          }
+          .pop-up-image-list {
+            width: 90%;
+            height: 28vh;
+          }
+        }
+      }
+    }
+  }
+
   @media (max-width: 900px) {
     .hotel-detail-body-content {
       .body-content-name { 
@@ -218,9 +372,22 @@ export const StyledHotelDetailBodyContainer = styled.div`
       }
     }
   }
+
   @media (max-width: 768px) {
     padding: 0 30px;
     margin-top: 20px;
+
+    .pop-up-image-slide {
+      .pop-up-content {
+        padding: 20px 0px;
+        width: 95%;
+        height: 90vh;
+
+        .pop-up-button {
+          margin-right: 0px;  
+        }
+      }
+    }
 
     .hotel-detail-body-content {
       .body-content-name {
@@ -256,6 +423,7 @@ export const StyledHotelDetailBodyContainer = styled.div`
       }
     }
   }
+  
   @media (max-width: 600px) {
     padding: 0 20px;
     margin-top: 10px;

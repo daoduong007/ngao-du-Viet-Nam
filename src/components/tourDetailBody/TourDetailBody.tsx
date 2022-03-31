@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper';
-import { Tabs, Row, Col } from 'antd';
+import { Tabs, Row, Col, Button } from 'antd';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -20,6 +20,7 @@ import {
   TourDetailDescription,
   TourDetailReview,
   BreadcrumbLink,
+  IconCamera,
 } from '@components';
 import { ITourDetail } from '@interfaces';
 
@@ -32,13 +33,114 @@ export const TourDetailBody = (props: ITourDetailBody) => {
   const { data, onClick } = props;
   const { TabPane } = Tabs;
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  const [remainingImage, setRemainingImage] = useState<number>(
+    SlideImageUrl.length - 4,
+  );
+  const [popUpVisible, setPopUpVisible] = useState<boolean>(false);
+  const [currentImagePopUp, setCurrentImagePopUp] = useState<string>(
+    SlideImageUrl[0],
+  );
+
+  const refMouse = useRef<any>();
+
+  useEffect(() => {
+    const checkIfClickOutside = (e) => {
+      if (
+        // If the pop up is open and the clicked target is not within the popup content,
+        popUpVisible &&
+        refMouse.current &&
+        !refMouse.current.contains(e.target)
+      ) {
+        setPopUpVisible(false);
+      }
+    };
+    document.addEventListener('mousedown', checkIfClickOutside);
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener('mousedown', checkIfClickOutside);
+    };
+  }, [popUpVisible]);
 
   const pathUrl = ['Home'].concat(
     window.location.pathname.split('/'),
   );
 
+  const ImgSlideLenght = SlideImageUrl.length;
+  const handleRemainingImgSlide = (currentIndex: number) => {
+    setRemainingImage(ImgSlideLenght - currentIndex - 4);
+  };
+
   return (
     <StyledTourDetailBodyContainer>
+      {popUpVisible ? (
+        <div className='pop-up-image-slide'>
+          <div className='pop-up-content' ref={refMouse}>
+            <div className='pop-up-button'>
+              <Button
+                type='primary'
+                onClick={() => {
+                  setPopUpVisible(false);
+                }}
+              >
+                X
+              </Button>
+            </div>
+
+            <div className='pop-up-image'>
+              <div className='pop-up-image-main'>
+                <div className='pop-up-info'>
+                  <div className='location'>
+                    <IconLocation />
+                    <p>{data.location}</p>
+                  </div>
+                  <div className='evaluate'>
+                    <div className='evaluate-stars'>
+                      <IconStar />
+                      <p>{data.star}</p>
+                    </div>
+                    <div className='evaluate-reviews'>
+                      <p>{data.review} reviews</p>
+                    </div>
+                  </div>
+                </div>
+                <img src={currentImagePopUp} alt='Detail tour' />
+              </div>
+              <div className='pop-up-image-list'>
+                <Row
+                  className='listtour-body-content'
+                  gutter={[
+                    { xs: 0, sm: 5, md: 5, lg: 5 },
+                    { xs: 10, sm: 10, md: 10 },
+                  ]}
+                >
+                  {SlideImageUrl.map((imgUrl, index) => (
+                    <Col
+                      key={index}
+                      className='list-tour-item'
+                      xs={{ span: 8 }}
+                      sm={{ span: 8 }}
+                      md={{ span: 6 }}
+                      lg={{ span: 12 }}
+                      xl={{ span: 8 }}
+                    >
+                      <img
+                        key={index}
+                        src={imgUrl}
+                        alt='Detail tour'
+                        onClick={() => {
+                          setCurrentImagePopUp(imgUrl);
+                        }}
+                      />
+                    </Col>
+                  ))}
+                </Row>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <BreadcrumbLink pathUrl={pathUrl} screenName='tours' />
 
       <div className='tour-detail-body-content'>
@@ -96,13 +198,25 @@ export const TourDetailBody = (props: ITourDetailBody) => {
                 onSwiper={(swiper) => {
                   setThumbsSwiper(swiper);
                 }}
+                onSlideChange={(slide) => {
+                  handleRemainingImgSlide(slide.activeIndex);
+                }}
                 spaceBetween={29}
                 slidesPerView={4}
-                freeMode={true}
+                freeMode={false}
                 watchSlidesProgress={true}
                 modules={[FreeMode, Navigation, Thumbs]}
                 className='mySwiper'
               >
+                <div
+                  className='count-image'
+                  onClick={() => {
+                    setPopUpVisible(true);
+                  }}
+                >
+                  <IconCamera />
+                  <p> {remainingImage} +</p>
+                </div>
                 {SlideImageUrl.map((imgUrl, index) => (
                   <SwiperSlide key={index}>
                     <img src={imgUrl} />
@@ -111,6 +225,7 @@ export const TourDetailBody = (props: ITourDetailBody) => {
               </Swiper>
             </div>
           </div>
+
           <div className='body-content-booking-form'>
             <TourDetailBookingForm
               price={data.price}
