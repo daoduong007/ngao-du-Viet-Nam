@@ -122,7 +122,7 @@ export const TabSearchTours = (props: ITabSearchName) => {
       </div>
       <div className='tab-search-action'>
         <Button
-          className='submitSearch'
+          className='submit-search'
           icon={<IconSearch />}
           onClick={handleSearch}
         >
@@ -137,14 +137,13 @@ const StyledSearchTabPane = styled.div`
   font-style: normal;
   padding: 34px 32px;
   width: 452px;
-  height: calc(width * 97%);
 
   .title {
     width: 100%;
     text-align: left;
     h1 {
       font-weight: 600;
-      font-size: 24px;
+      font-size: 1.5rem;
       line-height: 120%;
 
       color: #1c1c1e;
@@ -167,10 +166,10 @@ const StyledSearchTabPane = styled.div`
       align-items: center;
       border: 0;
       span {
-        margin-left: 16px;
+        margin-left: 1rem;
 
         font-weight: 700;
-        font-size: 14px;
+        font-size: 0.88rem;
         line-height: 160%;
         /* or 22px */
 
@@ -204,11 +203,8 @@ const StyledSearchTabPane = styled.div`
     }
     .ant-input {
       font-weight: 400;
-      font-size: 14px;
+      font-size: 0.88rem;
       line-height: 160%;
-      /* or 22px */
-
-      /* tieu de */
 
       color: #1c1c1e;
 
@@ -251,21 +247,79 @@ const StyledSearchTabPane = styled.div`
       box-shadow: none !important;
     }
   }
-  @media (max-width: 1200px) {
-    width: 400px;
+  @media (min-width: 2540px) {
+    width: 100%;
+    padding: 40px 40px;
+    .tab-search-item {
+      height: 100px;
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+      .ant-input {
+        font-size: 1.5rem;
+      }
+      .ant-picker-input > input {
+        font-size: 1.5rem;
+      }
+      .ant-select-selection-item {
+        font-size: 1.5rem;
+      }
+    }
+    .title {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+    .tab-search-action {
+      height: 100px;
+      button > span {
+        font-size: 1.8rem;
+      }
+      button > svg {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
   }
-  @media (max-width: 900px) {
-    width: 380px;
+  @media (min-width: 3280px) {
+    padding: 50px 50px;
+    .tab-search-item {
+      height: 130px;
+      .ant-input {
+        font-size: 2rem;
+      }
+      .ant-picker-input > input {
+        font-size: 2rem;
+      }
+      .ant-select-selection-item {
+        font-size: 2rem;
+      }
+    }
+    .title {
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+    .tab-search-action {
+      height: 130px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    width: 350px;
+    padding: 25px 25px;
+    .tab-search-item {
+      height: 40px;
+    }
   }
   @media (max-width: 768px) {
-    width: 350px;
+    width: 100%;
+
     .title {
       h1 {
         font-size: 20px;
       }
     }
-  }
-  @media (max-width: 600px) {
-    width: 100%;
   }
 `;

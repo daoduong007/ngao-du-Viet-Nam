@@ -55,7 +55,7 @@ const StyledFeature = styled.div`
       margin: 0;
 
       font-weight: 600;
-      font-size: 14px;
+      font-size: 0.88rem;
       line-height: 100%;
       /* identical to box height, or 14px */
 
@@ -82,38 +82,88 @@ const StyledFeature = styled.div`
 
     p {
       font-weight: 400;
-      font-size: 14px;
+      font-size: 0.88rem;
       line-height: 160%;
       /* or 38px */
 
       color: #1c1c1e;
       span {
         font-weight: 700;
-        font-size: 24px;
+        font-size: 1.5rem;
       }
     }
   }
-  @media (min-width: 2350px) {
-    padding-right: 55%;
+  @media (min-width: 2540px) {
     padding-top: 15px;
     bottom: -2px;
     .feature-title {
       h2 {
-        font-size: 30px;
+        font-size: 2.2rem;
       }
     }
     .feature-content {
+      width: 40%;
       p {
-        font-size: 20px;
+        font-size: 1.4rem;
         span {
-          font-size: 30px;
+          font-size: 2.2rem;
+        }
+      }
+    }
+  }
+  @media (min-width: 3280px) {
+    .feature-title {
+      h2 {
+        font-size: 2.8rem;
+      }
+    }
+    .feature-content {
+      width: 40%;
+      p {
+        font-size: 1.8rem;
+        span {
+          font-size: 2.8rem;
         }
       }
     }
   }
   @media (max-width: 1200px) {
-    padding: 0 10px 0 50px;
-    padding-top: 20px;
     bottom: -2px;
+
+    padding: 10px 50px;
+    left: -50px;
+    width: calc(100% + 50px);
+  }
+  @media (max-width: 900px) {
+    padding-right: 0;
+    left: -50px;
+    width: calc(100% + 50px);
+  }
+  @media (max-width: 768px) {
+    left: 0;
+    width: 100%;
+    padding: 10px 30px;
+    margin-top: 112px;
+    height: 70px;
+
+    .feature-title {
+      h2 {
+        font-size: 1rem;
+      }
+    }
+    .feature-content {
+      p {
+        font-size: 0.5rem;
+        span {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  @media (max-width: 600px) {
+    margin-top: 60px;
+  }
+  @media (max-width: 450px) {
+    margin-top: 0px;
   }
 `;

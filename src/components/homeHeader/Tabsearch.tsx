@@ -30,6 +30,7 @@ export const Tabsearch = () => {
 };
 
 const StyledTab = styled(Tabs)`
+  width: 100%;
   .tab-pane-hotels {
     width: 445px;
     height: 500.8px;
@@ -80,5 +81,22 @@ const StyledTab = styled(Tabs)`
   }
   .ant-tabs-ink-bar .ant-tabs-ink-bar-animated {
     width: 0px !important;
+  }
+
+  @media (min-width: 2540px) {
+    .tab-pane-hotels {
+      height: 656.8px;
+    }
+    .ant-tabs-tab-btn {
+      font-size: 1.3rem;
+    }
+  }
+  @media (min-width: 3280px) {
+    .tab-pane-hotels {
+      height: 796.8px;
+    }
+    .ant-tabs-tab-btn {
+      font-size: 1.9rem;
+    }
   }
 `;

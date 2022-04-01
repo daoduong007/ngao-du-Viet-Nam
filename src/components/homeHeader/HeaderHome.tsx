@@ -31,9 +31,7 @@ export const HeaderHome = () => {
               content='Perfect place for your stories'
             />
           </div>
-          <div className='header-feature'>
-            <Feature />
-          </div>
+          <Feature />
         </div>
         <div className='header-search'>
           <Tabsearch />

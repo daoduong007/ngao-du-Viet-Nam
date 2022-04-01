@@ -7,7 +7,7 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
   /* background-image: url('/assets/BannerHotels.png'); */
   background-image: url(${props => (props.url ? props.url : '/assets/BannerHotels.png')});
   background-repeat: no-repeat;
-  background-size: 100% 666px;
+  background-size: cover;
 
   display: flex;
   flex-direction: column;
@@ -75,6 +75,30 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
         }
     }
   }
+  @media (min-width: 2540px) {
+    height: 80vh;
+    .header-search {
+      width: 800px;
+      .ant-tabs-nav-list {
+        height: 90px;
+      }
+    }
+  }
+  @media (min-width: 3280px) {
+    height: 70vh;
+    .header-search {
+      width: 1000px;
+      .ant-tabs-nav-list {
+        height: 100px;
+      }
+    }
+    .header-content {
+      .header-feature {
+        bottom: -2px;
+      }
+    }
+  }
+
   @media (max-width: 1200px){
     .header-content {
       width: 100%;
@@ -89,7 +113,7 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
 
   }
   @media (max-width: 600px) {
-    height: 650px;
+    height: auto;
     background-size: 100% 200px;
     
     .header-slogan-and-feature {

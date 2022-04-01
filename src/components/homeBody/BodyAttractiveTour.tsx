@@ -108,11 +108,17 @@ export const BodyAttractiveTour = () => {
         {isEndOfSlide === false ? (
           <div
             className='list-item-load-more'
-            ref={(node) => setNextEl(node)}
+            ref={(node) => {
+              setNextEl(node);
+            }}
           >
             <IconArrow />
           </div>
         ) : null}
+        {/* <button ref={(node) => setNextEl(node)}>
+          <IconArrow />
+        </button>
+        <button ref={(node) => setPrevEl(node)}>prev</button> */}
       </div>
     </StyledBodyTourContainer>
   );

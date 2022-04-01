@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { useHistory } from 'react-router-dom';
@@ -18,6 +18,7 @@ import { AppRoutes } from '@enums';
 export const BodyDiscoverDestinations = () => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
+
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isEndOfSlide, setIsEndOfSlide] = useState(false);
   const history = useHistory();
@@ -30,7 +31,6 @@ export const BodyDiscoverDestinations = () => {
     setCurrentSlideIndex(swiper.activeIndex);
     setIsEndOfSlide(swiper.isEnd);
   };
-
   return (
     <StyledBodyTourContainer>
       <div className='attractive-tour-title'>
@@ -45,14 +45,19 @@ export const BodyDiscoverDestinations = () => {
           {currentSlideIndex == 0 ? null : (
             <div
               className='list-item-prev prev-discover'
-              ref={(node) => setPrevEl(node)}
+              ref={(node) => {
+                setPrevEl(node);
+              }}
             >
               <IconArrow />
             </div>
           )}
           <Swiper
             modules={[Navigation]}
-            navigation={{ prevEl, nextEl }}
+            navigation={{
+              prevEl,
+              nextEl,
+            }}
             onSlideChange={(swiper) => handleSlideChange(swiper)}
             breakpoints={{
               0: {
@@ -100,7 +105,9 @@ export const BodyDiscoverDestinations = () => {
         {isEndOfSlide === false ? (
           <div
             className='list-item-load-more load-more-discover'
-            ref={(node) => setNextEl(node)}
+            ref={(node) => {
+              setNextEl(node);
+            }}
           >
             <IconArrow />
           </div>

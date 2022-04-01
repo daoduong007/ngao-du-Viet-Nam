@@ -10,7 +10,7 @@ export const StyledHeaderContainer = styled.div`
 
   background-image: url('/assets/banner.jpg');
   background-repeat: no-repeat;
-  background-size: 100% 766px;
+  background-size: cover;
 
   .header-content {
     padding: 0 165px;
@@ -60,8 +60,10 @@ export const StyledHeaderContainer = styled.div`
       border: 0;
     }
   }
-  @media (min-width: 3280px) {
-    background-size: 100% 100%;
+
+  @media (min-width: 2540px) {
+    height: 80vh;
+    background-size: cover;
     .header-slogan-and-feature {
       display: flex;
       height: 100%;
@@ -73,12 +75,28 @@ export const StyledHeaderContainer = styled.div`
         display: flex;
       }
     }
+    .header-search {
+      width: 800px;
+      .ant-tabs-nav-list {
+        height: 90px;
+      }
+    }
+  }
+
+  @media (min-width: 3280px) {
+    height: 70vh;
+    .header-search {
+      width: 1000px;
+      .ant-tabs-nav-list {
+        height: 100px;
+      }
+    }
   }
   @media (max-width: 1200px) {
-    background-size: 100% 100%;
-
+    height: auto;
     .header-content {
       width: 100%;
+      margin-top: 20px;
       padding: 0 50px;
     }
     .header-slogan-and-feature {
@@ -97,8 +115,9 @@ export const StyledHeaderContainer = styled.div`
 
   @media (max-width: 768px) {
     height: auto;
-    background-size: 100% 200px;
+    background-size: contain;
     .header-content {
+      margin-top: 60px;
       width: 100%;
       padding: 0;
       display: flex;
@@ -106,9 +125,6 @@ export const StyledHeaderContainer = styled.div`
       align-items: center;
     }
     .header-slogan-and-feature {
-      .header-feature {
-        display: none;
-      }
       .header-slogan {
         display: flex;
         justify-content: center;
@@ -119,17 +135,25 @@ export const StyledHeaderContainer = styled.div`
       }
     }
     .header-search {
-      margin-top: 40px;
+      margin-top: 15px;
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: #ccc;
-      width: 400px;
+      width: 350px;
     }
   }
   @media (max-width: 600px) {
     .header-search {
-      width: 90%;
+      width: 300px;
+    }
+  }
+  @media (max-width: 450px) {
+    .header-content {
+      margin-top: 0px;
+    }
+    .header-search {
+      margin-top: 0px;
     }
   }
 `;

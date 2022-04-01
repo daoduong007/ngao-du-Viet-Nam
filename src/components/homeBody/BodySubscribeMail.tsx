@@ -55,6 +55,9 @@ const StyledBodySubscribeMail = styled.div`
     flex-direction: row;
 
     .ant-btn {
+      &:hover {
+        transform: scale(1.05, 1.05);
+      }
       height: 48px;
       padding: 13px 33px 13px 33px;
       margin-left: 21px;

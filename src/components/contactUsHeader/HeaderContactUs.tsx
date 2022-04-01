@@ -34,7 +34,7 @@ const StyledHeaderContactUs = styled.div`
 
   background-image: url('/assets/bannerContactus.png');
   background-repeat: no-repeat;
-  background-size: 100% 568px;
+  background-size: cover;
   h1 {
     font-weight: 500;
     font-size: 60px;
@@ -49,9 +49,18 @@ const StyledHeaderContactUs = styled.div`
     margin-top: 175px;
     text-align: left;
   }
-  @media (min-width: 3280px) {
+  @media (min-width: 2540px) {
+    height: 49vh;
     .content {
-      margin-top: 125px;
+      margin-top: 140px;
+      text-align: center;
+    }
+    margin-bottom: 50px;
+  }
+  @media (min-width: 3280px) {
+    height: 43vh;
+    .content {
+      margin-top: 170px;
       text-align: center;
     }
     h1 {

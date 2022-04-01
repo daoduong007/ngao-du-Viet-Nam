@@ -16,6 +16,9 @@ export const BodyButton = (props: IButtonName) => {
 };
 
 const StyledBodyButton = styled.div`
+  &:hover {
+    transform: scale(1.05, 1.05);
+  }
   span {
     font-family: 'DM Sans';
     font-style: normal;

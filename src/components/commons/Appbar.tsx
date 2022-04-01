@@ -46,10 +46,9 @@ const StyledAppbar = styled.div`
   }
   p {
     font-weight: normal;
-    font-size: 14px;
+    font-size: 0.87rem;
     line-height: 160%;
-    /* or 22px */
-    /* color: #ffffff; */
+
     color: ${(props) => props.color || '#FFFFFF'};
     &:hover {
       cursor: pointer;
@@ -67,14 +66,35 @@ const StyledAppbar = styled.div`
     flex-direction: row;
     justify-content: space-between;
   }
-  @media (min-width: 3280px) {
-    .app-bar-directional {
-      width: 30%;
-    }
 
-    .about-header-title {
-      p {
-        font-size: 80px;
+  @media (min-width: 2540px) {
+    padding-top: 20px;
+    height: auto;
+    .app-bar-logo {
+      svg {
+        width: 150px;
+        height: 150px;
+      }
+    }
+    .app-bar-directional {
+      width: 35%;
+      a > p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  @media (min-width: 3280px) {
+    padding-top: 30px;
+    .app-bar-logo {
+      svg {
+        width: 200px;
+        height: 200px;
+      }
+    }
+    .app-bar-directional {
+      a > p {
+        font-size: 2rem;
       }
     }
   }
@@ -93,6 +113,12 @@ const StyledAppbar = styled.div`
   }
   @media (max-width: 600px) {
     padding: 10px 20px;
+    .app-bar-logo {
+      svg {
+        width: 70px;
+        height: 70px;
+      }
+    }
     > .app-bar-directional {
       display: none;
     }

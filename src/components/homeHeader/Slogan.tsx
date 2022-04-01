@@ -34,9 +34,10 @@ const StyledSlogan = styled.div<{ screenName?: string }>`
   text-align: left;
   font-family: 'DM Sans';
   font-style: normal;
+
   h2 {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 26px;
 
     color: #fff2cf;
@@ -45,17 +46,29 @@ const StyledSlogan = styled.div<{ screenName?: string }>`
     margin: 0;
 
     font-weight: 500;
-    font-size: 60px;
+    font-size: 3.75rem;
     line-height: 100%;
 
     color: #ffffff;
   }
-  @media (min-width: 3280px) {
+  @media (min-width: 1441px) {
+    padding-right: 0;
+  }
+
+  @media (min-width: 2540px) {
     h1 {
-      font-size: 100px;
+      font-size: 6rem;
     }
     h2 {
-      font-size: 30px;
+      font-size: 2.5rem;
+    }
+  }
+  @media (min-width: 3280px) {
+    h1 {
+      font-size: 8rem;
+    }
+    h2 {
+      font-size: 3rem;
     }
   }
   @media (max-width: 1200px) {
