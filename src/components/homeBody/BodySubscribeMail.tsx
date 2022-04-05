@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input, Button } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 
 export const BodySubscribeMail = () => {
+  const [mailInput, setMailInput] = useState<string>('');
+
+  const handleChange = (e) => {
+    setMailInput(e.target.value);
+  };
+
+  const handleClick = () => {
+    setMailInput('');
+  };
   return (
     <StyledBodySubscribeMail>
       <div className='body-subscribe-mail-title'>
@@ -15,8 +24,14 @@ export const BodySubscribeMail = () => {
         <Input
           placeholder='example@gmail.com'
           prefix={<MailOutlined />}
+          value={mailInput}
+          onChange={(e) => {
+            handleChange(e);
+          }}
         />
-        <Button type='primary'>Send</Button>
+        <Button type='primary' onClick={handleClick}>
+          Send
+        </Button>
       </div>
     </StyledBodySubscribeMail>
   );
@@ -77,6 +92,7 @@ const StyledBodySubscribeMail = styled.div`
     .ant-input-affix-wrapper {
       border: 1px solid #636567;
       padding: 0px;
+      padding-right: 10px;
       box-sizing: border-box;
     }
     .anticon > * {
@@ -85,6 +101,11 @@ const StyledBodySubscribeMail = styled.div`
     }
     svg {
       margin: 20px 15px 16px 20px;
+    }
+    //remove outline input ant design
+    .ant-input-affix-wrapper-focused {
+      box-shadow: none !important;
+      border-color: #ff7b42;
     }
   }
 

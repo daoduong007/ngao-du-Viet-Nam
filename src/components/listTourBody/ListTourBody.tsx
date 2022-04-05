@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Popover, Row, Col, Pagination } from 'antd';
 import { generatePath, useHistory } from 'react-router-dom';
 
@@ -13,10 +13,13 @@ import {
   ListTourItems2,
 } from '@components';
 import { AppRoutes } from '@enums';
+import { tourApi } from '@api';
 
 export const ListTourBody = ({}) => {
   const history = useHistory();
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isVisiblePopUp, setIsVisiblePopUp] =
+    useState<boolean>(false);
 
   const handleClick = (id: number) => {
     history.push(
@@ -43,6 +46,25 @@ export const ListTourBody = ({}) => {
     }
     return originalElement;
   };
+
+  useEffect(() => {
+    const fetchTourList = async () => {
+      try {
+        const response = await tourApi.getAll();
+        console.log(response);
+      } catch (error) {
+        console.error('fail to fetch tour list', error);
+      }
+    };
+
+    fetchTourList();
+  }, []);
+
+  const handleVisiblePopUp = () => {
+    setIsVisiblePopUp((isVisiblePopUp) => {
+      return !isVisiblePopUp;
+    });
+  };
   return (
     <StyledListTourBodyContainer>
       <BreadcrumbLink pathUrl={pathUrl} />
@@ -52,9 +74,11 @@ export const ListTourBody = ({}) => {
         <div className='listtour-body-filer'>
           <Popover
             placement='bottomLeft'
-            content={ListTourFilter}
+            content={<ListTourFilter onClick={handleVisiblePopUp} />}
             trigger='click'
             className='list-tour-popup'
+            visible={isVisiblePopUp}
+            onVisibleChange={handleVisiblePopUp}
           >
             <Button type='primary'>Filter</Button>
           </Popover>

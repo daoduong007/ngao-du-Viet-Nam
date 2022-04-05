@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 import { Tabs, Row, Col, Button } from 'antd';
+import { AppRoutes } from '@enums';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -22,6 +25,7 @@ import {
   BreadcrumbLink,
   IconCamera,
 } from '@components';
+import { submitBookingTourAction } from '@redux';
 import { ITourDetail } from '@interfaces';
 
 interface ITourDetailBody {
@@ -30,6 +34,8 @@ interface ITourDetailBody {
 }
 
 export const TourDetailBody = (props: ITourDetailBody) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const { data, onClick } = props;
   const { TabPane } = Tabs;
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
@@ -69,6 +75,16 @@ export const TourDetailBody = (props: ITourDetailBody) => {
   const ImgSlideLenght = SlideImageUrl.length;
   const handleRemainingImgSlide = (currentIndex: number) => {
     setRemainingImage(ImgSlideLenght - currentIndex - 4);
+  };
+
+  const handleBookingClick = () => {
+    history.push(AppRoutes.CHECK_OUT);
+
+    dispatch(
+      submitBookingTourAction({
+        idTour: data.id,
+      }),
+    );
   };
 
   return (
@@ -230,6 +246,7 @@ export const TourDetailBody = (props: ITourDetailBody) => {
             <TourDetailBookingForm
               price={data.price}
               duration={data.timeDepature}
+              onClick={handleBookingClick}
             />
           </div>
         </div>

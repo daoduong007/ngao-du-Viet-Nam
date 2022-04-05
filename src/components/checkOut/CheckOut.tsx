@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import {
   TourCheckOutTotalForm,
@@ -14,10 +15,13 @@ import {
 import { ICheckOutFormValues } from '@interfaces';
 import { validationSchema } from '@utils';
 import { AppRoutes } from '@enums';
+import { bookingTourSelector } from '@redux';
 interface INameScreen {
   screen: string;
 }
 export const CheckOut = (props: INameScreen) => {
+  const IdBooked = useSelector(bookingTourSelector);
+  console.log(IdBooked.idTour);
   const { screen } = props;
   const history = useHistory();
   const initialValues: ICheckOutFormValues = {

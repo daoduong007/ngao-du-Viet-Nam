@@ -7,7 +7,12 @@ import {
   DataForTourFilter2,
 } from '@components';
 
-export const ListTourFilter = () => {
+interface IListTourFilter {
+  onClick: (event: any) => void;
+}
+
+export const ListTourFilter = (props: IListTourFilter) => {
+  const { onClick } = props;
   const formatter = (value) => {
     return `${value}`;
   };
@@ -24,6 +29,7 @@ export const ListTourFilter = () => {
           max={2000}
           defaultValue={[300, 1000]}
           tipFormatter={formatter}
+          tooltipVisible={true}
         />
       </div>
       <hr className='list-tour-divider' />
@@ -41,7 +47,9 @@ export const ListTourFilter = () => {
         ))}
       </div>
       <div className='list-tour-filter-submit'>
-        <Button type='primary'>Apply Filter</Button>
+        <Button type='primary' onClick={onClick}>
+          Apply Filter
+        </Button>
       </div>
     </StyledListTourBodyFilter>
   );

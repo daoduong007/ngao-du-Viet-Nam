@@ -10,15 +10,27 @@ export const FooterContact = () => {
         <div className='icon-footer-contact'>
           <IconLocation color='white' />
         </div>
-        <p>
-          Lilama 10 Tower, 56 To Huu, Trung Van, Nam Tu Liem, Ha Noi
-        </p>
+        <a
+          href='https://goo.gl/maps/wCT1LJDsqCg6JQ2RA'
+          target='_blank'
+          rel='noreferrer'
+        >
+          <p>
+            Lilama 10 Tower, 56 To Huu, Trung Van, Nam Tu Liem, Ha Noi
+          </p>
+        </a>
       </div>
       <div className='footer-contact-email'>
         <div className='icon-footer-contact'>
           <IconMail />
         </div>
-        <p>hello@adamotravel.com</p>
+        <a
+          href='mailto:hello@adamotravel.com '
+          target='_blank'
+          rel='noreferrer'
+        >
+          <p>hello@adamotravel.com</p>
+        </a>
       </div>
     </StyledFooterContact>
   );

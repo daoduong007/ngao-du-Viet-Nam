@@ -60,6 +60,9 @@ export const StyledListTourBodyContainer = styled.div`
     button {
       width: 75px;
       height: 38px;
+      &:hover {
+        transform: scale(1.05,1.05);
+      }
 
       span {
         font-style: normal;
@@ -203,12 +206,13 @@ export const StyledListTourBodyFilter = styled.div`
   flex-direction: column;
   border: 1px solid #CCCCCC;
   box-shadow: 0px 4px 36px rgba(0, 0, 0, 0.2);
+
   .ant-rate-star-zero{
     display: none;
   }
   .list-tour-filter-title{
-    margin-bottom:0 0 20 0px;
-    font-family: Poppins;
+    margin:0 0 58px 0;
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
@@ -243,6 +247,14 @@ export const StyledListTourBodyFilter = styled.div`
 
       color: #03387D;
     }
+
+    .ant-btn-primary {
+      background-color: #FF7B42;
+      border: #FF7B42;
+      &:hover{
+        transform: scale(1.05,1.05);
+      }
+    }
   }
 
   .list-tour-filter-budget {
@@ -252,8 +264,16 @@ export const StyledListTourBodyFilter = styled.div`
       background-color: #FF7B42;
     }
     .ant-slider-handle {
-      border: solid 2px #FF7B42;
+      border: solid 3px #FF7B42;
+      &:focus{
+        box-shadow: none !important;
+      }
     }
+    .ant-slider-tooltip .ant-tooltip-inner {
+      color:  #4F4F4F;
+      background-color: #FFFFFF;
+    }
+
   }
 
   .list-tour-filter-duration , .list-tour-filter-typetour{
@@ -264,7 +284,7 @@ export const StyledListTourBodyFilter = styled.div`
 
     .ant-checkbox-wrapper {
       margin-bottom: 20px;
-      font-family: Poppins;
+      font-family: 'Poppins';
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
@@ -272,8 +292,20 @@ export const StyledListTourBodyFilter = styled.div`
 
       color: #2A2A2A;
     }
-  }
+    .ant-checkbox-checked .ant-checkbox-inner {
+      background-color: #FF7B42;
+    }
+    .ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner, .ant-checkbox-input:focus + .ant-checkbox-inner {
+      border-color:  #FF7B42;
+    }
+    .ant-checkbox-checked .ant-checkbox-inner {
+      border-color:  #FF7B42;
+    }
 
+    .ant-checkbox-checked .ant-checkbox-inner:hover {
+      border: 0 !important;
+    }
+  }
 
   .ant-checkbox-wrapper + .ant-checkbox-wrapper {
       margin-left: 0px;
@@ -283,8 +315,11 @@ export const StyledListTourBodyFilter = styled.div`
     .ant-btn {
       width: 100%;
       background-color: #FF7B42;
+      &:hover {
+        transform : scale(1.03,1.03)
+      }
       span {
-        font-family: Poppins;
+        font-family: 'Poppins';
         font-style: normal;
         font-weight: 600;
         font-size: 16px;

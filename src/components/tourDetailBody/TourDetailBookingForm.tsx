@@ -1,20 +1,18 @@
 import React from 'react';
 import { Button, DatePicker, Input } from 'antd';
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { IconDepatureTime, IconPeople } from '@components';
-import { ITourBooking } from '@interfaces';
-import { AppRoutes } from '@enums';
 
-export const TourDetailBookingForm = (props: ITourBooking) => {
+interface IBookingForm {
+  duration: string;
+  price: string;
+  onClick: (event: any) => void;
+}
+
+export const TourDetailBookingForm = (props: IBookingForm) => {
   const { RangePicker } = DatePicker;
-  const { duration, price } = props;
-  const history = useHistory();
-
-  const handleBooking = () => {
-    history.push(AppRoutes.CHECK_OUT);
-  };
+  const { price, duration, onClick } = props;
 
   return (
     <StyledTourDetailBookingForm>
@@ -61,7 +59,7 @@ export const TourDetailBookingForm = (props: ITourBooking) => {
         </p>
       </div>
       <div className='booking-form-submit'>
-        <Button type='primary' onClick={handleBooking}>
+        <Button type='primary' onClick={onClick}>
           Book now
         </Button>
       </div>

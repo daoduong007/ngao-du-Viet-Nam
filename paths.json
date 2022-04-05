@@ -6,7 +6,9 @@
       "@containers": ["src/containers"],
       "@enums": ["src/enums"],
       "@interfaces": ["src/interfaces"],
-      "@utils": ["src/utils"]
+      "@utils": ["src/utils"],
+      "@redux": ["src/redux"],
+      "@api": ["src/api"]
     }
   }
 }

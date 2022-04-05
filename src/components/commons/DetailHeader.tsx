@@ -28,6 +28,9 @@ export const DetailHeader = () => {
 const StyledTourDetailHeaderContainer = styled.div`
   width: 100%;
   height: 120px;
+  .app-bar-logo:hover {
+    cursor: pointer;
+  }
   p {
     color: #1c1c1e;
   }

@@ -41,6 +41,10 @@ const StyledAppbar = styled.div`
   font-family: 'DM Sans';
   font-style: normal;
 
+  .app-bar-logo:hover {
+    cursor: pointer;
+  }
+
   .menu-app-bar {
     display: none;
   }

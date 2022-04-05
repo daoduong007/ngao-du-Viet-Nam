@@ -70,3 +70,10 @@ export interface IDetailSelectRoom {
   price: number,
   outOfRoom: boolean,
 }
+
+
+export interface IInitState {
+  bookingTour : {
+    idTour: number;
+  }
+}
