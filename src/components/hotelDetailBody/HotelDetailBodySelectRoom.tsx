@@ -41,6 +41,16 @@ export const HotelDetailBodySelectRoom = () => {
     setIsModalVisible(false);
   };
 
+  //hide scroll Y when open pop up
+  useEffect(() => {
+    if (isModalVisible) {
+      document.body.classList.add('hide-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('hide-scroll');
+    };
+  }, [isModalVisible]);
   return (
     <StyledHotelDetailBodySelectRoom>
       {isModalVisible ? (

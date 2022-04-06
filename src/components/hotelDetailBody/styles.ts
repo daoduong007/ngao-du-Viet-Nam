@@ -72,6 +72,20 @@ export const StyledHotelDetailBodyContainer = styled.div`
          flex-direction: row;
          flex-wrap: wrap;
 
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #ccc;
+          border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background:#FF7B42
+        }
+
          img {
            cursor: pointer;
            width: 150px;

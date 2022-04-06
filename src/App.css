@@ -10,3 +10,7 @@
 .App-link {
   color: #61dafb;
 }
+/* hide scroll when open popup */
+.hide-scroll {
+  overflow-y: hidden;
+}

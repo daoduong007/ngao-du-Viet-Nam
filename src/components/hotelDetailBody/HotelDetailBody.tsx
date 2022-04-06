@@ -65,6 +65,17 @@ export const HotelDetailBody = (props: IHotelDetailBody) => {
   const handleRemainingImgSlide = (currentIndex: number) => {
     setRemainingImage(ImgSlideLenght - currentIndex - 4);
   };
+
+  //hide scroll Y when open pop up
+  useEffect(() => {
+    if (popUpVisible) {
+      document.body.classList.add('hide-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('hide-scroll');
+    };
+  }, [popUpVisible]);
   return (
     <StyledHotelDetailBodyContainer>
       {popUpVisible ? (
