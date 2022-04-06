@@ -5,7 +5,7 @@ export const BodyTourItemData1 = [
     location: 'Vung Tau, Ba Ria- Vung Tau',
     title: 'Discover interesting things in the romantic coastal city of Vungtau',
     timeDepature: '3 days - 2 night',
-    price: '$146.00'
+    price: 146.00
   },
   {
     id:2,
@@ -13,7 +13,7 @@ export const BodyTourItemData1 = [
     location: 'Fansipan',
     title: 'Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina',
     timeDepature: '3 days - 2 night',
-    price: '$234.00'
+    price: 234.00
   },
   {
     id:3,
@@ -21,7 +21,7 @@ export const BodyTourItemData1 = [
     location: 'Phu Quoc, Kien Giang',
     title: 'Experience sea tourism on Phuquoc golden pearl',
     timeDepature: '3 days - 2 night',
-    price: '$334.00'
+    price: 334.00
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ export const BodyTourItemData1 = [
     location: 'Vung Tau, Ba Ria - Vung Tau',
     title: 'Discover interesting things in the romantic coastal city of Vungtau',
     timeDepature: '3 days - 2 night',
-    price: '$146.00'
+    price: 146.00
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ export const BodyTourItemData1 = [
     location: 'Fansipan, Lai Chau',
     title: 'Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina',
     timeDepature: '3 days - 2 night',
-    price: '$234.00'
+    price: 234.00
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ export const BodyTourItemData1 = [
     location: 'Phu Quoc, Kien Giang',
     title: 'Experience sea tourism on Phuquoc golden pearl',
     timeDepature: '3 days - 2 night',
-    price: '$334.00'
+    price: 334.00
   },
 ]
 
@@ -56,7 +56,7 @@ export const BodyTourItemData2 = [
     location: 'Lang Vong, Ha Noi',
     title: '“ Com lang Vong “ - Traditional culinary features of the old Hanoi people',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: 234.00
   },
   {
     id : 2,
@@ -64,7 +64,7 @@ export const BodyTourItemData2 = [
     location: 'Hue city',
     title: '“ Bun bo Hue “ - culinary specialties in the ancient capital of Hue',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: 234.00
   },
   {
     id:3,
@@ -72,7 +72,7 @@ export const BodyTourItemData2 = [
     location: 'Bac Ninh',
     title: 'Heritage of Quan Ho Bac Ninh - Singing passionate hearts',
     timeDepature: '2 hours',
-    price: '$234.00'
+    price: 234.00
   },
   {
     id:4,
@@ -80,7 +80,7 @@ export const BodyTourItemData2 = [
     location: 'Vung Tau, Ba Ria- Vung Tau',
     title: 'Discover interesting things in the romantic coastal city of Vungtau',
     timeDepature: '3 days - 2 night',
-    price: '$146.00'
+    price: 146.00
   },
   {
     id:5,
@@ -88,7 +88,7 @@ export const BodyTourItemData2 = [
     location: 'Hue City',
     title: '“ Bun bo Hue “ - culinary specialties in the ancient capital of Hue',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: 234.00
   },
   {
     id: 6,
@@ -96,7 +96,7 @@ export const BodyTourItemData2 = [
     location:'Hue City',
     title: '“ Bun bo Hue “ - culinary specialties in the ancient capital of Hue',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: 234.00
   },
   {
     id:7,
@@ -104,7 +104,7 @@ export const BodyTourItemData2 = [
     location: 'Bac Ninh',
     title: 'Heritage of Quan Ho Bac Ninh - Singing passionate hearts',
     timeDepature: '2 hours',
-    price: '$234.00'
+    price: 234.00
   },
 ]
 
@@ -160,29 +160,35 @@ export const ListTourItems = [
     location: 'Vung Tau, Ba Ria - Vung Tau',
     title: 'Discover interesting things in the romantic coastal city of Vungtau',
     timeDepature: '3 days - 2 night',
-    price: '$146.00',
+    price: 146,
     star: 4.5,
-    review: 100
+    review: 100,
+    duration: 3,
+    typeTour: 'Sun and Beaches'
   },
   {
     id: 2,
     imgUrl: '/assets/tour2.png',
     location: 'Fansipan, Lai Chau',
     title: 'Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina',
-    timeDepature: '3 days - 2 night',
-    price: '$234.00',
+    timeDepature: '2 days - 1 night',
+    price: 234,
     star: 4,
-    review: 200
+    review: 200,
+    duration: 2,
+    typeTour: 'Wildlife'
   },
   {
     id: 3,
     imgUrl: '/assets/tour3.png',
     location: 'Phu Quoc, Kien Giang',
     title: 'Experience sea tourism on Phuquoc golden pearl',
-    timeDepature: '3 days - 2 night',
-    price: '$334.00',
+    timeDepature: '4 days - 3 night',
+    price: 334,
     star: 5,
-    review: 121
+    review: 121,
+    duration: 4,
+    typeTour: 'Cultural'
   },
   {
     id:4,
@@ -190,9 +196,11 @@ export const ListTourItems = [
     location: 'Ha Noi Capital',
     title: '“ Com lang Vong “ - Traditional culinary features of the old Hanoi people',
     timeDepature: '6 hours',
-    price: '$234.00',
+    price: 123,
     star: 4,
-    review: 100
+    review: 100,
+    duration: 1,
+    typeTour: 'City-Break'
   },
   {
     id: 5,
@@ -200,9 +208,11 @@ export const ListTourItems = [
     location: 'Hue City',
     title: '“ Bun bo Hue “ - culinary specialties in the ancient capital of Hue',
     timeDepature: '6 hours',
-    price: '$234.00',
+    price: 42,
     star: 4,
-    review: 60
+    review: 60,
+    duration: 1,
+    typeTour: 'City-Break'
   },
   {
     id: 6,
@@ -210,29 +220,35 @@ export const ListTourItems = [
     location: 'Bac Ninh',
     title: 'Heritage of Quan Ho Bac Ninh - Singing passionate hearts',
     timeDepature: '2 hours',
-    price: '$234.00',
+    price: 100,
     star: 5,
-    review: 240
+    review: 240,
+    duration: 1,
+    typeTour: 'City-Break'
   },
   {
     id:7,
     imgUrl: '/assets/tour1.png',
     location: 'Vung Tau, Ba Ria - Vung Tau',
     title: 'Discover interesting things in the romantic coastal city of Vungtau',
-    timeDepature: '3 days - 2 night',
-    price: '$146.00',
+    timeDepature: '5 days - 4 night',
+    price: 500,
     star: 4,
-    review: 100
+    review: 100,
+    duration: 5,
+    typeTour: 'City-Break'
   },
   {
     id: 8,
     imgUrl: '/assets/tour2.png',
     location: 'Lai Chau',
     title: 'Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina',
-    timeDepature: '3 days - 2 night',
-    price: '$234.00',
+    timeDepature: '8 days - 7 night',
+    price: 700,
     star: 4.6,
-    review: 150
+    review: 150,
+    duration: 8,
+    typeTour: 'Ecotourism'
 
   },
   {
@@ -241,9 +257,11 @@ export const ListTourItems = [
     location: 'Phu Quoc, Kien Giang',
     title: 'Experience sea tourism on Phuquoc golden pearl',
     timeDepature: '3 days - 2 night',
-    price: '$334.00',
+    price: 300,
     star: 4.5,
-    review: 100
+    review: 100,
+    duration: 3,
+    typeTour: 'Ecotourism'
   },
   {
     id: 10,
@@ -251,9 +269,11 @@ export const ListTourItems = [
     location: 'Ha Noi Capital',
     title: '“ Com lang Vong “ - Traditional culinary features of the old Hanoi people',
     timeDepature: '6 hours',
-    price: '$234.00',
+    price: 234,
     star: 3.5,
-    review: 30
+    review: 30,
+    duration: 1,
+    typeTour: 'Ecotourism'
   },
   {
     id: 11,
@@ -261,120 +281,146 @@ export const ListTourItems = [
     location: 'Hue City',
     title: '“ Bun bo Hue “ - culinary specialties in the ancient capital of Hue',
     timeDepature: '6 hours',
-    price: '$234.00',
+    price: 170,
     star: 4.2,
-    review: 111
+    review: 111,
+    duration: 1,
+    typeTour: 'City-Break'
   },
   {
     id: 12,
     imgUrl: '/assets/tour6.png',
     location: 'Bac Ninh',
     title: 'Heritage of Quan Ho Bac Ninh - Singing passionate hearts',
-    timeDepature: '2 hours',
-    price: '$234.00',
+    timeDepature: '24 hours',
+    price: 100,
     star: 4.5,
-    review: 222
+    review: 222,
+    duration: 1,
+    typeTour: 'City-Break'
   },
-]
-
-export const ListTourItems2 = [
   {
-    id: 1,
+    id: 13,
     imgUrl: '/assets/tour6.png',
     location: 'Vung Tau, Ba Ria - Vung Tau',
     title: 'Discover interesting things in the romantic coastal city of Vungtau',
-    timeDepature: '3 days - 2 night',
-    price: '$146.00'
+    timeDepature: '5 days - 4 night',
+    price: 450,
+    duration: 5,
+    typeTour: 'Wildlife'
   },
   {
-    id: 2,
+    id: 14,
     imgUrl: '/assets/tour2.png',
     location: 'Fansipan, Lai Chau',
     title: 'Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina',
-    timeDepature: '3 days - 2 night',
-    price: '$234.00'
+    timeDepature: '6 days - 5 night',
+    price: 800,
+    duration: 6,
+    typeTour: 'Cultural'
   },
   {
-    id: 3,
+    id: 15,
     imgUrl:'/assets/tour1.png',
     location: 'Phu Quoc, Kien Giang',
     title: 'Experience sea tourism on Phuquoc golden pearl',
-    timeDepature: '3 days - 2 night',
-    price: '$334.00'
+    timeDepature: '2 days - 1 night',
+    price: 201,
+    duration: 2,
+    typeTour: 'Sun and Beaches'
   },
   {
-    id:4,
+    id:16,
     imgUrl: '/assets/tour5.png',
     location: 'Ha Noi Capital',
     title: '“ Com lang Vong “ - Traditional culinary features of the old Hanoi people',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: 235,
+    duration: 1,
+    typeTour: 'Sun and Beaches'
   },
   {
-    id: 5,
+    id: 17,
     imgUrl: '/assets/tour2.png',
     location: 'Hue City',
     title: '“ Bun bo Hue “ - culinary specialties in the ancient capital of Hue',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: 120,
+    duration: 1,
+    typeTour: 'Ecotourism'
   },
   {
-    id: 6,
+    id: 18,
     imgUrl:'/assets/tour4.png',
     location: 'Bac Ninh',
     title: 'Heritage of Quan Ho Bac Ninh - Singing passionate hearts',
     timeDepature: '2 hours',
-    price: '$234.00'
+    price: 70,
+    duration: 1,
+    typeTour: 'Wildlife'
   },
   {
-    id:7,
+    id:19,
     imgUrl: '/assets/tour1.png',
     location: 'Vung Tau, Ba Ria - Vung Tau',
     title: 'Discover interesting things in the romantic coastal city of Vungtau',
-    timeDepature: '3 days - 2 night',
-    price: '$146.00'
+    timeDepature: '5 days - 4 night',
+    price: 452,
+    duration: 5,
+    typeTour: 'Cultural'
   },
   {
-    id: 8,
+    id: 20,
     imgUrl: '/assets/tour2.png',
     location: 'Lai Chau',
     title: 'Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina',
     timeDepature: '3 days - 2 night',
-    price: '$234.00'
+    price: 230,
+    duration: 3,
+    typeTour: 'Sun and Beaches'
   },
   {
-    id: 9,
+    id: 21,
     imgUrl:'/assets/tour5.png',
     location: 'Phu Quoc, Kien Giang',
     title: 'Experience sea tourism on Phuquoc golden pearl',
-    timeDepature: '3 days - 2 night',
-    price: '$334.00'
+    timeDepature: '4 days - 3 night',
+    price: 240,
+    duration: 4,
+    typeTour: 'City-Break'
   },
   {
-    id: 10,
+    id: 22,
     imgUrl: '/assets/tour1.png',
     location: 'Ha Noi Capital',
     title: '“ Com lang Vong “ - Traditional culinary features of the old Hanoi people',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: 270,
+    duration: 1,
+    typeTour: 'Wildlife'
   },
   {
-    id: 11,
+    id: 23,
     imgUrl: '/assets/tour2.png',
     location: 'Hue City',
     title: '“ Bun bo Hue “ - culinary specialties in the ancient capital of Hue',
-    timeDepature: '6 hours',
-    price: '$234.00'
+    timeDepature: '2 day - 1 night',
+    price: 300,
+    duration: 2,
+    typeTour: 'Ecotourism'
   },
   {
-    id: 12,
+    id: 24,
     imgUrl: '/assets/tour4.png',
     location: 'Bac Ninh',
     title: 'Heritage of Quan Ho Bac Ninh - Singing passionate hearts',
-    timeDepature: '2 hours',
-    price: '$234.00'
+    timeDepature: '7 day - 6 night',
+    price: 560,
+    duration: 7,
+    typeTour: 'Sun and Beaches'
   },
 ]
+
 
 export const RelatedTours = [
   {
@@ -383,7 +429,7 @@ export const RelatedTours = [
     location: 'Sapa, Laocai',
     title: 'Discover interesting things in the romantic coastal city of Vungtau',
     timeDepature: '3 days - 2 night',
-    price: '$146.00'
+    price: 146.00
   },
   {
     id: 2,
@@ -391,7 +437,7 @@ export const RelatedTours = [
     location: 'Sapa, Laocai',
     title: 'Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina',
     timeDepature: '3 days - 2 night',
-    price: '$234.00'
+    price: 234.00
   },
   {
     id: 3,
@@ -399,7 +445,7 @@ export const RelatedTours = [
     location: 'Sapa, Laocai',
     title: 'Experience sea tourism on Phuquoc golden pearl',
     timeDepature: '3 days - 2 night',
-    price: '$334.00'
+    price: 334.00
   },
   {
     id:4,
@@ -407,7 +453,7 @@ export const RelatedTours = [
     location: 'Sapa, Laocai',
     title: '“ Com lang Vong “ - Traditional culinary features of the old Hanoi people',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: 234.00
   },
   {
     id: 5,
@@ -415,7 +461,7 @@ export const RelatedTours = [
     location: 'Sapa, Laocai',
     title: '“ Bun bo Hue “ - culinary specialties in the ancient capital of Hue',
     timeDepature: '6 hours',
-    price: '$234.00'
+    price: 234.00
   },
   {
     id: 6,
@@ -423,23 +469,9 @@ export const RelatedTours = [
     location: 'Sapa, Laocai',
     title: 'Heritage of Quan Ho Bac Ninh - Singing passionate hearts',
     timeDepature: '2 hours',
-    price: '$234.00'
+    price: 234.00
   }]
 export const p1 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus viverra nuQlla eget sed odio. Vulputate risus faucibus sem non, feugiat nec consequat, montes. Elementum scelerisque phasellus donec lectus ullamcorper faucibus. Malesuada et adipiscing molestie egestas leo ut.'
 export const p2 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus viverra nuQlla eget sed odio. Vulputate risus faucibus sem non, feugiat nec consequat, montes. '
 export const p3 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus viverra nuQlla eget sed odio. Vulputate risus faucibus sem non, feugiat nec consequat, montes. Elementum scelerisque phasellus donec lectus ullamcorper faucibus.'
 
-export const DataForTourFilter1 = [
-  '0 - 3 days',
-  '3 - 4 days',
-  '5 - 7 days',
-  'over 1 week'
-]
-
-export const DataForTourFilter2 = [
-  'City-Break',
-  'Wildlife',
-  'Cultural',
-  'Ecotourism',
-  'Sun and Beaches'
-]

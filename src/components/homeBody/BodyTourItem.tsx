@@ -42,7 +42,7 @@ export const BodyTourItem = (props: ITourProps) => {
         </div>
         <div className='item-infomation-price'>
           <p>
-            from <span>{data.price}</span>
+            from <span>$ {data.price}</span>
           </p>
         </div>
       </div>

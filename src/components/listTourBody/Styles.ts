@@ -210,6 +210,7 @@ export const StyledListTourBodyFilter = styled.div`
   .ant-rate-star-zero{
     display: none;
   }
+
   .list-tour-filter-title{
     margin:0 0 58px 0;
     font-family: 'Poppins';
@@ -249,9 +250,21 @@ export const StyledListTourBodyFilter = styled.div`
     }
 
     .ant-btn-primary {
-      background-color: #FF7B42;
-      border: #FF7B42;
+      span {
+        color: #C4C4C4;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 21px;
+      }
+      background-color: #FFFFFF;
+      border: 0;
+      box-shadow: none !important;
       &:hover{
+        span {
+          color: #FFFFFF;
+        }
+        border: #FF7B42;
+        background-color: #FF7B42;
         transform: scale(1.05,1.05);
       }
     }
@@ -283,6 +296,7 @@ export const StyledListTourBodyFilter = styled.div`
     flex-direction: column;
 
     .ant-checkbox-wrapper {
+      width: 100%;
       margin-bottom: 20px;
       font-family: 'Poppins';
       font-style: normal;

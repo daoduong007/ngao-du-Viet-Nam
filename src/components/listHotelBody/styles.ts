@@ -64,9 +64,6 @@ export const StyleBodyListHotelContainer = styled.div`
             top: 15%;
             padding-left: 17px;
           }
-          .ant-select-open {
-
-          }
         }
       }
 

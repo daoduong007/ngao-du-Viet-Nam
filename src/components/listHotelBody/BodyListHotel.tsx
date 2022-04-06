@@ -6,16 +6,23 @@ import {
   StyleBodyListHotelContainer,
   ListHotelFilter,
   DataListHotel,
-  DataListHotel2,
   HotelItem,
   IconPrevPage,
   IconNextPage,
   BreadcrumbLink,
 } from '@components';
 import { AppRoutes } from '@enums';
+import { FilterHotel, Sort } from '@utils';
 
 export const BodyListHotel = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isVisiblePopUp, setIsVisiblePopUp] =
+    useState<boolean>(false);
+  const [optionSort, setOptionSort] = useState<string>('price');
+  const [listHotelSorted, setListHotelSorted] = useState<any>(() =>
+    Sort(DataListHotel, 'price', 'decrease'),
+  );
+
   const { Option } = Select;
   const history = useHistory();
 
@@ -45,6 +52,32 @@ export const BodyListHotel = () => {
     return originalElement;
   };
 
+  const handleApplyFilter = (
+    budgetFilter: any,
+    hotelStarFilter: number[],
+    reviewScoreFilter: number[],
+  ) => {
+    setIsVisiblePopUp((isVisiblePopUp) => !isVisiblePopUp);
+
+    setListHotelSorted(
+      FilterHotel(
+        DataListHotel,
+        budgetFilter,
+        hotelStarFilter,
+        reviewScoreFilter,
+      ),
+    );
+  };
+
+  const handleVisibleChange = () => {
+    setIsVisiblePopUp((isVisiblePopUp) => !isVisiblePopUp);
+  };
+
+  function handleSort(option) {
+    setOptionSort(option);
+    setListHotelSorted(Sort(listHotelSorted, option, 'decrease'));
+  }
+
   return (
     <StyleBodyListHotelContainer>
       <BreadcrumbLink pathUrl={pathUrl} />
@@ -53,22 +86,32 @@ export const BodyListHotel = () => {
         <div className='list-hotel-sort-and-filter'>
           <div className='list-hotel-body-sort'>
             <p>SORT BY: </p>
-
             <div className='sort-select'>
-              <Select defaultValue='Price' bordered={false}>
-                <Option value='Price'>Price</Option>
-                <Option value='Rating'>Rating</Option>
-                <Option value='Review'>Review</Option>
+              <Select
+                defaultValue={optionSort}
+                bordered={false}
+                value={optionSort}
+                onSelect={(option) => handleSort(option)}
+              >
+                <Option value='price'>Price</Option>
+                <Option value='rating'>Rating</Option>
+                <Option value='review'>Review</Option>
               </Select>
             </div>
           </div>
           <div className='list-hotel-body-filer'>
             <Popover
               placement='bottomLeft'
-              content={ListHotelFilter}
+              content={
+                <ListHotelFilter
+                  onClick={handleApplyFilter}
+                  isVisiblePopUp={isVisiblePopUp}
+                />
+              }
               trigger='click'
               className='list-hotel-popup'
-              style={{ padding: 0 }}
+              visible={isVisiblePopUp}
+              onVisibleChange={handleVisibleChange}
             >
               <Button type='primary'>Filter</Button>
             </Popover>
@@ -84,7 +127,7 @@ export const BodyListHotel = () => {
       >
         {currentPage === 1 ? (
           <>
-            {DataListHotel.map((item) => (
+            {listHotelSorted.slice(0, 12).map((item) => (
               <Col
                 key={item.id}
                 className='list-hotel-item'
@@ -98,7 +141,7 @@ export const BodyListHotel = () => {
           </>
         ) : currentPage === 2 ? (
           <>
-            {DataListHotel2.map((item) => (
+            {listHotelSorted.slice(12, 24).map((item) => (
               <Col
                 key={item.id}
                 className='list-hotel-item'

@@ -6,7 +6,7 @@ import { IconDepatureTime, IconPeople } from '@components';
 
 interface IBookingForm {
   duration: string;
-  price: string;
+  price: number;
   onClick: (event: any) => void;
 }
 
@@ -18,7 +18,7 @@ export const TourDetailBookingForm = (props: IBookingForm) => {
     <StyledTourDetailBookingForm>
       <div className='booking-form-price'>
         <p>
-          from <span>{price}</span>
+          from <span> $ {price}</span>
         </p>
       </div>
       <hr />
@@ -55,7 +55,7 @@ export const TourDetailBookingForm = (props: IBookingForm) => {
       <div className='booking-form-total'>
         <p>Total: </p>
         <p>
-          <span>{price}</span>
+          <span>$ {price}</span>
         </p>
       </div>
       <div className='booking-form-submit'>

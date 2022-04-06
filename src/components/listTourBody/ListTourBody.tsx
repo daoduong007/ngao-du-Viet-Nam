@@ -10,16 +10,18 @@ import {
   IconPrevPage,
   IconNextPage,
   BreadcrumbLink,
-  ListTourItems2,
 } from '@components';
 import { AppRoutes } from '@enums';
 import { tourApi } from '@api';
+import { FilterTour } from '@utils';
 
 export const ListTourBody = ({}) => {
   const history = useHistory();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isVisiblePopUp, setIsVisiblePopUp] =
     useState<boolean>(false);
+  const [listHotelFilltered, setListHotelFilltered] =
+    useState<any>(ListTourItems);
 
   const handleClick = (id: number) => {
     history.push(
@@ -60,10 +62,25 @@ export const ListTourBody = ({}) => {
     fetchTourList();
   }, []);
 
-  const handleVisiblePopUp = () => {
-    setIsVisiblePopUp((isVisiblePopUp) => {
-      return !isVisiblePopUp;
-    });
+  const handleApplyFilter = (
+    budgetFilter: any,
+    durationFilter: any,
+    typeOfTourFilter: string[],
+  ) => {
+    setIsVisiblePopUp((isVisiblePopUp) => !isVisiblePopUp);
+
+    setListHotelFilltered(
+      FilterTour(
+        ListTourItems,
+        budgetFilter,
+        durationFilter,
+        typeOfTourFilter,
+      ),
+    );
+  };
+
+  const handleVisibleChange = () => {
+    setIsVisiblePopUp((isVisiblePopUp) => !isVisiblePopUp);
   };
   return (
     <StyledListTourBodyContainer>
@@ -74,11 +91,16 @@ export const ListTourBody = ({}) => {
         <div className='listtour-body-filer'>
           <Popover
             placement='bottomLeft'
-            content={<ListTourFilter onClick={handleVisiblePopUp} />}
+            content={
+              <ListTourFilter
+                onClick={handleApplyFilter}
+                isVisiblePopUp={isVisiblePopUp}
+              />
+            }
             trigger='click'
             className='list-tour-popup'
             visible={isVisiblePopUp}
-            onVisibleChange={handleVisiblePopUp}
+            onVisibleChange={handleVisibleChange}
           >
             <Button type='primary'>Filter</Button>
           </Popover>
@@ -93,7 +115,7 @@ export const ListTourBody = ({}) => {
       >
         {currentPage === 1 ? (
           <>
-            {ListTourItems.map((tour) => (
+            {listHotelFilltered.slice(0, 12).map((tour) => (
               <Col
                 key={tour.id}
                 className='list-tour-item'
@@ -107,7 +129,7 @@ export const ListTourBody = ({}) => {
           </>
         ) : currentPage === 2 ? (
           <>
-            {ListTourItems2.map((tour) => (
+            {listHotelFilltered.slice(13, 24).map((tour) => (
               <Col
                 key={tour.id}
                 className='list-tour-item'

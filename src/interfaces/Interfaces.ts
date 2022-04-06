@@ -12,9 +12,11 @@ export interface ITourDetail {
   location:string,
   title: string,
   timeDepature: string,
-  price: string,
+  price: number,
   star?: number,
-  review?: number
+  review?: number,
+  duration?: number,
+  typeTour?: string
 }
 
 export interface ITourBooking {
@@ -57,7 +59,7 @@ export interface IHotelDetail {
   name:  string;
   rating: number;
   review:number;
-  price: string;
+  price: number | string;
 }
 
 export interface IDetailSelectRoom {
