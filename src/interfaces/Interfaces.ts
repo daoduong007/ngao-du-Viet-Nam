@@ -75,7 +75,9 @@ export interface IDetailSelectRoom {
 
 
 export interface IInitState {
-  bookingTour : {
-    idTour: number;
+  tour: {
+    bookingTour : {
+      idTour: number;
+    }
   }
 }

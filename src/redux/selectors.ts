@@ -1,4 +1,4 @@
-import {IInitState} from '@interfaces'
+import {IInitState} from '@interfaces';
 
 export const bookingTourSelector = (state : IInitState) => {
-  return state.bookingTour}
+  return state.tour}

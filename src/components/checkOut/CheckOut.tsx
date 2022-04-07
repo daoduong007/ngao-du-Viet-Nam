@@ -21,7 +21,7 @@ interface INameScreen {
 }
 export const CheckOut = (props: INameScreen) => {
   const IdBooked = useSelector(bookingTourSelector);
-  console.log(IdBooked.idTour);
+  console.log(IdBooked.bookingTour.idTour);
   const { screen } = props;
   const history = useHistory();
   const initialValues: ICheckOutFormValues = {

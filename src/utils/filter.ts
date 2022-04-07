@@ -228,5 +228,5 @@ export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
 
   //fill 0 field
   } else if(budget.length ===  0 && duration.length ===  0 && typeTour.length ===  0) { 
-    return arrayOfObject}
+    return []}
 }

@@ -20,8 +20,8 @@ export const ListTourBody = ({}) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isVisiblePopUp, setIsVisiblePopUp] =
     useState<boolean>(false);
-  const [listHotelFilltered, setListHotelFilltered] =
-    useState<any>(ListTourItems);
+  const [listTourData, setListTourData] = useState<any>([]);
+  const [listTourFilltered, setListTourFilltered] = useState<any>([]);
 
   const handleClick = (id: number) => {
     history.push(
@@ -52,15 +52,40 @@ export const ListTourBody = ({}) => {
   useEffect(() => {
     const fetchTourList = async () => {
       try {
-        const response = await tourApi.getAll();
-        console.log(response);
+        const params = {
+          _page: currentPage,
+          _limit: 12,
+        };
+        const response = await tourApi.getAll(params);
+        setListTourData(response);
       } catch (error) {
         console.error('fail to fetch tour list', error);
       }
     };
 
     fetchTourList();
-  }, []);
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (listTourFilltered.length !== 0) {
+      setListTourData(listTourFilltered);
+    } else {
+      const fetchTourList = async () => {
+        try {
+          const params = {
+            _page: 1,
+            _limit: 12,
+          };
+          const response = await tourApi.getAll(params);
+          setListTourData(response);
+        } catch (error) {
+          console.error('fail to fetch tour list', error);
+        }
+      };
+
+      fetchTourList();
+    }
+  }, [listTourFilltered]);
 
   const handleApplyFilter = (
     budgetFilter: any,
@@ -69,7 +94,7 @@ export const ListTourBody = ({}) => {
   ) => {
     setIsVisiblePopUp((isVisiblePopUp) => !isVisiblePopUp);
 
-    setListHotelFilltered(
+    setListTourFilltered(
       FilterTour(
         ListTourItems,
         budgetFilter,
@@ -113,9 +138,9 @@ export const ListTourBody = ({}) => {
           { xs: 20, sm: 25, md: 45 },
         ]}
       >
-        {currentPage === 1 ? (
+        {listTourData.length !== 0 ? (
           <>
-            {listHotelFilltered.slice(0, 12).map((tour) => (
+            {listTourData.map((tour) => (
               <Col
                 key={tour.id}
                 className='list-tour-item'
@@ -127,32 +152,24 @@ export const ListTourBody = ({}) => {
               </Col>
             ))}
           </>
-        ) : currentPage === 2 ? (
-          <>
-            {listHotelFilltered.slice(13, 24).map((tour) => (
-              <Col
-                key={tour.id}
-                className='list-tour-item'
-                xs={{ span: 24 }}
-                sm={{ span: 12 }}
-                lg={{ span: 8 }}
-              >
-                <BodyTourItem data={tour} onClick={handleClick} />
-              </Col>
-            ))}
-          </>
-        ) : null}
+        ) : (
+          <h2>No data matching</h2>
+        )}
       </Row>
       <div className='listtour-body-pagination'>
-        <Pagination
-          total={12}
-          current={currentPage}
-          itemRender={itemRender}
-          defaultCurrent={1}
-          onChange={(page) => {
-            handleChangePage(page);
-          }}
-        ></Pagination>
+        {listTourFilltered.length === 0 &&
+        listTourData.length !== 0 ? (
+          <Pagination
+            total={24}
+            pageSize={12}
+            current={currentPage}
+            itemRender={itemRender}
+            defaultCurrent={1}
+            onChange={(page) => {
+              handleChangePage(page);
+            }}
+          ></Pagination>
+        ) : null}
       </div>
     </StyledListTourBodyContainer>
   );

@@ -1,13 +1,12 @@
-import {  createStore} from 'redux';
-import {rootReducer} from '@redux';
-import { composeWithDevTools } from '@redux-devtools/extension';
+import {configureStore} from '@reduxjs/toolkit'
+import tourSlide from './reducer/tourSlice';
 
-const composeEnhancers  = composeWithDevTools();
-
-
-const store = createStore(rootReducer,composeEnhancers);
+const store = configureStore({
+  reducer: {
+    tour: tourSlide,
+  }
+})
 export default store;
 
-export * from './reducer';
-export * from './actions';
-export * from './selectors'
+export * from "./reducer";
+export * from './selectors';

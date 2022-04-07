@@ -25,7 +25,7 @@ import {
   BreadcrumbLink,
   IconCamera,
 } from '@components';
-import { submitBookingTourAction } from '@redux';
+import { submitBooking } from '@redux';
 import { ITourDetail } from '@interfaces';
 
 interface ITourDetailBody {
@@ -81,7 +81,7 @@ export const TourDetailBody = (props: ITourDetailBody) => {
     history.push(AppRoutes.CHECK_OUT);
 
     dispatch(
-      submitBookingTourAction({
+      submitBooking({
         idTour: data.id,
       }),
     );
