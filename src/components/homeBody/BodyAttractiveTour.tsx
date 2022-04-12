@@ -10,13 +10,18 @@ import {
   StyledBodyTourListItem,
   BodyTourItem,
   IconArrow,
-  BodyTourItemData1,
   BodyButton,
 } from '@components';
 import { generatePath, useHistory } from 'react-router-dom';
 import { AppRoutes } from '@enums';
 
-export const BodyAttractiveTour = () => {
+interface IHomeAttractive {
+  data: any[];
+}
+
+export const BodyAttractiveTour = (props: IHomeAttractive) => {
+  const { data } = props;
+
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -98,7 +103,7 @@ export const BodyAttractiveTour = () => {
               },
             }}
           >
-            {BodyTourItemData1.map((tour) => (
+            {data.map((tour) => (
               <SwiperSlide key={tour.id}>
                 <BodyTourItem data={tour} onClick={handleClick} />
               </SwiperSlide>

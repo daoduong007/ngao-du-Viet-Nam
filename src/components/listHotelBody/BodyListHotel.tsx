@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Popover, Select, Pagination, Row, Col } from 'antd';
 import { generatePath, useHistory } from 'react-router-dom';
 
@@ -13,15 +13,15 @@ import {
 } from '@components';
 import { AppRoutes } from '@enums';
 import { FilterHotel, Sort } from '@utils';
+import { hotelApi } from '@api';
 
 export const BodyListHotel = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isVisiblePopUp, setIsVisiblePopUp] =
     useState<boolean>(false);
   const [optionSort, setOptionSort] = useState<string>('price');
-  const [listHotelSorted, setListHotelSorted] = useState<any>(() =>
-    Sort(DataListHotel, 'price', 'decrease'),
-  );
+  const [listHotelSorted, setListHotelSorted] = useState<any>([]);
+  const [listHotelData, setListHotelData] = useState<any>([]);
 
   const { Option } = Select;
   const history = useHistory();
@@ -67,6 +67,7 @@ export const BodyListHotel = () => {
         reviewScoreFilter,
       ),
     );
+    setListHotelData([]);
   };
 
   const handleVisibleChange = () => {
@@ -75,8 +76,26 @@ export const BodyListHotel = () => {
 
   function handleSort(option) {
     setOptionSort(option);
-    setListHotelSorted(Sort(listHotelSorted, option, 'decrease'));
+    setListHotelData([]);
+    setListHotelSorted(Sort(DataListHotel, option, 'decrease'));
   }
+
+  useEffect(() => {
+    const fetchHotelList = async () => {
+      try {
+        const params = {
+          _page: currentPage,
+          _limit: 12,
+        };
+        const response = await hotelApi.getAll(params);
+        setListHotelData(response);
+      } catch (error) {
+        console.error('fail to fetch hotel list', error);
+      }
+    };
+
+    fetchHotelList();
+  }, [currentPage]);
 
   return (
     <StyleBodyListHotelContainer>
@@ -125,46 +144,52 @@ export const BodyListHotel = () => {
           { xs: 20, sm: 25, md: 45 },
         ]}
       >
-        {currentPage === 1 ? (
+        {listHotelData.length !== 0 ? (
           <>
-            {listHotelSorted.slice(0, 12).map((item) => (
+            {listHotelData.map((hotel) => (
               <Col
-                key={item.id}
+                key={hotel.id}
                 className='list-hotel-item'
                 xs={{ span: 24 }}
                 sm={{ span: 12 }}
                 lg={{ span: 8 }}
               >
-                <HotelItem data={item} onClick={handleClick} />
+                <HotelItem data={hotel} onClick={handleClick} />
               </Col>
             ))}
           </>
-        ) : currentPage === 2 ? (
+        ) : listHotelSorted.length !== 0 ? (
           <>
-            {listHotelSorted.slice(12, 24).map((item) => (
+            {listHotelSorted.map((hotel) => (
               <Col
-                key={item.id}
+                key={hotel.id}
                 className='list-hotel-item'
                 xs={{ span: 24 }}
                 sm={{ span: 12 }}
                 lg={{ span: 8 }}
               >
-                <HotelItem data={item} onClick={handleClick} />
+                <HotelItem data={hotel} onClick={handleClick} />
               </Col>
             ))}
           </>
-        ) : null}
+        ) : (
+          <>
+            <h1>No data matching</h1>
+          </>
+        )}
       </Row>
       <div className='list-hotel-body-pagination'>
-        <Pagination
-          total={15}
-          current={currentPage}
-          itemRender={itemRender}
-          defaultCurrent={1}
-          onChange={(page) => {
-            handleChangePage(page);
-          }}
-        ></Pagination>
+        {listHotelData.length !== 0 ? (
+          <Pagination
+            total={20}
+            current={currentPage}
+            itemRender={itemRender}
+            defaultCurrent={1}
+            onChange={(page) => {
+              handleChangePage(page);
+            }}
+          ></Pagination>
+        ) : null}
       </div>
     </StyleBodyListHotelContainer>
   );

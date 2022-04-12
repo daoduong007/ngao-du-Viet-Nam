@@ -10,12 +10,16 @@ import {
   StyledBodyTourListItem,
   BodyDiscoverItem,
   IconArrow,
-  BodyTourItemData3,
   BodyButton,
 } from '@components';
 import { AppRoutes } from '@enums';
 
-export const BodyDiscoverDestinations = () => {
+interface IHomeDiscover {
+  data: any[];
+}
+
+export const BodyDiscoverDestinations = (props: IHomeDiscover) => {
+  const { data } = props;
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
 
@@ -90,7 +94,7 @@ export const BodyDiscoverDestinations = () => {
               },
             }}
           >
-            {BodyTourItemData3.map((item, index) => (
+            {data.map((item, index) => (
               <SwiperSlide key={index}>
                 <BodyDiscoverItem
                   imgUrl={item.imgUrl}

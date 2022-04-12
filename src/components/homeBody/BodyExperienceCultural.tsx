@@ -11,13 +11,18 @@ import {
   StyledBodyTourListItem,
   BodyTourItem,
   IconArrow,
-  BodyTourItemData2,
   BodyButton,
 } from '@components';
 
 import { AppRoutes } from '@enums';
 
-export const BodyExperienceCultural = () => {
+interface IHomeExperience {
+  data: any[];
+}
+
+export const BodyExperienceCultural = (props: IHomeExperience) => {
+  const { data } = props;
+
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -101,7 +106,7 @@ export const BodyExperienceCultural = () => {
               },
             }}
           >
-            {BodyTourItemData2.map((tour) => (
+            {data.map((tour) => (
               <SwiperSlide key={tour.id}>
                 <BodyTourItem data={tour} onClick={handleClick} />
               </SwiperSlide>

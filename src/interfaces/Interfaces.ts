@@ -16,7 +16,9 @@ export interface ITourDetail {
   star?: number,
   review?: number,
   duration?: number,
-  typeTour?: string
+  typeTour?: string,
+  rating? : number,
+  name?: string
 }
 
 export interface ITourBooking {
@@ -51,14 +53,13 @@ export interface ICheckOutFormValues {
 }
 
 export interface IHotelDetail {
-
   id: number;
   imgUrl: string;
   star: number;
   location:  string;
   name:  string;
   rating: number;
-  review:number;
+  review: number;
   price: number | string;
 }
 

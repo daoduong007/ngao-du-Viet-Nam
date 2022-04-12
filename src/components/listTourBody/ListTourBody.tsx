@@ -66,27 +66,6 @@ export const ListTourBody = ({}) => {
     fetchTourList();
   }, [currentPage]);
 
-  useEffect(() => {
-    if (listTourFilltered.length !== 0) {
-      setListTourData(listTourFilltered);
-    } else {
-      const fetchTourList = async () => {
-        try {
-          const params = {
-            _page: 1,
-            _limit: 12,
-          };
-          const response = await tourApi.getAll(params);
-          setListTourData(response);
-        } catch (error) {
-          console.error('fail to fetch tour list', error);
-        }
-      };
-
-      fetchTourList();
-    }
-  }, [listTourFilltered]);
-
   const handleApplyFilter = (
     budgetFilter: any,
     durationFilter: any,
@@ -94,6 +73,7 @@ export const ListTourBody = ({}) => {
   ) => {
     setIsVisiblePopUp((isVisiblePopUp) => !isVisiblePopUp);
 
+    setListTourData([]);
     setListTourFilltered(
       FilterTour(
         ListTourItems,
@@ -152,8 +132,24 @@ export const ListTourBody = ({}) => {
               </Col>
             ))}
           </>
+        ) : listTourFilltered.length !== 0 ? (
+          <>
+            {listTourFilltered.map((tour) => (
+              <Col
+                key={tour.id}
+                className='list-tour-item'
+                xs={{ span: 24 }}
+                sm={{ span: 12 }}
+                lg={{ span: 8 }}
+              >
+                <BodyTourItem data={tour} onClick={handleClick} />
+              </Col>
+            ))}
+          </>
         ) : (
-          <h2>No data matching</h2>
+          <Col>
+            <h2>No data matching</h2>
+          </Col>
         )}
       </Row>
       <div className='listtour-body-pagination'>

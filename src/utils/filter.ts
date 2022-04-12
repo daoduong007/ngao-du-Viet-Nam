@@ -117,14 +117,16 @@ export const FilterHotel = (arrayOfObject, budget ,hotelStar, reviewScore) => {
 export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
   // fill 1 field budget
   if( budget.length !==  0 && duration.length ===  0 && typeTour.length ===  0 ){
-
-    return arrayOfObject.filter((object :any) => {
-      return (object.price >= budget[0] && object.price <= budget[1]);
-    })
+    console.log('case 1');
+    let arrayFil1 = [];
+    arrayFil1 = arrayFil1.concat(arrayOfObject.filter((object :any) => (object.price >= budget[0] && object.price <= budget[1])));
+   
+    return arrayFil1;
   } 
 
   // fill 1 field  duration
   else if (budget.length ===  0 && duration.length !==  0 && typeTour.length ===  0) { 
+    console.log('case 2');
     // let arrayFil2= [];
     
     // duration.map((duration) => {
@@ -140,21 +142,20 @@ export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
 
   // fill 1 field typeTour
   else if (budget.length ===  0 && duration.length ===  0 && typeTour.length !==  0) {
+    console.log('case 3');
     let arrayFil3 = [];
   
     typeTour.map((type) => {
-      arrayFil3= arrayFil3.concat(arrayOfObject.filter((arr : any) => arr.rating === type));
+      arrayFil3= arrayFil3.concat(arrayOfObject.filter((arr : any) => arr.typeTour === type));
     })
     return arrayFil3;
   }
 
   //fill 2 field budget ,duration
   else if (budget.length !==  0 && duration.length !==  0 && typeTour.length ===  0) {
-    const arrayFil1 = arrayOfObject.filter((object :any) => {
-      return arrayOfObject.filter((object :any) => {
-        return (object.price >= budget[0] && object.price <= budget[1]);
-      })
-    })
+    console.log('case 1 vs 2');
+    let arrayFil1 = [];
+    arrayFil1 = arrayFil1.concat(arrayOfObject.filter((object :any) => (object.price >= budget[0] && object.price <= budget[1])));
 
     // let arrayFil2= [];
     // let temporaryArray = [];
@@ -167,24 +168,21 @@ export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
 
   //fill 2 field   budget, typeTour
   else if (budget.length !==  0 && duration.length ===  0 && typeTour.length !==  0) {
-    let temporaryArray = [];
-    const arrayFil1 = arrayOfObject.filter((object :any) => {
-      return arrayOfObject.filter((object :any) => {
-        return (object.price >= budget[0] && object.price <= budget[1]);
-      })
-    })
+    console.log('case 1 vs 3');
+    let arrayFil1 = [];
+    arrayFil1 = arrayFil1.concat(arrayOfObject.filter((object :any) => (object.price >= budget[0] && object.price <= budget[1])));
 
     let arrayFil3 = [];
     typeTour.map((type) => {
-      temporaryArray= arrayFil1.filter((arr : any) =>arr.typeTour === type);  
-      arrayFil3= arrayFil3.concat(temporaryArray);
+      arrayFil3= arrayFil3.concat(arrayFil1.filter((arr : any) => arr.typeTour === type));
     })
 
-    return arrayFil3;
+    return arrayFil3
   }
 
   //fill 2 field  duration  ,typeTour
   else if (budget.length ===  0 && duration.length !==  0 && typeTour.length !==  0) {
+    console.log('case 2 vs 3');
     // let arrayFil2= [];
     // let temporaryArray = [];
     // duration.map((star) => {
@@ -204,11 +202,9 @@ export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
 
   //fill 3 field budget , duration  ,typeTour
   else if(budget.length !==  0 && duration.length !==  0 && typeTour.length !==  0) {
-    const arrayFil1 = arrayOfObject.filter((object :any) => {
-      return arrayOfObject.filter((object :any) => {
-        return (object.price >= budget[0] && object.price <= budget[1]);
-      })
-    })
+    console.log('case 1 vs 2 vs 3');
+    let arrayFil1 = [];
+    arrayFil1 = arrayFil1.concat(arrayOfObject.filter((object :any) => (object.price >= budget[0] && object.price <= budget[1])));
   
     // let arrayFil2= [];
     // let temporaryArray = [];
@@ -228,5 +224,6 @@ export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
 
   //fill 0 field
   } else if(budget.length ===  0 && duration.length ===  0 && typeTour.length ===  0) { 
-    return []}
+    console.log('case 0');
+    return arrayOfObject}
 }
