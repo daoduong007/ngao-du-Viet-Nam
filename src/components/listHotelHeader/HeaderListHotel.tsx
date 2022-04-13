@@ -24,6 +24,7 @@ export const HeaderListHotel = (props: IScreenName) => {
   const onClose = () => {
     setDrawerVisible(false);
   };
+
   return (
     <StyledHotelsHeaderContainer url={urlBanner}>
       <Appbar onClick={showDrawer} />

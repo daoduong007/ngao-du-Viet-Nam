@@ -20,6 +20,7 @@ import {
   ForgotPasswordScreen,
   ChangePasswordScreen,
 } from '@containers';
+import { PageNotFound } from '@components';
 import { AppRoutes } from '@enums';
 
 function App() {
@@ -70,6 +71,9 @@ function App() {
         </Route>
         <Route path={AppRoutes.CHANGE_PASSWORD} exact>
           <ChangePasswordScreen />
+        </Route>
+        <Route>
+          <PageNotFound />
         </Route>
       </Switch>
     </div>

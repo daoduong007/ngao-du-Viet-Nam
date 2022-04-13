@@ -7,8 +7,13 @@ export const tourApi = {
     return axiosClient.get(url, {params: params});
   },
 
-  get: (id: any) => {
+  get: (id: number) => {
     const url = `./tours/${id}`;
     return axiosClient.get(url);
+  },
+
+  search: (params: string) => {
+    const url = `./tours?q=${params}`;
+    return axiosClient.get(url)
   }
 }

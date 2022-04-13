@@ -4,7 +4,6 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
   width: 100%;
   height: 666px;
 
-  /* background-image: url('/assets/BannerHotels.png'); */
   background-image: url(${props => (props.url ? props.url : '/assets/BannerHotels.png')});
   background-repeat: no-repeat;
   background-size: cover;
@@ -65,9 +64,6 @@ export const StyledHotelsHeaderContainer = styled.div<{url? : string}>`
         display: flex;
         align-items: center;
         justify-content: center;
-        svg {
-          margin-right: 16px;
-        }
       }
       .ant-btn-primary {
           background-color:#FF7B42;

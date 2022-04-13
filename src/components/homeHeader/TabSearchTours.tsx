@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Button, DatePicker, Input, Select } from 'antd';
+import { Button, DatePicker, Input, Select, Popover } from 'antd';
+import axios from 'axios';
+import debounce from 'lodash.debounce';
 
 import {
   IconLocation,
@@ -8,6 +10,7 @@ import {
   IconFlag,
   IconDepatureTime,
   IconGuest,
+  IconDot,
 } from '@components';
 
 const typesOfTours = [
@@ -22,8 +25,9 @@ interface ITabSearchName {
 export const TabSearchTours = (props: ITabSearchName) => {
   const { tabName } = props;
   const { Option } = Select;
+  const [searchResults, setSearchResults] = useState<any>([]);
 
-  const [location, setLocation] = useState<string>();
+  const [location, setLocation] = useState<string>('');
   const [depatureTime, setDepatureTime] = useState<any>();
   const [typeTour, setTypeTour] = useState<string>();
   const [numberGuest, setNumberGuest] = useState<string>();
@@ -31,21 +35,54 @@ export const TabSearchTours = (props: ITabSearchName) => {
   const handleChangeTypeTour = (value) => {
     setTypeTour(value);
   };
+
   const handleChangeNumberGuest = (value) => {
     setNumberGuest(value);
   };
-  const handleInputLocation = (e) => {
-    setLocation(e.target.value);
-  };
+
   const handleChangeDeperatureTime = (value) => {
     setDepatureTime(value);
   };
+
   const handleSearch = () => {
     setTypeTour('');
     setNumberGuest('');
     setLocation('');
     setDepatureTime('');
   };
+
+  const handleSearchDebounce = () => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8386/tours?q=${location}`,
+        );
+        console.log(location);
+        console.log(response.data);
+        setSearchResults(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const delayedSearch = useCallback(
+    debounce(handleSearchDebounce, 400),
+    [location],
+  );
+
+  const handleLocationChange = (value) => {
+    setLocation(value);
+  };
+
+  useEffect(() => {
+    delayedSearch();
+
+    // Cancel the debounce on useEffect cleanup
+    return delayedSearch.cancel;
+  }, [location, delayedSearch]);
 
   return (
     <StyledSearchTabPane>
@@ -61,11 +98,39 @@ export const TabSearchTours = (props: ITabSearchName) => {
           <div className='tab-search-icon'>
             <IconLocation />
           </div>
-          <Input
-            value={location}
-            onChange={(e) => handleInputLocation(e)}
-            placeholder={'Quatlam Beach, Giaothuy, Namdinh'}
-          />
+
+          <Popover
+            content={
+              <div className='results-search-content'>
+                {searchResults.map((result, index) => (
+                  <h4 key={index} style={{ cursor: 'pointer' }}>
+                    {'<'}
+                    {'>'} {result.location} : {result.title} {'<'}
+                    {'>'}
+                  </h4>
+                ))}
+              </div>
+            }
+            trigger='click'
+            placement='bottom'
+            overlayInnerStyle={{
+              width: '310px',
+              height: '248px',
+              overflowY: 'auto',
+              marginLeft: '-60px',
+            }}
+            overlayStyle={{
+              padding: '0px',
+              fontFamily: 'DM Sans',
+              fontSize: '0.95rem',
+            }}
+          >
+            <Input
+              value={location}
+              onChange={(e) => handleLocationChange(e.target.value)}
+              placeholder={'Quatlam Beach, Giaothuy, Namdinh'}
+            />
+          </Popover>
         </div>
         <div className='tab-search-item'>
           <div className='tab-search-icon'>
@@ -166,8 +231,7 @@ const StyledSearchTabPane = styled.div`
       align-items: center;
       border: 0;
       span {
-        margin-left: 1rem;
-
+        margin-left: 16px;
         font-weight: 700;
         font-size: 0.88rem;
         line-height: 160%;
@@ -194,6 +258,7 @@ const StyledSearchTabPane = styled.div`
     align-items: center;
 
     background-color: #ffffff;
+
     .tab-search-icon {
       padding: 0 23px 0 26px;
     }
