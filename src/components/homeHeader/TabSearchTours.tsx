@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Button, DatePicker, Input, Select, Popover } from 'antd';
 import axios from 'axios';
 import debounce from 'lodash.debounce';
+import { generatePath, useHistory } from 'react-router-dom';
 
 import {
   IconLocation,
@@ -10,8 +11,9 @@ import {
   IconFlag,
   IconDepatureTime,
   IconGuest,
-  IconDot,
 } from '@components';
+
+import { AppRoutes } from '@enums';
 
 const typesOfTours = [
   'Cultural tourism',
@@ -23,6 +25,7 @@ interface ITabSearchName {
   tabName: string;
 }
 export const TabSearchTours = (props: ITabSearchName) => {
+  const history = useHistory();
   const { tabName } = props;
   const { Option } = Select;
   const [searchResults, setSearchResults] = useState<any>([]);
@@ -53,15 +56,28 @@ export const TabSearchTours = (props: ITabSearchName) => {
 
   const handleSearchDebounce = () => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:8386/tours?q=${location}`,
-        );
-        console.log(location);
-        console.log(response.data);
-        setSearchResults(response.data);
-      } catch (error) {
-        console.error(error);
+      if (tabName === 'tab_hotel') {
+        try {
+          const response = await axios.get(
+            `http://localhost:8386/hotels?q=${location}`,
+          );
+          console.log(location);
+          console.log(response.data);
+          setSearchResults(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        try {
+          const response = await axios.get(
+            `http://localhost:8386/tours?q=${location}`,
+          );
+          console.log(location);
+          console.log(response.data);
+          setSearchResults(response.data);
+        } catch (error) {
+          console.error(error);
+        }
       }
     };
     fetchData();
@@ -84,6 +100,22 @@ export const TabSearchTours = (props: ITabSearchName) => {
     return delayedSearch.cancel;
   }, [location, delayedSearch]);
 
+  const handleClickResult = (id) => {
+    if (tabName === 'tab_hotel') {
+      history.push(
+        generatePath(AppRoutes.HOTEL_DETAIL, {
+          id,
+        }),
+      );
+    } else {
+      history.push(
+        generatePath(AppRoutes.TOUR_DETAIL, {
+          id,
+        }),
+      );
+    }
+  };
+
   return (
     <StyledSearchTabPane>
       <div className='title'>
@@ -103,9 +135,14 @@ export const TabSearchTours = (props: ITabSearchName) => {
             content={
               <div className='results-search-content'>
                 {searchResults.map((result, index) => (
-                  <h4 key={index} style={{ cursor: 'pointer' }}>
+                  <h4
+                    key={index}
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => handleClickResult(result.id)}
+                  >
                     {'<'}
-                    {'>'} {result.location} : {result.title} {'<'}
+                    {'> '} {result.location} :{' '}
+                    {result.title || result.name} {' <'}
                     {'>'}
                   </h4>
                 ))}

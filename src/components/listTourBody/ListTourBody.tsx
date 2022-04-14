@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Popover, Row, Col, Pagination } from 'antd';
 import { generatePath, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { getTours } from '@redux';
 import {
-  ListTourItems,
   BodyTourItem,
   StyledListTourBodyContainer,
   ListTourFilter,
   IconPrevPage,
   IconNextPage,
   BreadcrumbLink,
+  Loading,
 } from '@components';
 import { AppRoutes } from '@enums';
 import { tourApi } from '@api';
@@ -76,7 +78,7 @@ export const ListTourBody = ({}) => {
     setListTourData([]);
     setListTourFilltered(
       FilterTour(
-        ListTourItems,
+        entities[0],
         budgetFilter,
         durationFilter,
         typeOfTourFilter,
@@ -87,6 +89,19 @@ export const ListTourBody = ({}) => {
   const handleVisibleChange = () => {
     setIsVisiblePopUp((isVisiblePopUp) => !isVisiblePopUp);
   };
+
+  const dispatch = useDispatch();
+
+  const { entities, loadingTour } = useSelector(
+    (state: any) => state.tour,
+  );
+  console.log('entities : ');
+  console.log(entities[0]);
+
+  useEffect(() => {
+    dispatch(getTours());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <StyledListTourBodyContainer>
       <BreadcrumbLink pathUrl={pathUrl} />
@@ -118,38 +133,44 @@ export const ListTourBody = ({}) => {
           { xs: 20, sm: 25, md: 45 },
         ]}
       >
-        {listTourData.length !== 0 ? (
-          <>
-            {listTourData.map((tour) => (
-              <Col
-                key={tour.id}
-                className='list-tour-item'
-                xs={{ span: 24 }}
-                sm={{ span: 12 }}
-                lg={{ span: 8 }}
-              >
-                <BodyTourItem data={tour} onClick={handleClick} />
-              </Col>
-            ))}
-          </>
-        ) : listTourFilltered.length !== 0 ? (
-          <>
-            {listTourFilltered.map((tour) => (
-              <Col
-                key={tour.id}
-                className='list-tour-item'
-                xs={{ span: 24 }}
-                sm={{ span: 12 }}
-                lg={{ span: 8 }}
-              >
-                <BodyTourItem data={tour} onClick={handleClick} />
-              </Col>
-            ))}
-          </>
+        {loadingTour ? (
+          <Loading />
         ) : (
-          <Col>
-            <h2>No data matching</h2>
-          </Col>
+          <>
+            {listTourData.length !== 0 ? (
+              <>
+                {listTourData.map((tour) => (
+                  <Col
+                    key={tour.id}
+                    className='list-tour-item'
+                    xs={{ span: 24 }}
+                    sm={{ span: 12 }}
+                    lg={{ span: 8 }}
+                  >
+                    <BodyTourItem data={tour} onClick={handleClick} />
+                  </Col>
+                ))}
+              </>
+            ) : listTourFilltered.length !== 0 ? (
+              <>
+                {listTourFilltered.map((tour) => (
+                  <Col
+                    key={tour.id}
+                    className='list-tour-item'
+                    xs={{ span: 24 }}
+                    sm={{ span: 12 }}
+                    lg={{ span: 8 }}
+                  >
+                    <BodyTourItem data={tour} onClick={handleClick} />
+                  </Col>
+                ))}
+              </>
+            ) : (
+              <div className='content-no-data'>
+                <h1>No data matching</h1>
+              </div>
+            )}
+          </>
         )}
       </Row>
       <div className='listtour-body-pagination'>

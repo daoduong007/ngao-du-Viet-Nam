@@ -6,23 +6,27 @@ import {
   DetailHeader,
   TourDetailBody,
   Footer,
-  ListTourItems,
   Loading,
 } from '@components';
 import { AppRoutes } from '@enums';
-import { ITourDetail } from '@interfaces';
+import { tourApi } from '@api';
 
 export const TourDetailScreen = ({}) => {
   const { id }: any = useParams();
-  const [tour, setTour] = useState<ITourDetail>();
+  const [tour, setTour] = useState<any>();
   const history = useHistory();
 
   useEffect(() => {
-    if (!id) return;
-    const tourSelected = ListTourItems.find(
-      (tour) => tour.id === Number(id),
-    );
-    setTour(tourSelected);
+    const fetchTourList = async () => {
+      try {
+        const response = await tourApi.get(id);
+        setTour(response);
+      } catch (error) {
+        console.error('fail to fetch tour list', error);
+      }
+    };
+
+    fetchTourList();
   }, [id]);
 
   const handleClick = (id: number) => {

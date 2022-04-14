@@ -4,29 +4,32 @@ import {
   HotelDetailBody,
   DetailHeader,
   Footer,
-  DataListHotel,
   Loading,
 } from '@components';
 import { AppRoutes } from '@enums';
-import { IHotelDetail } from '@interfaces';
 import {
   generatePath,
   useHistory,
   useParams,
 } from 'react-router-dom';
+import { hotelApi } from '@api';
 
 export const HotelDetailScreen = () => {
   const { id }: any = useParams();
-  const [hotel, setHotel] = useState<IHotelDetail>();
+  const [hotel, setHotel] = useState<any>();
   const history = useHistory();
 
-  //check hotel id exists
   useEffect(() => {
-    if (!id) return;
-    const hotelSelected = DataListHotel.find(
-      (hotel) => hotel.id === Number(id),
-    );
-    setHotel(hotelSelected);
+    const fetchTourList = async () => {
+      try {
+        const response = await hotelApi.get(id);
+        setHotel(response);
+      } catch (error) {
+        console.error('fail to fetch tour list', error);
+      }
+    };
+
+    fetchTourList();
   }, [id]);
 
   const handleClick = (id: number) => {
@@ -36,6 +39,7 @@ export const HotelDetailScreen = () => {
       }),
     );
   };
+
   return (
     <>
       {hotel ? (

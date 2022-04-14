@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Popover, Select, Pagination, Row, Col } from 'antd';
 import { generatePath, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { getHotels } from '@redux';
 import {
   StyleBodyListHotelContainer,
   ListHotelFilter,
@@ -10,6 +12,7 @@ import {
   IconPrevPage,
   IconNextPage,
   BreadcrumbLink,
+  Loading,
 } from '@components';
 import { AppRoutes } from '@enums';
 import { FilterHotel, Sort } from '@utils';
@@ -61,7 +64,7 @@ export const BodyListHotel = () => {
 
     setListHotelSorted(
       FilterHotel(
-        DataListHotel,
+        entities[0],
         budgetFilter,
         hotelStarFilter,
         reviewScoreFilter,
@@ -96,6 +99,18 @@ export const BodyListHotel = () => {
 
     fetchHotelList();
   }, [currentPage]);
+
+  const dispatch = useDispatch();
+
+  const { entities, loadingHotel } = useSelector(
+    (state: any) => state.hotel,
+  );
+  console.log('entities: '), console.log(entities[0]);
+
+  useEffect(() => {
+    dispatch(getHotels());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <StyleBodyListHotelContainer>
@@ -144,37 +159,43 @@ export const BodyListHotel = () => {
           { xs: 20, sm: 25, md: 45 },
         ]}
       >
-        {listHotelData.length !== 0 ? (
-          <>
-            {listHotelData.map((hotel) => (
-              <Col
-                key={hotel.id}
-                className='list-hotel-item'
-                xs={{ span: 24 }}
-                sm={{ span: 12 }}
-                lg={{ span: 8 }}
-              >
-                <HotelItem data={hotel} onClick={handleClick} />
-              </Col>
-            ))}
-          </>
-        ) : listHotelSorted.length !== 0 ? (
-          <>
-            {listHotelSorted.map((hotel) => (
-              <Col
-                key={hotel.id}
-                className='list-hotel-item'
-                xs={{ span: 24 }}
-                sm={{ span: 12 }}
-                lg={{ span: 8 }}
-              >
-                <HotelItem data={hotel} onClick={handleClick} />
-              </Col>
-            ))}
-          </>
+        {loadingHotel ? (
+          <Loading />
         ) : (
           <>
-            <h1>No data matching</h1>
+            {listHotelData.length !== 0 ? (
+              <>
+                {listHotelData.map((hotel) => (
+                  <Col
+                    key={hotel.id}
+                    className='list-hotel-item'
+                    xs={{ span: 24 }}
+                    sm={{ span: 12 }}
+                    lg={{ span: 8 }}
+                  >
+                    <HotelItem data={hotel} onClick={handleClick} />
+                  </Col>
+                ))}
+              </>
+            ) : listHotelSorted.length !== 0 ? (
+              <>
+                {listHotelSorted.map((hotel) => (
+                  <Col
+                    key={hotel.id}
+                    className='list-hotel-item'
+                    xs={{ span: 24 }}
+                    sm={{ span: 12 }}
+                    lg={{ span: 8 }}
+                  >
+                    <HotelItem data={hotel} onClick={handleClick} />
+                  </Col>
+                ))}
+              </>
+            ) : (
+              <div className='content-no-data'>
+                <h1>No data matching</h1>
+              </div>
+            )}
           </>
         )}
       </Row>

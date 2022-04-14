@@ -80,6 +80,14 @@ export const StyleBodyListHotelContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+
+    .content-no-data {
+      width: 100%;
+      h1 {
+        margin: 0 auto;
+      }
+    }
   }
 
   .list-hotel-body-pagination {

@@ -84,6 +84,13 @@ export const StyledListTourBodyContainer = styled.div`
 
   .listtour-body-content {
     width: 100%;
+
+    .content-no-data {
+      width: 100%;
+      h1 {
+        margin: 0 auto;
+      }
+    }
   }
   .listtour-body-pagination {
     margin: 63px 30px 150px 0;
