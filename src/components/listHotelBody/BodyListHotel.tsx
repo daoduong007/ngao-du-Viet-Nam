@@ -105,7 +105,6 @@ export const BodyListHotel = () => {
   const { entities, loadingHotel } = useSelector(
     (state: any) => state.hotel,
   );
-  console.log('entities: '), console.log(entities[0]);
 
   useEffect(() => {
     dispatch(getHotels());

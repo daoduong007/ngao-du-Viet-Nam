@@ -14,4 +14,9 @@ export const validationSchemaContactUs = Yup.object().shape({
   yourPhone: Yup.string().matches(phoneRegExp,'Your phone is not valid'),
 })
 
+export const validationSchemaLogin = Yup.object().shape({
+  email: Yup.string().email('email is not valid').required('Email is a required field'),
+  password: Yup.string().required('Email is a required field'),
+})
+
 export * from './filter'

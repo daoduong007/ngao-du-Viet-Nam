@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input, Button } from 'antd';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
@@ -6,9 +6,18 @@ import { useHistory } from 'react-router-dom';
 
 import { IconFacebookLogin } from '@components';
 import { AppRoutes } from '@enums';
+import { loginApi } from '@api';
+import { validationSchemaLogin } from '@utils';
 
 export const Login = () => {
   const history = useHistory();
+
+  const [email, SetEmail] = useState<string>('');
+  const [password, SetPassword] = useState<string>('');
+  const [isVisibleInvalid, setIsVisibleInvalid] =
+    useState<boolean>(false);
+  const [isVisibleIncorrect, setIsVisibleIncorrect] =
+    useState<boolean>(false);
 
   const handleSignUp = () => {
     history.push(AppRoutes.SIGN_UP);
@@ -16,12 +25,59 @@ export const Login = () => {
   const handleForgotPassword = () => {
     history.push(AppRoutes.FORGOT_PASSWORD);
   };
+
+  const handleEmailInputChange = (e) => {
+    SetEmail(e.target.value);
+  };
+
+  const handlePasswordInputChange = (e) => {
+    SetPassword(e.target.value);
+  };
+
+  const handleSubmitSuccess = () => {
+    history.push(AppRoutes.HOME_SCREEN);
+  };
+
+  const handleSubmitLogin = async () => {
+    const idValid = await validationSchemaLogin.isValid({
+      email,
+      password,
+    });
+
+    if (idValid) {
+      setIsVisibleInvalid(false);
+      const login = async () => {
+        const params = {
+          email: email,
+          password: password,
+        };
+        const response = await loginApi.postLogin(params);
+        console.log(response);
+        if (response.data.accessToken) {
+          console.log('login success');
+          handleSubmitSuccess();
+        } else {
+          setIsVisibleIncorrect(true);
+          console.log('login fail');
+        }
+      };
+
+      login();
+    } else {
+      setIsVisibleInvalid(true);
+    }
+  };
+
   return (
     <StyledLogin>
       <h1>Sign in</h1>
       <h2>Welcome to NgaoduVietnam</h2>
       <div className='input email-input'>
-        <Input placeholder='Email Address' />
+        <Input
+          placeholder='Email Address'
+          value={email}
+          onChange={(e) => handleEmailInputChange(e)}
+        />
       </div>
       <div className='input password-input'>
         <Input.Password
@@ -30,13 +86,28 @@ export const Login = () => {
           iconRender={(visible) =>
             visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
           }
+          value={password}
+          onChange={(e) => handlePasswordInputChange(e)}
+          onPressEnter={handleSubmitLogin}
         />
       </div>
+      {isVisibleInvalid ? (
+        <div className='error-message'>
+          <h3>Invalid email or password </h3>
+        </div>
+      ) : isVisibleIncorrect ? (
+        <>
+          <div className='error-message'>
+            <h3>Incorrect email or password </h3>
+          </div>
+        </>
+      ) : null}
+
       <div className='forgot-password'>
         <p onClick={handleForgotPassword}>Forgot password?</p>
       </div>
 
-      <div className='sign-in-button'>
+      <div className='sign-in-button' onClick={handleSubmitLogin}>
         <Button>Sign in</Button>
       </div>
       <div className='sign-in-facebook-button'>
@@ -59,6 +130,13 @@ const StyledLogin = styled.div`
 
   font-family: 'DM Sans';
   font-style: normal;
+
+  .error-message {
+    h3 {
+      color: red;
+      font-size: 0.9rem;
+    }
+  }
 
   h1 {
     font-weight: 500;

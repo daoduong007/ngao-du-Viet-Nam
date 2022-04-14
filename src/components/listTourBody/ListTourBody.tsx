@@ -95,8 +95,6 @@ export const ListTourBody = ({}) => {
   const { entities, loadingTour } = useSelector(
     (state: any) => state.tour,
   );
-  console.log('entities : ');
-  console.log(entities[0]);
 
   useEffect(() => {
     dispatch(getTours());
