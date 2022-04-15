@@ -7,4 +7,10 @@ export const loginApi = {
     
     return axiosAuthClient.post(url, params);
   },
+
+  postSignUp: (params?: any) => {
+    const url = '/api/auth/register'
+
+    return axiosAuthClient.post(url, params);
+  }
 } 

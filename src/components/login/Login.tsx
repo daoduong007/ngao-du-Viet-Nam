@@ -1,23 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Input, Button } from 'antd';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { IconFacebookLogin } from '@components';
 import { AppRoutes } from '@enums';
 import { loginApi } from '@api';
 import { validationSchemaLogin } from '@utils';
+import { getUser } from '@redux';
 
 export const Login = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const [email, SetEmail] = useState<string>('');
   const [password, SetPassword] = useState<string>('');
-  const [isVisibleInvalid, setIsVisibleInvalid] =
-    useState<boolean>(false);
-  const [isVisibleIncorrect, setIsVisibleIncorrect] =
-    useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
+  const user = useSelector((state: any) => state.signUp);
+
+  //prevent users from returning to login page after successful login
+  useLayoutEffect(() => {
+    const currentAccessToken = localStorage.getItem('accessToken');
+    console.log(currentAccessToken);
+    if (currentAccessToken !== null) {
+      history.push(AppRoutes.HOME_SCREEN);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  //Auto-fill form after successful sign up
+  useEffect(() => {
+    if (user.email !== '') {
+      SetEmail(user.email);
+      SetPassword(user.password);
+    }
+  }, [user]);
 
   const handleSignUp = () => {
     history.push(AppRoutes.SIGN_UP);
@@ -34,8 +56,11 @@ export const Login = () => {
     SetPassword(e.target.value);
   };
 
-  const handleSubmitSuccess = () => {
+  const handleSubmitSuccess = (accessToken) => {
+    localStorage.setItem('accessToken', accessToken);
+
     history.push(AppRoutes.HOME_SCREEN);
+    setLoading(false);
   };
 
   const handleSubmitLogin = async () => {
@@ -45,26 +70,29 @@ export const Login = () => {
     });
 
     if (idValid) {
-      setIsVisibleInvalid(false);
+      setLoading(true);
+      setErrorMessage('');
       const login = async () => {
         const params = {
           email: email,
           password: password,
         };
         const response = await loginApi.postLogin(params);
+        dispatch(getUser(params));
         console.log(response);
         if (response.data.accessToken) {
           console.log('login success');
-          handleSubmitSuccess();
+          handleSubmitSuccess(response.data.accessToken);
         } else {
-          setIsVisibleIncorrect(true);
           console.log('login fail');
+          setErrorMessage('Invalid email or password ');
+          setLoading(false);
         }
       };
 
       login();
     } else {
-      setIsVisibleInvalid(true);
+      setErrorMessage('Incorrect email or password');
     }
   };
 
@@ -91,16 +119,10 @@ export const Login = () => {
           onPressEnter={handleSubmitLogin}
         />
       </div>
-      {isVisibleInvalid ? (
+      {errorMessage !== '' ? (
         <div className='error-message'>
-          <h3>Invalid email or password </h3>
+          <h3>{errorMessage}</h3>
         </div>
-      ) : isVisibleIncorrect ? (
-        <>
-          <div className='error-message'>
-            <h3>Incorrect email or password </h3>
-          </div>
-        </>
       ) : null}
 
       <div className='forgot-password'>
@@ -108,7 +130,7 @@ export const Login = () => {
       </div>
 
       <div className='sign-in-button' onClick={handleSubmitLogin}>
-        <Button>Sign in</Button>
+        <Button loading={loading}>Sign in</Button>
       </div>
       <div className='sign-in-facebook-button'>
         <Button icon={<IconFacebookLogin />}>

@@ -33,6 +33,7 @@ export const BodyHome = () => {
 
     fetHomeData();
   }, []);
+
   return (
     <StyledBodyContainer>
       <BodyIntroduce />

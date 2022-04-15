@@ -19,4 +19,12 @@ export const validationSchemaLogin = Yup.object().shape({
   password: Yup.string().required('Email is a required field'),
 })
 
+
+export const validationSchemaSignUp = Yup.object().shape({
+  firstName: Yup.string().required('First name is a required field'),
+  lastName: Yup.string().required('Last name is a required field'),
+  email: Yup.string().email('Email is not valid').required('Email is a required field'),
+  password: Yup.string().required('Email is a required field').min(8),
+})
+
 export * from './filter'
