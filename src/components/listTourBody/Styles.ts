@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledListTourBodyContainer = styled.div`
-  margin-top: 100px;
-  padding-left: 165px;
-  padding-right: 135px;
-
+  margin-top: 2px;
+  padding: 0 165px;
+  padding-top: 21px;
   display: flex;
   flex-direction: column;
 
@@ -33,9 +32,10 @@ export const StyledListTourBodyContainer = styled.div`
 
   .listtour-body-tittle {
     height: 80px;
-    margin-top: 60px;
+    margin-top: 40px;
     margin-bottom: 60px;
     padding-right: 30px;
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
 

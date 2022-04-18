@@ -2,8 +2,9 @@ import styled from 'styled-components'
 
 export const StyleBodyListHotelContainer = styled.div`
   width: 100%;
-  margin-top: 21px;
   padding: 0 165px;
+  padding-top: 21px;
+  margin-top: 2px;
   display: flex;
   flex-direction: column;
 
@@ -13,7 +14,8 @@ export const StyleBodyListHotelContainer = styled.div`
   }
 
   .list-hotel-body-tittle {
-    margin-top: 60px;
+    margin-top: 40px;
+    padding-top: 20px;
     margin-bottom: 37px;
 
 

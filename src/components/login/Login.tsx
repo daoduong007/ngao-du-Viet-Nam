@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { IconFacebookLogin } from '@components';
 import { AppRoutes } from '@enums';
@@ -16,8 +18,8 @@ export const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [email, SetEmail] = useState<string>('');
-  const [password, SetPassword] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
@@ -26,7 +28,6 @@ export const Login = () => {
   //prevent users from returning to login page after successful login
   useLayoutEffect(() => {
     const currentAccessToken = localStorage.getItem('accessToken');
-    console.log(currentAccessToken);
     if (currentAccessToken !== null) {
       history.push(AppRoutes.HOME_SCREEN);
     }
@@ -36,8 +37,8 @@ export const Login = () => {
   //Auto-fill form after successful sign up
   useEffect(() => {
     if (user.email !== '') {
-      SetEmail(user.email);
-      SetPassword(user.password);
+      setEmail(user.email);
+      setPassword(user.password);
     }
   }, [user]);
 
@@ -49,18 +50,22 @@ export const Login = () => {
   };
 
   const handleEmailInputChange = (e) => {
-    SetEmail(e.target.value);
+    setEmail(e.target.value);
   };
 
   const handlePasswordInputChange = (e) => {
-    SetPassword(e.target.value);
+    setPassword(e.target.value);
   };
 
   const handleSubmitSuccess = (accessToken) => {
+    notifyLoginSuccess();
     localStorage.setItem('accessToken', accessToken);
 
     history.push(AppRoutes.HOME_SCREEN);
+
     setLoading(false);
+    setEmail('');
+    setPassword('');
   };
 
   const handleSubmitLogin = async () => {
@@ -85,8 +90,8 @@ export const Login = () => {
           handleSubmitSuccess(response.data.accessToken);
         } else {
           console.log('login fail');
-          setErrorMessage('Invalid email or password ');
           setLoading(false);
+          notifyLoginFail();
         }
       };
 
@@ -96,6 +101,9 @@ export const Login = () => {
     }
   };
 
+  const notifyLoginFail = () =>
+    toast.error('Incorrect email or password');
+  const notifyLoginSuccess = () => toast.success('login success');
   return (
     <StyledLogin>
       <h1>Sign in</h1>

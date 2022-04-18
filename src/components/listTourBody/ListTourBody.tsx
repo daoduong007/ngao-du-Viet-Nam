@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button, Popover, Row, Col, Pagination } from 'antd';
 import { generatePath, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,6 +25,9 @@ export const ListTourBody = ({}) => {
   const [listTourData, setListTourData] = useState<any>([]);
   const [listTourFilltered, setListTourFilltered] = useState<any>([]);
 
+  const contentRef = useRef<any>(null);
+  const bodyRef = useRef<any>(null);
+
   const handleClick = (id: number) => {
     history.push(
       generatePath(AppRoutes.TOUR_DETAIL, {
@@ -35,6 +38,7 @@ export const ListTourBody = ({}) => {
 
   const handleChangePage = (page: number) => {
     setCurrentPage(page);
+    contentRef.current.scrollIntoView();
   };
 
   const pathUrl = ['Home'].concat(
@@ -68,6 +72,10 @@ export const ListTourBody = ({}) => {
     fetchTourList();
   }, [currentPage]);
 
+  useEffect(() => {
+    bodyRef.current.scrollIntoView();
+  }, []);
+
   const handleApplyFilter = (
     budgetFilter: any,
     durationFilter: any,
@@ -100,11 +108,12 @@ export const ListTourBody = ({}) => {
     dispatch(getTours());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
-    <StyledListTourBodyContainer>
+    <StyledListTourBodyContainer ref={bodyRef}>
       <BreadcrumbLink pathUrl={pathUrl} />
 
-      <div className='listtour-body-tittle'>
+      <div className='listtour-body-tittle' ref={contentRef}>
         <p>Attractive tour and interesting experiences</p>
         <div className='listtour-body-filer'>
           <Popover

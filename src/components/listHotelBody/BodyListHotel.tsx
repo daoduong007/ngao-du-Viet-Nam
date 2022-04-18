@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button, Popover, Select, Pagination, Row, Col } from 'antd';
 import { generatePath, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,6 +26,9 @@ export const BodyListHotel = () => {
   const [listHotelSorted, setListHotelSorted] = useState<any>([]);
   const [listHotelData, setListHotelData] = useState<any>([]);
 
+  const contentRef = useRef<any>(null);
+  const bodyRef = useRef<any>(null);
+
   const { Option } = Select;
   const history = useHistory();
 
@@ -43,6 +46,7 @@ export const BodyListHotel = () => {
 
   const handleChangePage = (page: number) => {
     setCurrentPage(page);
+    contentRef.current.scrollIntoView();
   };
 
   const itemRender = (current, type, originalElement) => {
@@ -100,6 +104,10 @@ export const BodyListHotel = () => {
     fetchHotelList();
   }, [currentPage]);
 
+  useEffect(() => {
+    bodyRef.current.scrollIntoView();
+  }, []);
+
   const dispatch = useDispatch();
 
   const { entities, loadingHotel } = useSelector(
@@ -112,9 +120,9 @@ export const BodyListHotel = () => {
   }, []);
 
   return (
-    <StyleBodyListHotelContainer>
+    <StyleBodyListHotelContainer ref={bodyRef}>
       <BreadcrumbLink pathUrl={pathUrl} />
-      <div className='list-hotel-body-tittle'>
+      <div className='list-hotel-body-tittle' ref={contentRef}>
         <h2>Hotels</h2>
         <div className='list-hotel-sort-and-filter'>
           <div className='list-hotel-body-sort'>

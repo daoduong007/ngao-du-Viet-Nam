@@ -4,6 +4,8 @@ import { Button, Input } from 'antd';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { IconFacebookLogin } from '@components';
 import { AppRoutes } from '@enums';
@@ -44,6 +46,7 @@ export const SignUp = () => {
 
   const handleSignUpSuccess = () => {
     history.push(AppRoutes.LOGIN);
+    notifyLoginSuccess();
     setLoading(false);
     dispatch(
       SignUpSuccess({
@@ -80,8 +83,8 @@ export const SignUp = () => {
 
         console.log(response.data);
         if (!response.data.user) {
-          setErrorMessage('SignUp failed');
           setLoading(false);
+          notifyLoginFail();
         } else {
           setErrorMessage('');
           handleSignUpSuccess();
@@ -93,6 +96,9 @@ export const SignUp = () => {
       setErrorMessage('Incorrect, double check the entered fields!');
     }
   };
+
+  const notifyLoginFail = () => toast.error('sign up fail');
+  const notifyLoginSuccess = () => toast.success('sign up success');
 
   return (
     <StyledSignUp>
