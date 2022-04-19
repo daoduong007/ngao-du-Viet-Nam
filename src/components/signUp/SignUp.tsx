@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
-import { Button, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
@@ -12,138 +12,133 @@ import { AppRoutes } from '@enums';
 import { loginApi } from '@api';
 import { validationSchemaSignUp } from '@utils';
 import { SignUpSuccess } from '@redux';
+import { useFormik } from 'formik';
 
 export const SignUp = () => {
-  const [firstName, setFirstName] = useState<string>('');
-  const [lastName, setLastName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [errorMessage, setErrorMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
-
   const dispatch = useDispatch();
-
-  const handleFirstNameChange = (e) => {
-    setFirstName(e.target.value);
-  };
-
-  const handleLastNameChange = (e) => {
-    setLastName(e.target.value);
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
 
   const history = useHistory();
   const handleLogin = () => {
     history.push(AppRoutes.LOGIN);
   };
 
-  const handleSignUpSuccess = () => {
-    history.push(AppRoutes.LOGIN);
-    notifyLoginSuccess();
-    setLoading(false);
-    dispatch(
-      SignUpSuccess({
-        email,
-        password,
-      }),
-    );
-  };
+  const notifySignUpFail = () => toast.error('sign up fail');
+  const notifySignUpSuccess = () => toast.success('sign up success');
 
-  const handleSignUp = async () => {
-    const isValid = await validationSchemaSignUp.isValid({
-      firstName,
-      lastName,
-      email,
-      password,
-    });
-    console.log(isValid);
-
-    if (isValid) {
-      setErrorMessage('');
-      setLoading(true);
-      const postSignUp = async () => {
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+    },
+    onSubmit: (values: any) => {
+      console.log(values.email, values.password);
+      const login = async () => {
         const params = {
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-          password: password,
+          first_name: values.firstName,
+          last_name: values.lastName,
+          email: values.email,
+          password: values.password,
           phone: '0999898998',
           permission_type: 'ADMIN',
           description: 'no',
         };
 
         const response = await loginApi.postSignUp(params);
+        console.log(response);
+        if (response.data.user) {
+          dispatch(
+            SignUpSuccess({
+              email: values.email,
+              password: values.password,
+            }),
+          );
 
-        console.log(response.data);
-        if (!response.data.user) {
+          history.push(AppRoutes.LOGIN);
+          notifySignUpSuccess();
           setLoading(false);
-          notifyLoginFail();
         } else {
-          setErrorMessage('');
-          handleSignUpSuccess();
+          setLoading(false);
+          notifySignUpFail();
         }
       };
 
-      postSignUp();
-    } else {
-      setErrorMessage('Incorrect, double check the entered fields!');
-    }
-  };
-
-  const notifyLoginFail = () => toast.error('sign up fail');
-  const notifyLoginSuccess = () => toast.success('sign up success');
+      login();
+    },
+    validationSchema: validationSchemaSignUp,
+  });
 
   return (
     <StyledSignUp>
       <h1>Register</h1>
       <h2>Welcome to NgaoduVietnam</h2>
-      <div className='input name-input'>
-        <Input
-          placeholder='First Name'
-          value={firstName}
-          onChange={(e) => handleFirstNameChange(e)}
-        />
-        <Input
-          placeholder='Last Name'
-          value={lastName}
-          onChange={(e) => handleLastNameChange(e)}
-        />
-      </div>
-      <div className='input email-input'>
-        <Input
-          placeholder='Email Address'
-          value={email}
-          onChange={(e) => handleEmailChange(e)}
-        />
-      </div>
-      <div className='input password-input'>
-        <Input.Password
-          placeholder='Password'
-          type='password'
-          iconRender={(visible) =>
-            visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
-          }
-          value={password}
-          onChange={(e) => handlePasswordChange(e)}
-        />
-      </div>
-      {errorMessage !== '' ? (
-        <div className='error-message'>
-          <h3>{errorMessage}</h3>
+      <Form onFinish={formik.handleSubmit}>
+        <div className='input name-input'>
+          <div>
+            <Input
+              id='firstName'
+              name='firstName'
+              placeholder='First Name'
+              value={formik.values.firstName}
+              onChange={formik.handleChange}
+            />
+            {formik.errors.firstName && formik.touched.firstName && (
+              <h4>{formik.errors.firstName}</h4>
+            )}
+          </div>
+
+          <div>
+            <Input
+              id='lastName'
+              name='lastName'
+              placeholder='Last Name'
+              value={formik.values.lastName}
+              onChange={formik.handleChange}
+            />
+            {formik.errors.lastName && formik.touched.lastName && (
+              <h4>{formik.errors.lastName}</h4>
+            )}
+          </div>
         </div>
-      ) : null}
-      <div className='sign-in-button'>
-        <Button onClick={handleSignUp} loading={loading}>
-          Sign up
-        </Button>
-      </div>
+        <div className='input email-input'>
+          <Input
+            id='email'
+            name='email'
+            placeholder='Email Address'
+            value={formik.values.email}
+            onChange={formik.handleChange}
+          />
+          {formik.errors.email && formik.touched.email && (
+            <h4>{formik.errors.email}</h4>
+          )}
+        </div>
+
+        <div className='input password-input'>
+          <Input.Password
+            id='password'
+            name='password'
+            placeholder='Password'
+            type='password'
+            iconRender={(visible) =>
+              visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
+            }
+            value={formik.values.password}
+            onChange={formik.handleChange}
+          />
+          {formik.errors.password && formik.touched.password && (
+            <h4>{formik.errors.password}</h4>
+          )}
+        </div>
+
+        <div className='sign-in-button'>
+          <Button loading={loading} htmlType='submit'>
+            Sign up
+          </Button>
+        </div>
+      </Form>
+
       <div className='sign-in-facebook-button'>
         <Button icon={<IconFacebookLogin />}>
           Sign in with Facebook
@@ -163,11 +158,9 @@ const StyledSignUp = styled.div`
   font-family: 'DM Sans';
   font-style: normal;
 
-  .error-message {
-    h3 {
-      font-size: 0.9rem;
-      color: red;
-    }
+  h4 {
+    font-size: 0.9rem;
+    color: red;
   }
 
   h1 {

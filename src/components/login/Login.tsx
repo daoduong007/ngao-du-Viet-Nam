@@ -1,11 +1,12 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { Input, Button } from 'antd';
+import React, { useLayoutEffect, useState } from 'react';
+import { Input, Button, Form } from 'antd';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useFormik } from 'formik';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { IconFacebookLogin } from '@components';
@@ -18,14 +19,11 @@ export const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const user = useSelector((state: any) => state.signUp);
 
-  //prevent users from returning to login page after successful login
+  //prevent users from returning to login screen after successful login
   useLayoutEffect(() => {
     const currentAccessToken = localStorage.getItem('accessToken');
     if (currentAccessToken !== null) {
@@ -34,27 +32,11 @@ export const Login = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  //Auto-fill form after successful sign up
-  useEffect(() => {
-    if (user.email !== '') {
-      setEmail(user.email);
-      setPassword(user.password);
-    }
-  }, [user]);
-
   const handleSignUp = () => {
     history.push(AppRoutes.SIGN_UP);
   };
   const handleForgotPassword = () => {
     history.push(AppRoutes.FORGOT_PASSWORD);
-  };
-
-  const handleEmailInputChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordInputChange = (e) => {
-    setPassword(e.target.value);
   };
 
   const handleSubmitSuccess = (accessToken) => {
@@ -64,23 +46,24 @@ export const Login = () => {
     history.push(AppRoutes.HOME_SCREEN);
 
     setLoading(false);
-    setEmail('');
-    setPassword('');
   };
 
-  const handleSubmitLogin = async () => {
-    const idValid = await validationSchemaLogin.isValid({
-      email,
-      password,
-    });
+  const notifyLoginFail = () =>
+    toast.error('Login fail: Incorrect email or password');
+  const notifyLoginSuccess = () => toast.success('login success');
 
-    if (idValid) {
-      setLoading(true);
-      setErrorMessage('');
+  const formik = useFormik({
+    //if sign up success => fill 2 field email ad password
+    initialValues: {
+      email: user.email,
+      password: user.password,
+    },
+    onSubmit: (values: any) => {
+      console.log(values.email, values.password);
       const login = async () => {
         const params = {
-          email: email,
-          password: password,
+          email: values.email,
+          password: values.password,
         };
         const response = await loginApi.postLogin(params);
         dispatch(getUser(params));
@@ -96,50 +79,55 @@ export const Login = () => {
       };
 
       login();
-    } else {
-      setErrorMessage('Incorrect email or password');
-    }
-  };
-
-  const notifyLoginFail = () =>
-    toast.error('Incorrect email or password');
-  const notifyLoginSuccess = () => toast.success('login success');
+    },
+    validationSchema: validationSchemaLogin,
+  });
   return (
     <StyledLogin>
       <h1>Sign in</h1>
       <h2>Welcome to NgaoduVietnam</h2>
-      <div className='input email-input'>
-        <Input
-          placeholder='Email Address'
-          value={email}
-          onChange={(e) => handleEmailInputChange(e)}
-        />
-      </div>
-      <div className='input password-input'>
-        <Input.Password
-          placeholder='Password'
-          type='password'
-          iconRender={(visible) =>
-            visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
-          }
-          value={password}
-          onChange={(e) => handlePasswordInputChange(e)}
-          onPressEnter={handleSubmitLogin}
-        />
-      </div>
-      {errorMessage !== '' ? (
-        <div className='error-message'>
-          <h3>{errorMessage}</h3>
+      <Form onFinish={formik.handleSubmit}>
+        <div className='input email-input'>
+          <Input
+            id='email'
+            name='email'
+            placeholder='Email Address'
+            value={formik.values.email}
+            onChange={formik.handleChange}
+          />
+          {formik.errors.email && formik.touched.email && (
+            <h4>{formik.errors.email}</h4>
+          )}
         </div>
-      ) : null}
-
+        <div className='input password-input'>
+          <Input.Password
+            id='password'
+            name='password'
+            placeholder='Password'
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            type='password'
+            iconRender={(visible) =>
+              visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
+            }
+          />
+          {formik.errors.password && formik.touched.password && (
+            <h4>{formik.errors.password}</h4>
+          )}
+        </div>
+        <div
+          className='sign-in-button'
+          //  onClick={handleSubmitLogin}
+        >
+          <Button loading={loading} htmlType='submit'>
+            Sign in
+          </Button>
+        </div>
+      </Form>
       <div className='forgot-password'>
         <p onClick={handleForgotPassword}>Forgot password?</p>
       </div>
 
-      <div className='sign-in-button' onClick={handleSubmitLogin}>
-        <Button loading={loading}>Sign in</Button>
-      </div>
       <div className='sign-in-facebook-button'>
         <Button icon={<IconFacebookLogin />}>
           Sign in with Facebook
@@ -161,11 +149,9 @@ const StyledLogin = styled.div`
   font-family: 'DM Sans';
   font-style: normal;
 
-  .error-message {
-    h3 {
-      color: red;
-      font-size: 0.9rem;
-    }
+  h4 {
+    color: red;
+    font-size: 0.9rem;
   }
 
   h1 {

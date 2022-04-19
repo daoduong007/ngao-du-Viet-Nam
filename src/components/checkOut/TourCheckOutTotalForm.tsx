@@ -8,7 +8,17 @@ import {
 } from '@components';
 import styled from 'styled-components';
 
-export const TourCheckOutTotalForm = () => {
+interface ITourTotalForm {
+  data: {
+    adults: number;
+    children: number;
+    timeString: [any, any];
+  };
+}
+
+export const TourCheckOutTotalForm = (props: ITourTotalForm) => {
+  const { data } = props;
+  console.log(data.timeString[0], data.timeString[1]);
   return (
     <StyledCheckOutToTalFormContainer>
       <div className='total-form-title'>
@@ -35,18 +45,20 @@ export const TourCheckOutTotalForm = () => {
           </p>
         </div>
       </div>
-      <div>
-        <Input
-          prefix={<IconGuest />}
-          placeholder='2 Adults - 1 Children'
-        />
+
+      <div className='total-form-info'>
+        <IconDepatureTime />
+        <p>
+          {data.timeString[0]} - {data.timeString[0]}
+        </p>
       </div>
-      <div>
-        <Input
-          prefix={<IconDepatureTime />}
-          placeholder='25/02/2021 - 28/02/2021'
-        />
+      <div className='total-form-info'>
+        <IconGuest />
+        <p>
+          {data.adults} Adults - {data.children} Children:
+        </p>
       </div>
+
       <div className='total-form-group-promo'>
         <div className='group-promo-code'>
           <Input placeholder='Promo Code' />
@@ -73,11 +85,27 @@ const StyledCheckOutToTalFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: #f4f4f4;
+
   p {
     margin: 0;
     text-align: left;
     font-style: normal;
     font-weight: normal;
+  }
+
+  .total-form-info {
+    width: 100%;
+    height: 64px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-left: 26px;
+      margin-right: 15px;
+    }
   }
 
   .total-form-title {
@@ -109,6 +137,7 @@ const StyledCheckOutToTalFormContainer = styled.div`
   .total-form-desciption {
     display: flex;
     flex-direction: row;
+    margin-bottom: 17px;
 
     .total-form-duration {
       margin-right: 64px;
@@ -123,25 +152,15 @@ const StyledCheckOutToTalFormContainer = styled.div`
         font-weight: 600;
         font-size: 14px;
         line-height: 24px;
-        /* identical to box height, or 171% */
-        /* tieu de */
+
         color: #1c1c1e;
       }
-    }
-  }
-  .ant-input-affix-wrapper {
-    height: 64px;
-    margin-top: 20px;
-    svg {
-      margin-right: 17.5px;
-      margin-left: 26px;
     }
   }
   .total-form-group-promo {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 12px;
     .ant-input {
       height: 56px;
     }

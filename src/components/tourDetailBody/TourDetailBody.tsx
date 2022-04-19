@@ -25,7 +25,7 @@ import {
   BreadcrumbLink,
   IconCamera,
 } from '@components';
-import { submitBooking } from '@redux';
+import { bookingTourInfo, submitBooking } from '@redux';
 import { ITourDetail } from '@interfaces';
 
 interface ITourDetailBody {
@@ -77,14 +77,28 @@ export const TourDetailBody = (props: ITourDetailBody) => {
     setRemainingImage(ImgSlideLenght - currentIndex - 4);
   };
 
-  const handleBookingClick = () => {
-    history.push(AppRoutes.CHECK_OUT);
-
+  const handleBookingClick = (
+    numberAdults,
+    numberChildren,
+    timeTour,
+    timeTourString,
+  ) => {
+    // const { numberAdults, numberChildren, timeTour } = values;
     dispatch(
       submitBooking({
         idTour: data.id,
       }),
     );
+
+    dispatch(
+      bookingTourInfo({
+        adults: numberAdults,
+        children: numberChildren,
+        time: timeTour,
+        timeString: timeTourString,
+      }),
+    );
+    history.push(AppRoutes.CHECK_OUT);
   };
 
   return (

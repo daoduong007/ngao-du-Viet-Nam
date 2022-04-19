@@ -22,6 +22,10 @@ interface INameScreen {
 export const CheckOut = (props: INameScreen) => {
   const IdBooked = useSelector(bookingTourSelector);
   console.log(IdBooked.bookingTour.idTour);
+
+  const bookingInfo = useSelector((state: any) => state.checkOut);
+  // console.log(bookingInfo);
+
   const { screen } = props;
   const history = useHistory();
   const initialValues: ICheckOutFormValues = {
@@ -196,9 +200,9 @@ export const CheckOut = (props: INameScreen) => {
         </div>
 
         {screen === 'tour' ? (
-          <TourCheckOutTotalForm />
+          <TourCheckOutTotalForm data={bookingInfo} />
         ) : (
-          <HotelCheckOutTotalForm />
+          <HotelCheckOutTotalForm data={bookingInfo} />
         )}
       </div>
     </StyledCheckOutContainer>

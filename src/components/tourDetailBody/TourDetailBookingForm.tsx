@@ -1,18 +1,36 @@
-import React from 'react';
-import { Button, DatePicker, Input } from 'antd';
+import React, { useState } from 'react';
+import { Button, DatePicker, InputNumber, Popover } from 'antd';
 import styled from 'styled-components';
+import moment from 'moment';
 
 import { IconDepatureTime, IconPeople } from '@components';
 
 interface IBookingForm {
   duration: string;
   price: number;
-  onClick: (event: any) => void;
+  onClick: (
+    numberAdults,
+    numberChildren,
+    timeTour,
+    timeTourString,
+  ) => void;
 }
 
 export const TourDetailBookingForm = (props: IBookingForm) => {
   const { RangePicker } = DatePicker;
   const { price, duration, onClick } = props;
+
+  const [numberAdults, setNumberAdults] = useState<number>(2);
+  const [numberChildren, setNumberChildren] = useState<number>(0);
+  const [timeTour, setTimeTour] = useState<null | [any, any]>([
+    '',
+    '',
+  ]);
+  const [timeTourString, setTimeTourString] = useState<
+    null | [any, any]
+  >(['', '']);
+
+  const dateFormat = 'DD/MM/YYYY';
 
   return (
     <StyledTourDetailBookingForm>
@@ -43,14 +61,93 @@ export const TourDetailBookingForm = (props: IBookingForm) => {
             placeholder={['Start', 'End']}
             suffixIcon={null}
             bordered={false}
+            format={dateFormat}
+            //prevent select days before today and today
+            disabledDate={(current) => {
+              return current && current < moment().endOf('day');
+            }}
+            value={timeTour}
+            onChange={(dates, dateStrings) => {
+              console.log(dateStrings);
+              setTimeTourString(dateStrings);
+              console.log(dates);
+              setTimeTour(dates);
+            }}
           />
         </div>
-        <div className='booking-form-input-people'>
-          <Input
-            prefix={<IconPeople />}
-            defaultValue={'2 Adults - 1 Children'}
-          />
-        </div>
+
+        <Popover
+          content={
+            <div
+              className='popover-content'
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}
+              >
+                <p style={{ margin: 0, marginRight: '5px' }}>
+                  Adults :
+                </p>
+                <InputNumber
+                  min={0}
+                  max={20}
+                  defaultValue={2}
+                  bordered={false}
+                  autoFocus={true}
+                  value={numberAdults}
+                  onChange={(value) => {
+                    setNumberAdults(value);
+                  }}
+                />
+              </div>
+
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}
+              >
+                <p style={{ margin: 0, marginRight: '5px' }}>
+                  Children :
+                </p>
+                <InputNumber
+                  min={0}
+                  max={20}
+                  defaultValue={0}
+                  bordered={false}
+                  value={numberChildren}
+                  onChange={(value) => {
+                    setNumberChildren(value);
+                  }}
+                />
+              </div>
+            </div>
+          }
+          trigger='click'
+          overlayInnerStyle={{
+            width: '100%',
+          }}
+          overlayStyle={{
+            padding: '0px',
+            fontFamily: 'DM Sans',
+            fontSize: '0.95rem',
+          }}
+        >
+          <div className='booking-form-input-people'>
+            <IconPeople />
+            <p>
+              {numberAdults} Adults - {numberChildren} Children
+            </p>
+          </div>
+        </Popover>
       </div>
       <div className='booking-form-total'>
         <p>Total: </p>
@@ -59,13 +156,24 @@ export const TourDetailBookingForm = (props: IBookingForm) => {
         </p>
       </div>
       <div className='booking-form-submit'>
-        <Button type='primary' onClick={onClick}>
+        <Button
+          type='primary'
+          onClick={() => {
+            onClick(
+              numberAdults,
+              numberChildren,
+              timeTour,
+              timeTourString,
+            );
+          }}
+        >
           Book now
         </Button>
       </div>
     </StyledTourDetailBookingForm>
   );
 };
+
 const StyledTourDetailBookingForm = styled.div`
   width: 100%;
   height: 500px;
@@ -160,13 +268,25 @@ const StyledTourDetailBookingForm = styled.div`
     .booking-form-input-people {
       height: 64px;
       margin-bottom: 18px;
+      padding: 21px;
       display: flex;
+      align-items: center;
+
       svg {
-        margin: 0 8px 0 10px;
+        margin-right: 13px;
       }
-    }
-    .ant-input-affix-wrapper {
-      border: 0;
+
+      p {
+        margin: 0;
+
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 160%;
+
+        color: #1c1c1e;
+      }
+
+      background-color: #ffffff;
     }
   }
 

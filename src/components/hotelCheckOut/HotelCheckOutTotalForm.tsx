@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button, DatePicker, Input } from 'antd';
+import { Button, Input } from 'antd';
 
 import {
   IconDepatureTime,
@@ -8,8 +8,22 @@ import {
   IconLocation,
 } from '@components';
 
-export const HotelCheckOutTotalForm = () => {
-  const { RangePicker } = DatePicker;
+interface ITourTotalForm {
+  data: {
+    adults: number;
+    children: number;
+    timeString: [any, any];
+    standardRoom: number;
+    familySuite: number;
+    breakfast: number;
+    extraBed: number;
+    totalMoney: number;
+  };
+}
+
+export const HotelCheckOutTotalForm = (props: ITourTotalForm) => {
+  const { data } = props;
+  console.log(data);
   const handleApplyPromoCode = () => {
     //
   };
@@ -25,33 +39,46 @@ export const HotelCheckOutTotalForm = () => {
 
       <div className='date'>
         <IconDepatureTime color={'#FF7B42'} />
-        <RangePicker
-          placeholder={['Start', 'End']}
-          suffixIcon={null}
-          bordered={false}
-        />
+        <p>
+          {data.timeString[0]} - {data.timeString[1]}
+        </p>
       </div>
 
       <div className='people '>
-        <Input
-          size='large'
-          // placeholder='2 Adults - 1 Children'
-          defaultValue='2 Adults - 1 Children'
-          prefix={<IconGuest color={'#FF7B42'} />}
-          bordered={false}
-        />
+        <IconGuest color={'#FF7B42'} />
+        <p>
+          {data.adults} Adults - {data.children} Children
+        </p>
       </div>
 
       <div className='room'>
-        <span>1 x</span> Standard Room
+        <div>
+          <p>
+            <span>{data.standardRoom} x</span> Standard Room
+          </p>
+          <p>$ {(data.standardRoom * 120).toFixed(2)}</p>
+        </div>
+
+        <div>
+          <p>
+            <span>{data.familySuite} x</span> Family Suite
+          </p>
+          <p>$ {(data.familySuite * 240).toFixed(2)}</p>
+        </div>
       </div>
       <div className='add-ons'>
         <p>
           <span>Add-ons:</span>
         </p>
         <div className='add-ons-content'>
-          <p>Breakfast</p>
-          <p>$120</p>
+          <div>
+            <p>Breakfast</p>
+            <p>$ {(data.breakfast * 50).toFixed(2)}</p>
+          </div>
+          <div>
+            <p>Extra Bed</p>
+            <p>$ {(data.extraBed * 100).toFixed(2)}</p>
+          </div>
         </div>
       </div>
       <div className='promo-code'>
@@ -65,7 +92,7 @@ export const HotelCheckOutTotalForm = () => {
       <div className='total'>
         <p>Total</p>
         <p>
-          <span>$450</span>
+          <span>${data.totalMoney}</span>
         </p>
       </div>
     </StyledTotalForm>
@@ -76,7 +103,7 @@ const StyledTotalForm = styled.div`
   margin-top: 158px;
   padding: 39px 37px 0 30px;
   width: 380px;
-  height: 610px;
+  height: 635px;
   background: #f4f4f4;
 
   font-family: 'DM Sans';
@@ -151,6 +178,12 @@ const StyledTotalForm = styled.div`
     span {
       color: #ff7b42;
     }
+
+    > div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
   .add-ons {
     margin-bottom: 20px;
@@ -170,8 +203,14 @@ const StyledTotalForm = styled.div`
     }
     .add-ons-content {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-between;
+
+      > div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
   }
   .promo-code {

@@ -18,9 +18,14 @@ const signUpSlice = createSlice({
     SignUpSuccess: (state, action) => {
       state.email = action.payload.email;
       state.password = action.payload.password;
-    }
+    },
+
+    SignUpReset: (state, action) => {
+      state.email = '';
+      state.password = '';
+    },
   },
 })
 
 export default signUpSlice.reducer;
-export const {SignUpSuccess} = signUpSlice.actions;
+export const {SignUpSuccess,SignUpReset} = signUpSlice.actions;
