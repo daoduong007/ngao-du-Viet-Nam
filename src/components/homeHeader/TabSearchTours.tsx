@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button, DatePicker, Input, Select, Popover } from 'antd';
 import axios from 'axios';
-import debounce from 'lodash.debounce';
 import { generatePath, useHistory } from 'react-router-dom';
 
 import {
@@ -35,6 +34,8 @@ export const TabSearchTours = (props: ITabSearchName) => {
   const [typeTour, setTypeTour] = useState<string>();
   const [numberGuest, setNumberGuest] = useState<string>();
 
+  const typeingTimeoutRef = React.useRef<any>(null);
+
   const handleChangeTypeTour = (value) => {
     setTypeTour(value);
   };
@@ -54,52 +55,6 @@ export const TabSearchTours = (props: ITabSearchName) => {
     setDepatureTime('');
   };
 
-  const handleSearchDebounce = () => {
-    const fetchData = async () => {
-      if (tabName === 'tab_hotel') {
-        try {
-          const response = await axios.get(
-            `http://localhost:8386/hotels?q=${location}`,
-          );
-          console.log(location);
-          console.log(response.data);
-          setSearchResults(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-      } else {
-        try {
-          const response = await axios.get(
-            `http://localhost:8386/tours?q=${location}`,
-          );
-          console.log(location);
-          console.log(response.data);
-          setSearchResults(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    };
-    fetchData();
-  };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const delayedSearch = useCallback(
-    debounce(handleSearchDebounce, 400),
-    [location],
-  );
-
-  const handleLocationChange = (value) => {
-    setLocation(value);
-  };
-
-  useEffect(() => {
-    delayedSearch();
-
-    // Cancel the debounce on useEffect cleanup
-    return delayedSearch.cancel;
-  }, [location, delayedSearch]);
-
   const handleClickResult = (id) => {
     if (tabName === 'tab_hotel') {
       history.push(
@@ -114,6 +69,47 @@ export const TabSearchTours = (props: ITabSearchName) => {
         }),
       );
     }
+  };
+
+  const handleSubmit = async (searchTerm) => {
+    //call api here
+    const fetchData = async () => {
+      if (tabName === 'tab_hotel') {
+        try {
+          const response = await axios.get(
+            `http://localhost:8386/hotels?q=${searchTerm}`,
+          );
+          console.log(searchTerm);
+          console.log(response.data);
+          setSearchResults(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        try {
+          const response = await axios.get(
+            `http://localhost:8386/tours?q=${searchTerm}`,
+          );
+          console.log(searchTerm);
+          console.log(response.data);
+          setSearchResults(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    };
+    fetchData();
+  };
+  //custom debounce
+  const DebounceJS = (e) => {
+    const searchTerm = e.target.value;
+    setLocation(searchTerm);
+    if (typeingTimeoutRef.current) {
+      clearTimeout(typeingTimeoutRef.current);
+    }
+    typeingTimeoutRef.current = setTimeout(() => {
+      handleSubmit(searchTerm);
+    }, 400);
   };
 
   return (
@@ -164,7 +160,10 @@ export const TabSearchTours = (props: ITabSearchName) => {
           >
             <Input
               value={location}
-              onChange={(e) => handleLocationChange(e.target.value)}
+              onChange={(e) => {
+                DebounceJS(e);
+              }}
+              // onFocus={() => handleSubmit('')}
               placeholder={'Quatlam Beach, Giaothuy, Namdinh'}
             />
           </Popover>

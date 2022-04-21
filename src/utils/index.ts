@@ -27,4 +27,5 @@ export const validationSchemaSignUp = Yup.object().shape({
   password: Yup.string().required('Password is a required field'),
 })
 
-export * from './filter'
+export * from './filter';
+export * from './debounce'
