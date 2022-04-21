@@ -18,7 +18,6 @@ interface ITourTotalForm {
 
 export const TourCheckOutTotalForm = (props: ITourTotalForm) => {
   const { data } = props;
-  console.log(data.timeString[0], data.timeString[1]);
   return (
     <StyledCheckOutToTalFormContainer>
       <div className='total-form-title'>

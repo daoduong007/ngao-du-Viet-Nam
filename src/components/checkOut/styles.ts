@@ -6,6 +6,31 @@ height: 100%;
 padding: 0 165px;
 display: flex;
 flex-direction: column;
+
+h1,h2,h3 {
+  text-align: left;
+
+  font-family: 'DM Sans';
+  font-style: normal;
+  line-height: 2.5rem;  
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1rem;
+  span {
+    color: red;
+  }
+}
+
 .help {
   margin-top: 5px;
   color: red;
@@ -47,10 +72,6 @@ hr {
 
   .traveler-details-description {
     margin-top: 19px;
-
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 40px;
     /* identical to box height, or 167% */
     color: #2a2a2a;
     span {
@@ -157,31 +178,22 @@ hr {
   .traveler-details-formik-payment {
     display: flex;
     flex-direction: column;
+    position: relative;
+    margin-bottom: 31px;
 
-    .traveler-details-formik-payment-item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+    .ant-space-vertical {
+      width: 100%;
 
-
-      label {
-        width: 120px;
+      .ant-space-item {
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        align-items: left;
+        cursor: pointer;
 
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 42px;
-        /* identical to box height, or 262% */
-
-        color: #000000;
-      }
-      input {
-        margin-right: 11px;
+        width: 100%;
       }
       img {
-        margin-left: 33px;
+        position: absolute;
+        left: 150px;
       }
     }
   }

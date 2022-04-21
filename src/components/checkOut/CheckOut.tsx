@@ -1,15 +1,13 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useFormik } from 'formik';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Form as FormAntd, Input, Button, Radio, Space } from 'antd';
 
 import {
   TourCheckOutTotalForm,
-  DataCheckoutTravelerInfo,
-  DataCheckoutTravelerAddress,
   DataCheckoutTravelerMoreInfo,
   StyledCheckOutContainer,
-  FormikItem,
   HotelCheckOutTotalForm,
 } from '@components';
 import { ICheckOutFormValues } from '@interfaces';
@@ -19,12 +17,13 @@ import { bookingTourSelector } from '@redux';
 interface INameScreen {
   screen: string;
 }
+
 export const CheckOut = (props: INameScreen) => {
+  const { TextArea } = Input;
   const IdBooked = useSelector(bookingTourSelector);
   console.log(IdBooked.bookingTour.idTour);
 
   const bookingInfo = useSelector((state: any) => state.checkOut);
-  // console.log(bookingInfo);
 
   const { screen } = props;
   const history = useHistory();
@@ -47,9 +46,14 @@ export const CheckOut = (props: INameScreen) => {
     history.push(AppRoutes.THANKS);
   };
 
-  const renderError = (message) => (
-    <p className='help is-danger'>{message}</p>
-  );
+  const formik = useFormik({
+    initialValues: initialValues,
+    onSubmit: (values: any, { resetForm }) => {
+      handleSubmit(values);
+      resetForm();
+    },
+    validationSchema: validationSchema,
+  });
   return (
     <StyledCheckOutContainer>
       <div className='check-out-title'>
@@ -60,7 +64,7 @@ export const CheckOut = (props: INameScreen) => {
         <div className='check-out-body-content'>
           <div className='check-out-traveler-details'>
             <div className='traveler-details-description'>
-              <p>Traveler detail</p>
+              <h1>Traveler detail</h1>
               <p>
                 <span>
                   Information we need to confirm your tour or activity
@@ -73,128 +77,180 @@ export const CheckOut = (props: INameScreen) => {
               <p>Lead Traveler (Adult)</p>
             </div>
             <div className='traveler-details-formik'>
-              <Formik
-                validationSchema={validationSchema}
-                initialValues={initialValues}
-                onSubmit={(values, { resetForm }) => {
-                  handleSubmit(values);
-                  resetForm();
-                }}
-              >
-                <Form>
-                  <div className='traveler-details-formik-rally'>
-                    {DataCheckoutTravelerInfo.map((item, index) => (
-                      <div
-                        key={index}
-                        className='traveler-details-formik-item'
-                      >
-                        <FormikItem
-                          id={item.id}
-                          name={item.name}
-                          placeholder={item.placeholder}
-                          title={item.title}
-                          requid={true}
-                        />
-
-                        <ErrorMessage
-                          name={item.name}
-                          render={renderError}
-                        />
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className='traveler-details-formik-address'>
-                    <p>Address</p>
-                  </div>
-                  <div className='traveler-details-formik-item traveler-details-formik-item-address'>
-                    <FormikItem
-                      id='address'
-                      name='address'
-                      placeholder='Your Address'
-                      title='Address'
+              <FormAntd onFinish={formik.handleSubmit}>
+                <div className='traveler-details-formik-rally'>
+                  <div className='traveler-details-formik-item'>
+                    <h3>
+                      First Name <span>*</span>
+                    </h3>
+                    <Input
+                      id='firstName'
+                      name='firstName'
+                      placeholder='First Name'
+                      value={formik.values.firstName}
+                      onChange={formik.handleChange}
                     />
+                    {formik.errors.firstName &&
+                      formik.touched.firstName && (
+                        <p className='help is-danger'>
+                          {formik.errors.firstName}
+                        </p>
+                      )}
                   </div>
-                  <div className='traveler-details-formik-rally'>
-                    {DataCheckoutTravelerAddress.map(
-                      (item, index) => (
-                        <div
-                          key={index}
-                          className='traveler-details-formik-item'
-                        >
-                          <FormikItem
-                            id={item.id}
-                            name={item.name}
-                            placeholder={item.placeholder}
-                            title={item.title}
-                          />
-                        </div>
-                      ),
+                  <div className='traveler-details-formik-item'>
+                    <h3>
+                      Last Name <span>*</span>
+                    </h3>
+                    <Input
+                      id='lastName'
+                      name='lastName'
+                      placeholder='Last Name'
+                      value={formik.values.lastName}
+                      onChange={formik.handleChange}
+                    />
+                    {formik.errors.lastName &&
+                      formik.touched.lastName && (
+                        <p className='help is-danger'>
+                          {formik.errors.lastName}
+                        </p>
+                      )}
+                  </div>
+                  <div className='traveler-details-formik-item'>
+                    <h3>
+                      Email <span>*</span>
+                    </h3>
+                    <Input
+                      id='email'
+                      name='email'
+                      placeholder='Email Address'
+                      value={formik.values.email}
+                      onChange={formik.handleChange}
+                    />
+                    {formik.errors.email && formik.touched.email && (
+                      <p className='help is-danger'>
+                        {formik.errors.email}
+                      </p>
                     )}
                   </div>
+                  <div className='traveler-details-formik-item'>
+                    <h3>
+                      Phone Number <span>*</span>
+                    </h3>
+                    <Input
+                      id='phoneNumber'
+                      name='phoneNumber'
+                      placeholder='Your Phone'
+                      value={formik.values.phoneNumber}
+                      onChange={formik.handleChange}
+                    />
+                    {formik.errors.phoneNumber &&
+                      formik.touched.phoneNumber && (
+                        <p className='help is-danger'>
+                          {formik.errors.phoneNumber}
+                        </p>
+                      )}
+                  </div>
+                </div>
 
-                  <div className='traveler-details-formik-item traveler-details-formik-item-special'>
-                    <FormikItem
-                      id='specialRequiment'
-                      name='specialRequiment'
-                      placeholder='Special Requirement'
-                      title='Special Requirement'
+                <h2>Address</h2>
+                <div className='traveler-details-formik-item traveler-details-formik-item-address'>
+                  <h3>Your Address </h3>
+                  <Input
+                    id='address'
+                    name='address'
+                    placeholder='Your Address'
+                    value={formik.values.address}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+
+                <div className='traveler-details-formik-rally'>
+                  <div className='traveler-details-formik-item'>
+                    <h3>City</h3>
+                    <Input
+                      id='city'
+                      name='city'
+                      placeholder='Your City'
+                      value={formik.values.city}
+                      onChange={formik.handleChange}
                     />
                   </div>
-                  <hr />
-                  <div>
-                    <p>Payment Menthod</p>
-                    <p>
-                      <span>
-                        Pay securely—we use SSL encryption to keep
-                        your data safe
-                      </span>
-                    </p>
+                  <div className='traveler-details-formik-item'>
+                    <h3>State/Province/Region</h3>
+                    <Input
+                      id='province'
+                      name='province'
+                      placeholder='Your State/Province/Region'
+                      value={formik.values.province}
+                      onChange={formik.handleChange}
+                    />
                   </div>
-                  <div
-                    role='group'
-                    aria-labelledby='checkbox-group'
-                    className='traveler-details-formik-payment'
+                  <div className='traveler-details-formik-item'>
+                    <h3>Zip Code/ Postal Code</h3>
+                    <Input
+                      id='zipCode'
+                      name='zipCode'
+                      placeholder='Zip Code/ Postal Code'
+                      value={formik.values.zipCode}
+                      onChange={formik.handleChange}
+                    />
+                  </div>
+                  <div className='traveler-details-formik-item'>
+                    <h3>Country</h3>
+                    <Input
+                      id='country'
+                      name='country'
+                      placeholder='Country'
+                      value={formik.values.country}
+                      onChange={formik.handleChange}
+                    />
+                  </div>
+                </div>
+
+                <div className='traveler-details-formik-item traveler-details-formik-item-special'>
+                  <h2>Special Requirement</h2>
+                  <TextArea
+                    rows={4}
+                    id='specialRequiment'
+                    name='specialRequiment'
+                    placeholder='Special Requirement'
+                    value={formik.values.specialRequiment}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+                <hr />
+                <div className='traveler-details-formik-payment'>
+                  <h1>Payment Menthod</h1>
+                  <Radio.Group
+                    id='paymentMethod'
+                    name='paymentMethod'
+                    value={formik.values.paymentMethod}
+                    onChange={formik.handleChange}
                   >
-                    <div className='traveler-details-formik-payment-item'>
-                      <label>
-                        <Field
-                          type='radio'
-                          name='paymentMethod'
-                          value='Credit Card'
-                        />
-                        Credit Card
-                      </label>
-                      <img src='/assets/creditCard.png' />
-                    </div>
-                    <div className='traveler-details-formik-payment-item'>
-                      <label>
-                        <Field
-                          type='radio'
-                          name='paymentMethod'
-                          value='Paypal'
-                        />
-                        Paypal
-                      </label>
-                      <img src='/assets/paypal.png' />
-                    </div>
-                  </div>
-                  <div className='traveler-details-formik-payment-info'>
-                    <ul>
-                      {DataCheckoutTravelerMoreInfo.map(
-                        (item, index) => (
-                          <li key={index}>{item}</li>
-                        ),
-                      )}
-                    </ul>
-                  </div>
-                  <div className='traveler-details-formik-submit'>
-                    <button type='submit'>
-                      <span>Complete Booking</span>
-                    </button>
-                  </div>
-                </Form>
-              </Formik>
+                    <Space direction='vertical'>
+                      <Radio value='creditCard'>
+                        Credit Card{' '}
+                        <img src='/assets/creditCard.png' />
+                      </Radio>
+                      <Radio value='paypal'>
+                        Paypal <img src='/assets/paypal.png' />
+                      </Radio>
+                    </Space>
+                  </Radio.Group>
+                </div>
+                <div className='traveler-details-formik-payment-info'>
+                  <ul>
+                    {DataCheckoutTravelerMoreInfo.map(
+                      (item, index) => (
+                        <li key={index}>{item}</li>
+                      ),
+                    )}
+                  </ul>
+                </div>
+                <div className='traveler-details-formik-submit'>
+                  <Button htmlType='submit'>Complete Booking</Button>
+                </div>
+              </FormAntd>
             </div>
           </div>
         </div>

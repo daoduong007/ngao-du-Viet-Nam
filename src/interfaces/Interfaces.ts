@@ -49,7 +49,7 @@ export interface ICheckOutFormValues {
   zipCode?: string;
   country?: string;
   specialRequiment?: string;
-  paymentMethod?: string;
+  paymentMethod?: '' | 'creditCard' | 'paypal';
 }
 
 export interface IHotelDetail {
