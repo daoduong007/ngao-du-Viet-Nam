@@ -6,17 +6,23 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from '@redux';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 
-import { ScrollToTop } from '@components';
+import { ScrollToTop, Loading } from '@components';
+
+const persistor = persistStore(store);
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <BrowserRouter>
-        <ScrollToTop />
-        <App />
-      </BrowserRouter>
-    </React.StrictMode>
-  </Provider>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={<Loading />} persistor={persistor}>
+        <BrowserRouter>
+          <ScrollToTop />
+          <App />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root'),
 );
 

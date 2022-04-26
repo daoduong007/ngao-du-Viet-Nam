@@ -3,8 +3,7 @@ import { Input, Button, Form } from 'antd';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import 'react-toastify/dist/ReactToastify.css';
@@ -23,14 +22,18 @@ export const Login = () => {
 
   const user = useSelector((state: any) => state.signUp);
 
+  const currentAccessToken = useSelector(
+    (state: any) => state.login.accessToken,
+  );
+
   //prevent users from returning to login screen after successful login
+  //and push to Login screen if login success
   useLayoutEffect(() => {
-    const currentAccessToken = localStorage.getItem('accessToken');
-    if (currentAccessToken !== null) {
+    if (currentAccessToken !== '') {
       history.push(AppRoutes.HOME_SCREEN);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [currentAccessToken]);
 
   const handleSignUp = () => {
     history.push(AppRoutes.SIGN_UP);
@@ -39,11 +42,8 @@ export const Login = () => {
     history.push(AppRoutes.FORGOT_PASSWORD);
   };
 
-  const handleSubmitSuccess = (accessToken) => {
+  const handleSubmitSuccess = () => {
     notifyLoginSuccess();
-    localStorage.setItem('accessToken', accessToken);
-
-    history.push(AppRoutes.HOME_SCREEN);
 
     setLoading(false);
   };
@@ -67,10 +67,10 @@ export const Login = () => {
         };
         const response = await loginApi.postLogin(params);
         dispatch(getUser(params));
-        console.log(response);
+        console.log(response.data);
         if (response.data.accessToken) {
           console.log('login success');
-          handleSubmitSuccess(response.data.accessToken);
+          handleSubmitSuccess();
         } else {
           console.log('login fail');
           setLoading(false);
@@ -82,6 +82,7 @@ export const Login = () => {
     },
     validationSchema: validationSchemaLogin,
   });
+
   return (
     <StyledLogin>
       <h1>Sign in</h1>

@@ -104,9 +104,9 @@ export const BodyListHotel = () => {
     fetchHotelList();
   }, [currentPage]);
 
-  useEffect(() => {
-    bodyRef.current.scrollIntoView();
-  }, []);
+  // useEffect(() => {
+  //   bodyRef.current.scrollIntoView();
+  // }, []);
 
   const dispatch = useDispatch();
 

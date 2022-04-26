@@ -47,7 +47,7 @@ export const SignUp = () => {
         };
 
         const response = await loginApi.postSignUp(params);
-        console.log(response);
+        console.log(response.data);
         if (response.data.user) {
           dispatch(
             SignUpSuccess({
@@ -190,11 +190,14 @@ const StyledSignUp = styled.div`
     }
   }
   .name-input {
+    > div {
+      width: 47%;
+    }
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     .ant-input {
-      width: 45%;
+      width: 100%;
     }
   }
 

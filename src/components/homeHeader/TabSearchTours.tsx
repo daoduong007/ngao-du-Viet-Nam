@@ -112,8 +112,48 @@ export const TabSearchTours = (props: ITabSearchName) => {
     }, 400);
   };
 
+  //custom throttle
+  const throttle2 = (func, delay) => {
+    let lastTime = 0;
+
+    let countClick = 0;
+    return () => {
+      const now = Date.now();
+      countClick++;
+      if (now - lastTime < delay) return;
+
+      func();
+      console.log(`count click: ${countClick}`);
+      lastTime = now;
+    };
+  };
+  //tối ưu throttle
+  function throttle(callback, limit) {
+    let waiting = false;
+
+    let countClick = 0;
+    return () => {
+      countClick++;
+      if (!waiting) {
+        callback();
+        waiting = true;
+        console.log(`count click: ${countClick}`);
+        setTimeout(function () {
+          waiting = false;
+        }, limit);
+      }
+    };
+  }
+
+  const log = () => {
+    console.log('throttle call');
+  };
+
   return (
     <StyledSearchTabPane>
+      {/* <Button onClick={throttle(log, 1000)} type='primary'>
+        test
+      </Button> */}
       <div className='title'>
         {tabName === 'tab_tour' ? (
           <h1>Discover beautiful Vietnam</h1>
@@ -163,7 +203,7 @@ export const TabSearchTours = (props: ITabSearchName) => {
               onChange={(e) => {
                 DebounceJS(e);
               }}
-              // onFocus={() => handleSubmit('')}
+              onFocus={() => handleSubmit('')}
               placeholder={'Quatlam Beach, Giaothuy, Namdinh'}
             />
           </Popover>

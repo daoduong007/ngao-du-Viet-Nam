@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { resetAccessToken, SignUpReset } from '@redux';
 const directionalItems = [
@@ -13,8 +13,11 @@ const directionalItems = [
 ];
 export const AppBarDirectional = () => {
   const dispatch = useDispatch();
+  const accessToken = useSelector(
+    (state: any) => state.login.accessToken,
+  );
 
-  const accessToken = localStorage.getItem('accessToken');
+  // const accessToken = localStorage.getItem('accessToken');
 
   const handleLogOut = () => {
     dispatch(resetAccessToken({}));

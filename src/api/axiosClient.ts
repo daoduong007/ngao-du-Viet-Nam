@@ -28,14 +28,17 @@ export const axiosAuthClient = axios.create({
   // baseURL: 'http://localhost:3001',
 });
 
-axiosClient.interceptors.request.use(async (config) => {
+axiosAuthClient.interceptors.request.use(async (config) => {
   // Handle token here ...
   return config;
 });
 
-axiosClient.interceptors.response.use((response) => {
-  if (response && response.data) {
-    return response.data;
+axiosAuthClient.interceptors.response.use((response) => {
+  // if (response && response.data) {
+  //   return response.data;
+  // }
+    if (response) {
+    return response;
   }
 
   return response;

@@ -72,9 +72,11 @@ export const ListTourBody = ({}) => {
     fetchTourList();
   }, [currentPage]);
 
-  useEffect(() => {
-    bodyRef.current.scrollIntoView();
-  }, []);
+  // useEffect(() => {
+  //   bodyRef.current.scrollIntoView({
+  //     behavior: 'smooth',
+  //   });
+  // }, []);
 
   const handleApplyFilter = (
     budgetFilter: any,
