@@ -163,9 +163,8 @@ export const HotelDetailTotalForm = () => {
               format={dateFormat}
               value={timeTour}
               onChange={(dates, dateStrings) => {
-                console.log(dateStrings);
                 setTimeTourString(dateStrings);
-                console.log(dates);
+
                 setTimeTour(dates);
               }}
               //prevent select days before today and today

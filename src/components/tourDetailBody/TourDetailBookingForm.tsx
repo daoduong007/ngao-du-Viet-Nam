@@ -32,8 +32,6 @@ export const TourDetailBookingForm = (props: IBookingForm) => {
 
   const dateFormat = 'DD/MM/YYYY';
 
-  console.log('re-render');
-
   return (
     <StyledTourDetailBookingForm>
       <div className='booking-form-price'>
@@ -70,9 +68,8 @@ export const TourDetailBookingForm = (props: IBookingForm) => {
             }}
             value={timeTour}
             onChange={(dates, dateStrings) => {
-              console.log(dateStrings);
               setTimeTourString(dateStrings);
-              console.log(dates);
+
               setTimeTour(dates);
             }}
           />

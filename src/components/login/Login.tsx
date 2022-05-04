@@ -26,8 +26,6 @@ export const Login = () => {
     (state: any) => state.login.accessToken,
   );
 
-  console.log(currentAccessToken);
-
   //prevent users from returning to login screen after successful login
   //and push to Login screen if login success
   useLayoutEffect(() => {
@@ -65,6 +63,7 @@ export const Login = () => {
     },
     onSubmit: (values: any) => {
       setLoading(true);
+
       const login = async () => {
         const params = {
           email: values.email,
