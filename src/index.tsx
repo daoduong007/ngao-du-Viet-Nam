@@ -12,13 +12,6 @@ import { persistStore } from 'redux-persist';
 
 import { ScrollToTop, Loading } from '@components';
 
-// replace console.* for disable log on production
-if (process.env.NODE_ENV === 'production') {
-  console.log = () => {};
-  console.error = () => {};
-  console.debug = () => {};
-}
-
 const persistor = persistStore(store);
 ReactDOM.render(
   <React.StrictMode>

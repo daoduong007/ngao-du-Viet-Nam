@@ -117,7 +117,7 @@ export const FilterHotel = (arrayOfObject, budget ,hotelStar, reviewScore) => {
 export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
   // fill 1 field budget
   if( budget.length !==  0 && duration.length ===  0 && typeTour.length ===  0 ){
-    console.log('case 1');
+
     let arrayFil1 = [];
     arrayFil1 = arrayFil1.concat(arrayOfObject.filter((object :any) => (object.price >= budget[0] && object.price <= budget[1])));
    
@@ -126,7 +126,7 @@ export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
 
   // fill 1 field  duration
   else if (budget.length ===  0 && duration.length !==  0 && typeTour.length ===  0) { 
-    console.log('case 2');
+
     // let arrayFil2= [];
     
     // duration.map((duration) => {
@@ -142,7 +142,7 @@ export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
 
   // fill 1 field typeTour
   else if (budget.length ===  0 && duration.length ===  0 && typeTour.length !==  0) {
-    console.log('case 3');
+
     let arrayFil3 = [];
   
     typeTour.map((type) => {
@@ -153,7 +153,7 @@ export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
 
   //fill 2 field budget ,duration
   else if (budget.length !==  0 && duration.length !==  0 && typeTour.length ===  0) {
-    console.log('case 1 vs 2');
+ 
     let arrayFil1 = [];
     arrayFil1 = arrayFil1.concat(arrayOfObject.filter((object :any) => (object.price >= budget[0] && object.price <= budget[1])));
 
@@ -168,7 +168,7 @@ export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
 
   //fill 2 field   budget, typeTour
   else if (budget.length !==  0 && duration.length ===  0 && typeTour.length !==  0) {
-    console.log('case 1 vs 3');
+
     let arrayFil1 = [];
     arrayFil1 = arrayFil1.concat(arrayOfObject.filter((object :any) => (object.price >= budget[0] && object.price <= budget[1])));
 
@@ -182,7 +182,7 @@ export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
 
   //fill 2 field  duration  ,typeTour
   else if (budget.length ===  0 && duration.length !==  0 && typeTour.length !==  0) {
-    console.log('case 2 vs 3');
+
     // let arrayFil2= [];
     // let temporaryArray = [];
     // duration.map((star) => {
@@ -202,7 +202,7 @@ export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
 
   //fill 3 field budget , duration  ,typeTour
   else if(budget.length !==  0 && duration.length !==  0 && typeTour.length !==  0) {
-    console.log('case 1 vs 2 vs 3');
+
     let arrayFil1 = [];
     arrayFil1 = arrayFil1.concat(arrayOfObject.filter((object :any) => (object.price >= budget[0] && object.price <= budget[1])));
   
@@ -224,6 +224,6 @@ export const FilterTour = (arrayOfObject, budget ,duration, typeTour) => {
 
   //fill 0 field
   } else if(budget.length ===  0 && duration.length ===  0 && typeTour.length ===  0) { 
-    console.log('case 0');
+
     return arrayOfObject}
 }
