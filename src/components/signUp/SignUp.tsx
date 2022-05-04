@@ -34,6 +34,7 @@ export const SignUp = () => {
       password: '',
     },
     onSubmit: (values: any) => {
+      setLoading(true);
       console.log(values.email, values.password);
       const login = async () => {
         const params = {

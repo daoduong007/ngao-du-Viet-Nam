@@ -36,7 +36,7 @@ export const Login = () => {
       history.push(AppRoutes.HOME_SCREEN);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentAccessToken]);
+  }, []);
 
   const handleSignUp = () => {
     history.push(AppRoutes.SIGN_UP);
@@ -46,9 +46,9 @@ export const Login = () => {
   };
 
   const handleSubmitSuccess = () => {
-    setLoading(false);
-
+    history.push(AppRoutes.HOME_SCREEN);
     notifyLoginSuccess();
+    setLoading(false);
   };
 
   const notifyLoginFail = () =>
