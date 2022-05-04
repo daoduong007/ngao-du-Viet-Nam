@@ -32,6 +32,8 @@ export const TourDetailBookingForm = (props: IBookingForm) => {
 
   const dateFormat = 'DD/MM/YYYY';
 
+  console.log('re-render');
+
   return (
     <StyledTourDetailBookingForm>
       <div className='booking-form-price'>

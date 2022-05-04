@@ -77,7 +77,7 @@ export const TabSearchTours = (props: ITabSearchName) => {
       if (tabName === 'tab_hotel') {
         try {
           const response = await axios.get(
-            `http://localhost:8386/hotels?q=${searchTerm}`,
+            `https://json-host-duongdev.herokuapp.com/hotels?q=${searchTerm}`,
           );
           console.log(searchTerm);
           console.log(response.data);
@@ -88,7 +88,7 @@ export const TabSearchTours = (props: ITabSearchName) => {
       } else {
         try {
           const response = await axios.get(
-            `http://localhost:8386/tours?q=${searchTerm}`,
+            `https://json-host-duongdev.herokuapp.com/tours?q=${searchTerm}`,
           );
           console.log(searchTerm);
           console.log(response.data);
@@ -113,41 +113,41 @@ export const TabSearchTours = (props: ITabSearchName) => {
   };
 
   //custom throttle
-  const throttle2 = (func, delay) => {
-    let lastTime = 0;
+  // const throttle2 = (func, delay) => {
+  //   let lastTime = 0;
 
-    let countClick = 0;
-    return () => {
-      const now = Date.now();
-      countClick++;
-      if (now - lastTime < delay) return;
+  //   let countClick = 0;
+  //   return () => {
+  //     const now = Date.now();
+  //     countClick++;
+  //     if (now - lastTime < delay) return;
 
-      func();
-      console.log(`count click: ${countClick}`);
-      lastTime = now;
-    };
-  };
+  //     func();
+  //     console.log(`count click: ${countClick}`);
+  //     lastTime = now;
+  //   };
+  // };
   //tối ưu throttle
-  function throttle(callback, limit) {
-    let waiting = false;
+  // function throttle(callback, limit) {
+  //   let waiting = false;
 
-    let countClick = 0;
-    return () => {
-      countClick++;
-      if (!waiting) {
-        callback();
-        waiting = true;
-        console.log(`count click: ${countClick}`);
-        setTimeout(function () {
-          waiting = false;
-        }, limit);
-      }
-    };
-  }
+  //   let countClick = 0;
+  //   return () => {
+  //     countClick++;
+  //     if (!waiting) {
+  //       callback();
+  //       waiting = true;
+  //       console.log(`count click: ${countClick}`);
+  //       setTimeout(function () {
+  //         waiting = false;
+  //       }, limit);
+  //     }
+  //   };
+  // }
 
-  const log = () => {
-    console.log('throttle call');
-  };
+  // const log = () => {
+  //   console.log('throttle call');
+  // };
 
   return (
     <StyledSearchTabPane>
