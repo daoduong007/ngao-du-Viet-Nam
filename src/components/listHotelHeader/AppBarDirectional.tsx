@@ -16,7 +16,6 @@ export const AppBarDirectional = () => {
   const accessToken = useSelector(
     (state: any) => state.login.accessToken,
   );
-  console.log(accessToken);
 
   // const accessToken = localStorage.getItem('accessToken');
 

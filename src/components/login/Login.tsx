@@ -26,10 +26,15 @@ export const Login = () => {
     (state: any) => state.login.accessToken,
   );
 
+  console.log(currentAccessToken);
+
   //prevent users from returning to login screen after successful login
   //and push to Login screen if login success
   useLayoutEffect(() => {
-    if (currentAccessToken !== '') {
+    if (
+      currentAccessToken !== '' &&
+      currentAccessToken !== undefined
+    ) {
       history.push(AppRoutes.HOME_SCREEN);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -59,15 +64,16 @@ export const Login = () => {
       password: user.password,
     },
     onSubmit: (values: any) => {
-      console.log(values.email, values.password);
+      setLoading(true);
       const login = async () => {
         const params = {
           email: values.email,
           password: values.password,
         };
         const response = await loginApi.postLogin(params);
+
         dispatch(getUser(params));
-        console.log(response.data);
+        console.log(response.data.accessToken);
         if (response.data.accessToken) {
           console.log('login success');
           handleSubmitSuccess();
