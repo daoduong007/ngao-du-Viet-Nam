@@ -35,7 +35,7 @@ export const SignUp = () => {
     },
     onSubmit: (values: any) => {
       setLoading(true);
-      console.log(values.email, values.password);
+      // console.log(values.email, values.password);
       const login = async () => {
         const params = {
           first_name: values.firstName,
@@ -48,7 +48,7 @@ export const SignUp = () => {
         };
 
         const response = await loginApi.postSignUp(params);
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.user) {
           dispatch(
             SignUpSuccess({

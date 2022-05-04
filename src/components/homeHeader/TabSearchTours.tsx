@@ -79,8 +79,8 @@ export const TabSearchTours = (props: ITabSearchName) => {
           const response = await axios.get(
             `https://json-host-duongdev.herokuapp.com/hotels?q=${searchTerm}`,
           );
-          console.log(searchTerm);
-          console.log(response.data);
+          // console.log(searchTerm);
+          // console.log(response.data);
           setSearchResults(response.data);
         } catch (error) {
           console.error(error);

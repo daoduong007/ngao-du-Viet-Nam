@@ -72,7 +72,7 @@ export const Login = () => {
         const response = await loginApi.postLogin(params);
 
         dispatch(getUser(params));
-        console.log(response.data.accessToken);
+        // console.log(response.data.accessToken);
         if (response.data.accessToken) {
           console.log('login success');
           handleSubmitSuccess();

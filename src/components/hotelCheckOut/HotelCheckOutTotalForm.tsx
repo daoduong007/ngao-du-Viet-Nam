@@ -23,7 +23,7 @@ interface ITourTotalForm {
 
 export const HotelCheckOutTotalForm = (props: ITourTotalForm) => {
   const { data } = props;
-  console.log(data);
+  // console.log(data);
   const handleApplyPromoCode = () => {
     //
   };
