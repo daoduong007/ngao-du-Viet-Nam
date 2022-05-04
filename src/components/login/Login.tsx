@@ -43,9 +43,9 @@ export const Login = () => {
   };
 
   const handleSubmitSuccess = () => {
-    notifyLoginSuccess();
-
     setLoading(false);
+
+    notifyLoginSuccess();
   };
 
   const notifyLoginFail = () =>

@@ -16,6 +16,7 @@ export const AppBarDirectional = () => {
   const accessToken = useSelector(
     (state: any) => state.login.accessToken,
   );
+  console.log(accessToken);
 
   // const accessToken = localStorage.getItem('accessToken');
 
@@ -30,7 +31,7 @@ export const AppBarDirectional = () => {
         <NavLink exact key={index} to={`/${item.toLowerCase()}`}>
           {item === '' ? (
             <p className='directionalItem'>Home</p>
-          ) : item === 'Login' && accessToken !== null ? (
+          ) : item === 'Login' && accessToken !== '' ? (
             <p className='directionalItem' onClick={handleLogOut}>
               Log Out
             </p>
