@@ -1,5 +1,4 @@
 export const Sort = (arrayOfObject, oderProp, option) => {
-  console.log(arrayOfObject, oderProp, option);
   switch(option) {
     case 'increase': return (arrayOfObject.sort((a,b) => (a[oderProp] > b[oderProp]) ? 1: (a[oderProp] < b[oderProp]) ? -1 : 0)) 
     case 'decrease': return (arrayOfObject.sort((a,b) => (a[oderProp] < b[oderProp]) ? 1: (a[oderProp] > b[oderProp]) ? -1 : 0)) 

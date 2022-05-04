@@ -13,15 +13,12 @@ import {
 import { ICheckOutFormValues } from '@interfaces';
 import { validationSchema } from '@utils';
 import { AppRoutes } from '@enums';
-import { bookingTourSelector } from '@redux';
 interface INameScreen {
   screen: string;
 }
 
 export const CheckOut = (props: INameScreen) => {
   const { TextArea } = Input;
-  const IdBooked = useSelector(bookingTourSelector);
-  console.log(IdBooked.bookingTour.idTour);
 
   const bookingInfo = useSelector((state: any) => state.checkOut);
 
