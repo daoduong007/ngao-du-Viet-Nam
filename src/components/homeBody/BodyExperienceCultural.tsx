@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { generatePath, useHistory } from 'react-router-dom';
@@ -10,7 +10,6 @@ import {
   StyledBodyTourContainer,
   StyledBodyTourListItem,
   BodyTourItem,
-  IconArrow,
   BodyButton,
 } from '@components';
 
@@ -23,10 +22,10 @@ interface IHomeExperience {
 export const BodyExperienceCultural = (props: IHomeExperience) => {
   const { data } = props;
 
-  const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
-  const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [isEndOfSlide, setIsEndOfSlide] = useState(false);
+  // const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
+  // const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
+  // const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  // const [isEndOfSlide, setIsEndOfSlide] = useState(false);
 
   const history = useHistory();
 
@@ -38,10 +37,10 @@ export const BodyExperienceCultural = (props: IHomeExperience) => {
     );
   };
 
-  const handleSlideChange = (swiper) => {
-    setCurrentSlideIndex(swiper.activeIndex);
-    setIsEndOfSlide(swiper.isEnd);
-  };
+  // const handleSlideChange = (swiper) => {
+  //   setCurrentSlideIndex(swiper.activeIndex);
+  //   setIsEndOfSlide(swiper.isEnd);
+  // };
 
   const handleClickViewAll = () => {
     history.push(AppRoutes.LIST_TOUR_SCREEN);
@@ -61,18 +60,19 @@ export const BodyExperienceCultural = (props: IHomeExperience) => {
       </div>
       <div className='attractive-tour-list-item'>
         <StyledBodyTourListItem>
-          {currentSlideIndex == 0 ? null : (
+          {/* {currentSlideIndex == 0 ? null : (
             <div
               className='list-item-prev'
               ref={(node) => setPrevEl(node)}
             >
               <IconArrow />
             </div>
-          )}
+          )} */}
           <Swiper
             modules={[Navigation]}
-            navigation={{ prevEl, nextEl }}
-            onSlideChange={(swiper) => handleSlideChange(swiper)}
+            // navigation={{ prevEl, nextEl }}
+            navigation={true}
+            // onSlideChange={(swiper) => handleSlideChange(swiper)}
             breakpoints={{
               0: {
                 slidesPerView: 1.24,
@@ -113,14 +113,14 @@ export const BodyExperienceCultural = (props: IHomeExperience) => {
             ))}
           </Swiper>
         </StyledBodyTourListItem>
-        {isEndOfSlide === false ? (
+        {/* {isEndOfSlide === false ? (
           <div
             className='list-item-load-more'
             ref={(node) => setNextEl(node)}
           >
             <IconArrow />
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     </StyledBodyTourContainer>
   );

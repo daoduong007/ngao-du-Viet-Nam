@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 
@@ -9,7 +9,6 @@ import {
   StyledBodyTourContainer,
   StyledBodyTourListItem,
   BodyTourItem,
-  IconArrow,
   BodyButton,
 } from '@components';
 import { generatePath, useHistory } from 'react-router-dom';
@@ -22,10 +21,10 @@ interface IHomeAttractive {
 export const BodyAttractiveTour = (props: IHomeAttractive) => {
   const { data } = props;
 
-  const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
-  const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [isEndOfSlide, setIsEndOfSlide] = useState(false);
+  // const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
+  // const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
+  // const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  // const [isEndOfSlide, setIsEndOfSlide] = useState(false);
 
   const history = useHistory();
 
@@ -37,10 +36,10 @@ export const BodyAttractiveTour = (props: IHomeAttractive) => {
     );
   };
 
-  const handleSlideChange = (swiper) => {
-    setCurrentSlideIndex(swiper.activeIndex);
-    setIsEndOfSlide(swiper.isEnd);
-  };
+  // const handleSlideChange = (swiper) => {
+  //   setCurrentSlideIndex(swiper.activeIndex);
+  //   setIsEndOfSlide(swiper.isEnd);
+  // };
 
   const handleClickViewALl = () => {
     history.push(generatePath(AppRoutes.LIST_TOUR_SCREEN));
@@ -58,20 +57,21 @@ export const BodyAttractiveTour = (props: IHomeAttractive) => {
           <BodyButton name={'View All'} />
         </div>
       </div>
-      <div className='attractive-tour-list-item'>
+      <div className='attractive-tour-list-item actractive-tour'>
         <StyledBodyTourListItem>
-          {currentSlideIndex == 0 ? null : (
+          {/* {currentSlideIndex == 0 ? null : (
             <div
               className='list-item-prev'
               ref={(node) => setPrevEl(node)}
             >
               <IconArrow />
             </div>
-          )}
+          )} */}
           <Swiper
             modules={[Navigation]}
-            navigation={{ prevEl, nextEl }}
-            onSlideChange={(swiper) => handleSlideChange(swiper)}
+            // navigation={{ prevEl, nextEl }}
+            navigation={true}
+            // onSlideChange={(swiper) => handleSlideChange(swiper)}
             breakpoints={{
               0: {
                 slidesPerView: 1.24,
@@ -110,7 +110,7 @@ export const BodyAttractiveTour = (props: IHomeAttractive) => {
             ))}
           </Swiper>
         </StyledBodyTourListItem>
-        {isEndOfSlide === false ? (
+        {/* {isEndOfSlide === false ? (
           <div
             className='list-item-load-more'
             ref={(node) => {
@@ -119,7 +119,7 @@ export const BodyAttractiveTour = (props: IHomeAttractive) => {
           >
             <IconArrow />
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     </StyledBodyTourContainer>
   );

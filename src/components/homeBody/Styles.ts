@@ -29,6 +29,41 @@ export const StyledBodyTourContainer = styled.div`
   margin-top: 150px;
   display: flex;
   flex-direction: column;
+
+  .swiper-button-next,
+    .swiper-button-prev {
+      width: 30px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.8);
+      color: #000000;
+
+      &:hover {
+        transform: scale(1.1, 1.1);
+      }
+    }
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 17px;
+      font-weight: bold;
+    }
+    .swiper-button-prev {
+      left: 0px;
+      top: 30%;
+    }
+    .swiper-button-next {
+      right: 0px;
+      top: 30%;
+    }
+
+    .discover-fascinating {
+      .swiper-button-prev {
+      top: 35%;
+    }
+    .swiper-button-next {
+      top: 35%;
+    }
+    }
+
   .attractive-tour-title {
     width: 100%;
     display: flex;
@@ -90,15 +125,23 @@ export const StyledBodyTourContainer = styled.div`
     }
     .load-more-discover,.prev-discover {
     margin-bottom: 8%;
-  }
+    }
     .attractive-tour-title {
       p {
         width: 70%;
         font-size: 35px;
       }
     }
+    .swiper-button-prev,.swiper-button-next {
+      top: 33%;
+    }
+    .discover-fascinating {
+      .swiper-button-prev,.swiper-button-next {
+      top: 40%;
+      }
+    }
   }
-  @media (max-width: 768px){
+  @media (max-width: 767px){
     margin-top: 30px;
     .list-item-load-more,.list-item-prev {
      display: none;
@@ -108,6 +151,10 @@ export const StyledBodyTourContainer = styled.div`
         width: 80%;
         font-size: 25px;
       }
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: none;
     }
   }
 `
