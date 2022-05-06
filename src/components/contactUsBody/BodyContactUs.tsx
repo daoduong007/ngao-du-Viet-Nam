@@ -5,10 +5,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import {
   DataContactUsForm,
-  IconDot,
   IconHome,
   IconPhone,
   IconEmail,
+  BreadcrumbLink,
 } from '@components';
 import { validationSchemaContactUs } from '@utils';
 
@@ -26,13 +26,18 @@ export const BodyContactUs = () => {
   const renderError = (message) => (
     <p className='help is-danger'>{message}</p>
   );
+
+  const pathUrl = ['Home'].concat(
+    window.location.pathname.split('/'),
+  );
   return (
     <StyledBodyContactUs>
-      <div className='pagination'>
+      {/* <div className='pagination'>
         <p>Home</p>
         <IconDot color='#C4C4C4' />
         <p>Contact Us</p>
-      </div>
+      </div> */}
+      <BreadcrumbLink pathUrl={pathUrl} />
       <div className='content'>
         <div className='form-message'>
           <h1>We'd love to hear from you</h1>
@@ -336,6 +341,7 @@ const StyledBodyContactUs = styled.div`
   @media (min-width: 1441px) {
     width: 1440px;
     margin: 0 auto;
+    margin-top: 49px;
   }
   @media (max-width: 1200px) {
     padding: 0 50px;
