@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosClient = axios.create({
-  baseURL: process.env.REACT_APP_API_ONLINE,
+  baseURL: process.env.REACT_APP_API_ONLINE_RAILWAY,
   headers: {
     'content-type': 'application/json'
   }
@@ -24,7 +24,7 @@ axiosClient.interceptors.response.use((response) => {
 });
 
 export const axiosAuthClient = axios.create({
-  baseURL: process.env.REACT_APP_API_LOGIN_ONLINE,
+  baseURL: process.env.REACT_APP_API_LOGIN_ONLINE_RAILWAY,
   // baseURL: 'http://localhost:3001',
 });
 

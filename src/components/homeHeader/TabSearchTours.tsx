@@ -77,7 +77,7 @@ export const TabSearchTours = (props: ITabSearchName) => {
       if (tabName === 'tab_hotel') {
         try {
           const response = await axios.get(
-            `https://json-host-duongdev.herokuapp.com/hotels?q=${searchTerm}`,
+            `https://json-server-api-dev.up.railway.app/hotels?q=${searchTerm}`,
           );
 
           setSearchResults(response.data);
@@ -87,7 +87,7 @@ export const TabSearchTours = (props: ITabSearchName) => {
       } else {
         try {
           const response = await axios.get(
-            `https://json-host-duongdev.herokuapp.com/tours?q=${searchTerm}`,
+            `https://json-server-api-dev.up.railway.app/tours?q=${searchTerm}`,
           );
 
           setSearchResults(response.data);
