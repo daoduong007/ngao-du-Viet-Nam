@@ -39,11 +39,11 @@ const StyledDrawer = styled(Drawer)`
     .ant-drawer-body {
       padding-right: 0px;
 
-      background-color: #fbab7e;
+      background-color: #ff9933;
       background-image: linear-gradient(
         180deg,
-        #757f9a 0%,
-        #d7dde8 100%
+        #ff9933 0%,
+        #fff 100%
       );
     }
     p {
