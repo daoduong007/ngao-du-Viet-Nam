@@ -1,6 +1,5 @@
 
 Demo: https://ngaoduvietnam-duongdev.web.app
-In the project directory, you can run:
 
 ### `yarn start`
 
